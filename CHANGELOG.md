@@ -11,4 +11,17 @@
 
 ## 1.0.5
 
-* Replaced all `.yield
+* Replaced all `.yield` in Async and List with `["yield"]` in order to avoid the use of reserved word.
+* Minor code tweak.
+
+## 1.0.4
+
+* Fixed the misuse of module causing all scripts stop working for browsers.
+
+## 1.0.3
+
+* Added `Async.collect` for parallel operations.
+
+## 1.0.2
+
+* R
