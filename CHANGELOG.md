@@ -24,4 +24,12 @@
 
 ## 1.0.2
 
-* R
+* Redesign `...` (aka `Overload.More`) usage to make it work like CoffeeScript's.
+
+## 1.0.1
+
+* Added `Async.instant` as a short-cut to `Async.wait(0, content)`.
+
+## 1.0
+
+* First stable release.
