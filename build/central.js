@@ -10,4 +10,15 @@
         })
     } else if (typeof window == 'object') {
         window.Central = Central;
-    } else 
+    } else {
+        return;
+    }
+    
+    var initiateCentralService = function(target) {
+        var listeners = {};
+
+        target.listen = function(command, handler) {
+            listeners[command] = listeners[command] || [];
+            var i = 0;
+            var handlers = listeners[command];
+            while (i 
