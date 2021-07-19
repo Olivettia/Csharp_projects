@@ -30,4 +30,12 @@
             return target;
         };
 
-        target.call = function(command, argument) 
+        target.call = function(command, argument) {
+            if (listeners[command]) {
+                var i;
+                var handlers = listeners[command];
+                for (i = 0; i < handlers.length; i++) {
+                    try {
+                        handlers[i](argument);
+                    } catch (error) {}
+        
