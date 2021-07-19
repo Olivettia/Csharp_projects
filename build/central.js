@@ -38,4 +38,16 @@
                     try {
                         handlers[i](argument);
                     } catch (error) {}
-        
+                }
+            }
+            return target;
+        };
+    };
+    
+    Central.extend = function(target) {
+        initiateCentralService(target);
+        return target;
+    };
+    
+    Central.extend(Central);
+})();
