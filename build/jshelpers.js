@@ -17,4 +17,16 @@
     var globalErrorCallbacks = [];
     
     var raiseGlobalError = function(operation) {
-        for (var i = 0; i < g
+        for (var i = 0; i < globalErrorCallbacks.length; i++) {
+            try {
+                globalErrorCallbacks[i](operation);
+            } catch (error) {}
+        }
+    };
+
+    Async.Operation = function(options) {
+        options = options || {};
+
+        var callbackQueue = [];
+        var errorCallbacks = [];
+        var chain 
