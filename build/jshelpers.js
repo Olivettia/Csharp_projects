@@ -29,4 +29,13 @@
 
         var callbackQueue = [];
         var errorCallbacks = [];
-        var chain 
+        var chain = (options.chain && options.chain === true) ? true : false;
+        var started = false;
+        var innerChain = null;
+        
+        this.result = undefined;
+        this.error = undefined;
+        this.state = chain ? "waiting" : "running";
+        this.completed = false;
+        
+        var raiseError 
