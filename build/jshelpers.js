@@ -47,4 +47,14 @@
             raiseGlobalError(operation);
         };
 
-        this["yield"]
+        this["yield"] = function(result) {
+            var self = this;
+            
+            if (self.error) {
+                /* will not proceed if any error occured before */
+                return this;
+            }
+
+            if (!chain) {
+                self.result = result;
+                self.state = "com
