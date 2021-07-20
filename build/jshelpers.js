@@ -57,4 +57,15 @@
 
             if (!chain) {
                 self.result = result;
-                self.state = "com
+                self.state = "completed";
+                self.completed = true;
+            } else {
+                started = true;
+                self.result = result;
+                self.state = "chain running";
+                self.completed = false;
+            }
+
+            setTimeout(function() {
+                if (!innerChain) {
+                
