@@ -72,4 +72,10 @@
                     /* we will call all functions in the queue until we encounter an asynchronous function */
                     while (callbackQueue.length > 0 && !self.error) {
                         var callback = callbackQueue.shift();
+                        if (chain) {
+                            try {
+                                var callbackResult = callback.call(self, self.result);
+                            } catch (error) {
+                                self.error = error;
+                                self.state = "error";
     
