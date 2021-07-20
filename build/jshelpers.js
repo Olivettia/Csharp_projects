@@ -68,4 +68,8 @@
 
             setTimeout(function() {
                 if (!innerChain) {
-                
+                    /* there is no inner chain constructed and no error occured before */
+                    /* we will call all functions in the queue until we encounter an asynchronous function */
+                    while (callbackQueue.length > 0 && !self.error) {
+                        var callback = callbackQueue.shift();
+    
