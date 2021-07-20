@@ -38,4 +38,13 @@
         this.state = chain ? "waiting" : "running";
         this.completed = false;
         
-        var raiseError 
+        var raiseError = function(operation) {
+            for (var i = 0; i < errorCallbacks.length; i++) {
+                try {
+                    errorCallbacks[i](operation);
+                } catch (error) {}
+            }
+            raiseGlobalError(operation);
+        };
+
+        this["yield"]
