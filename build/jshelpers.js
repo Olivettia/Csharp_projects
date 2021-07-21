@@ -86,4 +86,9 @@
                                 /* we will construct a inner chain and move all functions in queue to the inner chain */
                                 innerChain = Async.chain();
                                 innerChain.onerror(function(operation) {
-                                    self.error = i
+                                    self.error = innerChain.error;
+                                    self.state = "error";
+                                    raiseError(self);
+                                });
+                                while (callbackQueue.length > 0) {
+                                    innerChain.next(callbackQueue.s
