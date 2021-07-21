@@ -97,3 +97,9 @@
                                         return result;
                                     });
                                 }
+                                innerChain.next(function(result) {
+                                    self.state = "completed";
+                                    self.completed = true;
+                                    return result;
+                                });
+                         
