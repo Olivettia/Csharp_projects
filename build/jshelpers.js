@@ -82,4 +82,8 @@
                                 break;
                             }
                             if (callbackResult && callbackResult instanceof Async.Operation) {
-                                /* the result tells that this is an asyn
+                                /* the result tells that this is an asynchronous function */
+                                /* we will construct a inner chain and move all functions in queue to the inner chain */
+                                innerChain = Async.chain();
+                                innerChain.onerror(function(operation) {
+                                    self.error = i
