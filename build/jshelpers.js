@@ -78,4 +78,8 @@
                             } catch (error) {
                                 self.error = error;
                                 self.state = "error";
-    
+                                raiseError(self);
+                                break;
+                            }
+                            if (callbackResult && callbackResult instanceof Async.Operation) {
+                                /* the result tells that this is an asyn
