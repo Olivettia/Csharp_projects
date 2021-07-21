@@ -91,4 +91,9 @@
                                     raiseError(self);
                                 });
                                 while (callbackQueue.length > 0) {
-                                    innerChain.next(callbackQueue.s
+                                    innerChain.next(callbackQueue.shift());
+                                    innerChain.next(function(result) {
+                                        self.result = result;
+                                        return result;
+                                    });
+                                }
