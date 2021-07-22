@@ -123,4 +123,10 @@
 
                     if (!innerChain && !self.error) {
                         /* there is no inner chain constructed in this yield call */
-                
+                        /* which means there is no asynchronous function has been called in this chain */
+                        /* then the chain is completed */
+                        self.state = "completed";
+                        self.completed = true;
+                    }
+                } else {
+            
