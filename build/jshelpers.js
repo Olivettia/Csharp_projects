@@ -102,4 +102,10 @@
                                     self.completed = true;
                                     return result;
                                 });
-                         
+                                callbackResult.addCallback(function(result) {
+                                    self.result = result;
+                                    innerChain.go(result);
+                                });
+                            } else {
+                                self.result = callbackResult;
+       
