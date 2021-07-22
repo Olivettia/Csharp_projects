@@ -114,4 +114,13 @@
                                 callback.call(self, self.result);
                             } catch (error) {
                                 self.error = error;
-                                self.sta
+                                self.state = "error";
+                                raiseError(self);
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!innerChain && !self.error) {
+                        /* there is no inner chain constructed in this yield call */
+                
