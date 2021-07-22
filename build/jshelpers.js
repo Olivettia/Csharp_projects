@@ -108,4 +108,10 @@
                                 });
                             } else {
                                 self.result = callbackResult;
-       
+                            }
+                        } else {
+                            try {
+                                callback.call(self, self.result);
+                            } catch (error) {
+                                self.error = error;
+                                self.sta
