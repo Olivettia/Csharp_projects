@@ -152,4 +152,15 @@
         this.addCallback = function(callback) {
             callbackQueue.push(callback);
             if (this.completed || (chain && started)) {
-   
+                this["yield"](this.result);
+            }
+            return this;
+        };
+
+        this.next = function(nextFunction) {
+            return this.addCallback(nextFunction);
+        };
+        
+        this.wait = function(delay) {
+            var self = this;
+          
