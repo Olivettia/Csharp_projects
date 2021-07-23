@@ -134,3 +134,11 @@
                     while (callbackQueue.length > 0) {
                         innerChain.next(callbackQueue.shift());
                     }
+                    innerChain.next(function(result) {
+                        self.result = result;
+                        self.state = "completed";
+                        self.completed = true;
+                        return result;
+                    });
+                }
+            
