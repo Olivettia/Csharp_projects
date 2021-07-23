@@ -141,4 +141,15 @@
                         return result;
                     });
                 }
-            
+            }, 1);
+            return this;
+        };
+
+        this.go = function(initialArgument) {
+            return this["yield"](initialArgument);
+        };
+
+        this.addCallback = function(callback) {
+            callbackQueue.push(callback);
+            if (this.completed || (chain && started)) {
+   
