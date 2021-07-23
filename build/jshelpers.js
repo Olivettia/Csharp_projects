@@ -175,4 +175,16 @@
         };
     };
 
-    A
+    Async.chain = function(firstFunction) {
+        var chain = new Async.Operation({ chain: true });
+        if (firstFunction) {
+            chain.next(firstFunction);
+        }
+        return chain;
+    };
+
+    Async.go = function(initialArgument) {
+        return Async.chain().go(initialArgument);
+    };
+    
+ 
