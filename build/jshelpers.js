@@ -163,4 +163,16 @@
         
         this.wait = function(delay) {
             var self = this;
-          
+            if (chain) {
+                this.next(function() { return Async.wait(delay, self.result); });
+            }
+            return this;
+        };
+        
+        this.onerror = function(callback) {
+            errorCallbacks.push(callback);
+            return this;
+        };
+    };
+
+    A
