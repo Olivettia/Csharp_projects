@@ -129,4 +129,8 @@
                         self.completed = true;
                     }
                 } else {
-            
+                    /* there is inner chain constructed by former yield */
+                    /* we will move all functions in queue to the inner chain */
+                    while (callbackQueue.length > 0) {
+                        innerChain.next(callbackQueue.shift());
+                    }
