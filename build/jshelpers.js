@@ -202,4 +202,9 @@
             (function(i) {
                 var functionResult;
                 if (functionArguments && functionArguments[i]) {
-                    functionResult = fu
+                    functionResult = functions[i].apply(this, functionArguments[i]);
+                } else {
+                    functionResult = functions[i].apply(this, []);
+                }
+                if (functionResult && functionResult instanceof Async.Operation) {
+                    functionResult.addC
