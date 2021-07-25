@@ -187,4 +187,11 @@
         return Async.chain().go(initialArgument);
     };
     
- 
+    Async.collect = function(functions, functionArguments) {
+        var operation = new Async.Operation();
+        var results = [];
+        var count = 0;
+        
+        var checkCount = function() {
+            if (count == functions.length) {
+                operation["yield"](
