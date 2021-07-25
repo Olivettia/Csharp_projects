@@ -227,4 +227,17 @@
         var operation = new Async.Operation();
         setTimeout(function() {
             operation["yield"](context);
-      
+        }, delay);
+        return operation;
+    };
+    
+    Async.instant = function(context) {
+        return Async.wait(0, context);
+    };
+    
+    Async.onerror = function(callback) {
+        globalErrorCallbacks.push(callback);
+        return Async;
+    };
+
+    Function.prototype.asyncCall = functi
