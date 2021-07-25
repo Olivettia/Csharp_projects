@@ -207,4 +207,12 @@
                     functionResult = functions[i].apply(this, []);
                 }
                 if (functionResult && functionResult instanceof Async.Operation) {
-                    functionResult.addC
+                    functionResult.addCallback(function(result) {
+                        results[i] = result;
+                        count++;
+                        checkCount();
+                    });
+                } else {
+                    results[i] = functionResult;
+                    count++;
+     
