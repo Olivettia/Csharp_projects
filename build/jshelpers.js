@@ -215,4 +215,16 @@
                 } else {
                     results[i] = functionResult;
                     count++;
-     
+                    checkCount();
+                }
+            })(i);
+        }
+        
+        return operation;
+    };
+
+    Async.wait = function(delay, context) {
+        var operation = new Async.Operation();
+        setTimeout(function() {
+            operation["yield"](context);
+      
