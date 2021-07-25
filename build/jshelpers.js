@@ -194,4 +194,12 @@
         
         var checkCount = function() {
             if (count == functions.length) {
-                operation["yield"](
+                operation["yield"](results);
+            }
+        };
+        
+        for (var i = 0; i < functions.length; i++) {
+            (function(i) {
+                var functionResult;
+                if (functionArguments && functionArguments[i]) {
+                    functionResult = fu
