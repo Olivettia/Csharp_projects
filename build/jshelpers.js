@@ -240,4 +240,13 @@
         return Async;
     };
 
-    Function.prototype.asyncCall = functi
+    Function.prototype.asyncCall = function() {
+        var thisReference = arguments[0];
+        var argumentsArray = [];
+        for (var i = 1; i < arguments.length; i++) {
+            argumentsArray.push(arguments[i]);
+        }
+        return this.asyncApply(thisReference, argumentsArray);
+    };
+
+    Function.prototype.asyncApply 
