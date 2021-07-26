@@ -254,4 +254,15 @@
         var self = this;
         setTimeout(function() {
             operation["yield"](self.apply(thisReference, argumentsArray || []));
-            /* default value for argumentsArray is empty 
+            /* default value for argumentsArray is empty array */
+            /* IE8 throws when argumentsArray is undefined */
+        }, 1);
+        return operation;
+    };
+})();
+(function() {
+    var Central = {};
+    if (typeof module != 'undefined' && module.exports) {
+        module.exports = Central;
+    } else if (typeof YUI != 'undefined' && YUI.add) {
+ 
