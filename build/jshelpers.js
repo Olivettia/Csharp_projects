@@ -249,4 +249,9 @@
         return this.asyncApply(thisReference, argumentsArray);
     };
 
-    Function.prototype.asyncApply 
+    Function.prototype.asyncApply = function(thisReference, argumentsArray) {
+        var operation = new Async.Operation();
+        var self = this;
+        setTimeout(function() {
+            operation["yield"](self.apply(thisReference, argumentsArray || []));
+            /* default value for argumentsArray is empty 
