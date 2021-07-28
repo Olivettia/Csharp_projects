@@ -318,4 +318,15 @@
     if (typeof module != 'undefined' && module.exports) {
         module.exports = GrandCentral;
     } else if (typeof YUI != 'undefined' && YUI.add) {
+        YUI.add('grandcentral', function(Y) {
+            Y.GrandCentral = GrandCentral;
+        }, '1.0.6', {
+            requires: []
+        })
+    } else if (typeof window == 'object') {
+        window.GrandCentral = GrandCentral;
+    } else {
+        return;
+    }
     
+    var 
