@@ -306,4 +306,16 @@
         };
     };
     
-    Central.extend = functi
+    Central.extend = function(target) {
+        initiateCentralService(target);
+        return target;
+    };
+    
+    Central.extend(Central);
+})();
+(function() {
+    var GrandCentral = {};
+    if (typeof module != 'undefined' && module.exports) {
+        module.exports = GrandCentral;
+    } else if (typeof YUI != 'undefined' && YUI.add) {
+    
