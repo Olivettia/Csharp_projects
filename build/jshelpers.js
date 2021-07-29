@@ -353,4 +353,11 @@
         switch (testValue.constructor) {
             case String:
             case Number:
-            case 
+            case Boolean:
+                return testValue.constructor == value.constructor && testValue == value;
+            default:
+                if (testValue instanceof Array) {
+                    if (!(value instanceof Array)) {
+                        return false;
+                    }
+                    if (val
