@@ -360,4 +360,11 @@
                     if (!(value instanceof Array)) {
                         return false;
                     }
-                    if (val
+                    if (value.length != testValue.length) {
+                        return false;
+                    }
+                    for (var i = 0; i < testValue.length; i++) {
+                        if (!operators["eq"](testValue[i], value[i])) {
+                            return false;
+                        }
+        
