@@ -391,4 +391,10 @@
                             if (valueKey in value) {
                                 childValue = value[valueKey];
                                 if (!operators[operator](childTestValue, childValue)) {
- 
+                                    return false;
+                                }
+                            } else {
+                                if (!operators[operator](childTestValue)) {
+                                    return false;
+                                }
+                  
