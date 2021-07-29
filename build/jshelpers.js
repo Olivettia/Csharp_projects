@@ -336,4 +336,12 @@
             return operators["in"].apply(this, arguments);
         } else if (testValue instanceof RegExp) {
             return operators["re"].apply(this, arguments);
-        } e
+        } else if (testValue instanceof Function) {
+            return operators["ld"].apply(this, arguments);
+        } else {
+            return operators["eq"].apply(this, arguments);
+        }
+    };
+    
+    operators["eq"] = function(testValue, value) {
+        if (arguments.length < 
