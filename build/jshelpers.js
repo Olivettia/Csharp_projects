@@ -367,4 +367,10 @@
                         if (!operators["eq"](testValue[i], value[i])) {
                             return false;
                         }
-        
+                    }
+                    return true;
+                } else {
+                    if (!(value instanceof Object)) {
+                        return false;
+                    }
+                    /* assuming that something is neither String, Number, Bo
