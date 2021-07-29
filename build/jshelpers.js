@@ -379,4 +379,10 @@
                         var valueKey;
                         var childValue;
                         var childTestValue = testValue[key];
-        
+                        var operator;
+                        if (index < 0) {
+                            valueKey = key;
+                            operator = "";
+                        } else {
+                            valueKey = key.substr(0, index);
+                            operator = key.s
