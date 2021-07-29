@@ -385,4 +385,10 @@
                             operator = "";
                         } else {
                             valueKey = key.substr(0, index);
-                            operator = key.s
+                            operator = key.substr(index + 1);
+                        }
+                        if (operators[operator]) {
+                            if (valueKey in value) {
+                                childValue = value[valueKey];
+                                if (!operators[operator](childTestValue, childValue)) {
+ 
