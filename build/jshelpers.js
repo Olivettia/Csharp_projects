@@ -373,4 +373,10 @@
                     if (!(value instanceof Object)) {
                         return false;
                     }
-                    /* assuming that something is neither String, Number, Bo
+                    /* assuming that something is neither String, Number, Boolean, nor Array is Object */
+                    for (var key in testValue) {
+                        var index = key.lastIndexOf("$");
+                        var valueKey;
+                        var childValue;
+                        var childTestValue = testValue[key];
+        
