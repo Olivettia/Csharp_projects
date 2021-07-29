@@ -344,4 +344,13 @@
     };
     
     operators["eq"] = function(testValue, value) {
-        if (arguments.length < 
+        if (arguments.length < 2) {
+            return false;
+        }
+        if (testValue === null || testValue === undefined || value === null || value === undefined) {
+            return (value === testValue);
+        }
+        switch (testValue.constructor) {
+            case String:
+            case Number:
+            case 
