@@ -329,4 +329,11 @@
         return;
     }
     
-    var 
+    var operators = GrandCentral.Operators = {};
+    
+    operators[""] = function(testValue, value) {
+        if (testValue instanceof Array) {
+            return operators["in"].apply(this, arguments);
+        } else if (testValue instanceof RegExp) {
+            return operators["re"].apply(this, arguments);
+        } e
