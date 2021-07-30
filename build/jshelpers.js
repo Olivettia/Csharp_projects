@@ -407,4 +407,7 @@
         }
     };
     
-    operators["ne"] = function(testValue, val
+    operators["ne"] = function(testValue, value) { return !operators["eq"](testValue, value); };
+    operators["lt"] = function(testValue, value) { return arguments.length == 2 && value < testValue; };
+    operators["lte"] = function(testValue, value) { return arguments.length == 2 && value <= testValue; };
+    operators["gt"] = function(testValue
