@@ -415,4 +415,14 @@
     
     operators["in"] = function(testValue, value) {
         if (arguments.length < 2) {
-        
+            return false;
+        }
+        for (var i = 0; i < testValue.length; i++) {
+            if (operators["eq"](testValue[i], value)) {
+                return true;
+            }
+        }
+        return false;
+    };
+    
+    operators["nin"] = function(testValue, value) { return arguments.length == 2 && !operators["in"](testValue, 
