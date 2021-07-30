@@ -397,4 +397,14 @@
                                 if (!operators[operator](childTestValue)) {
                                     return false;
                                 }
-                  
+                            }
+                        } else {
+                            throw "operator doesn't exist: " + operator;
+                        }
+                    }
+                    return true;
+                }
+        }
+    };
+    
+    operators["ne"] = function(testValue, val
