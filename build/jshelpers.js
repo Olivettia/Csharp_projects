@@ -410,4 +410,9 @@
     operators["ne"] = function(testValue, value) { return !operators["eq"](testValue, value); };
     operators["lt"] = function(testValue, value) { return arguments.length == 2 && value < testValue; };
     operators["lte"] = function(testValue, value) { return arguments.length == 2 && value <= testValue; };
-    operators["gt"] = function(testValue
+    operators["gt"] = function(testValue, value) { return arguments.length == 2 && value > testValue; };
+    operators["gte"] = function(testValue, value) { return arguments.length == 2 && value >= testValue; };
+    
+    operators["in"] = function(testValue, value) {
+        if (arguments.length < 2) {
+        
