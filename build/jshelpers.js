@@ -425,4 +425,15 @@
         return false;
     };
     
-    operators["nin"] = function(testValue, value) { return arguments.length == 2 && !operators["in"](testValue, 
+    operators["nin"] = function(testValue, value) { return arguments.length == 2 && !operators["in"](testValue, value); };
+    
+    operators["all"] = function(testValue, value) {
+        if (arguments.length < 2) {
+            return false;
+        }
+        if (!(value instanceof Array)) {
+            return false;
+        }
+        var found;
+        for (var i = 0; i < testValue.length; i++) {
+            found = fals
