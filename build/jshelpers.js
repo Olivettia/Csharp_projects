@@ -436,4 +436,15 @@
         }
         var found;
         for (var i = 0; i < testValue.length; i++) {
-            found = fals
+            found = false;
+            for (var j = 0; j < value.length; j++) {
+                if (operators["eq"](testValue[i], value[j])) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                return false;
+            }
+        }
+        return 
