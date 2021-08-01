@@ -447,4 +447,16 @@
                 return false;
             }
         }
-        return 
+        return true;
+    };
+    
+    operators["ex"] = function(testValue, value) {
+        if (testValue === true) {
+            return arguments.length == 2;
+        } else if (testValue === false) {
+            return arguments.length == 1;
+        }
+        return false;
+    };
+    
+    operators["re"] = fun
