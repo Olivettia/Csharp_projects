@@ -464,4 +464,16 @@
     operators["f"] = function(testValue, value) { return testValue.call(value, value); };
     
     var createFilter = function(condition) {
-        return function(json) 
+        return function(json) {
+            if (arguments.length > 0) {
+                return operators[""](condition, json);
+            } else {
+                return operators[""](condition);
+            }
+        };
+    };
+
+    var initiateGrandCentralService = function(target) {
+        var filterHandlerBundles = [];
+
+        target.l
