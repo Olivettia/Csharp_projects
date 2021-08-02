@@ -476,4 +476,13 @@
     var initiateGrandCentralService = function(target) {
         var filterHandlerBundles = [];
 
-        target.l
+        target.listen = function(filter, handler) {
+            if (!(filter instanceof Function)) {
+                filter = createFilter(filter);
+            }
+            filterHandlerBundles.push({
+                filter: filter,
+                handler: handler
+            });
+            return target;
+ 
