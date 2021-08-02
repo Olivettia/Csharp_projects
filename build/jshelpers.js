@@ -459,4 +459,9 @@
         return false;
     };
     
-    operators["re"] = fun
+    operators["re"] = function(testValue, value) { return arguments.length == 2 && value && value.match && value.match(testValue); };
+    
+    operators["f"] = function(testValue, value) { return testValue.call(value, value); };
+    
+    var createFilter = function(condition) {
+        return function(json) 
