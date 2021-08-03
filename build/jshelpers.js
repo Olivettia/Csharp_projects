@@ -485,4 +485,10 @@
                 handler: handler
             });
             return target;
- 
+        };
+
+        target.call = function(json) {
+            for (var i = 0; i < filterHandlerBundles.length; i++) {
+                if (filterHandlerBundles[i].filter.apply(this, arguments)) {
+                    filterHandlerBundles[i].handler(json);
+           
