@@ -539,4 +539,19 @@
                 case RUNNING:
                     index++;
                     if (index >= array.length) {
+                        state = AFTER;
+                    }
+                    break;
+                case AFTER:
+                    break;
+            }
+            return (state != AFTER);
+        };
+
+        this.reset = function() {
+            state = BEFORE;
+            index = 0;
+        };
+    };
     
+   
