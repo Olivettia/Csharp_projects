@@ -574,4 +574,15 @@
         this.next = function() {
             if (index >= -1) {
                 index++;
-  
+            }
+            return innerEnumerator.next();
+        };
+        
+        this.reset = function() {
+            index = -1;
+            return innerEnumerator.reset();
+        };
+        
+        this.cache = function() {
+            /* this method is for debug only */
+            retur
