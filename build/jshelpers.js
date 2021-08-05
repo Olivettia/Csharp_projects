@@ -554,4 +554,13 @@
         };
     };
     
-   
+    ArrayEnumerator.prototype = new AbstractEnumerator();
+    
+    var CachedEnumerator = function(innerEnumerator) {
+        var index = NaN;
+        var arrayCache = [];
+        
+        this.item = function() {
+            if (index >= 0) {
+                if (!(index in arrayCache)) {
+                    arrayC
