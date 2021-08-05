@@ -585,4 +585,16 @@
         
         this.cache = function() {
             /* this method is for debug only */
-            retur
+            return [].slice.call(arrayCache, 0);
+        };
+    };
+    
+    CachedEnumerator.prototype = new AbstractEnumerator();
+    
+    var BaseEnumerator = function(extensions) {
+        this.item = extensions.item;
+        this.next = extensions.next;
+        this.reset = extensions.reset;
+    };
+    
+    Base
