@@ -563,4 +563,15 @@
         this.item = function() {
             if (index >= 0) {
                 if (!(index in arrayCache)) {
-                    arrayC
+                    arrayCache[index] = innerEnumerator.item();
+                }
+                return arrayCache[index];
+            } else {
+                return innerEnumerator.item();
+            }
+        };
+        
+        this.next = function() {
+            if (index >= -1) {
+                index++;
+  
