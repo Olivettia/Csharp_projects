@@ -519,4 +519,15 @@
         
         this.item = function() {
             if (state == RUNNING) {
-                return array[
+                return array[index];
+            } else if (state == BEFORE) {
+                throw "incorrect index";
+            } else if (state == AFTER) {
+                throw "incorrect index";
+            }
+        };
+
+        this.next = function() {
+            switch (state) {
+                case BEFORE:
+                    if (arra
