@@ -491,4 +491,18 @@
             for (var i = 0; i < filterHandlerBundles.length; i++) {
                 if (filterHandlerBundles[i].filter.apply(this, arguments)) {
                     filterHandlerBundles[i].handler(json);
-           
+                }
+            }
+            return target;
+        };
+    };
+    
+    GrandCentral.extend = function(target) {
+        initiateGrandCentralService(target);
+        return target;
+    };
+    
+    GrandCentral.extend(GrandCentral);
+})();
+(function() {
+    var AbstractEnumerator = function() 
