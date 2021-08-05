@@ -530,4 +530,13 @@
         this.next = function() {
             switch (state) {
                 case BEFORE:
-                    if (arra
+                    if (array.length === 0) {
+                        state = AFTER;
+                    } else {
+                        state = RUNNING;
+                    }
+                    break;
+                case RUNNING:
+                    index++;
+                    if (index >= array.length) {
+    
