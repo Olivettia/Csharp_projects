@@ -605,4 +605,15 @@
         this.reset = innerEnumerator.reset;
         
         if (extensions.item) {
-            this.i
+            this.item = function() {
+                return extensions.item(innerEnumerator);
+            };
+        }
+        
+        if (extensions.next) {
+            this.next = function() {
+                return extensions.next(innerEnumerator);
+            };
+        }
+        
+        if (extensions.rese
