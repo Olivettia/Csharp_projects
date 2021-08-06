@@ -597,4 +597,12 @@
         this.reset = extensions.reset;
     };
     
-    Base
+    BaseEnumerator.prototype = new AbstractEnumerator();
+    
+    var StackedEnumerator = function(innerEnumerator, extensions) {
+        this.item = innerEnumerator.item;
+        this.next = innerEnumerator.next;
+        this.reset = innerEnumerator.reset;
+        
+        if (extensions.item) {
+            this.i
