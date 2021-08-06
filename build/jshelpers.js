@@ -616,4 +616,14 @@
             };
         }
         
-        if (extensions.rese
+        if (extensions.reset) {
+            this.reset = function() {
+                return extensions.reset(innerEnumerator);
+            };
+        }
+    };
+    
+    StackedEnumerator.prototype = new AbstractEnumerator();
+    
+    var GeneratorProxy = function(handlers) {
+        this["yield"] = function(object) {
