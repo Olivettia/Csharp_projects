@@ -683,4 +683,15 @@
                     return item;
                 } else {
                     index--;
-    
+                    cacheIndex++;
+                }
+            }
+            
+            lengthCache = cacheIndex;
+            throw "incorrect index";
+        };
+        
+        this.length = function() {
+            if (lengthCache < 0) {
+                enumerator.reset();
+                lengthCache = 0;
