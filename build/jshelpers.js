@@ -640,4 +640,13 @@
     };
     
     var List = function(source) {
-      
+        var enumerator;
+        var arrayCache = [];
+        var lengthCache = -1;
+        
+        if (!source) {
+            enumerator = new ArrayEnumerator([]);
+            arrayCache = [];
+            lengthCache = 0;
+        } else if (arguments.length > 1) {
+            enumerator = new ArrayEnumerator([].slice.call(arguments
