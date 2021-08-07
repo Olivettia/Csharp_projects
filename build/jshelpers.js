@@ -655,4 +655,14 @@
         } else if (source instanceof Array) {
             enumerator = new ArrayEnumerator([].slice.call(source, 0));
             arrayCache = [].slice.call(source, 0);
-            lengt
+            lengthCache = arrayCache.length;
+        } else if (source instanceof AbstractEnumerator) {
+            enumerator = source;
+        } else {
+            throw "source should be an array";
+        }
+        
+        this.at = function(index) {
+            var cacheIndex = 0;
+            
+            if (ind
