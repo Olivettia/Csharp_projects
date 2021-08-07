@@ -675,4 +675,12 @@
                 throw "incorrect index";
             }
             
-            enumerator
+            enumerator.reset();
+            while (enumerator.next()) {
+                arrayCache[cacheIndex] = enumerator.item();
+                if (index === 0) {
+                    var item = arrayCache[cacheIndex];
+                    return item;
+                } else {
+                    index--;
+    
