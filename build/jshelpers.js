@@ -649,4 +649,10 @@
             arrayCache = [];
             lengthCache = 0;
         } else if (arguments.length > 1) {
-            enumerator = new ArrayEnumerator([].slice.call(arguments
+            enumerator = new ArrayEnumerator([].slice.call(arguments, 0));
+            arrayCache = [].slice.call(arguments, 0);
+            lengthCache = arrayCache.length;
+        } else if (source instanceof Array) {
+            enumerator = new ArrayEnumerator([].slice.call(source, 0));
+            arrayCache = [].slice.call(source, 0);
+            lengt
