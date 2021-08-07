@@ -665,4 +665,14 @@
         this.at = function(index) {
             var cacheIndex = 0;
             
-            if (ind
+            if (index < 0) {
+                throw "incorrect index";
+            }
+            
+            if (arrayCache.length > index) {
+                return arrayCache[index];
+            } else if (lengthCache >= 0 && index >= lengthCache) {
+                throw "incorrect index";
+            }
+            
+            enumerator
