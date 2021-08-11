@@ -712,4 +712,13 @@
             var cacheIndex = arrayCache.length;
             while (enumerator.next()) {
                 arrayCache[cacheIndex] = enumerator.item();
+                iterator.call(arrayCache[cacheIndex], arrayCache[cacheIndex]);
+                cacheIndex++;
+            }
+            
+            lengthCache = cacheIndex;
+            return this;
+        };
         
+        this.toArray = function() {
+            if (lengthCache < 0 || arrayC
