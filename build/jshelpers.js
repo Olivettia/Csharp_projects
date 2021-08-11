@@ -695,3 +695,14 @@
             if (lengthCache < 0) {
                 enumerator.reset();
                 lengthCache = 0;
+                while (enumerator.next()) {
+                    lengthCache++;
+                }
+            }
+            return lengthCache;
+        };
+        
+        this.each = function(iterator) {            
+            enumerator.reset();
+            for (var index = 0; index < arrayCache.length; index++) {
+       
