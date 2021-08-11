@@ -705,4 +705,11 @@
         this.each = function(iterator) {            
             enumerator.reset();
             for (var index = 0; index < arrayCache.length; index++) {
-       
+                enumerator.next();
+                iterator.call(arrayCache[index], arrayCache[index]);
+            }
+            
+            var cacheIndex = arrayCache.length;
+            while (enumerator.next()) {
+                arrayCache[cacheIndex] = enumerator.item();
+        
