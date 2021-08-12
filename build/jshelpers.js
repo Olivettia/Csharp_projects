@@ -739,4 +739,15 @@
             return [].slice.call(arrayCache, 0);
         };
         
-        this.enumerator
+        this.enumerator = function() {
+            return enumerator;
+        };
+        
+        this.cache = function() {
+            /* this method is for debug only */
+            return [].slice.call(arrayCache, 0);
+        };
+    };
+    
+    List.prototype.reverse = function() {
+        r
