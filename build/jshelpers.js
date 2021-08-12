@@ -721,4 +721,11 @@
         };
         
         this.toArray = function() {
-            if (lengthCache < 0 || arrayC
+            if (lengthCache < 0 || arrayCache.length < lengthCache) {
+                enumerator.reset();
+                for (var index = 0; index < arrayCache.length; index++) {
+                    enumerator.next();
+                }
+
+                var cacheIndex = arrayCache.length;
+                while (en
