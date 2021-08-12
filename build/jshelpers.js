@@ -750,4 +750,12 @@
     };
     
     List.prototype.reverse = function() {
-        r
+        return new List(this.toArray().reverse());
+    };
+    
+    List.prototype.map = function(predicate) {
+        var self = this;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            item: function(innerEnumerator) {
+                return predicate.call(innerE
