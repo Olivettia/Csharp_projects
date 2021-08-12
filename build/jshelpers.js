@@ -728,4 +728,15 @@
                 }
 
                 var cacheIndex = arrayCache.length;
-                while (en
+                while (enumerator.next()) {
+                    arrayCache[cacheIndex] = enumerator.item();
+                    cacheIndex++;
+                }
+
+                lengthCache = cacheIndex;
+            }
+            
+            return [].slice.call(arrayCache, 0);
+        };
+        
+        this.enumerator
