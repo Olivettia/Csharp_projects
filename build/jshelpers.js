@@ -849,4 +849,10 @@
             next: function(innerEnumerator) {
                 var active = true;
                 switch (state) {
-                    case RUNNING
+                    case RUNNING:
+                        active = innerEnumerator.next() && predicate.call(innerEnumerator.item(), innerEnumerator.item());
+                        if (!active) {
+                            state = AFTER;
+                        }
+                        break;
+                    case AFTER:
