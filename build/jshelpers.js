@@ -842,4 +842,11 @@
     
     List.prototype.takeWhile = function(predicate) {
         var RUNNING = 0, AFTER = 1;
-     
+        var self = this;
+        var state = RUNNING;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                var active = true;
+                switch (state) {
+                    case RUNNING
