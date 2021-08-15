@@ -820,4 +820,15 @@
                         active = innerEnumerator.next();
                         if (active) {
                             object = innerEnumerator.item();
-                            current = predicate.call(object, cu
+                            current = predicate.call(object, current, object);
+                        } else {
+                            state = AFTER;
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+     
