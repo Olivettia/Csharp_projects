@@ -814,4 +814,10 @@
                 switch (state) {
                     case BEFORE:
                         state = RUNNING;
-                        current 
+                        current = start;
+                        break;
+                    case RUNNING:
+                        active = innerEnumerator.next();
+                        if (active) {
+                            object = innerEnumerator.item();
+                            current = predicate.call(object, cu
