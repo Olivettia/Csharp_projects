@@ -867,4 +867,13 @@
             }
         });
                 
-        return ne
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.take = function(number) {
+        var self = this;
+        var count = 0;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            item: function(innerEnumerator) {
+                if (c
