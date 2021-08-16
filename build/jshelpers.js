@@ -896,4 +896,14 @@
                 count = 0;
                 innerEnumerator.reset();
             }
-     
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.dropWhile = function(predicate) {
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var self = this;
+        var state = BEFORE;
+        
+        var enumerator = new Stacke
