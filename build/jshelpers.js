@@ -886,4 +886,14 @@
             next: function(innerEnumerator) {
                 if (count < number) {
                     count++;
-          
+                    return innerEnumerator.next();
+                } else {
+                    return false;
+                }
+            },
+
+            reset: function(innerEnumerator) {
+                count = 0;
+                innerEnumerator.reset();
+            }
+     
