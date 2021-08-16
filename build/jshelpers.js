@@ -876,4 +876,14 @@
         
         var enumerator = new StackedEnumerator(self.enumerator(), {
             item: function(innerEnumerator) {
-                if (c
+                if (count <= number) {
+                    return innerEnumerator.item();
+                } else {
+                    throw "incorrect index";
+                }
+            },
+
+            next: function(innerEnumerator) {
+                if (count < number) {
+                    count++;
+          
