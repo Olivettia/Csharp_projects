@@ -911,4 +911,12 @@
                 var active = true;
                 switch (state) {
                     case BEFORE:
-                        while ((active = innerEnumerator.next()) && predicate.call(innerEnume
+                        while ((active = innerEnumerator.next()) && predicate.call(innerEnumerator.item(), innerEnumerator.item()));
+                        if (active) {
+                            state = RUNNING;
+                        } else {
+                            state = AFTER;
+                        }
+                        break;
+                    case RUNNING:
+                   
