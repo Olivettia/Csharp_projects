@@ -940,4 +940,11 @@
     };
     
     List.prototype.drop = function(number) {
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var self = this;
+        var state = BEFORE;
         
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                var count = 0;
+                var active = true
