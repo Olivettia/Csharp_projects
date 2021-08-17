@@ -984,4 +984,12 @@
         var self = this;
         
         var enumerator = new StackedEnumerator(self.enumerator(), {
-            next: functio
+            next: function(innerEnumerator) {
+                if (innerEnumerator.next()) {
+                    return true;
+                } else {
+                    innerEnumerator.reset();
+                    if (innerEnumerator.next()) {
+                        return true;
+                    } else {
+                        /*
