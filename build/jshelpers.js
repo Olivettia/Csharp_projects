@@ -955,4 +955,12 @@
                         }
                         if (active) {
                             state = RUNNING;
-      
+                        } else {
+                            state = AFTER;
+                        }
+                        break;
+                    case RUNNING:
+                        active = innerEnumerator.next();
+                        if (!active) {
+                            state = AFTER;
+     
