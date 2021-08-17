@@ -906,4 +906,9 @@
         var self = this;
         var state = BEFORE;
         
-        var enumerator = new Stacke
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                var active = true;
+                switch (state) {
+                    case BEFORE:
+                        while ((active = innerEnumerator.next()) && predicate.call(innerEnume
