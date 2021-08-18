@@ -992,4 +992,15 @@
                     if (innerEnumerator.next()) {
                         return true;
                     } else {
-                        /*
+                        /* empty list produces empty list after cycling */
+                        return false;
+                    }
+                }
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.generate = function(generator) {
+        var BEFORE = 0
