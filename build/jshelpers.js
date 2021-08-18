@@ -1003,4 +1003,14 @@
     };
     
     List.generate = function(generator) {
-        var BEFORE = 0
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var current;
+        var state = BEFORE;
+        var yieldState = RUNNING;
+        var arrayCache = [];
+        var index = NaN;
+        
+        var proxy = new GeneratorProxy({
+            "yield": function(object) {
+                if (yieldState != AFTER) {
+                    arrayC
