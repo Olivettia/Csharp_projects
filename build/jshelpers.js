@@ -1013,4 +1013,15 @@
         var proxy = new GeneratorProxy({
             "yield": function(object) {
                 if (yieldState != AFTER) {
-                    arrayC
+                    arrayCache[arrayCache.length] = object;
+                }
+            },
+            end: function() {
+                yieldState = AFTER;
+            }
+        });
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                switch (state) {
+                   
