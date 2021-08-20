@@ -1048,4 +1048,17 @@
                     case AFTER:
                         break;
                 }
-                return (state != AFTER)
+                return (state != AFTER);
+            },
+
+            reset: function() {
+                index = -1;
+                state = BEFORE;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.iterate = function(generator, start) {
+        var BEFORE = 0, RUNNING = 1;
