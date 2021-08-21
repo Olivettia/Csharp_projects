@@ -1062,3 +1062,13 @@
     
     List.iterate = function(generator, start) {
         var BEFORE = 0, RUNNING = 1;
+        var current;
+        var state = BEFORE;
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                switch (state) {
+                    case BEFORE:
+                        throw "incorrect index";
+                    case RUNNING:
+                        return curren
