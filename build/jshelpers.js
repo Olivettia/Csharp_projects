@@ -1071,4 +1071,15 @@
                     case BEFORE:
                         throw "incorrect index";
                     case RUNNING:
-                        return curren
+                        return current;
+                }
+            },
+
+            next: function() {
+                switch (state) {
+                    case BEFORE:
+                        current = start;
+                        state = RUNNING;
+                        break;
+                    case RUNNING:
+                        cur
