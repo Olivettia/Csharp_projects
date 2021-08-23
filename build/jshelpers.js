@@ -1103,4 +1103,14 @@
     };
     
     List.repeat = function(object) {
-        return List.iterate(function(object) { return object;
+        return List.iterate(function(object) { return object; }, object);
+    };
+    
+    List.concatenate = function() {
+        var RESET = 0, RUNNING = 1, AFTER = 2;
+        var lists = [].slice.call(arguments, 0);
+        var listsIndex = 0;
+        var state = RESET;
+        
+        var enumerator = new BaseEnumerator({
+            item: function
