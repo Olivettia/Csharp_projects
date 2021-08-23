@@ -1113,4 +1113,13 @@
         var state = RESET;
         
         var enumerator = new BaseEnumerator({
-            item: function
+            item: function() {
+                return lists[listsIndex].enumerator().item();
+            },
+
+            next: function() {
+                switch (state) {
+                    case RESET:
+                        lists[listsIndex].enumerator().reset();
+                        state = RUNNING;
+                        retu
