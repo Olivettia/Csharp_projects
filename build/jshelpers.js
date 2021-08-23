@@ -1096,4 +1096,11 @@
         return new List(new CachedEnumerator(enumerator));
     };
     
+    List.count = function(start, step) {
+        start = start || 0;
+        step = step || 1;
+        return List.iterate(function(object) { return object + step; }, start);
+    };
     
+    List.repeat = function(object) {
+        return List.iterate(function(object) { return object;
