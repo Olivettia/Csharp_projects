@@ -1122,4 +1122,11 @@
                     case RESET:
                         lists[listsIndex].enumerator().reset();
                         state = RUNNING;
-                        retu
+                        return enumerator.next();
+                    case RUNNING:
+                        if (!lists[listsIndex].enumerator().next()) {
+                            listsIndex++;
+                            if (listsIndex < lists.length) {
+                                state = RESET;
+                                return enumerator.next();
+          
