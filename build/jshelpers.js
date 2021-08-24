@@ -1140,4 +1140,15 @@
                 return (state != AFTER);
             },
 
-          
+            reset: function() {
+                listsIndex = 0;
+                state = RESET;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.zip = function(predicate) {
+        var RUNNING = 0, AFTER = 1;
+        var lists = [].sli
