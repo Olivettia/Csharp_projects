@@ -1201,4 +1201,12 @@
         return new List(new CachedEnumerator(enumerator));
     };
     
-    List.protot
+    List.prototype.all = function(predicate) {
+        return this.fold(function(accumulation, object) {
+            return accumulation && predicate.call(object, object);
+        }, true);
+    };
+
+    List.prototype.any = function(predicate) {
+        return this.fold(function(accumulation, object) {
+            return accumulation || predicate.call(object, 
