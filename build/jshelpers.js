@@ -1220,4 +1220,13 @@
     };
 
     List.prototype.average = function() {
-        var accumulation = this.fold(function(accum
+        var accumulation = this.fold(function(accumulation, object) {
+            return [accumulation[0] + object, accumulation[1] + 1];
+        }, [0, 0]);
+        return accumulation[0] / accumulation[1];
+    };
+
+    List.prototype.maximum = function() {
+        var first = this.at(0);
+        if (first) {
+            return this.drop(1).fold(function(ac
