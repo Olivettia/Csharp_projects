@@ -1249,4 +1249,13 @@
     };
 
     List.prototype.head = function() {
-        
+        if (this.take(1).length() < 1) {
+            throw "cannot process empty list";
+        } else {
+            return this.at(0);
+        }
+    };
+
+    List.prototype.tail = function() {
+        if (this.take(1).length() < 1) {
+            throw "cannot process empty 
