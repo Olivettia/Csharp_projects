@@ -1268,4 +1268,12 @@
         if (this.take(1).length() < 1) {
             throw "cannot process empty list";
         } else {
-            var BEFORE = 0, RUNNING = 1, AF
+            var BEFORE = 0, RUNNING = 1, AFTER = 2;
+            var self = this;
+            var state = BEFORE;
+            var last;
+
+            var enumerator = new StackedEnumerator(self.enumerator(), {
+                item: function(innerEnumerator) {
+                    switch (state) {
+                        case BEF
