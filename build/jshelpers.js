@@ -1276,4 +1276,13 @@
             var enumerator = new StackedEnumerator(self.enumerator(), {
                 item: function(innerEnumerator) {
                     switch (state) {
-                        case BEF
+                        case BEFORE:
+                            throw "incorrect index";
+                        case RUNNING:
+                            return last;
+                        case AFTER:
+                            throw "incorrect index";
+                    }
+                },
+
+                next: function(innerEnumera
