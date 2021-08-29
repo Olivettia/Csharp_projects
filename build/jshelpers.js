@@ -1292,4 +1292,12 @@
                         case BEFORE:
                             innerEnumerator.next();
                             last = innerEnumerator.item();
-                            active = innerEn
+                            active = innerEnumerator.next();
+                            if (active) {
+                                state = RUNNING;
+                            } else {
+                                state = AFTER;
+                            }
+                            break;
+                        case RUNNING:
+                
