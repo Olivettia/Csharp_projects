@@ -1258,4 +1258,14 @@
 
     List.prototype.tail = function() {
         if (this.take(1).length() < 1) {
-            throw "cannot process empty 
+            throw "cannot process empty list";
+        } else {
+            return this.drop(1);
+        }
+    };
+
+    List.prototype.init = function() {
+        if (this.take(1).length() < 1) {
+            throw "cannot process empty list";
+        } else {
+            var BEFORE = 0, RUNNING = 1, AF
