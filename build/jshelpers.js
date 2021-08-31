@@ -1300,4 +1300,11 @@
                             }
                             break;
                         case RUNNING:
-                
+                            last = innerEnumerator.item();
+                            active = innerEnumerator.next();
+                            if (!active) {
+                                state = AFTER;
+                            }
+                            break;
+                        case AFTER:
+          
