@@ -1328,3 +1328,12 @@
             return this.at(this.length() - 1);
         }
     };
+
+    if (typeof module != 'undefined' && module.exports) {
+        module.exports = List;
+    } else if (typeof YUI != 'undefined' && YUI.add) {
+        YUI.add('list', function(Y) {
+            Y.List = List;
+        }, '1.0.6', {
+            requires: []
+     
