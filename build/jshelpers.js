@@ -1317,4 +1317,14 @@
                     innerEnumerator.reset();
                 }
             });
-   
+            return new List(new CachedEnumerator(enumerator));
+        }
+    };
+
+    List.prototype.last = function() {
+        if (this.take(1).length() < 1) {
+            throw "cannot process empty list";
+        } else {
+            return this.at(this.length() - 1);
+        }
+    };
