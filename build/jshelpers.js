@@ -1388,4 +1388,15 @@
         };
 
         this.every = function(callbackfn, thisArg) {
-            return this.all(function
+            return this.all(function(object) {
+                return callbackfn.call(thisArg, object);
+            });
+        };
+
+        this.some = function(callbackfn, thisArg) {
+            return this.any(function(object) {
+                return callbackfn.call(thisArg, object);
+            });
+        };
+
+        this.f
