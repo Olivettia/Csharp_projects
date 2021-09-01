@@ -1361,4 +1361,14 @@
             fromIndex = fromIndex || 0;
             var index = fromIndex;
             var tailList = this.drop(fromIndex).dropWhile(function(object) {
-       
+                if (searchElement !== object) {
+                    index++;
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            if (tailList.take(1).length() > 0) {
+                return index;
+            } else {
+                ret
