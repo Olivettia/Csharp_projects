@@ -1371,4 +1371,12 @@
             if (tailList.take(1).length() > 0) {
                 return index;
             } else {
-                ret
+                return -1;
+            }
+        };
+
+        this.lastIndexOf = function(searchElement, fromIndex) {
+            fromIndex = fromIndex || this.length();
+            var headList = this.take(fromIndex);
+            var reversedHeadList = headList.reverse();
+            var reversedIndex
