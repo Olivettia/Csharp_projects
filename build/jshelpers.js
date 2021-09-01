@@ -1336,4 +1336,22 @@
             Y.List = List;
         }, '1.0.6', {
             requires: []
-     
+        })
+    } else if (typeof window == 'object') {
+        window.List = List;
+    } else {
+        return;
+    }
+})();
+
+(function() {
+    var List;
+    if (module && module.exports) {
+        List = module.exports;
+    } else if (window) {
+        List = window.List;
+    } else {
+        return;
+    }
+    
+    var ES5Array = List.ES5Ar
