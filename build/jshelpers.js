@@ -1407,4 +1407,14 @@
 
         this.map = function(callbackfn, thisArg) {
             return ES5Array.prototype.map.call(this, function(object) {
-                retur
+                return callbackfn.call(thisArg, object);
+            });
+        };
+
+        this.filter = function(callbackfn, thisArg) {
+            return ES5Array.prototype.filter.call(this, function(object) {
+                return callbackfn.call(thisArg, object);
+            });
+        };
+
+        var reduce = this.reduce 
