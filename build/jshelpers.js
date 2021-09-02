@@ -1399,4 +1399,12 @@
             });
         };
 
-        this.f
+        this.forEach = function(callbackfn, thisArg) {
+            this.each(function(object) {
+                callbackfn.call(thisArg, object);
+            });
+        };
+
+        this.map = function(callbackfn, thisArg) {
+            return ES5Array.prototype.map.call(this, function(object) {
+                retur
