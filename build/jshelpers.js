@@ -1444,4 +1444,15 @@
         }, '1.0.6', {
             requires: []
         })
-    } els
+    } else if (typeof window == 'object') {
+        window.Overload = Overload;
+    } else {
+        return;
+    }
+
+    var copySignature = function(signature) {
+        var copy = signature.slice(0);
+        if (signature.more) {
+            copy.more = true;
+        }
+        return c
