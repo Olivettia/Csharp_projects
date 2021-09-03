@@ -1423,4 +1423,17 @@
                     return callbackfn.call(undefined, accumulation, object);
                 }, initialValue);
             } else {
-                return reduce.call(this.dr
+                return reduce.call(this.drop(1), callbackfn, this.at(0));
+            }
+        };
+
+        this.reduceRight = function(callbackfn, initialValue) {
+            return reduce.apply(this.reverse(), arguments);
+        };
+    };
+    
+    ES5Array.prototype = new List();
+})();
+(function() {
+    var Overload = {};
+    if (typeof m
