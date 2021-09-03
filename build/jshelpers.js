@@ -1464,4 +1464,16 @@
 		} else {
 			signature = signature.split(",");
 			for (var i = 0; i < signature.length; i++) {
-				var typeExpression = signature[i].replace(/(^\s+|\s+$)/ig,
+				var typeExpression = signature[i].replace(/(^\s+|\s+$)/ig, "");
+				var type = null;
+				if (typeExpression == "*") {
+					type = Overload.Any;
+				} else if (typeExpression == "...") {
+					type = Overload.More;
+				} else {
+					try {
+						type = eval("(" + typeExpression + ")");
+					} catch (error) {
+						throw "type expression cannot be evaluated: " + typeExpression;
+					}
+				}
