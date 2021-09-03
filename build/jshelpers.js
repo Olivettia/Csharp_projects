@@ -1417,4 +1417,10 @@
             });
         };
 
-        var reduce = this.reduce 
+        var reduce = this.reduce = function(callbackfn, initialValue) {
+            if (arguments.length > 1) {
+                return this.fold(function(accumulation, object) {
+                    return callbackfn.call(undefined, accumulation, object);
+                }, initialValue);
+            } else {
+                return reduce.call(this.dr
