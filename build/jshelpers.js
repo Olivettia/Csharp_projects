@@ -1436,4 +1436,12 @@
 })();
 (function() {
     var Overload = {};
-    if (typeof m
+    if (typeof module != 'undefined' && module.exports) {
+        module.exports = Overload;
+    } else if (typeof YUI != 'undefined' && YUI.add) {
+        YUI.add('overload', function(Y) {
+            Y.Overload = Overload;
+        }, '1.0.6', {
+            requires: []
+        })
+    } els
