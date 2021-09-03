@@ -1455,4 +1455,13 @@
         if (signature.more) {
             copy.more = true;
         }
-        return c
+        return copy;
+    };
+
+	var parseSignature = function(signature) {
+		if (signature.replace(/(^\s+|\s+$)/ig, "") === "") {
+			signature = [];
+		} else {
+			signature = signature.split(",");
+			for (var i = 0; i < signature.length; i++) {
+				var typeExpression = signature[i].replace(/(^\s+|\s+$)/ig,
