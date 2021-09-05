@@ -1501,4 +1501,10 @@
     
     var overloadComparator = function(overload1, overload2) {
         var signature1Better = false;
- 
+        var signature2Better = false;
+        var signature1 = overload1.signature;
+        var signature2 = overload2.signature;
+        if (!signature1.more && signature2.more) {
+            /* Function.more only exists in the second signature */
+            signature1Better = true;
+            s
