@@ -1477,3 +1477,17 @@
 						throw "type expression cannot be evaluated: " + typeExpression;
 					}
 				}
+				signature[i] = type;
+			}
+		}
+		return signature;
+	};
+    
+    var inheritanceComparator = function(type1, type2) {
+        if (type1 == type2) {
+            return 0;
+        } else if (type2 == Overload.Any) {
+            return 1;
+        } else if (type1 == Overload.Any) {
+            return -1;
+    
