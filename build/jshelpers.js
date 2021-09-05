@@ -1524,4 +1524,11 @@
                 signature2Better = true;
                 signature2 = copySignature(signature2);
                 signature2.length = signature1.length;
-       
+            }
+        }
+        for (var i = 0; i < signature1.length; i++) {
+            var comparison = inheritanceComparator(signature1[i], signature2[i]);
+            if (comparison > 0) {
+                signature1Better = true;
+            } else if (comparison < 0) {
+               
