@@ -1507,4 +1507,9 @@
         if (!signature1.more && signature2.more) {
             /* Function.more only exists in the second signature */
             signature1Better = true;
-            s
+            signature1 = copySignature(signature1);
+            signature1.length = signature2.length;
+        } else if (signature1.more && !signature2.more) {
+            /* Function.more only exists in the first signature */
+            signature2Better = true;
+            signature2 = copySignature(signature2)
