@@ -1512,4 +1512,10 @@
         } else if (signature1.more && !signature2.more) {
             /* Function.more only exists in the first signature */
             signature2Better = true;
-            signature2 = copySignature(signature2)
+            signature2 = copySignature(signature2);
+            signature2.length = signature1.length;
+        } else if(signature1.more && signature2.more) {
+            /* Function.more exisits in both signature */
+            if (signature1.length > signature2.length) {
+                signature1Better = true;
+                signature1 = copySig
