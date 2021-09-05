@@ -1490,4 +1490,15 @@
             return 1;
         } else if (type1 == Overload.Any) {
             return -1;
+        } else if (type1.prototype instanceof type2) {
+            return 1;
+        } else if (type2.prototype instanceof type1) {
+            return -1;
+        } else {
+            return 0;
+        }
+    };
     
+    var overloadComparator = function(overload1, overload2) {
+        var signature1Better = false;
+ 
