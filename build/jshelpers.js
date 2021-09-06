@@ -1550,4 +1550,9 @@
         } else if (argumentsArray.length > signature.length && !signature.more) {
             return false;
         }
-        for (var i = 0; i < signature.length; i++) 
+        for (var i = 0; i < signature.length; i++) {
+            if (!(argumentsArray[i] === null
+                || argumentsArray[i] === undefined
+                || signature[i] == Overload.Any
+                || argumentsArray[i] instanceof signature[i]
+                || argumentsArray[i].constructor == signat
