@@ -1540,4 +1540,14 @@
             return -1;
         } else {
             /* if both signatures are better in some way it means a conflict */
-            retur
+            return 0;
+        }
+    };
+    
+    var matchSignature = function(argumentsArray, signature) {
+        if (argumentsArray.length < signature.length) {
+            return false;
+        } else if (argumentsArray.length > signature.length && !signature.more) {
+            return false;
+        }
+        for (var i = 0; i < signature.length; i++) 
