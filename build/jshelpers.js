@@ -1584,4 +1584,12 @@
                     return matches[0];
                 default:
                     matches = matches.sort(overloadComparator);
-                    if (overloadCom
+                    if (overloadComparator(matches[matches.length - 1], matches[matches.length - 2]) > 0) {
+                        return matches[matches.length - 1];
+                    } else {
+                        return null;
+                    }
+            }
+        };
+        
+   
