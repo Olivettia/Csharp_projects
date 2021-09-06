@@ -1531,4 +1531,13 @@
             if (comparison > 0) {
                 signature1Better = true;
             } else if (comparison < 0) {
-               
+                signature2Better = true;
+            }
+        }
+        if (signature1Better && !signature2Better) {
+            return 1;
+        } else if (!signature1Better && signature2Better) {
+            return -1;
+        } else {
+            /* if both signatures are better in some way it means a conflict */
+            retur
