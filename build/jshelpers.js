@@ -1555,4 +1555,16 @@
                 || argumentsArray[i] === undefined
                 || signature[i] == Overload.Any
                 || argumentsArray[i] instanceof signature[i]
-                || argumentsArray[i].constructor == signat
+                || argumentsArray[i].constructor == signature[i])) {
+                    return false;
+            }
+        }
+        return true;
+    };
+    
+    Overload.create = function(overloadsArray) {
+        var overloads = [];
+        
+        var match = function(argumentsArray) {
+            var matches = [];
+            for (var i = 0
