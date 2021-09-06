@@ -1576,4 +1576,12 @@
         };
         
         var select = function(argumentsArray) {
-            var m
+            var matches = match(argumentsArray);
+            switch (matches.length) {
+                case 0:
+                    return null;
+                case 1:
+                    return matches[0];
+                default:
+                    matches = matches.sort(overloadComparator);
+                    if (overloadCom
