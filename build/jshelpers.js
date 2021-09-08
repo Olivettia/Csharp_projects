@@ -1637,4 +1637,15 @@
             return this;
         };
         
+        return overloaded;
+    };
     
+    Overload.add = function(signature, overload) {
+        return Overload.create().add(signature, overload);
+    };
+    
+    Overload.Any = function any() {
+        throw "this type is only an identifier and should not be instantiated";
+    };
+
+    Overload.More = function more() 
