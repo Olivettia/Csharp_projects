@@ -1603,4 +1603,14 @@
                 return overload['function'].apply(this, transformedArguments);
             } else {
                 throw "cannot select a proper overload";
- 
+            }
+        };
+        
+        overloaded.match = match;
+        
+        overloaded.select = select;
+        
+        overloaded.add = function(signature, overload) {
+            if (signature instanceof Array) {
+                signature = copySignature(signature);
+            } else if (signature.constructor == String) {
