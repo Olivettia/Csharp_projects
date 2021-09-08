@@ -1626,4 +1626,15 @@
                     throw "arguments type cannot be used in any argument except the last one";
                 }
             }
-            if (signature[signature.length - 1] == 
+            if (signature[signature.length - 1] == Overload.More) {
+                signature.length = signature.length - 1;
+                signature.more = true;
+            }
+            overloads.push({
+                "signature": signature,
+                "function": overload
+            });
+            return this;
+        };
+        
+    
