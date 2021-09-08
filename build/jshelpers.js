@@ -1597,4 +1597,10 @@
             if (overload) {
                 var transformedArguments = Array.prototype.slice.call(arguments, 0);
                 if (overload.signature.more) {
-                    var moreA
+                    var moreArguments = transformedArguments.splice(overload.signature.length);
+                    transformedArguments.push(moreArguments);
+                }
+                return overload['function'].apply(this, transformedArguments);
+            } else {
+                throw "cannot select a proper overload";
+ 
