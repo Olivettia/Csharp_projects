@@ -1620,4 +1620,10 @@
             }
             for (var i = 0; i < signature.length; i++) {
                 if (!(signature[i] instanceof Function)) {
-                    throw "argument 
+                    throw "argument type should be a function";
+                }
+                if (i < signature.length - 1 && signature[i] == Overload.More) {
+                    throw "arguments type cannot be used in any argument except the last one";
+                }
+            }
+            if (signature[signature.length - 1] == 
