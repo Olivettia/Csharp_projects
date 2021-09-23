@@ -30,4 +30,14 @@
                         state = RUNNING;
                     }
                     break;
-              
+                case RUNNING:
+                    index++;
+                    if (index >= array.length) {
+                        state = AFTER;
+                    }
+                    break;
+                case AFTER:
+                    break;
+            }
+            return (state != AFTER);
+    
