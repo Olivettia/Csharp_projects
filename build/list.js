@@ -21,4 +21,13 @@
             }
         };
 
-     
+        this.next = function() {
+            switch (state) {
+                case BEFORE:
+                    if (array.length === 0) {
+                        state = AFTER;
+                    } else {
+                        state = RUNNING;
+                    }
+                    break;
+              
