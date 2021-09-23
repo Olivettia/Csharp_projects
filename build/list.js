@@ -11,4 +11,14 @@
         var state = BEFORE;
         var index = 0;
         
-   
+        this.item = function() {
+            if (state == RUNNING) {
+                return array[index];
+            } else if (state == BEFORE) {
+                throw "incorrect index";
+            } else if (state == AFTER) {
+                throw "incorrect index";
+            }
+        };
+
+     
