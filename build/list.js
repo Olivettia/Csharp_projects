@@ -40,4 +40,17 @@
                     break;
             }
             return (state != AFTER);
+        };
+
+        this.reset = function() {
+            state = BEFORE;
+            index = 0;
+        };
+    };
     
+    ArrayEnumerator.prototype = new AbstractEnumerator();
+    
+    var CachedEnumerator = function(innerEnumerator) {
+        var index = NaN;
+        var arrayCache = [];
+ 
