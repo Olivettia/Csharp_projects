@@ -53,4 +53,12 @@
     var CachedEnumerator = function(innerEnumerator) {
         var index = NaN;
         var arrayCache = [];
- 
+        
+        this.item = function() {
+            if (index >= 0) {
+                if (!(index in arrayCache)) {
+                    arrayCache[index] = innerEnumerator.item();
+                }
+                return arrayCache[index];
+            } else {
+                return i
