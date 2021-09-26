@@ -75,4 +75,15 @@
         this.reset = function() {
             index = -1;
             return innerEnumerator.reset();
+        };
         
+        this.cache = function() {
+            /* this method is for debug only */
+            return [].slice.call(arrayCache, 0);
+        };
+    };
+    
+    CachedEnumerator.prototype = new AbstractEnumerator();
+    
+    var BaseEnumerator = function(extensions) {
+        this.item = ex
