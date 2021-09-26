@@ -86,4 +86,13 @@
     CachedEnumerator.prototype = new AbstractEnumerator();
     
     var BaseEnumerator = function(extensions) {
-        this.item = ex
+        this.item = extensions.item;
+        this.next = extensions.next;
+        this.reset = extensions.reset;
+    };
+    
+    BaseEnumerator.prototype = new AbstractEnumerator();
+    
+    var StackedEnumerator = function(innerEnumerator, extensions) {
+        this.item = innerEnumerator.item;
+        this.nex
