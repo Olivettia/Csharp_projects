@@ -61,4 +61,18 @@
                 }
                 return arrayCache[index];
             } else {
-                return i
+                return innerEnumerator.item();
+            }
+        };
+        
+        this.next = function() {
+            if (index >= -1) {
+                index++;
+            }
+            return innerEnumerator.next();
+        };
+        
+        this.reset = function() {
+            index = -1;
+            return innerEnumerator.reset();
+        
