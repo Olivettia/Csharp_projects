@@ -141,4 +141,10 @@
         if (!source) {
             enumerator = new ArrayEnumerator([]);
             arrayCache = [];
- 
+            lengthCache = 0;
+        } else if (arguments.length > 1) {
+            enumerator = new ArrayEnumerator([].slice.call(arguments, 0));
+            arrayCache = [].slice.call(arguments, 0);
+            lengthCache = arrayCache.length;
+        } else if (source instanceof Array) {
+            enumerator = new ArrayE
