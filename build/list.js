@@ -147,4 +147,11 @@
             arrayCache = [].slice.call(arguments, 0);
             lengthCache = arrayCache.length;
         } else if (source instanceof Array) {
-            enumerator = new ArrayE
+            enumerator = new ArrayEnumerator([].slice.call(source, 0));
+            arrayCache = [].slice.call(source, 0);
+            lengthCache = arrayCache.length;
+        } else if (source instanceof AbstractEnumerator) {
+            enumerator = source;
+        } else {
+            throw "source should be an array";
+      
