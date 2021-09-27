@@ -105,4 +105,16 @@
         }
         
         if (extensions.next) {
-      
+            this.next = function() {
+                return extensions.next(innerEnumerator);
+            };
+        }
+        
+        if (extensions.reset) {
+            this.reset = function() {
+                return extensions.reset(innerEnumerator);
+            };
+        }
+    };
+    
+    
