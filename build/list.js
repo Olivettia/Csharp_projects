@@ -117,4 +117,15 @@
         }
     };
     
+    StackedEnumerator.prototype = new AbstractEnumerator();
     
+    var GeneratorProxy = function(handlers) {
+        this["yield"] = function(object) {
+            if (handlers["yield"]) {
+                handlers["yield"](object);
+            }
+        };
+        
+        this.end = function() {
+            if (handlers.end) {
+   
