@@ -95,4 +95,14 @@
     
     var StackedEnumerator = function(innerEnumerator, extensions) {
         this.item = innerEnumerator.item;
-        this.nex
+        this.next = innerEnumerator.next;
+        this.reset = innerEnumerator.reset;
+        
+        if (extensions.item) {
+            this.item = function() {
+                return extensions.item(innerEnumerator);
+            };
+        }
+        
+        if (extensions.next) {
+      
