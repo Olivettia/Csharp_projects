@@ -154,4 +154,14 @@
             enumerator = source;
         } else {
             throw "source should be an array";
-      
+        }
+        
+        this.at = function(index) {
+            var cacheIndex = 0;
+            
+            if (index < 0) {
+                throw "incorrect index";
+            }
+            
+            if (arrayCache.length > index) {
+                return arrayCache[index]
