@@ -128,4 +128,17 @@
         
         this.end = function() {
             if (handlers.end) {
-   
+                handlers.end();
+            }
+        };
+    };
+    
+    var List = function(source) {
+        var enumerator;
+        var arrayCache = [];
+        var lengthCache = -1;
+        
+        if (!source) {
+            enumerator = new ArrayEnumerator([]);
+            arrayCache = [];
+ 
