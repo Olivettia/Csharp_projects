@@ -172,4 +172,14 @@
             enumerator.reset();
             while (enumerator.next()) {
                 arrayCache[cacheIndex] = enumerator.item();
-                if (inde
+                if (index === 0) {
+                    var item = arrayCache[cacheIndex];
+                    return item;
+                } else {
+                    index--;
+                    cacheIndex++;
+                }
+            }
+            
+            lengthCache = cacheIndex;
+            throw "incorrec
