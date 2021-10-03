@@ -164,4 +164,12 @@
             }
             
             if (arrayCache.length > index) {
-                return arrayCache[index]
+                return arrayCache[index];
+            } else if (lengthCache >= 0 && index >= lengthCache) {
+                throw "incorrect index";
+            }
+            
+            enumerator.reset();
+            while (enumerator.next()) {
+                arrayCache[cacheIndex] = enumerator.item();
+                if (inde
