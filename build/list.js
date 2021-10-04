@@ -239,4 +239,16 @@
         
         this.cache = function() {
             /* this method is for debug only */
-            return [].slic
+            return [].slice.call(arrayCache, 0);
+        };
+    };
+    
+    List.prototype.reverse = function() {
+        return new List(this.toArray().reverse());
+    };
+    
+    List.prototype.map = function(predicate) {
+        var self = this;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            ite
