@@ -251,4 +251,15 @@
         var self = this;
         
         var enumerator = new StackedEnumerator(self.enumerator(), {
-            ite
+            item: function(innerEnumerator) {
+                return predicate.call(innerEnumerator.item(), innerEnumerator.item());
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.filter = function(predicate) {
+        var self = this;
+        
+    
