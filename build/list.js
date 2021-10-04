@@ -217,4 +217,15 @@
         this.toArray = function() {
             if (lengthCache < 0 || arrayCache.length < lengthCache) {
                 enumerator.reset();
-                for (var index = 0; index < arrayCache.length; index+
+                for (var index = 0; index < arrayCache.length; index++) {
+                    enumerator.next();
+                }
+
+                var cacheIndex = arrayCache.length;
+                while (enumerator.next()) {
+                    arrayCache[cacheIndex] = enumerator.item();
+                    cacheIndex++;
+                }
+
+                lengthCache = cacheIndex;
+        
