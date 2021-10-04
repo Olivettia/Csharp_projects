@@ -209,4 +209,12 @@
                 iterator.call(arrayCache[cacheIndex], arrayCache[cacheIndex]);
                 cacheIndex++;
             }
-           
+            
+            lengthCache = cacheIndex;
+            return this;
+        };
+        
+        this.toArray = function() {
+            if (lengthCache < 0 || arrayCache.length < lengthCache) {
+                enumerator.reset();
+                for (var index = 0; index < arrayCache.length; index+
