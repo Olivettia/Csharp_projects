@@ -228,4 +228,15 @@
                 }
 
                 lengthCache = cacheIndex;
+            }
+            
+            return [].slice.call(arrayCache, 0);
+        };
         
+        this.enumerator = function() {
+            return enumerator;
+        };
+        
+        this.cache = function() {
+            /* this method is for debug only */
+            return [].slic
