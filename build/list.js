@@ -182,4 +182,15 @@
             }
             
             lengthCache = cacheIndex;
-            throw "incorrec
+            throw "incorrect index";
+        };
+        
+        this.length = function() {
+            if (lengthCache < 0) {
+                enumerator.reset();
+                lengthCache = 0;
+                while (enumerator.next()) {
+                    lengthCache++;
+                }
+            }
+            return lengthCache;
