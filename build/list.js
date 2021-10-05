@@ -321,4 +321,17 @@
                         break;
                     case AFTER:
                         break;
-            
+                }
+                return (state != AFTER);
+            },
+
+            reset: function(innerEnumerator) {
+                state = BEFORE;
+                innerEnumerator.reset();
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List
