@@ -266,4 +266,15 @@
             next: function(innerEnumerator) {
                 var active = true;
                 while ((active = active && innerEnumerator.next()) && !predicate.call(innerEnumerator.item(), innerEnumerator.item()));
+                return active;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
     
+    List.prototype.fold = function(predicate, start) {
+        var accumulation = start;
+        
+        this.each(function(object) {
+            accumulation = predicate.call(object, acc
