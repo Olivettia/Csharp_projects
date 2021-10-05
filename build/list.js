@@ -307,4 +307,10 @@
 
                 switch (state) {
                     case BEFORE:
-            
+                        state = RUNNING;
+                        current = start;
+                        break;
+                    case RUNNING:
+                        active = innerEnumerator.next();
+                        if (active) {
+                            object = innerEnumerator.item(
