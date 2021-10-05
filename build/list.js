@@ -277,4 +277,16 @@
         var accumulation = start;
         
         this.each(function(object) {
-            accumulation = predicate.call(object, acc
+            accumulation = predicate.call(object, accumulation, object);
+        });
+        
+        return accumulation;
+    };
+    
+    List.prototype.scan = function(predicate, start) {
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var self = this;
+        var state = BEFORE;
+        var current;
+        
+        var enum
