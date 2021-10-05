@@ -262,4 +262,8 @@
     List.prototype.filter = function(predicate) {
         var self = this;
         
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                var active = true;
+                while ((active = active && innerEnumerator.next()) && !predicate.call(innerEnumerator.item(), innerEnumerator.item()));
     
