@@ -289,4 +289,11 @@
         var state = BEFORE;
         var current;
         
-        var enum
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            item: function(innerEnumerator) {
+                switch (state) {
+                    case BEFORE:
+                        throw "incorrect index";
+                    case RUNNING:
+                        return current;
+       
