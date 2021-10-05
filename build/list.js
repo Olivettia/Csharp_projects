@@ -296,4 +296,15 @@
                         throw "incorrect index";
                     case RUNNING:
                         return current;
-       
+                    case AFTER:
+                        throw "incorrect index";
+                }
+            },
+
+            next: function(innerEnumerator) {
+                var object;
+                var active;
+
+                switch (state) {
+                    case BEFORE:
+            
