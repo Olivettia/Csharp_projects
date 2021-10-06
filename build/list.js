@@ -334,4 +334,11 @@
         return new List(new CachedEnumerator(enumerator));
     };
     
-    List
+    List.prototype.takeWhile = function(predicate) {
+        var RUNNING = 0, AFTER = 1;
+        var self = this;
+        var state = RUNNING;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                va
