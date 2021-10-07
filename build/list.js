@@ -347,4 +347,15 @@
                         active = innerEnumerator.next() && predicate.call(innerEnumerator.item(), innerEnumerator.item());
                         if (!active) {
                             state = AFTER;
-                   
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function(innerEnumerator) {
+                state = RUNNING;
+                innerEnumerator.reset();
+       
