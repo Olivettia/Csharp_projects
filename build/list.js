@@ -369,4 +369,14 @@
         var count = 0;
         
         var enumerator = new StackedEnumerator(self.enumerator(), {
-            i
+            item: function(innerEnumerator) {
+                if (count <= number) {
+                    return innerEnumerator.item();
+                } else {
+                    throw "incorrect index";
+                }
+            },
+
+            next: function(innerEnumerator) {
+                if (count < number) {
+                
