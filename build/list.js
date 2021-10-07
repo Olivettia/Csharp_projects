@@ -341,4 +341,10 @@
         
         var enumerator = new StackedEnumerator(self.enumerator(), {
             next: function(innerEnumerator) {
-                va
+                var active = true;
+                switch (state) {
+                    case RUNNING:
+                        active = innerEnumerator.next() && predicate.call(innerEnumerator.item(), innerEnumerator.item());
+                        if (!active) {
+                            state = AFTER;
+                   
