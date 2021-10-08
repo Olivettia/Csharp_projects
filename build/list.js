@@ -401,4 +401,9 @@
         var state = BEFORE;
         
         var enumerator = new StackedEnumerator(self.enumerator(), {
- 
+            next: function(innerEnumerator) {
+                var active = true;
+                switch (state) {
+                    case BEFORE:
+                        while ((active = innerEnumerator.next()) && predicate.call(innerEnumerator.item(), innerEnumerator.item()));
+        
