@@ -424,4 +424,14 @@
                 return (state != AFTER);
             },
 
-            reset: fu
+            reset: function(innerEnumerator) {
+                state = BEFORE;
+                innerEnumerator.reset();
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.drop = function(number) {
+        var BEFORE = 0, RU
