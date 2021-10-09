@@ -443,3 +443,11 @@
                 var count = 0;
                 var active = true;
                 switch (state) {
+                    case BEFORE:
+                        while ((active = innerEnumerator.next()) && count < number) {
+                            count++;
+                        }
+                        if (active) {
+                            state = RUNNING;
+                        } else {
+      
