@@ -471,4 +471,13 @@
             }
         });
         
-        r
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.cycle = function() {
+        var self = this;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                if (innerEnumerator.next()) {
+                    
