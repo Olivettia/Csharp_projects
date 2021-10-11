@@ -458,4 +458,17 @@
                         if (!active) {
                             state = AFTER;
                         }
-      
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function(innerEnumerator) {
+                state = BEFORE;
+                innerEnumerator.reset();
+            }
+        });
+        
+        r
