@@ -487,4 +487,17 @@
                         return true;
                     } else {
                         /* empty list produces empty list after cycling */
-                        ret
+                        return false;
+                    }
+                }
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.generate = function(generator) {
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var current;
+        var state = BEFORE;
+        v
