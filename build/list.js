@@ -480,4 +480,11 @@
         var enumerator = new StackedEnumerator(self.enumerator(), {
             next: function(innerEnumerator) {
                 if (innerEnumerator.next()) {
-                    
+                    return true;
+                } else {
+                    innerEnumerator.reset();
+                    if (innerEnumerator.next()) {
+                        return true;
+                    } else {
+                        /* empty list produces empty list after cycling */
+                        ret
