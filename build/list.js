@@ -559,4 +559,14 @@
         var current;
         var state = BEFORE;
         
-        var 
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                switch (state) {
+                    case BEFORE:
+                        throw "incorrect index";
+                    case RUNNING:
+                        return current;
+                }
+            },
+
+          
