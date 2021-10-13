@@ -535,4 +535,15 @@
                         if (yieldState != AFTER) {
                             while (index >= arrayCache.length && yieldState != AFTER) {
                                 generator.call(proxy, proxy);
-                        
+                            }
+                        }
+                        state = yieldState;
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function() {
+      
