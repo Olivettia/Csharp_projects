@@ -530,4 +530,9 @@
             next: function() {
                 switch (state) {
                     case BEFORE:
-                
+                    case RUNNING:
+                        index++;
+                        if (yieldState != AFTER) {
+                            while (index >= arrayCache.length && yieldState != AFTER) {
+                                generator.call(proxy, proxy);
+                        
