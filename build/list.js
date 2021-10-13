@@ -520,4 +520,14 @@
                 switch (state) {
                     case BEFORE:
                         throw "incorrect index";
-         
+                    case RUNNING:
+                        return arrayCache[index];
+                    case AFTER:
+                        throw "incorrect index";
+                }
+            },
+
+            next: function() {
+                switch (state) {
+                    case BEFORE:
+                
