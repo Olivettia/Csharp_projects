@@ -509,4 +509,15 @@
                 if (yieldState != AFTER) {
                     arrayCache[arrayCache.length] = object;
                 }
- 
+            },
+            end: function() {
+                yieldState = AFTER;
+            }
+        });
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                switch (state) {
+                    case BEFORE:
+                        throw "incorrect index";
+         
