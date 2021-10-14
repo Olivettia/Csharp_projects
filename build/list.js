@@ -569,4 +569,12 @@
                 }
             },
 
-          
+            next: function() {
+                switch (state) {
+                    case BEFORE:
+                        current = start;
+                        state = RUNNING;
+                        break;
+                    case RUNNING:
+                        current = generator.call(current, current);
+               
