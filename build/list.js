@@ -591,4 +591,14 @@
     };
     
     List.count = function(start, step) {
-        
+        start = start || 0;
+        step = step || 1;
+        return List.iterate(function(object) { return object + step; }, start);
+    };
+    
+    List.repeat = function(object) {
+        return List.iterate(function(object) { return object; }, object);
+    };
+    
+    List.concatenate = function() {
+        va
