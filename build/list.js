@@ -577,4 +577,18 @@
                         break;
                     case RUNNING:
                         current = generator.call(current, current);
-               
+                        break;
+                }
+                return true;
+            },
+
+            reset: function() {
+                state = BEFORE;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.count = function(start, step) {
+        
