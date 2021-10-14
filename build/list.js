@@ -601,4 +601,11 @@
     };
     
     List.concatenate = function() {
-        va
+        var RESET = 0, RUNNING = 1, AFTER = 2;
+        var lists = [].slice.call(arguments, 0);
+        var listsIndex = 0;
+        var state = RESET;
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                return lists[listsIndex].enumerator
