@@ -608,4 +608,13 @@
         
         var enumerator = new BaseEnumerator({
             item: function() {
-                return lists[listsIndex].enumerator
+                return lists[listsIndex].enumerator().item();
+            },
+
+            next: function() {
+                switch (state) {
+                    case RESET:
+                        lists[listsIndex].enumerator().reset();
+                        state = RUNNING;
+                        return enumerator.next();
+         
