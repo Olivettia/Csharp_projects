@@ -617,4 +617,9 @@
                         lists[listsIndex].enumerator().reset();
                         state = RUNNING;
                         return enumerator.next();
-         
+                    case RUNNING:
+                        if (!lists[listsIndex].enumerator().next()) {
+                            listsIndex++;
+                            if (listsIndex < lists.length) {
+                                state = RESET;
+                                return enumerator.nex
