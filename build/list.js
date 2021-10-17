@@ -622,4 +622,14 @@
                             listsIndex++;
                             if (listsIndex < lists.length) {
                                 state = RESET;
-                                return enumerator.nex
+                                return enumerator.next();
+                            } else {
+                                state = AFTER;
+                            }
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+          
