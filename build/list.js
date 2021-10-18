@@ -703,4 +703,15 @@
 
     List.prototype.any = function(predicate) {
         return this.fold(function(accumulation, object) {
-            return accumulation || predic
+            return accumulation || predicate.call(object, object);
+        }, false);
+    };
+
+    List.prototype.sum = function() {
+        return this.fold(function(accumulation, object) {
+            return accumulation + object;
+        }, 0);
+    };
+
+    List.prototype.average = function() {
+        var accumulation = this.fold(function(accumulati
