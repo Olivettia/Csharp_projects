@@ -664,3 +664,13 @@
                             .toArray();
                         return predicate.apply(items, items);
                     case AFTER:
+                        throw "incorrect index";
+                }
+            },
+
+            next: function() {
+                var active = true;
+                switch (state) {
+                    case RUNNING:
+                        lists.each(function() {
+                            active = act
