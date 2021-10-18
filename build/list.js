@@ -733,4 +733,14 @@
 
     List.prototype.minimum = function() {
         var first = this.at(0);
-        if (first)
+        if (first) {
+            return this.drop(1).fold(function(accumulation, object) {
+                return accumulation < object ? accumulation : object;
+            }, first);
+        } else {
+            throw "cannot process empty list";
+        }
+    };
+
+    List.prototype.head = function() {
+        if (
