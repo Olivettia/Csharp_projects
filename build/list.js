@@ -645,4 +645,16 @@
     
     List.zip = function(predicate) {
         var RUNNING = 0, AFTER = 1;
-        var lists
+        var lists = [].slice.call(arguments, 1);
+        var state = RUNNING;
+        
+        if (lists.length === 0) {
+            return new List([]);
+        }
+        
+        lists = new List(lists);
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                var items;
+      
