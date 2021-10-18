@@ -657,4 +657,10 @@
         var enumerator = new BaseEnumerator({
             item: function() {
                 var items;
-      
+                switch (state) {
+                    case RUNNING:
+                        items = lists
+                            .map(function() { return this.enumerator().item(); })
+                            .toArray();
+                        return predicate.apply(items, items);
+                    case AFTER:
