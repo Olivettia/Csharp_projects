@@ -673,4 +673,14 @@
                 switch (state) {
                     case RUNNING:
                         lists.each(function() {
-                            active = act
+                            active = active && this.enumerator().next();
+                        });
+                        if (!active) {
+                            state = AFTER;
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+
+                return (state != A
