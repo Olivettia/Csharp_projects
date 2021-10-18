@@ -683,4 +683,16 @@
                         break;
                 }
 
-                return (state != A
+                return (state != AFTER);
+            },
+
+            reset: function() {
+                lists.each(function() { this.enumerator().reset(); });
+                state = RUNNING;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.all = function(predicat
