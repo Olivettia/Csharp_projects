@@ -765,4 +765,11 @@
             var BEFORE = 0, RUNNING = 1, AFTER = 2;
             var self = this;
             var state = BEFORE;
-         
+            var last;
+
+            var enumerator = new StackedEnumerator(self.enumerator(), {
+                item: function(innerEnumerator) {
+                    switch (state) {
+                        case BEFORE:
+                            throw "incorrect index";
+                      
