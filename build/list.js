@@ -788,4 +788,11 @@
                             last = innerEnumerator.item();
                             active = innerEnumerator.next();
                             if (active) {
-                           
+                                state = RUNNING;
+                            } else {
+                                state = AFTER;
+                            }
+                            break;
+                        case RUNNING:
+                            last = innerEnumerator.item();
+                            active = 
