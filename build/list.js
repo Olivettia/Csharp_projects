@@ -782,4 +782,10 @@
                 next: function(innerEnumerator) {
                     var count = 0;
                     var active = true;
-     
+                    switch (state) {
+                        case BEFORE:
+                            innerEnumerator.next();
+                            last = innerEnumerator.item();
+                            active = innerEnumerator.next();
+                            if (active) {
+                           
