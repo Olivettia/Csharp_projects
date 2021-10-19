@@ -772,4 +772,14 @@
                     switch (state) {
                         case BEFORE:
                             throw "incorrect index";
-                      
+                        case RUNNING:
+                            return last;
+                        case AFTER:
+                            throw "incorrect index";
+                    }
+                },
+
+                next: function(innerEnumerator) {
+                    var count = 0;
+                    var active = true;
+     
