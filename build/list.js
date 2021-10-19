@@ -795,4 +795,12 @@
                             break;
                         case RUNNING:
                             last = innerEnumerator.item();
-                            active = 
+                            active = innerEnumerator.next();
+                            if (!active) {
+                                state = AFTER;
+                            }
+                            break;
+                        case AFTER:
+                            break;
+                    }
+              
