@@ -835,3 +835,19 @@
         window.List = List;
     } else {
         return;
+    }
+})();
+
+(function() {
+    var List;
+    if (module && module.exports) {
+        List = module.exports;
+    } else if (window) {
+        List = window.List;
+    } else {
+        return;
+    }
+    
+    var ES5Array = List.ES5Array = function(source) {
+        List.apply(this, arguments);
+        
