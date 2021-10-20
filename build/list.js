@@ -851,3 +851,10 @@
     var ES5Array = List.ES5Array = function(source) {
         List.apply(this, arguments);
         
+        this.indexOf = function(searchElement, fromIndex) {
+            fromIndex = fromIndex || 0;
+            var index = fromIndex;
+            var tailList = this.drop(fromIndex).dropWhile(function(object) {
+                if (searchElement !== object) {
+                    index++;
+           
