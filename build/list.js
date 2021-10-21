@@ -857,4 +857,16 @@
             var tailList = this.drop(fromIndex).dropWhile(function(object) {
                 if (searchElement !== object) {
                     index++;
-           
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            if (tailList.take(1).length() > 0) {
+                return index;
+            } else {
+                return -1;
+            }
+        };
+
+        this.lastIndexOf = function(searchEle
