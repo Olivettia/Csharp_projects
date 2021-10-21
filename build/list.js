@@ -874,4 +874,14 @@
             var headList = this.take(fromIndex);
             var reversedHeadList = headList.reverse();
             var reversedIndex = this.indexOf.call(reversedHeadList, searchElement);
-            if (reversedIndex >= 0) 
+            if (reversedIndex >= 0) {
+                return headList.length() - 1 - reversedIndex;
+            } else {
+                return -1;
+            }
+        };
+
+        this.every = function(callbackfn, thisArg) {
+            return this.all(function(object) {
+                return callbackfn.call(thisArg, object);
+     
