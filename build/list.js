@@ -869,4 +869,9 @@
             }
         };
 
-        this.lastIndexOf = function(searchEle
+        this.lastIndexOf = function(searchElement, fromIndex) {
+            fromIndex = fromIndex || this.length();
+            var headList = this.take(fromIndex);
+            var reversedHeadList = headList.reverse();
+            var reversedIndex = this.indexOf.call(reversedHeadList, searchElement);
+            if (reversedIndex >= 0) 
