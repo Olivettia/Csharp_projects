@@ -912,4 +912,9 @@
         };
 
         var reduce = this.reduce = function(callbackfn, initialValue) {
-            if (argumen
+            if (arguments.length > 1) {
+                return this.fold(function(accumulation, object) {
+                    return callbackfn.call(undefined, accumulation, object);
+                }, initialValue);
+            } else {
+                return reduce.call(this.drop(1), callbackfn, this.at(0));
