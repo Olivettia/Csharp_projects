@@ -135,3 +135,85 @@
             for (var i = 0; i < overloads.length; i++) {
                 if (matchSignature(argumentsArray, overloads[i].signature)) {
                     matches.push(overloads[i]);
+                }
+            }
+            return matches;
+        };
+        
+        var select = function(argumentsArray) {
+            var matches = match(argumentsArray);
+            switch (matches.length) {
+                case 0:
+                    return null;
+                case 1:
+                    return matches[0];
+                default:
+                    matches = matches.sort(overloadComparator);
+                    if (overloadComparator(matches[matches.length - 1], matches[matches.length - 2]) > 0) {
+                        return matches[matches.length - 1];
+                    } else {
+                        return null;
+                    }
+            }
+        };
+        
+        var overloaded = function() {
+            var overload = select(arguments);
+            if (overload) {
+                var transformedArguments = Array.prototype.slice.call(arguments, 0);
+                if (overload.signature.more) {
+                    var moreArguments = transformedArguments.splice(overload.signature.length);
+                    transformedArguments.push(moreArguments);
+                }
+                return overload['function'].apply(this, transformedArguments);
+            } else {
+                throw "cannot select a proper overload";
+            }
+        };
+        
+        overloaded.match = match;
+        
+        overloaded.select = select;
+        
+        overloaded.add = function(signature, overload) {
+            if (signature instanceof Array) {
+                signature = copySignature(signature);
+            } else if (signature.constructor == String) {
+				signature = parseSignature(signature);
+            } else {
+                throw "signature is neither a string nor an array";
+            }
+            for (var i = 0; i < signature.length; i++) {
+                if (!(signature[i] instanceof Function)) {
+                    throw "argument type should be a function";
+                }
+                if (i < signature.length - 1 && signature[i] == Overload.More) {
+                    throw "arguments type cannot be used in any argument except the last one";
+                }
+            }
+            if (signature[signature.length - 1] == Overload.More) {
+                signature.length = signature.length - 1;
+                signature.more = true;
+            }
+            overloads.push({
+                "signature": signature,
+                "function": overload
+            });
+            return this;
+        };
+        
+        return overloaded;
+    };
+    
+    Overload.add = function(signature, overload) {
+        return Overload.create().add(signature, overload);
+    };
+    
+    Overload.Any = function any() {
+        throw "this type is only an identifier and should not be instantiated";
+    };
+
+    Overload.More = function more() {
+        throw "this type is only an identifier and should not be instantiated";
+    };
+})();
