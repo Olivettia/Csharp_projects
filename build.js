@@ -43,4 +43,5 @@ var composedFile = allFiles.join('');
 var compressedComposedFile = uglify(composedFile);
 fs.writeFileSync(path.join(destinationDirectory, 'jshelpers.js'), composedFile);
 console.log('composed all files into ' + path.join(destinationDirectory, 'jshelpers.js'));
-fs.w
+fs.writeFileSync(path.join(destinationDirectory, 'jshelpers-min.js'), compressedComposedFile);
+console.log('compressed all files into ' + path.join(destinationDirectory, 'jshelpers-min.js'));
