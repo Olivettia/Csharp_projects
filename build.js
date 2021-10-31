@@ -36,4 +36,11 @@ for (var i = 0; i < fileNames.length; i++) {
     fs.writeFileSync(destinationFileName, sourceFile);
     console.log('copied ' + sourceFileName + ' into ' + destinationFileName);
     fs.writeFileSync(destinationCompressedFileName, compressedFile);
-    console.log('compressed ' + sourceFileName + ' into ' + destinationCompre
+    console.log('compressed ' + sourceFileName + ' into ' + destinationCompressedFileName);
+}
+
+var composedFile = allFiles.join('');
+var compressedComposedFile = uglify(composedFile);
+fs.writeFileSync(path.join(destinationDirectory, 'jshelpers.js'), composedFile);
+console.log('composed all files into ' + path.join(destinationDirectory, 'jshelpers.js'));
+fs.w
