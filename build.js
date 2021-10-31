@@ -24,4 +24,11 @@ var fileNames = fs.readdirSync(sourceDirectory);
 var allFiles = [];
 
 for (var i = 0; i < fileNames.length; i++) {
-    var sourceFileName = path.join(sourceDirectory, fileName
+    var sourceFileName = path.join(sourceDirectory, fileNames[i]);
+    var destinationFileName = path.join(destinationDirectory, fileNames[i]);
+    var destinationCompressedFileName = path.join(destinationDirectory, fileNames[i].replace(/.js$/, '-min.js'));
+    
+    var sourceFile = String(fs.readFileSync(sourceFileName));
+    allFiles.push(sourceFile);
+    
+    v
