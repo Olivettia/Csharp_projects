@@ -14,4 +14,14 @@ if (path.existsSync(destinationDirectory)) {
     fs.rmdirSync(destinationDirectory);
     console.log('removed build directory');
 } else {
-    conso
+    console.log('build directory doesn\'t exist');
+}
+
+fs.mkdirSync(destinationDirectory, '755');
+console.log('created build directory');
+
+var fileNames = fs.readdirSync(sourceDirectory);
+var allFiles = [];
+
+for (var i = 0; i < fileNames.length; i++) {
+    var sourceFileName = path.join(sourceDirectory, fileName
