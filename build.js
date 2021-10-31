@@ -31,4 +31,9 @@ for (var i = 0; i < fileNames.length; i++) {
     var sourceFile = String(fs.readFileSync(sourceFileName));
     allFiles.push(sourceFile);
     
-    v
+    var compressedFile = uglify(sourceFile);
+    
+    fs.writeFileSync(destinationFileName, sourceFile);
+    console.log('copied ' + sourceFileName + ' into ' + destinationFileName);
+    fs.writeFileSync(destinationCompressedFileName, compressedFile);
+    console.log('compressed ' + sourceFileName + ' into ' + destinationCompre
