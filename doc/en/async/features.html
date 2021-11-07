@@ -53,4 +53,15 @@ getOperation.addCallback(function(result) { alert("ping returns: " + result); })
 
 <p>State of the asynchronous operation. It should be "running" before yield is called. It should be "completed" after yield is called.</p>
 
-<h3><a name="Async.Operation
+<h3><a name="Async.Operation.completed">Async.Operation.completed</a></h3>
+
+<ul>
+<li>type: instance</li>
+</ul>
+
+<p>Indicator of whether the asynchronous operation is completed. It should be false before yield is called. It should be true after yield is called.</p>
+
+<h3><a name="Async.Operation.yield()">Async.Operation.yield()</a></h3>
+
+<ul>
+<li>
