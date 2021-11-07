@@ -121,4 +121,12 @@ waitOperation.addCallback(function(result) { alert(result); });
 <li>type: instance</li>
 </ul>
 
-<p>Result of the asynchronous operation. It should be undefined before go is called. It should be the result of the
+<p>Result of the asynchronous operation. It should be undefined before go is called. It should be the result of the last executed function in the queue after go is called.</p>
+
+<h3><a name="Async.chain().state">Async.chain().state</a></h3>
+
+<ul>
+<li>type: instance</li>
+</ul>
+
+<p>State of the asynchronous operation. It should be "waiting" before go is called. It should be "chain running" after go is called. It should be "com
