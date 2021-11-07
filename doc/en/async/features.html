@@ -94,4 +94,19 @@ getOperation.addCallback(function(result) { alert("ping returns: " + result); })
 <p>Add callback function to a specific asynchronous operation. These callback functions will be executed one by one and they will receive one argument as the result of the asynchronous operation.</p>
 
 <pre><code class="brush: js">var waitOperation = wait(999);
-waitOperat
+waitOperation.addCallback(function(result) { alert(result); });
+</code></pre>
+
+<h2><a name="Async.chain()">Async.chain()</a></h2>
+
+<ul>
+<li>type: static</li>
+<li>input: none</li>
+<li>output: chain : Operation</li>
+</ul>
+
+<p>Create an asynchronous execution queue.</p>
+
+<pre><code class="brush: js">Async
+    .chain()
+    .nex
