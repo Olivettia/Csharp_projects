@@ -26,3 +26,12 @@
 <p>A class represents an asynchronous operation. Every asynchronous operation should instantiate an Async.Operation object.</p>
 
 <pre><code class="brush: js">/* jQuery required for this sample */
+
+var getAsync = function(url, data) {
+    var operation = new Async.Operation();
+    $.get(url, data, function(result) { operation.yield(result); }, "json");
+    return operation;
+};
+
+var getOperation = getAsync("/ping", "")
+getOperation.addCallback(function(result) { alert("ping returns: " + result)
