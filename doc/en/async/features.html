@@ -64,4 +64,15 @@ getOperation.addCallback(function(result) { alert("ping returns: " + result); })
 <h3><a name="Async.Operation.yield()">Async.Operation.yield()</a></h3>
 
 <ul>
-<li>
+<li>type: instance</li>
+<li>input:
+<ul><li>value (optional)</li></ul></li>
+<li>output: this : Operation</li>
+</ul>
+
+<p>Return value for a specific asynchronous operation.</p>
+
+<pre><code class="brush: js">var waitAsync = function(delay) {
+    var operation = new Async.Operation();
+    setTimeout(function() {
+        var r
