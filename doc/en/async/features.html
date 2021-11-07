@@ -88,3 +88,10 @@ getOperation.addCallback(function(result) { alert("ping returns: " + result); })
 <li>type: instance</li>
 <li>input:
 <ul><li>callback : Function</li></ul></li>
+<li>output: this : Operation</li>
+</ul>
+
+<p>Add callback function to a specific asynchronous operation. These callback functions will be executed one by one and they will receive one argument as the result of the asynchronous operation.</p>
+
+<pre><code class="brush: js">var waitOperation = wait(999);
+waitOperat
