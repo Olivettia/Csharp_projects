@@ -137,4 +137,15 @@ waitOperation.addCallback(function(result) { alert(result); });
 <li>type: instance</li>
 </ul>
 
-<p>Indicator of whether the asynchronous operation is completed. It should be false before all functions in the queue are executed. It should b
+<p>Indicator of whether the asynchronous operation is completed. It should be false before all functions in the queue are executed. It should be true after that.</p>
+
+<h3><a name="Async.chain().next()">Async.chain().next()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>function : Function</li></ul></li>
+<li>output: this : Operation</li>
+</ul>
+
+<p>Append a function to the queue. If the function returns an instance of Async.Operation, th
