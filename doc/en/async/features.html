@@ -148,4 +148,4 @@ waitOperation.addCallback(function(result) { alert(result); });
 <li>output: this : Operation</li>
 </ul>
 
-<p>Append a function to the queue. If the function returns an instance of Async.Operation, th
+<p>Append a function to the queue. If the function returns an instance of Async.Operation, the queue will wait for the asynchronous operation inside this function to be finished before moving on to next function in the queue. Otherwise, next function in the queue is executed right after this function. In both situations, the function will receive one argument when it's call. This argument will 
