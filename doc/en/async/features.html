@@ -196,4 +196,16 @@ Async
 <li>output: this : Operation</li>
 </ul>
 
-<p>Let the functions queue wait in milliseconds. It will let the result of the previous function pass through and the next functio
+<p>Let the functions queue wait in milliseconds. It will let the result of the previous function pass through and the next function will receive it as an argument.</p>
+
+<pre><code class="brush: js">Async
+    .chain()
+    .next(firstFunction)
+    .wait(999)
+    .next(secondFunction)
+    .go();
+</code></pre>
+
+<h2><a name="Helpers">Helpers</a></h2>
+
+<p>Below are the helper functions besides As
