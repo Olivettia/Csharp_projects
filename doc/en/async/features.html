@@ -177,4 +177,14 @@ Async
 <li>output: this : Operation</li>
 </ul>
 
-<p>Start the functions queue. If go is called with one argument, this argument will be th
+<p>Start the functions queue. If go is called with one argument, this argument will be the argument of the first function in the queue. Appending more functions to the queue by calling next is still possible after go is called.</p>
+
+<pre><code class="brush: js">Async
+    .chain()
+    .next(firstFunction)
+    .next(secondFunction)
+    .go()
+    .next(thirdFunction);
+</code></pre>
+
+<h3><a name="Async.
