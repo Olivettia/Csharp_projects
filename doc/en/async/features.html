@@ -252,3 +252,17 @@ Async
 
 <pre><code class="brush: js">var plusOne = function(i) {
     return i + 1;
+};
+
+var plusOneAsync = function(i) {
+    var operation = new Async.Operation();
+    setTimeout(function() { operation.yield(i + 1); }, 1000);
+    return operation;
+};
+
+var parallelOperation = Async
+    .collect([
+        plusOne,
+        plusOneAsync
+    ], [99, 100]);
+parallelOperation.addCallback(function(results) { al
