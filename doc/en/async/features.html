@@ -278,4 +278,10 @@ parallelOperation.addCallback(function(results) { alert(results); });
 <li>output: operation : Operation</li>
 </ul>
 
-<p>Wait in millisenconds as an asynchronous operation. If t
+<p>Wait in millisenconds as an asynchronous operation. If the second argument is assigned, callback functions will receive it as an argument.</p>
+
+<pre><code class="brush: js">var waitOperation = Async.wait(999, "predefined result");
+waitOperation.addCallback(function(result) { alert(result); });
+</code></pre>
+
+<h3><a name="Async.instant(
