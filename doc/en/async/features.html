@@ -323,4 +323,10 @@ sayHello
 <li>type: instance</li>
 <li>input:
 <ul><li>context</li>
-<
+<li>values : Array (optional)</li></ul></li>
+<li>output: operatoin : Operation</li>
+</ul>
+
+<p>Call function in an asynchronous manner. It works like Function.prototype.apply() and returns an instance of Async.Operation.</p>
+
+<pre><code class="brush: js">var sayHello = function(name)
