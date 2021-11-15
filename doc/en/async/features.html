@@ -329,4 +329,13 @@ sayHello
 
 <p>Call function in an asynchronous manner. It works like Function.prototype.apply() and returns an instance of Async.Operation.</p>
 
-<pre><code class="brush: js">var sayHello = function(name)
+<pre><code class="brush: js">var sayHello = function(name) { return "Hello, " + name; };
+sayHello
+    .asyncApple(this, ["Cat"])
+    .addCallback(function(result) { alert(result); });
+</code></pre>
+    </div>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.tagName = 'code';
+        SyntaxHighlighter.all()
+    </scr
