@@ -311,4 +311,16 @@ instantOperation.addCallback(function(result) { alert(result); });
 
 <p>Call function in an asynchronous manner. It works like Function.prototype.call() and returns an instance of Async.Operation.</p>
 
-<pre><code class="brush: js">var sayHello = function(name) 
+<pre><code class="brush: js">var sayHello = function(name) { return "Hello, " + name; };
+sayHello
+    .asyncCall(this, "Cat")
+    .addCallback(function(result) { alert(result); });
+</code></pre>
+
+<h3><a name="Function.prototype.asyncApply()">Function.prototype.asyncApply()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>context</li>
+<
