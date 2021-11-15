@@ -304,4 +304,11 @@ instantOperation.addCallback(function(result) { alert(result); });
 <ul>
 <li>type: instance</li>
 <li>input:
-<ul><li>contex
+<ul><li>context</li>
+<li>values : Params (optional)</li></ul></li>
+<li>output: operation : Operation</li>
+</ul>
+
+<p>Call function in an asynchronous manner. It works like Function.prototype.call() and returns an instance of Async.Operation.</p>
+
+<pre><code class="brush: js">var sayHello = function(name) 
