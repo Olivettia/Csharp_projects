@@ -14,4 +14,11 @@ A class represents an asynchronous operation. Every asynchronous operation shoul
 		return operation;
 	};
 	
-	var
+	var getOperation = getAsync("/ping", "")
+	getOperation.addCallback(function(result) { alert("ping returns: " + result); });
+
+### Async.Operation.result
+
+* type: instance
+
+Result of the asynchronous operation. It should be undefinied before yield is called. It should be the same value as the argument of 
