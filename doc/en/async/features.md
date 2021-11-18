@@ -59,3 +59,8 @@ Return value for a specific asynchronous operation.
 * input:
 	* callback : Function
 * output: this : Operation
+
+Add callback function to a specific asynchronous operation. These callback functions will be executed one by one and they will receive one argument as the result of the asynchronous operation.
+
+	var waitOperation = wait(999);
+	waitOperation.addCallback(function(result) { alert(result)
