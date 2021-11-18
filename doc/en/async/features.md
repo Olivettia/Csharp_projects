@@ -45,4 +45,17 @@ Indicator of whether the asynchronous operation is completed. It should be false
 Return value for a specific asynchronous operation.
 
 	var waitAsync = function(delay) {
-		var 
+		var operation = new Async.Operation();
+		setTimeout(function() {
+			var result = "You have waited " + delay + " millisecond(s)."
+			operation.yield(result);
+		}, delay);
+		return operation;
+	}
+
+### Async.Operation.addCallback()
+
+* type: instance
+* input:
+	* callback : Function
+* output: this : Operation
