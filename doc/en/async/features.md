@@ -33,4 +33,16 @@ State of the asynchronous operation. It should be "running" before yield is call
 
 * type: instance
 
-Indicator of whether the asynch
+Indicator of whether the asynchronous operation is completed. It should be false before yield is called. It should be true after yield is called.
+
+### Async.Operation.yield()
+
+* type: instance
+* input:
+	* value (optional)
+* output: this : Operation
+
+Return value for a specific asynchronous operation.
+
+	var waitAsync = function(delay) {
+		var 
