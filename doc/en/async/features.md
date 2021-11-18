@@ -21,4 +21,16 @@ A class represents an asynchronous operation. Every asynchronous operation shoul
 
 * type: instance
 
-Result of the asynchronous operation. It should be undefinied before yield is called. It should be the same value as the argument of 
+Result of the asynchronous operation. It should be undefinied before yield is called. It should be the same value as the argument of yield after yield is called.
+
+### Async.Operation.state
+
+* type: instance
+
+State of the asynchronous operation. It should be "running" before yield is called. It should be "completed" after yield is called.
+
+### Async.Operation.completed
+
+* type: instance
+
+Indicator of whether the asynch
