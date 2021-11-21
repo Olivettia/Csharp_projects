@@ -84,4 +84,10 @@ Create an asynchronous execution queue.
 
 * type: instance
 
-Result of the asynchronous operation. It should be undefin
+Result of the asynchronous operation. It should be undefined before go is called. It should be the result of the last executed function in the queue after go is called.
+
+### Async.chain().state
+
+* type: instance
+
+State of the asynchronous operation. It should be "waiting" before go is called. It should be "chain running" after go is called. It should b
