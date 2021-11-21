@@ -63,4 +63,25 @@ Return value for a specific asynchronous operation.
 Add callback function to a specific asynchronous operation. These callback functions will be executed one by one and they will receive one argument as the result of the asynchronous operation.
 
 	var waitOperation = wait(999);
-	waitOperation.addCallback(function(result) { alert(result)
+	waitOperation.addCallback(function(result) { alert(result); });
+
+## Async.chain()
+
+* type: static
+* input: none
+* output: chain : Operation
+
+Create an asynchronous execution queue.
+
+	Async
+		.chain()
+		.next(firstFunction)
+		.next(secondFunction)
+		.next(thirdFunction)
+		.go();
+
+### Async.chain().result
+
+* type: instance
+
+Result of the asynchronous operation. It should be undefin
