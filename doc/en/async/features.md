@@ -90,4 +90,12 @@ Result of the asynchronous operation. It should be undefined before go is called
 
 * type: instance
 
-State of the asynchronous operation. It should be "waiting" before go is called. It should be "chain running" after go is called. It should b
+State of the asynchronous operation. It should be "waiting" before go is called. It should be "chain running" after go is called. It should be "completed" when all functions in the queue are executed.
+
+### Async.chain().completed
+
+* type: instance
+
+Indicator of whether the asynchronous operation is completed. It should be false before all functions in the queue are executed. It should be true after that.
+
+### Async.chain().next
