@@ -98,4 +98,11 @@ State of the asynchronous operation. It should be "waiting" before go is called.
 
 Indicator of whether the asynchronous operation is completed. It should be false before all functions in the queue are executed. It should be true after that.
 
-### Async.chain().next
+### Async.chain().next()
+
+* type: instance
+* input:
+	* function : Function
+* output: this : Operation
+
+Append a function to the queue. If the function returns an instance of Async.Operation, the queue will wait for the asynchronous operation inside this function to be finished before moving on to next function in t
