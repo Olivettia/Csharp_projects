@@ -105,4 +105,4 @@ Indicator of whether the asynchronous operation is completed. It should be false
 	* function : Function
 * output: this : Operation
 
-Append a function to the queue. If the function returns an instance of Async.Operation, the queue will wait for the asynchronous operation inside this function to be finished before moving on to next function in t
+Append a function to the queue. If the function returns an instance of Async.Operation, the queue will wait for the asynchronous operation inside this function to be finished before moving on to next function in the queue. Otherwise, next function in the queue is executed right after this function. In both situations, the function will receive one argument when it's call. This argument will be the argument of go if the function is the first in the queue. Otherwise, it's result of the previous function in the queue. In bo
