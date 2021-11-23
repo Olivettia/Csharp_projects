@@ -131,4 +131,12 @@ Append a function to the queue. If the function returns an instance of Async.Ope
 	* value (optional)
 * output: this : Operation
 
-Start the functions queue. If go is called with one argum
+Start the functions queue. If go is called with one argument, this argument will be the argument of the first function in the queue. Appending more functions to the queue by calling next is still possible after go is called.
+
+	Async
+		.chain()
+		.next(firstFunction)
+		.next(secondFunction)
+		.go()
+		.next(thirdFunction);
+
