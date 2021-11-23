@@ -114,4 +114,21 @@ Append a function to the queue. If the function returns an instance of Async.Ope
 	var plusOneAsync = function(i) {
 		var operation = new Async.Operation();
 		setTimeout(function() { operation.yield(i + 1); }, 1000);
+		return operation;
+	};
 	
+	Async
+		.chain()
+		.next(plusOne)
+		.next(plusOneAsync)
+		.next(function(i) { alert(i); })
+		.go(0);
+
+### Async.chain().go()
+
+* type: instance
+* input:
+	* value (optional)
+* output: this : Operation
+
+Start the functions queue. If go is called with one argum
