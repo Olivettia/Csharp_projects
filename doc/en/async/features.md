@@ -150,4 +150,21 @@ Start the functions queue. If go is called with one argument, this argument will
 Let the functions queue wait in milliseconds. It will let the result of the previous function pass through and the next function will receive it as an argument.
 
 	Async
-		.
+		.chain()
+		.next(firstFunction)
+		.wait(999)
+		.next(secondFunction)
+		.go();
+
+## Helpers
+
+Below are the helper functions besides Async's main functions.
+
+### Async.go()
+
+* type: static
+* input:
+	* value (optional)
+* output: operation : Operation
+
+Create an asynchronous function queue and start the queue imidia
