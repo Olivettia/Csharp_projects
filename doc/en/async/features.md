@@ -140,3 +140,14 @@ Start the functions queue. If go is called with one argument, this argument will
 		.go()
 		.next(thirdFunction);
 
+### Async.chain().wait()
+
+* type: instance
+* input:
+	* delay : Number
+* output: this : Operation
+
+Let the functions queue wait in milliseconds. It will let the result of the previous function pass through and the next function will receive it as an argument.
+
+	Async
+		.
