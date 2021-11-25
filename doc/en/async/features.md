@@ -167,4 +167,13 @@ Below are the helper functions besides Async's main functions.
 	* value (optional)
 * output: operation : Operation
 
-Create an asynchronous function queue and start the queue imidia
+Create an asynchronous function queue and start the queue imidiately. If an argument is passed to go, it will be passed to the first function in the queue.
+
+	var plusOne = function(i) {
+		return i + 1;
+	};
+	
+	var plusOneAsync = function(i) {
+		var operation = new Async.Operation();
+		setTimeout(function() { operation.yield(i + 1); }, 1000);
+		return op
