@@ -176,4 +176,21 @@ Create an asynchronous function queue and start the queue imidiately. If an argu
 	var plusOneAsync = function(i) {
 		var operation = new Async.Operation();
 		setTimeout(function() { operation.yield(i + 1); }, 1000);
-		return op
+		return operation;
+	};
+	
+	Async
+		.go(0)
+		.next(plusOne)
+		.next(plusOneAsync)
+		.next(function(i) { alert(i); });
+
+### Async.collect()
+
+* type: static
+* input:
+	* functions : Array
+	* functionArguments : Array (optional)
+* output: operation : Operation
+
+Create an asynchronous operation co
