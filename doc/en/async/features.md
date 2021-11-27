@@ -245,4 +245,19 @@ Generate an instant yielded asynchronous operation. If an argument is given, it 
 	* values : Params (optional)
 * output: operation : Operation
 
-Call function in an asynchronous manner. It works like Function.prototype.call() and returns an instance of Async.Opera
+Call function in an asynchronous manner. It works like Function.prototype.call() and returns an instance of Async.Operation.
+
+	var sayHello = function(name) { return "Hello, " + name; };
+	sayHello
+		.asyncCall(this, "Cat")
+		.addCallback(function(result) { alert(result); });
+
+### Function.prototype.asyncApply()
+
+* type: instance
+* input:
+	* context
+	* values : Array (optional)
+* output: operatoin : Operation
+
+Call function in an asynchronous manner.
