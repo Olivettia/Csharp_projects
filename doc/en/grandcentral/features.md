@@ -8,4 +8,29 @@ A static class use to match and dispatch JSON.
 
 	GrandCentral.listen({
 		status: 200,
-		command: "frie
+		command: "friendstatus"
+	}, function(json) {
+		/* update friend status */
+	});
+	
+	GrandCentral.call({
+		status: 200,
+		command: "friendstatus",
+		content: [
+			{
+				username: "user0",
+				status: "online"
+			},
+			{
+				username: "user42",
+				status: "away"
+			}
+		]
+	});
+
+### GrandCentral.listen()
+
+* type: static
+* input:
+	* filter : Function || Object
+	* h
