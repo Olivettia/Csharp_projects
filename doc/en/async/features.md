@@ -219,3 +219,10 @@ Create an asynchronous operation containing a set of parallel child operations. 
 	* delay : Number
 	* value (optional)
 * output: operation : Operation
+
+Wait in millisenconds as an asynchronous operation. If the second argument is assigned, callback functions will receive it as an argument.
+
+	var waitOperation = Async.wait(999, "predefined result");
+	waitOperation.addCallback(function(result) { alert(result); });
+
+### 
