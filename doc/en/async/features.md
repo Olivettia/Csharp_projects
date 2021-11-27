@@ -201,4 +201,21 @@ Create an asynchronous operation containing a set of parallel child operations. 
 	
 	var plusOneAsync = function(i) {
 		var operation = new Async.Operation();
-		setTimeout(function() { operati
+		setTimeout(function() { operation.yield(i + 1); }, 1000);
+		return operation;
+	};
+	
+	var parallelOperation = Async
+		.collect([
+			plusOne,
+			plusOneAsync
+		], [99, 100]);
+	parallelOperation.addCallback(function(results) { alert(results); });
+
+### Async.wait()
+
+* type: static
+* input:
+	* delay : Number
+	* value (optional)
+* output: operation : Operation
