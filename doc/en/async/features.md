@@ -260,4 +260,9 @@ Call function in an asynchronous manner. It works like Function.prototype.call()
 	* values : Array (optional)
 * output: operatoin : Operation
 
-Call function in an asynchronous manner.
+Call function in an asynchronous manner. It works like Function.prototype.apply() and returns an instance of Async.Operation.
+
+	var sayHello = function(name) { return "Hello, " + name; };
+	sayHello
+		.asyncApple(this, ["Cat"])
+		.addCallback(function(result) { alert(result); });
