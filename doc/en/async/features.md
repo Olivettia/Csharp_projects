@@ -235,4 +235,14 @@ Wait in millisenconds as an asynchronous operation. If the second argument is as
 Generate an instant yielded asynchronous operation. If an argument is given, it will be passed to the callback functions.
 
 	var instantOperation = Async.instant("predefined result");
-	instantOperation.addCallback
+	instantOperation.addCallback(function(result) { alert(result); });
+
+### Function.prototype.asyncCall()
+
+* type: instance
+* input:
+	* context
+	* values : Params (optional)
+* output: operation : Operation
+
+Call function in an asynchronous manner. It works like Function.prototype.call() and returns an instance of Async.Opera
