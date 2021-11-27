@@ -165,3 +165,275 @@ GrandCentral.call({
 <pre><code class="brush: js">GrandCentral.listen({
     value1$lte: 0,
     value2$lte: 0
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: -1,
+    value2: 0,
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="gt Operator">gt Operator</a></h4>
+
+<p>gt Operator is used to compae if the value is greater than a specific value.</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$gt: 0
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: 1,
+    value2: "other"
+});
+</code></pre>
+
+<h4><a name="gte Operator">gte Operator</a></h4>
+
+<p>gte Operator is used to compae if the value is greater than or equal to a specific value.</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$gte: 0,
+    value2$gte: 0
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: 1,
+    value2: 0,
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="in Operator">in Operator</a></h4>
+
+<p>in Operator is used to test if any item in the Array is equal to a specific value. eq Operator is used in the test.</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$in: ["hello", "world"],
+    value2$in: [{
+        value2_1: 0
+    }, {
+        value2_1: 1
+    }]
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "world",
+    value2: {
+        value2_1: 0,
+        value2_1: "other"
+    },
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="nin Operator">nin Operator</a></h4>
+
+<p>nin Operator is used to test if none of the items in the Array is equal to a specific value. It should equal to the opposite value of in Operator.</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$nin: ["hello", "world"],
+    value2$nin: [{
+        value2_1: 0
+    }, {
+        value2_1: 1
+    }]
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "",
+    value2: {
+        value2_1: -1,
+        value2_1: "other"
+    },
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="all Operator">all Operator</a></h4>
+
+<p>all Operator is used to test if all items in an Array are in a specific Array. in Operator is used to test if an item is in the Array.</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$all: ["hello", "world"]
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: ["hello", "and", "world"],
+    value2: "other"
+});
+</code></pre>
+
+<h4><a name="ex Operator">ex Operator</a></h4>
+
+<p>ex Operator is used to test if an item exists in a Object or not.</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$ex: true,
+    value2$ex: false
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "hello world",
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="re Operator">re Operator</a></h4>
+
+<p>re Operator is used to test if a String match a specific pattern in RegExp.</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$re: /^A.*/
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "A13579",
+    value2: "other"
+});
+</code></pre>
+
+<h4><a name="f Operator">f Operator</a></h4>
+
+<p>f Operator is used to test if the value can pass a specific testing function.</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$f: function(json) { return json.x &gt; json.y; },
+    value2$f: function(json) { return !json; }
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: {
+        x: 1,
+        y: 0
+    },
+    value2: false,
+    value3: "other"
+});
+</code></pre>
+
+<h3><a name="GrandCentral.call()">GrandCentral.call()</a></h3>
+
+<ul>
+<li>type: static</li>
+<li>input:
+<ul><li>json : Object</li></ul></li>
+<li>output: Central</li>
+</ul>
+
+<p>Send a JSON packet for dispatching.</p>
+
+<pre><code class="brush: js">GrandCentral.call({
+    status: 200,
+    command: "friendstatus",
+    content: [
+        {
+            username: "user0",
+            status: "online"
+        },
+        {
+            username: "user42",
+            status: "away"
+        }
+    ]
+});
+</code></pre>
+
+<h2><a name="GrandCentral.extend()">GrandCentral.extend()</a></h2>
+
+<ul>
+<li>type: static</li>
+<li>input: target : Object</li>
+<li>output: target : Object</li>
+</ul>
+
+<p>Extend an object and it will have the functionalities of GrandCentral.</p>
+
+<h3><a name="GrandCentral.extend().listen()">GrandCentral.extend().listen()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>filter : Function || Object</li>
+<li>handler : Function</li></ul></li>
+<li>output: this</li>
+</ul>
+
+<p>Use a test function or a JSON pattern to match JSON packets. The handler will only receive JSON packets passed the test function or matched with the JSON pattern.</p>
+
+<pre><code class="brush: js">var controller = new Controller();
+
+GrandCentral.extend(controller);
+
+controller.listen(function(json) {
+    return (json.status == 200 &amp;&amp; json.command == "friendstatus")
+}, function(json) {
+    /* update friend status */
+});
+</code></pre>
+
+<h3><a name="GrandCentral.extend().call()">GrandCentral.extend().call()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>json : Object</li></ul></li>
+<li>output: this</li>
+</ul>
+
+<p>Send a JSON packet for dispatching.</p>
+
+<pre><code class="brush: js">var controller = new Controller();
+
+Central.extend(controller);
+
+controller.call({
+    status: 200,
+    command: "friendstatus",
+    content: [
+        {
+            username: "user0",
+            status: "online"
+        },
+        {
+            username: "user42",
+            status: "away"
+        }
+    ]
+});
+</code></pre>
+    </div>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.tagName = 'code';
+        SyntaxHighlighter.all()
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-347601-11']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+</html>
