@@ -33,4 +33,12 @@ A static class use to match and dispatch JSON.
 * type: static
 * input:
 	* filter : Function || Object
-	* h
+	* handler : Function
+* output: Central
+
+Use a test function or a JSON pattern to match JSON packets. The handler will only receive JSON packets passed the test function or matched with the JSON pattern.
+
+	GrandCentral.listen(function(json) {
+		return (json.status == 200 && json.command == "friendstatus")
+	}, function(json) {
+		/* update friend 
