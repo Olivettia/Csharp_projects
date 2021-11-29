@@ -41,4 +41,16 @@ Use a test function or a JSON pattern to match JSON packets. The handler will on
 	GrandCentral.listen(function(json) {
 		return (json.status == 200 && json.command == "friendstatus")
 	}, function(json) {
-		/* update friend 
+		/* update friend status */
+	});
+	
+	GrandCentral.listen({
+		status: 200,
+		command: "friendstatus"
+	}, function(json) {
+		/* update friend status */
+	});
+
+#### Default Operator
+
+If no Operator is used, it will be considered as Default Operator in use. If the condition is an Array, Default Operator acts
