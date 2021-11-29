@@ -53,4 +53,11 @@ Use a test function or a JSON pattern to match JSON packets. The handler will on
 
 #### Default Operator
 
-If no Operator is used, it will be considered as Default Operator in use. If the condition is an Array, Default Operator acts
+If no Operator is used, it will be considered as Default Operator in use. If the condition is an Array, Default Operator acts as in Operator; If the condition is a RegExp, Default Operator acts as re Operator; If the condition is a Function, Default Operator acts as f Operator. Otherwise, Default Operator acts as eq Operator.
+
+	GrandCentral.listen({
+		value1: 42,
+		value2: ["hello", "world"]
+	}, function(json) {
+		/* will capture call below */
+	})
