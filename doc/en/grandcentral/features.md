@@ -79,4 +79,25 @@ eq Operator is used to compare if two values are equal. For String, Number, and 
 		value4$eq: ["hello", "world"],
 		value5$eq: {
 			value5_1: 42,
-			value5_2: ["hello", "
+			value5_2: ["hello", "world"]
+		}
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: "hello world",
+		value2: 42,
+		value3: true,
+		value4: ["hello", "world"],
+		value5: {
+			value5_1: 42,
+			value5_2: "world",
+			value5_3: "other"
+		},
+		value6: "other"
+	});
+
+#### ne Operator
+
+eq Operato
