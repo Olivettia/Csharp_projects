@@ -60,4 +60,14 @@ If no Operator is used, it will be considered as Default Operator in use. If the
 		value2: ["hello", "world"]
 	}, function(json) {
 		/* will capture call below */
-	})
+	});
+	
+	GrandCentral.call({
+		value1: 42,
+		value2: "world",
+		value3: "other"
+	});
+
+#### eq Operator
+
+eq Operator is used to compare if two values are equal. For String, Number, and Boolean, the value is compared directly; For Array, every item in the Array is compared with eq Operat
