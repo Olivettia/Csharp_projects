@@ -117,4 +117,19 @@ eq Operator is used to compare if two values are not equal. It should equal to t
 
 #### lt Operator
 
-lt Operat
+lt Operator is used to compae if the value is less than a specific value.
+
+	GrandCentral.listen({
+		value1$lt: 0
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: -1,
+		value2: "other"
+	});
+
+#### lte Operator
+
+lte Operator is used to compae if the value is less than or equal t
