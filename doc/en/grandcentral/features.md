@@ -100,4 +100,21 @@ eq Operator is used to compare if two values are equal. For String, Number, and 
 
 #### ne Operator
 
-eq Operato
+eq Operator is used to compare if two values are not equal. It should equal to the opposite value of eq Operator.
+
+	GrandCentral.listen({
+		value1$ne: "hello world",
+		value2$ne: 42
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: "",
+		value2: 24,
+		value3: "other"
+	});
+
+#### lt Operator
+
+lt Operat
