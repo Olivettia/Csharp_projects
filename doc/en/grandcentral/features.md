@@ -70,4 +70,13 @@ If no Operator is used, it will be considered as Default Operator in use. If the
 
 #### eq Operator
 
-eq Operator is used to compare if two values are equal. For String, Number, and Boolean, the value is compared directly; For Array, every item in the Array is compared with eq Operat
+eq Operator is used to compare if two values are equal. For String, Number, and Boolean, the value is compared directly; For Array, every item in the Array is compared with eq Operator; For Obejct, every item in the Object is compared with Default Operator. For null and undefined, the value is compared directly.
+
+	GrandCentral.listen({
+		value1$eq: "hello world",
+		value2$eq: 42,
+		value3$eq: true,
+		value4$eq: ["hello", "world"],
+		value5$eq: {
+			value5_1: 42,
+			value5_2: ["hello", "
