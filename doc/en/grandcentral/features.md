@@ -149,4 +149,21 @@ lte Operator is used to compae if the value is less than or equal to a specific 
 
 #### gt Operator
 
-gt Operator is used to compae if the value is greater than a sp
+gt Operator is used to compae if the value is greater than a specific value.
+
+	GrandCentral.listen({
+		value1$gt: 0
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: 1,
+		value2: "other"
+	});
+
+#### gte Operator
+
+gte Operator is used to compae if the value is greater than or equal to a specific value.
+
+	GrandCentr
