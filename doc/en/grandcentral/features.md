@@ -166,4 +166,19 @@ gt Operator is used to compae if the value is greater than a specific value.
 
 gte Operator is used to compae if the value is greater than or equal to a specific value.
 
-	GrandCentr
+	GrandCentral.listen({
+		value1$gte: 0,
+		value2$gte: 0
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: 1,
+		value2: 0,
+		value3: "other"
+	});
+
+#### in Operator
+
+in Operator is used to test if any item in the Array is equal to a specific value. eq Operator is used in the test
