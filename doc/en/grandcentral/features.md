@@ -181,4 +181,24 @@ gte Operator is used to compae if the value is greater than or equal to a specif
 
 #### in Operator
 
-in Operator is used to test if any item in the Array is equal to a specific value. eq Operator is used in the test
+in Operator is used to test if any item in the Array is equal to a specific value. eq Operator is used in the test.
+
+	GrandCentral.listen({
+		value1$in: ["hello", "world"],
+		value2$in: [{
+			value2_1: 0
+		}, {
+			value2_1: 1
+		}]
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: "world",
+		value2: {
+			value2_1: 0,
+			value2_1: "other"
+		},
+		value3: "other"
+	}
