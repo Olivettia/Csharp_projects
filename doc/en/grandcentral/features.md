@@ -246,4 +246,21 @@ all Operator is used to test if all items in an Array are in a specific Array. i
 
 ex Operator is used to test if an item exists in a Object or not.
 
-	Gr
+	GrandCentral.listen({
+		value1$ex: true,
+		value2$ex: false
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: "hello world",
+		value3: "other"
+	});
+
+#### re Operator
+
+re Operator is used to test if a String match a specific pattern in RegExp.
+
+	GrandCentral.listen({
+		value1$re: 
