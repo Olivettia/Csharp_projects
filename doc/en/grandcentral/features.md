@@ -201,4 +201,15 @@ in Operator is used to test if any item in the Array is equal to a specific valu
 			value2_1: "other"
 		},
 		value3: "other"
-	}
+	});
+
+#### nin Operator
+
+nin Operator is used to test if none of the items in the Array is equal to a specific value. It should equal to the opposite value of in Operator.
+
+	GrandCentral.listen({
+		value1$nin: ["hello", "world"],
+		value2$nin: [{
+			value2_1: 0
+		}, {
+			value2_1:
