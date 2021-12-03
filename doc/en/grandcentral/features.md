@@ -212,4 +212,21 @@ nin Operator is used to test if none of the items in the Array is equal to a spe
 		value2$nin: [{
 			value2_1: 0
 		}, {
-			value2_1:
+			value2_1: 1
+		}]
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: "",
+		value2: {
+			value2_1: -1,
+			value2_1: "other"
+		},
+		value3: "other"
+	});
+
+#### all Operator
+
+all Operator is used to test if all items in an Array are in a specific Array. in Operator is used to test if an item 
