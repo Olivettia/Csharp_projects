@@ -229,4 +229,21 @@ nin Operator is used to test if none of the items in the Array is equal to a spe
 
 #### all Operator
 
-all Operator is used to test if all items in an Array are in a specific Array. in Operator is used to test if an item 
+all Operator is used to test if all items in an Array are in a specific Array. in Operator is used to test if an item is in the Array.
+
+	GrandCentral.listen({
+		value1$all: ["hello", "world"]
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: ["hello", "and", "world"],
+		value2: "other"
+	});
+
+#### ex Operator
+
+ex Operator is used to test if an item exists in a Object or not.
+
+	Gr
