@@ -300,4 +300,25 @@ f Operator is used to test if the value can pass a specific testing function.
 	* json : Object
 * output: Central
 
-Send 
+Send a JSON packet for dispatching.
+
+	GrandCentral.call({
+		status: 200,
+		command: "friendstatus",
+		content: [
+			{
+				username: "user0",
+				status: "online"
+			},
+			{
+				username: "user42",
+				status: "away"
+			}
+		]
+	});
+
+## GrandCentral.extend()
+
+* type: static
+* input: target : Object
+* outp
