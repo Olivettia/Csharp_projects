@@ -278,4 +278,26 @@ re Operator is used to test if a String match a specific pattern in RegExp.
 f Operator is used to test if the value can pass a specific testing function.
 
 	GrandCentral.listen({
-		value1$f: function(json) { return json
+		value1$f: function(json) { return json.x > json.y; },
+		value2$f: function(json) { return !json; }
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: {
+			x: 1,
+			y: 0
+		},
+		value2: false,
+		value3: "other"
+	});
+
+### GrandCentral.call()
+
+* type: static
+* input:
+	* json : Object
+* output: Central
+
+Send 
