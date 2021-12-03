@@ -263,4 +263,19 @@ ex Operator is used to test if an item exists in a Object or not.
 re Operator is used to test if a String match a specific pattern in RegExp.
 
 	GrandCentral.listen({
-		value1$re: 
+		value1$re: /^A.*/
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: "A13579",
+		value2: "other"
+	});
+
+#### f Operator
+
+f Operator is used to test if the value can pass a specific testing function.
+
+	GrandCentral.listen({
+		value1$f: function(json) { return json
