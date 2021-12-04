@@ -365,4 +365,11 @@ Send a JSON packet for dispatching.
 		content: [
 			{
 				username: "user0",
-				sta
+				status: "online"
+			},
+			{
+				username: "user42",
+				status: "away"
+			}
+		]
+	});
