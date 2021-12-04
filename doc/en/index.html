@@ -216,3 +216,49 @@ var errorController = new (function() {
 </code></pre>
 
 <h2><a name="List">List</a></h2>
+
+<!--* <a href="list/introduction.html">Introduction</a>-->
+
+<ul>
+<li><a href="list/features.html">Features</a>
+<!--* <a href="list/secrets.html">Secrets</a>--></li>
+</ul>
+
+<p>JavaScript built-in Array seems to be not enough if you need to process a lot of data in the form of 1-dimension set. You would like to use Haskell List in this case and this List component for JavaScript is a substitute. List encapsulates Array, provides Haskell List style methods, and simplify your work on data processing.</p>
+
+<pre><code class="brush: js">var list1 = new List(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+
+var list2 = list1.filter(function(i) { return i &gt; 2; });
+assert(list2.toArray() == [3, 4, 5, 4, 3]);
+
+var list3 = list2.map(function(i) { return i * i; });
+assert(list3.toArray() == [9, 16, 25, 16, 9]);
+
+var list4 = List.iterate(function(i) { return i * 2; }, 1);
+
+var list5 = list4.take(10);
+assert(list5.toArray() == [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]);
+
+var list6 = list4
+    .map(function(i) { return i - 1; })
+    .dropWhile(function(i) { return i &lt; 100; })
+    .takeWhile(function(i) { return i &lt; 1000; });
+assert(list6.toArray() == [127, 255, 511]);
+</code></pre>
+    </div>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.tagName = 'code';
+        SyntaxHighlighter.all()
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-347601-11']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+</html>

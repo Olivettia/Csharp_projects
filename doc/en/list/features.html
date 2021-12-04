@@ -1,0 +1,36 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>List Features</title>
+		<link rel="stylesheet" type="text/css" href="../../stylesheets/default.css" />
+		<link rel="stylesheet" type="text/css" href="../../stylesheets/shCore.css" />
+		<link rel="stylesheet" type="text/css" href="../../stylesheets/shThemeDefault.css" />
+		<script type="text/javascript" src="../../javascripts/xregexp.js"></script>
+		<script type="text/javascript" src="../../javascripts/shCore.js"></script>
+		<script type="text/javascript" src="../../javascripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../javascripts/page.js"></script>
+	</head>
+<body>
+    <div id="index" class="collapsed">
+        <a id="toggle" href="###" onclick="window.toggleTreeVisibility()">Show Index</a>
+        <ul><li><a href="#List Features">List Features</a><ul><li><a href="#List">List</a><ul><li><a href="#List.at()">List.at()</a></li><li><a href="#List.length()">List.length()</a></li><li><a href="#List.each()">List.each()</a></li><li><a href="#List.reverse()">List.reverse()</a></li><li><a href="#List.map()">List.map()</a></li><li><a href="#List.filter()">List.filter()</a></li><li><a href="#List.fold()">List.fold()</a></li><li><a href="#List.scan()">List.scan()</a></li><li><a href="#List.takeWhile()">List.takeWhile()</a></li><li><a href="#List.take()">List.take()</a></li><li><a href="#List.dropWhile()">List.dropWhile()</a></li><li><a href="#List.drop()">List.drop()</a></li><li><a href="#List.cycle()">List.cycle()</a></li><li><a href="#List.generate()">List.generate()</a></li><li><a href="#List.iterate()">List.iterate()</a></li><li><a href="#List.count()">List.count()</a></li><li><a href="#List.repeat()">List.repeat()</a></li><li><a href="#List.concatenate()">List.concatenate()</a></li><li><a href="#List.zip()">List.zip()</a></li><li><a href="#List.all()">List.all()</a></li><li><a href="#List.any()">List.any()</a></li><li><a href="#List.sum()">List.sum()</a></li><li><a href="#List.average()">List.average()</a></li><li><a href="#List.maximum()">List.maximum()</a></li><li><a href="#List.minimum()">List.minimum()</a></li><li><a href="#List.head()">List.head()</a></li><li><a href="#List.tail()">List.tail()</a></li><li><a href="#List.init()">List.init()</a></li><li><a href="#List.last()">List.last()</a></li></ul></li></ul></li></ul>
+    </div>
+    <div id="content">
+        <h1><a name="List Features">List Features</a></h1>
+
+<p>List is a component for data set operations. It's like Haskell List or Python List/Generator with infinite set support.</p>
+
+<p>The difference between List and Array is that List only compute and store the items you access. List won't compute or store any item you don't access and these items only exist in the computational expression. Thus you can create infinite List in a way like Python Generator and access a finite area of it.</p>
+
+<h2><a name="List">List</a></h2>
+
+<ul>
+<li>type: constructor</li>
+<li>input:
+<ul><li>none | initialArray : arguments (length > 1) | intialArray : Array</li></ul></li>
+<li>output: this : List</li>
+</ul>
+
+<p>List represents a one dimensional set. It's like Array and every instance represents a data set.</p>
