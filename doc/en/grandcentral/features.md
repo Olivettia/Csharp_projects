@@ -333,4 +333,14 @@ Extend an object and it will have the functionalities of GrandCentral.
 	* handler : Function
 * output: this
 
-Use a test function or a JSON pattern to match JSON packets. The hand
+Use a test function or a JSON pattern to match JSON packets. The handler will only receive JSON packets passed the test function or matched with the JSON pattern.
+
+
+	var controller = new Controller();
+	
+	GrandCentral.extend(controller);
+	
+	controller.listen(function(json) {
+		return (json.status == 200 && json.command == "friendstatus")
+	}, function(json) {
+		/* update frie
