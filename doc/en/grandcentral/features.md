@@ -321,4 +321,16 @@ Send a JSON packet for dispatching.
 
 * type: static
 * input: target : Object
-* outp
+* output: target : Object
+
+Extend an object and it will have the functionalities of GrandCentral.
+
+### GrandCentral.extend().listen()
+
+* type: instance
+* input:
+	* filter : Function || Object
+	* handler : Function
+* output: this
+
+Use a test function or a JSON pattern to match JSON packets. The hand
