@@ -343,4 +343,26 @@ Use a test function or a JSON pattern to match JSON packets. The handler will on
 	controller.listen(function(json) {
 		return (json.status == 200 && json.command == "friendstatus")
 	}, function(json) {
-		/* update frie
+		/* update friend status */
+	});
+
+### GrandCentral.extend().call()
+
+* type: instance
+* input:
+	* json : Object
+* output: this
+
+Send a JSON packet for dispatching.
+
+	var controller = new Controller();
+	
+	Central.extend(controller);
+	
+	controller.call({
+		status: 200,
+		command: "friendstatus",
+		content: [
+			{
+				username: "user0",
+				sta
