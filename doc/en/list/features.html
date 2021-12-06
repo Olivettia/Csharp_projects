@@ -308,3 +308,212 @@ alert(list.take(20).toArray().join(', '));
 </code></pre>
 
 <h3><a name="List.repeat()">List.repeat()</a></h3>
+
+<ul>
+<li>type: static</li>
+<li>input:
+<ul><li>object</li></ul></li>
+<li>output: list : List</li>
+</ul>
+
+<p>Generate an infinite List with every item equals to the object and then return the List.</p>
+
+<pre><code class="brush: js">var list = List.repeat(42);
+alert(list.take(20).toArray().join(', '));
+</code></pre>
+
+<h3><a name="List.concatenate()">List.concatenate()</a></h3>
+
+<ul>
+<li>type: static</li>
+<li>input:
+<ul><li>lists : arguments</li></ul></li>
+<li>output: list : List</li>
+</ul>
+
+<p>Concatenate multiple Lists and return the result.</p>
+
+<pre><code class="brush: js">var list1 = new List(1, 2, 3, 4, 5);
+var list2 = new List(6, 7, 8, 9, 10);
+var concatenatedList = List.concatenate(list1, list2);
+alert(concatenatedList.toArray().join(', '));
+</code></pre>
+
+<h3><a name="List.zip()">List.zip()</a></h3>
+
+<ul>
+<li>type: static</li>
+<li>input:
+<ul><li>predicate : Function</li>
+<li>lists : arguments</li></ul></li>
+<li>output: list : List</li>
+</ul>
+
+<p>Merge multiple Lists with the function and return the result.</p>
+
+<pre><code class="brush: js">var list1 = new List(1, 2, 3, 4, 5);
+var list2 = new List(6, 7, 8, 9, 10);
+var zippedList = List.zip(function(x, y) { return { x: x, y: y }; }, list1, list2);
+alert(zippedList.toArray().join(', '));
+</code></pre>
+
+<h3><a name="List.all()">List.all()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>predicate : Function</li></ul></li>
+<li>output: result : Boolean</li>
+</ul>
+
+<p>Detect if every item of the List satisfies the condition.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+alert(list.all(function(i) { return i &gt; 0; });
+</code></pre>
+
+<h3><a name="List.any()">List.any()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>predicate : Function</li></ul></li>
+<li>output: result : Boolean</li>
+</ul>
+
+<p>Detect if at least one item of the List satisfies the condition.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+alert(list.any(function(i) { return i &gt; 0; });
+</code></pre>
+
+<h3><a name="List.sum()">List.sum()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input: none</li>
+<li>output: result : Number</li>
+</ul>
+
+<p>Calculate the sum of the items of the List.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+alert(list.sum());
+</code></pre>
+
+<h3><a name="List.average()">List.average()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input: none</li>
+<li>output: result : Number</li>
+</ul>
+
+<p>Calculate the average of the items of the List.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+alert(list.sum());
+</code></pre>
+
+<h3><a name="List.maximum()">List.maximum()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input: none</li>
+<li>output: result : Number</li>
+</ul>
+
+<p>Search for the maximum value in the List.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+alert(list.maximum());
+</code></pre>
+
+<h3><a name="List.minimum()">List.minimum()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input: none</li>
+<li>output: result : Number</li>
+</ul>
+
+<p>Search for the minimum value in the List.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+alert(list.minimum());
+</code></pre>
+
+<h3><a name="List.head()">List.head()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input: none</li>
+<li>output: item</li>
+</ul>
+
+<p>Return the first item of the List.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+alert(list.head());
+</code></pre>
+
+<h3><a name="List.tail()">List.tail()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input: none</li>
+<li>output: list : List</li>
+</ul>
+
+<p>Return a List with the first item removed.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+var tailList = list.tail();
+alert(tailList.toArray().join(', '));
+</code></pre>
+
+<h3><a name="List.init()">List.init()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input: none</li>
+<li>output: list : List</li>
+</ul>
+
+<p>Return a List with the last item removed.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+var initList = list.init();
+alert(initList.toArray().join(', '));
+</code></pre>
+
+<h3><a name="List.last()">List.last()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input: none</li>
+<li>output: item</li>
+</ul>
+
+<p>Return the Last item of the List.</p>
+
+<pre><code class="brush: js">var list = new List(1, 2, 3, 4, 5);
+alert(list.last());
+</code></pre>
+    </div>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.tagName = 'code';
+        SyntaxHighlighter.all()
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-347601-11']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+</html>
