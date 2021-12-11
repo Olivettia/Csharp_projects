@@ -19,4 +19,13 @@
     <div id="content">
         <h1><a name="Overload Features">Overload Features</a></h1>
 
-<p>Overload is for creating overloaded functions in JavaScript in a simpler and better way. It let you describe the signature of different functions and relieve you of handling 
+<p>Overload is for creating overloaded functions in JavaScript in a simpler and better way. It let you describe the signature of different functions and relieve you of handling signatures recognition in your function.</p>
+
+<h2><a name="Overload">Overload</a></h2>
+
+<p>A static class for creating overloaded functions.</p>
+
+<pre><code class="brush: js">var sum = Overload
+    .add("Number, Number",
+        function(x, y) { return x + y; })
+    .add(
