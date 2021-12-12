@@ -125,4 +125,8 @@ sayHello(1, 2, 3, 4, 5);
 
 <h4><a name="Class Inheritance Resolution">Class Inheritance Resolution</a></h4>
 
-<p>I
+<p>If classes in signatures of overloaded functions have inheritance relationship, Overload will choose the only best match. If there's no only best best, an error will be thrown.</p>
+
+<pre><code class="brush: js">var Parent = function() {};
+var Child = function() {};
+Child.prototype = new Parent
