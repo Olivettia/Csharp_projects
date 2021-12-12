@@ -114,4 +114,15 @@ var sayHello = Overload
     .add([User, User],
         function(user1, user2) { sayHello(user1.name, user2.name); })
     .add([Overload.Any],
-        function(object) { sayHello(ob
+        function(object) { sayHello(object.toString()); })
+    .add([Overload.More],
+        function(objects) { sayHello(objects.join(" &amp; ")); });
+
+sayHello("World");
+sayHello(new User("Cat"), new User("Erik"));
+sayHello(1, 2, 3, 4, 5);
+</code></pre>
+
+<h4><a name="Class Inheritance Resolution">Class Inheritance Resolution</a></h4>
+
+<p>I
