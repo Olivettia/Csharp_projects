@@ -69,4 +69,16 @@ alert(concatenate([1, 2, 3], " + "));
 
 <pre><code class="brush: js">var add = Overload
     .add("*, *",
-       
+        function(x, y) { return x + y; })
+    .add("*, *, *",
+        function(x, y, z) { return x + y + z; });
+
+alert(add(1, 2, 3));
+alert(add("hello", " ", "world"));
+</code></pre>
+
+<h4><a name="More Argument">More Argument</a></h4>
+
+<p>"..." represents arguments of any number.</p>
+
+<pre><code class="brush: js">var sum = Overload
