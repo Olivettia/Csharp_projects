@@ -100,4 +100,12 @@ alert(sum(1, 2, 3, 4, 5, 6));
 
 <h4><a name="Internal Class">Internal Class</a></h4>
 
-<p>If the signature of an overloaded function includes classes that can't be evaluate in the global scope via eval, the signature could be passed as an Array. In this 
+<p>If the signature of an overloaded function includes classes that can't be evaluate in the global scope via eval, the signature could be passed as an Array. In this case, "*" is replaced by Overload.Any and "..." is replaced by Overload.More.</p>
+
+<pre><code class="brush: js">var User = function(name) { this.name = name; };
+
+var sayHello = Overload
+    .add("String",
+        function(string) { alert("Hello, " + string); }) 
+    .add("String, String",
+        functio
