@@ -49,4 +49,14 @@ alert(sum(3, 4, 5));
 
 <pre><code class="brush: js">var concatenate = Overload
     .add("String, String"),
-        function(s1, 
+        function(s1, s2) { return s1 + s2; })
+    .add("String, String, String"),
+        function(s1, s2, s3) { return s1 + s2 + s3; });
+
+concatenate
+    .add("Array",
+    function(array) { return array.join(""); })
+    .add("Array, String",
+        function(array, separator) { return array.join(separator); });
+
+alert(concatenate(
