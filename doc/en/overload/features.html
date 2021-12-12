@@ -59,4 +59,14 @@ concatenate
     .add("Array, String",
         function(array, separator) { return array.join(separator); });
 
-alert(concatenate(
+alert(concatenate("hello", " ", "world"));
+alert(concatenate([1, 2, 3], " + "));
+</code></pre>
+
+<h4><a name="Any Argument">Any Argument</a></h4>
+
+<p>"*" represents an argument which matches any type of variable.</p>
+
+<pre><code class="brush: js">var add = Overload
+    .add("*, *",
+       
