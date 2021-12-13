@@ -129,4 +129,14 @@ sayHello(1, 2, 3, 4, 5);
 
 <pre><code class="brush: js">var Parent = function() {};
 var Child = function() {};
-Child.prototype = new Parent
+Child.prototype = new Parent();
+
+var selectClass = Overload
+    .add([Parent],
+        function(parent) { return "[Parent]"; })
+    .add([Child],
+        function(child) { return "[Child]"; })
+    .add([Parent, Child],
+        function(parent, child) { return "[Parent, Child]"; })
+    .add([Child, Parent],
+        function(child, 
