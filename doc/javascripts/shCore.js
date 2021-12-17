@@ -19,4 +19,12 @@
 //
 var SyntaxHighlighter = function() { 
 
-// Commo
+// CommonJS
+if (typeof(require) != 'undefined' && typeof(XRegExp) == 'undefined')
+{
+	XRegExp = require('XRegExp').XRegExp;
+}
+
+// Shortcut object which will be assigned to the SyntaxHighlighter variable.
+// This is a shorthand for local reference in order to avoid long namespace 
+// references to SyntaxHighlig
