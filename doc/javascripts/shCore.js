@@ -51,4 +51,19 @@ var sh = {
 		/** Title to be displayed above the code block. */
 		'title' : null,
 		
-		/** Enables o
+		/** Enables or disables smart tabs. */
+		'smart-tabs' : true,
+		
+		/** Gets or sets tab size. */
+		'tab-size' : 4,
+		
+		/** Enables or disables gutter. */
+		'gutter' : true,
+		
+		/** Enables or disables toolbar. */
+		'toolbar' : true,
+		
+		/** Enables quick code copy and paste from double click. */
+		'quick-code' : true,
+		
+		/** Forces
