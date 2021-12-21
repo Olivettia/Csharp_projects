@@ -66,4 +66,19 @@ var sh = {
 		/** Enables quick code copy and paste from double click. */
 		'quick-code' : true,
 		
-		/** Forces
+		/** Forces code view to be collapsed. */
+		'collapse' : false,
+		
+		/** Enables or disables automatic links. */
+		'auto-links' : true,
+		
+		/** Gets or sets light mode. Equavalent to turning off gutter and toolbar. */
+		'light' : false,
+		
+		'html-script' : false
+	},
+	
+	config : {
+		space : '&nbsp;',
+		
+		/** Enab
