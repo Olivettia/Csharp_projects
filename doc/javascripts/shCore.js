@@ -93,4 +93,11 @@ var sh = {
 		tagName : 'pre',
 		
 		strings : {
-			expandSource : 'expand sour
+			expandSource : 'expand source',
+			help : '?',
+			alert: 'SyntaxHighlighter\n\n',
+			noBrush : 'Can\'t find brush for: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
