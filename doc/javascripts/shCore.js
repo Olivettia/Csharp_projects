@@ -27,4 +27,17 @@ if (typeof(require) != 'undefined' && typeof(XRegExp) == 'undefined')
 
 // Shortcut object which will be assigned to the SyntaxHighlighter variable.
 // This is a shorthand for local reference in order to avoid long namespace 
-// references to SyntaxHighlig
+// references to SyntaxHighlighter.whatever...
+var sh = {
+	defaults : {
+		/** Additional CSS class names to be added to highlighter elements. */
+		'class-name' : '',
+		
+		/** First line number. */
+		'first-line' : 1,
+		
+		/**
+		 * Pads line numbers. Possible values are:
+		 *
+		 *   false - don't pad line numbers.
+		 *   t
