@@ -40,4 +40,15 @@ var sh = {
 		 * Pads line numbers. Possible values are:
 		 *
 		 *   false - don't pad line numbers.
-		 *   t
+		 *   true  - automaticaly pad numbers with minimum required number of leading zeroes.
+		 *   [int] - length up to which pad line numbers.
+		 */
+		'pad-line-numbers' : false,
+		
+		/** Lines to highlight. */
+		'highlight' : null,
+		
+		/** Title to be displayed above the code block. */
+		'title' : null,
+		
+		/** Enables o
