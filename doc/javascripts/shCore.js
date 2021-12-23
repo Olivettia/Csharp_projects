@@ -162,4 +162,10 @@ var sh = {
 		},
 		
 		/**
-		 * Generates HTM
+		 * Generates HTML markup for a regular button in the toolbar.
+		 * @param {Highlighter} highlighter Highlighter instance.
+		 * @param {String} commandName		Command name that would be executed.
+		 * @param {String} label			Label text to display.
+		 * @return {String}					Returns HTML markup.
+		 */
+		getButtonHtml: f
