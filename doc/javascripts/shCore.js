@@ -148,4 +148,18 @@ var sh = {
 				list = items.list
 				;
 			
-			function defaultGetHtml
+			function defaultGetHtml(highlighter, name)
+			{
+				return sh.toolbar.getButtonHtml(highlighter, name, sh.config.strings[name]);
+			};
+			
+			for (var i = 0; i < list.length; i++)
+				html += (items[list[i]].getHtml || defaultGetHtml)(highlighter, list[i]);
+			
+			html += '</div>';
+			
+			return html;
+		},
+		
+		/**
+		 * Generates HTM
