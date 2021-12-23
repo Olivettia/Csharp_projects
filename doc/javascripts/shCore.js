@@ -113,4 +113,11 @@ var sh = {
 	/** This object is populated by user included external brush files. */
 	brushes : {},
 
-	/** Co
+	/** Common regular expressions. */
+	regexLib : {
+		multiLineCComments			: /\/\*[\s\S]*?\*\//gm,
+		singleLineCComments			: /\/\/.*$/gm,
+		singleLinePerlComments		: /#.*$/gm,
+		doubleQuotedString			: /"([^\\"\n]|\\.)*"/g,
+		singleQuotedString			: /'([^\\'\n]|\\.)*'/g,
+		multiLineDoubleQuotedString	: new
