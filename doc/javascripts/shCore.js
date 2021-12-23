@@ -137,4 +137,15 @@ var sh = {
 
 	toolbar: {
 		/**
-		 * Gener
+		 * Generates HTML markup for the toolbar.
+		 * @param {Highlighter} highlighter Highlighter instance.
+		 * @return {String} Returns HTML markup.
+		 */
+		getHtml: function(highlighter)
+		{
+			var html = '<div class="toolbar">',
+				items = sh.toolbar.items,
+				list = items.list
+				;
+			
+			function defaultGetHtml
