@@ -182,3 +182,18 @@ var sh = {
 		 */
 		handler: function(e)
 		{
+			var target = e.target,
+				className = target.className || ''
+				;
+
+			function getValue(name)
+			{
+				var r = new RegExp(name + '_(\\w+)'),
+					match = r.exec(className)
+					;
+
+				return match ? match[1] : null;
+			};
+			
+			var highlighter = getHighlighterById(findParentElement(target, '.syntaxhighlighter').id),
+				commandName 
