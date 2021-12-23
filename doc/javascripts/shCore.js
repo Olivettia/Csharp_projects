@@ -168,4 +168,17 @@ var sh = {
 		 * @param {String} label			Label text to display.
 		 * @return {String}					Returns HTML markup.
 		 */
-		getButtonHtml: f
+		getButtonHtml: function(highlighter, commandName, label)
+		{
+			return '<span><a href="#" class="toolbar_item'
+				+ ' command_' + commandName
+				+ ' ' + commandName
+				+ '">' + label + '</a></span>'
+				;
+		},
+		
+		/**
+		 * Event handler for a toolbar anchor.
+		 */
+		handler: function(e)
+		{
