@@ -120,4 +120,10 @@ var sh = {
 		singleLinePerlComments		: /#.*$/gm,
 		doubleQuotedString			: /"([^\\"\n]|\\.)*"/g,
 		singleQuotedString			: /'([^\\'\n]|\\.)*'/g,
-		multiLineDoubleQuotedString	: new
+		multiLineDoubleQuotedString	: new XRegExp('"([^\\\\"]|\\\\.)*"', 'gs'),
+		multiLineSingleQuotedString	: new XRegExp("'([^\\\\']|\\\\.)*'", 'gs'),
+		xmlComments					: /(&lt;|<)!--[\s\S]*?--(&gt;|>)/gm,
+		url							: /\w+:\/\/[\w-.\/?%&=:@;]*/g,
+		
+		/** <?= ?> tags. */
+		phpScriptTags 				: { left: /(&lt;|<)\?=?/g, right: 
