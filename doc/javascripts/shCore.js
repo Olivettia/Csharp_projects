@@ -272,4 +272,21 @@ var sh = {
 			return result;
 	
 		for (var i = 0; i < elements.length; i++) 
+		{
+			var item = {
+				target: elements[i], 
+				// local params take precedence over globals
+				params: merge(globalParams, parseParams(elements[i].className))
+			};
+
+			if (item.params['brush'] == null)
+				continue;
+				
+			result.push(item);
+		}
 		
+		return result;
+	},
+
+	/**
+	 * Shorthand to highlight all elements
