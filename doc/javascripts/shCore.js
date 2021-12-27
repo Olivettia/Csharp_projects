@@ -218,4 +218,15 @@ var sh = {
 					if (highlighter.getParam('collapse') != true)
 						return '';
 						
-					var title = highlighter.get
+					var title = highlighter.getParam('title');
+					return sh.toolbar.getButtonHtml(highlighter, 'expandSource', title ? title : sh.config.strings.expandSource);
+				},
+			
+				execute: function(highlighter)
+				{
+					var div = getHighlighterDivById(highlighter.id);
+					removeClass(div, 'collapsed');
+				}
+			},
+
+			/** Command to display
