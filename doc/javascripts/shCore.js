@@ -289,4 +289,11 @@ var sh = {
 	},
 
 	/**
-	 * Shorthand to highlight all elements
+	 * Shorthand to highlight all elements on the page that are marked as 
+	 * SyntaxHighlighter source code.
+	 * 
+	 * @param {Object} globalParams		Optional parameters which override element's 
+	 * 									parameters. Only used if element is specified.
+	 * 
+	 * @param {Object} element	Optional element to highlight. If none is
+	 * 							prov
