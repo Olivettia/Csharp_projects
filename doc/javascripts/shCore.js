@@ -260,4 +260,16 @@ var sh = {
 	findElements: function(globalParams, element)
 	{
 		var elements = element ? [element] : toArray(document.getElementsByTagName(sh.config.tagName)), 
+			conf = sh.config,
+			result = []
+			;
+
+		// support for <SCRIPT TYPE="syntaxhighlighter" /> feature
+		if (conf.useScriptTags)
+			elements = elements.concat(getSyntaxHighlighterScriptTags());
+
+		if (elements.length === 0) 
+			return result;
+	
+		for (var i = 0; i < elements.length; i++) 
 		
