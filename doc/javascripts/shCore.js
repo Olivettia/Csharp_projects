@@ -229,4 +229,21 @@ var sh = {
 				}
 			},
 
-			/** Command to display
+			/** Command to display the about dialog window. */
+			help: {
+				execute: function(highlighter)
+				{	
+					var wnd = popup('', '_blank', 500, 250, 'scrollbars=0'),
+						doc = wnd.document
+						;
+					
+					doc.write(sh.config.strings.aboutDialog);
+					doc.close();
+					wnd.focus();
+				}
+			}
+		}
+	},
+
+	/**
+	 * Finds all elements on the p
