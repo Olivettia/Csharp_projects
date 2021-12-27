@@ -246,4 +246,10 @@ var sh = {
 	},
 
 	/**
-	 * Finds all elements on the p
+	 * Finds all elements on the page which should be processes by SyntaxHighlighter.
+	 *
+	 * @param {Object} globalParams		Optional parameters which override element's 
+	 * 									parameters. Only used if element is specified.
+	 * 
+	 * @param {Object} element	Optional element to highlight. If none is
+	 * 							provided, all elements 
