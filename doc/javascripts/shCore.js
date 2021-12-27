@@ -252,4 +252,12 @@ var sh = {
 	 * 									parameters. Only used if element is specified.
 	 * 
 	 * @param {Object} element	Optional element to highlight. If none is
-	 * 							provided, all elements 
+	 * 							provided, all elements in the current document 
+	 * 							are returned which qualify.
+	 *
+	 * @return {Array}	Returns list of <code>{ target: DOMElement, params: Object }</code> objects.
+	 */
+	findElements: function(globalParams, element)
+	{
+		var elements = element ? [element] : toArray(document.getElementsByTagName(sh.config.tagName)), 
+		
