@@ -196,4 +196,17 @@ var sh = {
 			};
 			
 			var highlighter = getHighlighterById(findParentElement(target, '.syntaxhighlighter').id),
-				commandName 
+				commandName = getValue('command')
+				;
+			
+			// execute the toolbar command
+			if (highlighter && commandName)
+				sh.toolbar.items[commandName].execute(highlighter);
+
+			// disable default A click behaviour
+			e.preventDefault();
+		},
+		
+		/** Collection of toolbar items. */
+		items : {
+	
