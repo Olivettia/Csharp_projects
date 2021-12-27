@@ -209,4 +209,13 @@ var sh = {
 		
 		/** Collection of toolbar items. */
 		items : {
-	
+			// Ordered lis of items in the toolbar. Can't expect `for (var n in items)` to be consistent.
+			list: ['expandSource', 'help'],
+
+			expandSource: {
+				getHtml: function(highlighter)
+				{
+					if (highlighter.getParam('collapse') != true)
+						return '';
+						
+					var title = highlighter.get
