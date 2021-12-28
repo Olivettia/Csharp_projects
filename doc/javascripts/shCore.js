@@ -296,4 +296,18 @@ var sh = {
 	 * 									parameters. Only used if element is specified.
 	 * 
 	 * @param {Object} element	Optional element to highlight. If none is
-	 * 							prov
+	 * 							provided, all elements in the current document 
+	 * 							are highlighted.
+	 */ 
+	highlight: function(globalParams, element)
+	{
+		var elements = this.findElements(globalParams, element),
+			propertyName = 'innerHTML', 
+			highlighter = null,
+			conf = sh.config
+			;
+
+		if (elements.length === 0) 
+			return;
+	
+		for (var i = 0; i < 
