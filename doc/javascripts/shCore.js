@@ -310,4 +310,18 @@ var sh = {
 		if (elements.length === 0) 
 			return;
 	
-		for (var i = 0; i < 
+		for (var i = 0; i < elements.length; i++) 
+		{
+			var element = elements[i],
+				target = element.target,
+				params = element.params,
+				brushName = params.brush,
+				code
+				;
+
+			if (brushName == null)
+				continue;
+
+			// Instantiate a brush
+			if (params['html-script'] == 'true' || sh.defaults['html-script'] == true) 
+	
