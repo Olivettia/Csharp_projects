@@ -340,4 +340,15 @@ var sh = {
 			
 			code = target[propertyName];
 			
-			// remove CDATA from <SCRIPT/> t
+			// remove CDATA from <SCRIPT/> tags if it's present
+			if (conf.useScriptTags)
+				code = stripCData(code);
+				
+			// Inject title if the attribute is present
+			if ((target.title || '') != '')
+				params.title = target.title;
+				
+			params['brush'] = brushName;
+			highlighter.init(params);
+			element = highlighter.getDiv(code);
+			
