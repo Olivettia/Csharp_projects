@@ -324,4 +324,20 @@ var sh = {
 
 			// Instantiate a brush
 			if (params['html-script'] == 'true' || sh.defaults['html-script'] == true) 
-	
+			{
+				highlighter = new sh.HtmlScript(brushName);
+				brushName = 'htmlscript';
+			}
+			else
+			{
+				var brush = findBrush(brushName);
+				
+				if (brush)
+					highlighter = new brush();
+				else
+					continue;
+			}
+			
+			code = target[propertyName];
+			
+			// remove CDATA from <SCRIPT/> t
