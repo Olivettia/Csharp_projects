@@ -367,4 +367,17 @@ var sh = {
 	all: function(params)
 	{
 		attachEvent(
-			win
+			window,
+			'load',
+			function() { sh.highlight(params); }
+		);
+	}
+}; // end of sh
+
+sh['all']			= sh.all;
+sh['highlight']		= sh.highlight;
+
+/**
+ * Checks if target DOM elements has specified CSS class.
+ * @param {DOMElement} target Target DOM element to check.
+ * @param {String} className Name of the CSS cl
