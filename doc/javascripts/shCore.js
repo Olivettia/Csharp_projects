@@ -352,3 +352,19 @@ var sh = {
 			highlighter.init(params);
 			element = highlighter.getDiv(code);
 			
+			// carry over ID
+			if ((target.id || '') != '')
+				element.id = target.id;
+			
+			target.parentNode.replaceChild(element, target);
+		}
+	},
+
+	/**
+	 * Main entry point for the SyntaxHighlighter.
+	 * @param {Object} params Optional params to apply to all highlighted elements.
+	 */
+	all: function(params)
+	{
+		attachEvent(
+			win
