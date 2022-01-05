@@ -380,4 +380,14 @@ sh['highlight']		= sh.highlight;
 /**
  * Checks if target DOM elements has specified CSS class.
  * @param {DOMElement} target Target DOM element to check.
- * @param {String} className Name of the CSS cl
+ * @param {String} className Name of the CSS class to check for.
+ * @return {Boolean} Returns true if class name is present, false otherwise.
+ */
+function hasClass(target, className)
+{
+	return target.className.indexOf(className) != -1;
+};
+
+/**
+ * Adds CSS class name to the target DOM element.
+ * @param {DOMElement} target Target DO
