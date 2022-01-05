@@ -390,4 +390,16 @@ function hasClass(target, className)
 
 /**
  * Adds CSS class name to the target DOM element.
- * @param {DOMElement} target Target DO
+ * @param {DOMElement} target Target DOM element.
+ * @param {String} className New CSS class to add.
+ */
+function addClass(target, className)
+{
+	if (!hasClass(target, className))
+		target.className += ' ' + className;
+};
+
+/**
+ * Removes CSS class name from the target DOM element.
+ * @param {DOMElement} target Target DOM element.
+ * @p
