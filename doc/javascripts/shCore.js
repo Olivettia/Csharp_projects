@@ -402,4 +402,14 @@ function addClass(target, className)
 /**
  * Removes CSS class name from the target DOM element.
  * @param {DOMElement} target Target DOM element.
- * @p
+ * @param {String} className CSS class to remove.
+ */
+function removeClass(target, className)
+{
+	target.className = target.className.replace(className, '');
+};
+
+/**
+ * Converts the source to array object. Mostly used for function arguments and 
+ * lists returned by getElementsByTagName() which aren't Array objects.
+ 
