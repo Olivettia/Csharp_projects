@@ -412,4 +412,20 @@ function removeClass(target, className)
 /**
  * Converts the source to array object. Mostly used for function arguments and 
  * lists returned by getElementsByTagName() which aren't Array objects.
- 
+ * @param {List} source Source list.
+ * @return {Array} Returns array.
+ */
+function toArray(source)
+{
+	var result = [];
+	
+	for (var i = 0; i < source.length; i++) 
+		result.push(source[i]);
+		
+	return result;
+};
+
+/**
+ * Splits block of text into lines.
+ * @param {String} block Block of text.
+ * @retu
