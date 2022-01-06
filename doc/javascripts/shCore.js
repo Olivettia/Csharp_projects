@@ -428,4 +428,19 @@ function toArray(source)
 /**
  * Splits block of text into lines.
  * @param {String} block Block of text.
- * @retu
+ * @return {Array} Returns array of lines.
+ */
+function splitLines(block)
+{
+	return block.split('\n');
+}
+
+/**
+ * Generates HTML ID for the highlighter.
+ * @param {String} highlighterId Highlighter ID.
+ * @return {String} Returns HTML ID.
+ */
+function getHighlighterId(id)
+{
+	var prefix = 'highlighter_';
+	return id.indexOf(prefix) =
