@@ -477,4 +477,8 @@ function storeHighlighter(highlighter)
 };
 
 /**
- * Looks for a child or parent node which ha
+ * Looks for a child or parent node which has specified classname.
+ * Equivalent to jQuery's $(container).find(".className")
+ * @param {Element} target Target element.
+ * @param {String} search Class name or node name to look for.
+ * @param {Boolean} reverse If set to true, will go up the node tree instead of down
