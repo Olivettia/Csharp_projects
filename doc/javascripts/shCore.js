@@ -467,4 +467,14 @@ function getHighlighterDivById(id)
 };
 
 /**
- * Stores highlighter so that getHighlighterById() ca
+ * Stores highlighter so that getHighlighterById() can do its thing. Each
+ * highlighter must call this method to preserve itself.
+ * @param {Highilghter} highlighter Highlighter instance.
+ */
+function storeHighlighter(highlighter)
+{
+	sh.vars.highlighters[getHighlighterId(highlighter.id)] = highlighter;
+};
+
+/**
+ * Looks for a child or parent node which ha
