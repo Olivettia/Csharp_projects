@@ -443,4 +443,18 @@ function splitLines(block)
 function getHighlighterId(id)
 {
 	var prefix = 'highlighter_';
-	return id.indexOf(prefix) =
+	return id.indexOf(prefix) == 0 ? id : prefix + id;
+};
+
+/**
+ * Finds Highlighter instance by ID.
+ * @param {String} highlighterId Highlighter ID.
+ * @return {Highlighter} Returns instance of the highlighter.
+ */
+function getHighlighterById(id)
+{
+	return sh.vars.highlighters[getHighlighterId(id)];
+};
+
+/**
+ * Finds highlighter's DIV co
