@@ -481,4 +481,13 @@ function storeHighlighter(highlighter)
  * Equivalent to jQuery's $(container).find(".className")
  * @param {Element} target Target element.
  * @param {String} search Class name or node name to look for.
- * @param {Boolean} reverse If set to true, will go up the node tree instead of down
+ * @param {Boolean} reverse If set to true, will go up the node tree instead of down.
+ * @return {Element} Returns found child or parent element on null.
+ */
+function findElement(target, search, reverse /* optional */)
+{
+	if (target == null)
+		return null;
+		
+	var nodes			= reverse != true ? target.childNodes : [ target.parentNode ],
+		propertyToFind	= { '#' : 'id', '.' : 'className' 
