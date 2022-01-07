@@ -457,4 +457,14 @@ function getHighlighterById(id)
 };
 
 /**
- * Finds highlighter's DIV co
+ * Finds highlighter's DIV container.
+ * @param {String} highlighterId Highlighter ID.
+ * @return {Element} Returns highlighter's DIV element.
+ */
+function getHighlighterDivById(id)
+{
+	return document.getElementById(getHighlighterId(id));
+};
+
+/**
+ * Stores highlighter so that getHighlighterById() ca
