@@ -504,4 +504,14 @@ function findElement(target, search, reverse /* optional */)
 	if ((target[propertyToFind] || '').indexOf(expectedValue) != -1)
 		return target;
 	
-	for (v
+	for (var i = 0; nodes && i < nodes.length && found == null; i++)
+		found = findElement(nodes[i], search, reverse);
+	
+	return found;
+};
+
+/**
+ * Looks for a parent node which has specified classname.
+ * This is an alias to <code>findElement(container, className, true)</code>.
+ * @param {Element} target Target element.
+ * @param
