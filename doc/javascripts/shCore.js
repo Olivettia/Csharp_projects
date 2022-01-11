@@ -514,4 +514,15 @@ function findElement(target, search, reverse /* optional */)
  * Looks for a parent node which has specified classname.
  * This is an alias to <code>findElement(container, className, true)</code>.
  * @param {Element} target Target element.
- * @param
+ * @param {String} className Class name to look for.
+ * @return {Element} Returns found parent element on null.
+ */
+function findParentElement(target, className)
+{
+	return findElement(target, className, true);
+};
+
+/**
+ * Finds an index of element in the array.
+ * @ignore
+ * @param {Object} searchElemen
