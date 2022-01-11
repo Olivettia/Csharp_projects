@@ -490,4 +490,18 @@ function findElement(target, search, reverse /* optional */)
 		return null;
 		
 	var nodes			= reverse != true ? target.childNodes : [ target.parentNode ],
-		propertyToFind	= { '#' : 'id', '.' : 'className' 
+		propertyToFind	= { '#' : 'id', '.' : 'className' }[search.substr(0, 1)] || 'nodeName',
+		expectedValue,
+		found
+		;
+
+	expectedValue = propertyToFind != 'nodeName'
+		? search.substr(1)
+		: search.toUpperCase()
+		;
+		
+	// main return of the found node
+	if ((target[propertyToFind] || '').indexOf(expectedValue) != -1)
+		return target;
+	
+	for (v
