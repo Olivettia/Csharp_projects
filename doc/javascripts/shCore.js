@@ -560,4 +560,19 @@ function merge(obj1, obj2)
 	var result = {}, name;
 
 	for (name in obj1) 
-		result[name] =
+		result[name] = obj1[name];
+	
+	for (name in obj2) 
+		result[name] = obj2[name];
+		
+	return result;
+};
+
+/**
+ * Attempts to convert string to boolean.
+ * @param {String} value Input string.
+ * @return {Boolean} Returns true if input was "true", false if input was "false" and value otherwise.
+ */
+function toBoolean(value)
+{
+	var re
