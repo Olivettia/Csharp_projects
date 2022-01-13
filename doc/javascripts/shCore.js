@@ -534,4 +534,20 @@ function indexOf(array, searchElement, fromIndex)
 	fromIndex = Math.max(fromIndex || 0, 0);
 
 	for (var i = fromIndex; i < array.length; i++)
-		if(array[i] == se
+		if(array[i] == searchElement)
+			return i;
+	
+	return -1;
+};
+
+/**
+ * Generates a unique element ID.
+ */
+function guid(prefix)
+{
+	return (prefix || '') + Math.round(Math.random() * 1000000).toString();
+};
+
+/**
+ * Merges two objects. Values from obj2 override values in obj1.
+ * Function is NOT recursive and works on
