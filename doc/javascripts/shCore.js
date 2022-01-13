@@ -550,4 +550,14 @@ function guid(prefix)
 
 /**
  * Merges two objects. Values from obj2 override values in obj1.
- * Function is NOT recursive and works on
+ * Function is NOT recursive and works only for one dimensional objects.
+ * @param {Object} obj1 First object.
+ * @param {Object} obj2 Second object.
+ * @return {Object} Returns combination of both objects.
+ */
+function merge(obj1, obj2)
+{
+	var result = {}, name;
+
+	for (name in obj1) 
+		result[name] =
