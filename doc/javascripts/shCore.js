@@ -575,4 +575,14 @@ function merge(obj1, obj2)
  */
 function toBoolean(value)
 {
-	var re
+	var result = { "true" : true, "false" : false }[value];
+	return result == null ? value : result;
+};
+
+/**
+ * Opens up a centered popup window.
+ * @param {String} url		URL to open in the window.
+ * @param {String} name		Popup name.
+ * @param {int} width		Popup width.
+ * @param {int} height		Popup height.
+ * @param 
