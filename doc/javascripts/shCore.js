@@ -525,4 +525,13 @@ function findParentElement(target, className)
 /**
  * Finds an index of element in the array.
  * @ignore
- * @param {Object} searchElemen
+ * @param {Object} searchElement
+ * @param {Number} fromIndex
+ * @return {Number} Returns index of element if found; -1 otherwise.
+ */
+function indexOf(array, searchElement, fromIndex)
+{
+	fromIndex = Math.max(fromIndex || 0, 0);
+
+	for (var i = fromIndex; i < array.length; i++)
+		if(array[i] == se
