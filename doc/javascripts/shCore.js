@@ -585,4 +585,16 @@ function toBoolean(value)
  * @param {String} name		Popup name.
  * @param {int} width		Popup width.
  * @param {int} height		Popup height.
- * @param 
+ * @param {String} options	window.open() options.
+ * @return {Window}			Returns window instance.
+ */
+function popup(url, name, width, height, options)
+{
+	var x = (screen.width - width) / 2,
+		y = (screen.height - height) / 2
+		;
+		
+	options +=	', left=' + x + 
+				', top=' + y +
+				', width=' + width +
+	
