@@ -630,4 +630,26 @@ function attachEvent(obj, type, func, scope)
 		func.call(scope || window, e);
 	};
 	
-	if (obj.attachEvent)
+	if (obj.attachEvent) 
+	{
+		obj.attachEvent('on' + type, handler);
+	}
+	else 
+	{
+		obj.addEventListener(type, handler, false);
+	}
+};
+
+/**
+ * Displays an alert.
+ * @param {String} str String to display.
+ */
+function alert(str)
+{
+	window.alert(sh.config.strings.alert + str);
+};
+
+/**
+ * Finds a brush by its alias.
+ *
+ * @param {String} alias		Br
