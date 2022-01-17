@@ -652,4 +652,17 @@ function alert(str)
 /**
  * Finds a brush by its alias.
  *
- * @param {String} alias		Br
+ * @param {String} alias		Brush alias.
+ * @param {Boolean} showAlert	Suppresses the alert if false.
+ * @return {Brush}				Returns bursh constructor if found, null otherwise.
+ */
+function findBrush(alias, showAlert)
+{
+	var brushes = sh.vars.discoveredBrushes,
+		result = null
+		;
+	
+	if (brushes == null) 
+	{
+		brushes = {};
+		
