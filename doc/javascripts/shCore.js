@@ -597,4 +597,17 @@ function popup(url, name, width, height, options)
 	options +=	', left=' + x + 
 				', top=' + y +
 				', width=' + width +
-	
+				', height=' + height
+		;
+	options = options.replace(/^,/, '');
+
+	var win = window.open(url, name, options);
+	win.focus();
+	return win;
+};
+
+/**
+ * Adds event handler to the target object.
+ * @param {Object} obj		Target object.
+ * @param {String} type		Name of the event.
+ * @param {Function} func
