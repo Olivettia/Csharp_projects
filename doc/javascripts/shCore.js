@@ -610,4 +610,24 @@ function popup(url, name, width, height, options)
  * Adds event handler to the target object.
  * @param {Object} obj		Target object.
  * @param {String} type		Name of the event.
- * @param {Function} func
+ * @param {Function} func	Handling function.
+ */
+function attachEvent(obj, type, func, scope)
+{
+	function handler(e)
+	{
+		e = e || window.event;
+		
+		if (!e.target)
+		{
+			e.target = e.srcElement;
+			e.preventDefault = function()
+			{
+				this.returnValue = false;
+			};
+		}
+			
+		func.call(scope || window, e);
+	};
+	
+	if (obj.attachEvent)
