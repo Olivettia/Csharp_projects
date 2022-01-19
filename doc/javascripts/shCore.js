@@ -704,4 +704,16 @@ function eachLine(str, callback)
 	var lines = splitLines(str);
 	
 	for (var i = 0; i < lines.length; i++)
-		lines[i] = callback(lin
+		lines[i] = callback(lines[i], i);
+		
+	return lines.join('\n');
+};
+
+/**
+ * This is a special trim which only removes first and last empty lines
+ * and doesn't affect valid leading space on the first line.
+ * 
+ * @param {String} str   Input string
+ * @return {String}      Returns string without empty first and last lines.
+ */
+function trimFirstAndLastL
