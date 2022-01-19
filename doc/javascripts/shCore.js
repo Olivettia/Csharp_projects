@@ -666,3 +666,18 @@ function findBrush(alias, showAlert)
 	{
 		brushes = {};
 		
+		// Find all brushes
+		for (var brush in sh.brushes) 
+		{
+			var info = sh.brushes[brush],
+				aliases = info.aliases
+				;
+			
+			if (aliases == null) 
+				continue;
+			
+			// keep the brush name
+			info.brushName = brush.toLowerCase();
+			
+			for (var i = 0; i < aliases.length; i++) 
+				brushes[aliases
