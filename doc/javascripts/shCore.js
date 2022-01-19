@@ -680,4 +680,19 @@ function findBrush(alias, showAlert)
 			info.brushName = brush.toLowerCase();
 			
 			for (var i = 0; i < aliases.length; i++) 
-				brushes[aliases
+				brushes[aliases[i]] = brush;
+		}
+		
+		sh.vars.discoveredBrushes = brushes;
+	}
+	
+	result = sh.brushes[brushes[alias]];
+
+	if (result == null && showAlert != false)
+		alert(sh.config.strings.noBrush + alias);
+	
+	return result;
+};
+
+/**
+ * Executes a callback on each line and replaces each line with re
