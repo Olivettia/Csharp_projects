@@ -695,4 +695,13 @@ function findBrush(alias, showAlert)
 };
 
 /**
- * Executes a callback on each line and replaces each line with re
+ * Executes a callback on each line and replaces each line with result from the callback.
+ * @param {Object} str			Input string.
+ * @param {Object} callback		Callback function taking one string argument and returning a string.
+ */
+function eachLine(str, callback)
+{
+	var lines = splitLines(str);
+	
+	for (var i = 0; i < lines.length; i++)
+		lines[i] = callback(lin
