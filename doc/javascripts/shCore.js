@@ -716,4 +716,19 @@ function eachLine(str, callback)
  * @param {String} str   Input string
  * @return {String}      Returns string without empty first and last lines.
  */
-function trimFirstAndLastL
+function trimFirstAndLastLines(str)
+{
+	return str.replace(/^[ ]*[\n]+|[\n]*[ ]*$/g, '');
+};
+
+/**
+ * Parses key/value pairs into hash object.
+ * 
+ * Understands the following formats:
+ * - name: word;
+ * - name: [word, word];
+ * - name: "string";
+ * - name: 'string';
+ * 
+ * For example:
+ *   name1: value; name2
