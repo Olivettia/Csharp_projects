@@ -731,4 +731,15 @@ function trimFirstAndLastLines(str)
  * - name: 'string';
  * 
  * For example:
- *   name1: value; name2
+ *   name1: value; name2: [value, value]; name3: 'value'
+ *   
+ * @param {String} str    Input string.
+ * @return {Object}       Returns deserialized object.
+ */
+function parseParams(str)
+{
+	var match, 
+		result = {},
+		arrayRegex = new XRegExp("^\\[(?<values>(.*?))\\]$"),
+		regex = new XRegExp(
+			"(?<nam
