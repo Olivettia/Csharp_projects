@@ -792,4 +792,20 @@ function wrapLinesWithCode(str, css)
 	{
 		var spaces = '';
 		
-		for (var i = 0; i < m.l
+		for (var i = 0; i < m.length - 1; i++)
+			spaces += sh.config.space;
+		
+		return spaces + ' ';
+	});
+
+	// Split each line and apply <span class="...">...</span> to them so that
+	// leading spaces aren't included.
+	if (css != null) 
+		str = eachLine(str, function(line)
+		{
+			if (line.length == 0) 
+				return '';
+			
+			var spaces = '';
+			
+		
