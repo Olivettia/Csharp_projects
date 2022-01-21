@@ -742,4 +742,19 @@ function parseParams(str)
 		result = {},
 		arrayRegex = new XRegExp("^\\[(?<values>(.*?))\\]$"),
 		regex = new XRegExp(
-			"(?<nam
+			"(?<name>[\\w-]+)" +
+			"\\s*:\\s*" +
+			"(?<value>" +
+				"[\\w-%#]+|" +		// word
+				"\\[.*?\\]|" +		// [] array
+				'".*?"|' +			// "" string
+				"'.*?'" +			// '' string
+			")\\s*;?",
+			"g"
+		)
+		;
+
+	while ((match = regex.exec(str)) != null) 
+	{
+		var value = match.value
+			.replace(/^['"]|['"]$/g, '') // str
