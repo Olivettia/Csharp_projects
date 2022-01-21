@@ -757,4 +757,21 @@ function parseParams(str)
 	while ((match = regex.exec(str)) != null) 
 	{
 		var value = match.value
-			.replace(/^['"]|['"]$/g, '') // str
+			.replace(/^['"]|['"]$/g, '') // strip quotes from end of strings
+			;
+		
+		// try to parse array value
+		if (value != null && arrayRegex.test(value))
+		{
+			var m = arrayRegex.exec(value);
+			value = m.values.length > 0 ? m.values.split(/\s*,\s*/) : [];
+		}
+		
+		result[match.name] = value;
+	}
+	
+	return result;
+};
+
+/**
+ * Wraps each 
