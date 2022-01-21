@@ -808,4 +808,22 @@ function wrapLinesWithCode(str, css)
 			
 			var spaces = '';
 			
-		
+			line = line.replace(/^(&nbsp;| )+/, function(s)
+			{
+				spaces = s;
+				return '';
+			});
+			
+			if (line.length == 0) 
+				return spaces;
+			
+			return spaces + '<code class="' + css + '">' + line + '</code>';
+		});
+
+	return str;
+};
+
+/**
+ * Pads number with zeros until it's length is the same as given length.
+ * 
+ * @para
