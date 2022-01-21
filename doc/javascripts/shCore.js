@@ -836,3 +836,19 @@ function padNumber(number, length)
 	
 	while (result.length < length)
 		result = '0' + result;
+	
+	return result;
+};
+
+/**
+ * Replaces tabs with spaces.
+ * 
+ * @param {String} code		Source code.
+ * @param {Number} tabSize	Size of the tab.
+ * @return {String}			Returns code with all tabs replaces by spaces.
+ */
+function processTabs(code, tabSize)
+{
+	var tab = '';
+	
+	for (var i = 0; i 
