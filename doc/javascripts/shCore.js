@@ -851,4 +851,15 @@ function processTabs(code, tabSize)
 {
 	var tab = '';
 	
-	for (var i = 0; i 
+	for (var i = 0; i < tabSize; i++)
+		tab += ' ';
+
+	return code.replace(/\t/g, tab);
+};
+
+/**
+ * Replaces tabs with smart spaces.
+ * 
+ * @param {String} code    Code to fix the tabs in.
+ * @param {Number} tabSize Number of spaces in a column.
+ * @return {String}        Returns code with all tabs replaces with r
