@@ -826,4 +826,13 @@ function wrapLinesWithCode(str, css)
 /**
  * Pads number with zeros until it's length is the same as given length.
  * 
- * @para
+ * @param {Number} number	Number to pad.
+ * @param {Number} length	Max string length with.
+ * @return {String}			Returns a string padded with proper amount of '0'.
+ */
+function padNumber(number, length)
+{
+	var result = number.toString();
+	
+	while (result.length < length)
+		result = '0' + result;
