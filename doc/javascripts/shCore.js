@@ -780,4 +780,16 @@ function parseParams(str)
  * @param {String} css   Style name to apply to the string.
  * @return {String}      Returns input string with each line surrounded by <span/> tag.
  */
-function wrapLinesWithCode(str, cs
+function wrapLinesWithCode(str, css)
+{
+	if (str == null || str.length == 0 || str == '\n') 
+		return str;
+
+	str = str.replace(/</g, '&lt;');
+
+	// Replace two or more sequential spaces with &nbsp; leaving last space untouched.
+	str = str.replace(/ {2,}/g, function(m)
+	{
+		var spaces = '';
+		
+		for (var i = 0; i < m.l
