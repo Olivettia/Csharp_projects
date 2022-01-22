@@ -882,3 +882,18 @@ function processSmartTabs(code, tabSize)
 	{
 		return line.substr(0, pos)
 			+ spaces.substr(0, count)
+			+ line.substr(pos + 1, line.length) // pos + 1 will get rid of the tab
+			;
+	};
+
+	// Go through all the lines and do the 'smart tabs' magic.
+	code = eachLine(code, function(line)
+	{
+		if (line.indexOf(tab) == -1) 
+			return line;
+		
+		var pos = 0;
+		
+		while ((pos = line.indexOf(tab)) != -1) 
+		{
+			// Th
