@@ -862,4 +862,15 @@ function processTabs(code, tabSize)
  * 
  * @param {String} code    Code to fix the tabs in.
  * @param {Number} tabSize Number of spaces in a column.
- * @return {String}        Returns code with all tabs replaces with r
+ * @return {String}        Returns code with all tabs replaces with roper amount of spaces.
+ */
+function processSmartTabs(code, tabSize)
+{
+	var lines = splitLines(code),
+		tab = '\t',
+		spaces = ''
+		;
+	
+	// Create a string with 1000 spaces to copy spaces from... 
+	// It's assumed that there would be no indentation longer than that.
+	for (var
