@@ -926,4 +926,16 @@ function fixInputString(str)
 };
 
 /**
- * Removes all white space at the beg
+ * Removes all white space at the begining and end of a string.
+ * 
+ * @param {String} str   String to trim.
+ * @return {String}      Returns string without leading and following white space characters.
+ */
+function trim(str)
+{
+	return str.replace(/^\s+|\s+$/g, '');
+};
+
+/**
+ * Unindents a block of text by the lowest common indent amount.
+ * @param {String} str 
