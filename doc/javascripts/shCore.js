@@ -896,4 +896,18 @@ function processSmartTabs(code, tabSize)
 		
 		while ((pos = line.indexOf(tab)) != -1) 
 		{
-			// Th
+			// This is pretty much all there is to the 'smart tabs' logic.
+			// Based on the position within the line and size of a tab,
+			// calculate the amount of spaces we need to insert.
+			var spaces = tabSize - pos % tabSize;
+			line = insertSpaces(line, pos, spaces);
+		}
+		
+		return line;
+	});
+	
+	return code;
+};
+
+/**
+ * Performs various 
