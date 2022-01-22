@@ -960,4 +960,16 @@ function unindent(str)
 		var matches = regex.exec(line);
 		
 		// In the event that just one line doesn't have leading white space
-		// we can't unindent anything, so bai
+		// we can't unindent anything, so bail completely.
+		if (matches == null) 
+			return str;
+			
+		min = Math.min(matches[0].length, min);
+	}
+	
+	// trim minimum common number of white space from the begining of every line
+	if (min > 0) 
+		for (var i = 0; i < lines.length; i++) 
+			lines[i] = lines[i].substr(min);
+	
+	return l
