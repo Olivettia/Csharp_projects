@@ -949,4 +949,15 @@ function unindent(str)
 		min = 1000
 		;
 	
-	// go through every line and check for common number of
+	// go through every line and check for common number of indents
+	for (var i = 0; i < lines.length && min > 0; i++) 
+	{
+		var line = lines[i];
+		
+		if (trim(line).length == 0) 
+			continue;
+		
+		var matches = regex.exec(line);
+		
+		// In the event that just one line doesn't have leading white space
+		// we can't unindent anything, so bai
