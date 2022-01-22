@@ -938,4 +938,15 @@ function trim(str)
 
 /**
  * Unindents a block of text by the lowest common indent amount.
- * @param {String} str 
+ * @param {String} str   Text to unindent.
+ * @return {String}      Returns unindented text block.
+ */
+function unindent(str)
+{
+	var lines = splitLines(fixInputString(str)),
+		indents = new Array(),
+		regex = /^\s*/,
+		min = 1000
+		;
+	
+	// go through every line and check for common number of
