@@ -984,3 +984,23 @@ function unindent(str)
  * @return {Number}     Returns -1, 0 or -1 as a comparison result.
  */
 function matchesSortCallback(m1, m2)
+{
+	// sort matches by index first
+	if(m1.index < m2.index)
+		return -1;
+	else if(m1.index > m2.index)
+		return 1;
+	else
+	{
+		// if index is the same, sort by length
+		if(m1.length < m2.length)
+			return -1;
+		else if(m1.length > m2.length)
+			return 1;
+	}
+	
+	return 0;
+};
+
+/**
+ * Executes given regular expr
