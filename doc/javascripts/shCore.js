@@ -1025,4 +1025,18 @@ function getMatches(code, regexInfo)
 	
 	while((match = regexInfo.regex.exec(code)) != null)
 	{
-		var resultMatch = fun
+		var resultMatch = func(match, regexInfo);
+		
+		if (typeof(resultMatch) == 'string')
+			resultMatch = [new sh.Match(resultMatch, match.index, regexInfo.css)];
+
+		matches = matches.concat(resultMatch);
+	}
+	
+	return matches;
+};
+
+/**
+ * Turns all URLs in the code into <a/> tags.
+ * @param {String} code Input code.
+ * @return {String} R
