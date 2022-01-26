@@ -1076,4 +1076,19 @@ function getSyntaxHighlighterScriptTags()
 		;
 	
 	for (var i = 0; i < tags.length; i++)
-		if (tags[i].type ==
+		if (tags[i].type == 'syntaxhighlighter')
+			result.push(tags[i]);
+			
+	return result;
+};
+
+/**
+ * Strips <![CDATA[]]> from <SCRIPT /> content because it should be used
+ * there in most cases for XHTML compliance.
+ * @param {String} original	Input code.
+ * @return {String} Returns code without leading <![CDATA[]]> tags.
+ */
+function stripCData(original)
+{
+	var left = '<![CDATA[',
+		
