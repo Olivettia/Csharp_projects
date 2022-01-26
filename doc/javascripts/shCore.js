@@ -1066,4 +1066,14 @@ function processUrls(code)
 };
 
 /**
- * Finds all <
+ * Finds all <SCRIPT TYPE="syntaxhighlighter" /> elementss.
+ * @return {Array} Returns array of all found SyntaxHighlighter tags.
+ */
+function getSyntaxHighlighterScriptTags()
+{
+	var tags = document.getElementsByTagName('script'),
+		result = []
+		;
+	
+	for (var i = 0; i < tags.length; i++)
+		if (tags[i].type ==
