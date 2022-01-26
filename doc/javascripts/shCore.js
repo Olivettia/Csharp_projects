@@ -972,4 +972,15 @@ function unindent(str)
 		for (var i = 0; i < lines.length; i++) 
 			lines[i] = lines[i].substr(min);
 	
-	return l
+	return lines.join('\n');
+};
+
+/**
+ * Callback method for Array.sort() which sorts matches by
+ * index position and then by length.
+ * 
+ * @param {Match} m1	Left object.
+ * @param {Match} m2    Right object.
+ * @return {Number}     Returns -1, 0 or -1 as a comparison result.
+ */
+function matchesSortCallback(m1, m2)
