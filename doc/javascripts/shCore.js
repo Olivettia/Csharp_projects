@@ -1008,4 +1008,21 @@ function matchesSortCallback(m1, m2)
  * 
  * @param {String} code    Code to execute regular expression on.
  * @param {Object} regex   Regular expression item info from <code>regexList</code> collection.
- * @return {Array}         Returns a list of Match objec
+ * @return {Array}         Returns a list of Match objects.
+ */ 
+function getMatches(code, regexInfo)
+{
+	function defaultAdd(match, regexInfo)
+	{
+		return match[0];
+	};
+	
+	var index = 0,
+		match = null,
+		matches = [],
+		func = regexInfo.func ? regexInfo.func : defaultAdd
+		;
+	
+	while((match = regexInfo.regex.exec(code)) != null)
+	{
+		var resultMatch = fun
