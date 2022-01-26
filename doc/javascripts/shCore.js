@@ -1039,4 +1039,17 @@ function getMatches(code, regexInfo)
 /**
  * Turns all URLs in the code into <a/> tags.
  * @param {String} code Input code.
- * @return {String} R
+ * @return {String} Returns code with </a> tags.
+ */
+function processUrls(code)
+{
+	var gt = /(.*)((&gt;|&lt;).*)/;
+	
+	return code.replace(sh.regexLib.url, function(m)
+	{
+		var suffix = '',
+			match = null
+			;
+		
+		// We include &lt; and &gt; in the URL for the common cases like <http://google.com>
+		// The pr
