@@ -1003,4 +1003,9 @@ function matchesSortCallback(m1, m2)
 };
 
 /**
- * Executes given regular expr
+ * Executes given regular expression on provided code and returns all
+ * matches that are found.
+ * 
+ * @param {String} code    Code to execute regular expression on.
+ * @param {Object} regex   Regular expression item info from <code>regexList</code> collection.
+ * @return {Array}         Returns a list of Match objec
