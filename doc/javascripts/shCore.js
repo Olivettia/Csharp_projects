@@ -1102,4 +1102,24 @@ function stripCData(original)
 	if (copy.indexOf(left) == 0)
 	{
 		copy = copy.substring(leftLength);
-		
+		changed = true;
+	}
+	
+	var copyLength = copy.length;
+	
+	if (copy.indexOf(right) == copyLength - rightLength)
+	{
+		copy = copy.substring(0, copyLength - rightLength);
+		changed = true;
+	}
+	
+	return changed ? copy : original;
+};
+
+
+/**
+ * Quick code mouse double click handler.
+ */
+function quickCodeHandler(e)
+{
+	var
