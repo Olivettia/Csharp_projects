@@ -1091,4 +1091,15 @@ function getSyntaxHighlighterScriptTags()
 function stripCData(original)
 {
 	var left = '<![CDATA[',
+		right = ']]>',
+		// for some reason IE inserts some leading blanks here
+		copy = trim(original),
+		changed = false,
+		leftLength = left.length,
+		rightLength = right.length
+		;
+	
+	if (copy.indexOf(left) == 0)
+	{
+		copy = copy.substring(leftLength);
 		
