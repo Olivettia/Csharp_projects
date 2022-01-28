@@ -1166,4 +1166,21 @@ function quickCodeHandler(e)
 };
 
 /**
- * M
+ * Match object.
+ */
+sh.Match = function(value, index, css)
+{
+	this.value = value;
+	this.index = index;
+	this.length = value.length;
+	this.css = css;
+	this.brushName = null;
+};
+
+sh.Match.prototype.toString = function()
+{
+	return this.value;
+};
+
+/**
+ * Simulates HTML code with a scripting language embed
