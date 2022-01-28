@@ -1183,4 +1183,15 @@ sh.Match.prototype.toString = function()
 };
 
 /**
- * Simulates HTML code with a scripting language embed
+ * Simulates HTML code with a scripting language embedded.
+ * 
+ * @param {String} scriptBrushName Brush name of the scripting language.
+ */
+sh.HtmlScript = function(scriptBrushName)
+{
+	var brushClass = findBrush(scriptBrushName),
+		scriptBrush,
+		xmlBrush = new sh.brushes.Xml(),
+		bracketsRegex = null,
+		ref = this,
+		methodsToExpose = 'getDiv getHtml
