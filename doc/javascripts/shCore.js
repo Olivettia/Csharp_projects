@@ -1130,4 +1130,15 @@ function quickCodeHandler(e)
 		;
 
 	if (!container || !highlighterDiv || findElement(container, 'textarea'))
-		return
+		return;
+
+	highlighter = getHighlighterById(highlighterDiv.id);
+	
+	// add source class name
+	addClass(highlighterDiv, 'source');
+
+	// Have to go over each line and grab it's text, can't just do it on the
+	// container because Firefox loses all \n where as Webkit doesn't.
+	var lines = container.childNodes,
+		code = []
+		;
