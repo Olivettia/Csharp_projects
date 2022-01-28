@@ -1150,4 +1150,20 @@ function quickCodeHandler(e)
 	code = code.join('\r');
 	
 	// inject <textarea/> tag
-	textarea.appendChild(document.createTextNode(co
+	textarea.appendChild(document.createTextNode(code));
+	container.appendChild(textarea);
+	
+	// preselect all text
+	textarea.focus();
+	textarea.select();
+	
+	// set up handler for lost focus
+	attachEvent(textarea, 'blur', function(e)
+	{
+		textarea.parentNode.removeChild(textarea);
+		removeClass(highlighterDiv, 'source');
+	});
+};
+
+/**
+ * M
