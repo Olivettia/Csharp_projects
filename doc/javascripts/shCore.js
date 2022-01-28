@@ -1142,3 +1142,12 @@ function quickCodeHandler(e)
 	var lines = container.childNodes,
 		code = []
 		;
+	
+	for (var i = 0; i < lines.length; i++)
+		code.push(lines[i].innerText || lines[i].textContent);
+	
+	// using \r instead of \r or \r\n makes this work equally well on IE, FF and Webkit
+	code = code.join('\r');
+	
+	// inject <textarea/> tag
+	textarea.appendChild(document.createTextNode(co
