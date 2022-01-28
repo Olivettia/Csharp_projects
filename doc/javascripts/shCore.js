@@ -1122,4 +1122,12 @@ function stripCData(original)
  */
 function quickCodeHandler(e)
 {
-	var
+	var target = e.target,
+		highlighterDiv = findParentElement(target, '.syntaxhighlighter'),
+		container = findParentElement(target, '.container'),
+		textarea = document.createElement('textarea'),
+		highlighter
+		;
+
+	if (!container || !highlighterDiv || findElement(container, 'textarea'))
+		return
