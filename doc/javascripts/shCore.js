@@ -1207,4 +1207,20 @@ sh.HtmlScript = function(scriptBrushName)
 		(function() {
 			var name = methodsToExpose[i];
 			
-			ref[name] =
+			ref[name] = function()
+			{
+				return xmlBrush[name].apply(xmlBrush, arguments);
+			};
+		})();
+	
+	if (scriptBrush.htmlScript == null)
+	{
+		alert(sh.config.strings.brushNotHtmlScript + scriptBrushName);
+		return;
+	}
+	
+	xmlBrush.regexList.push(
+		{ regex: scriptBrush.htmlScript.code, func: process }
+	);
+	
+	function offsetMatc
