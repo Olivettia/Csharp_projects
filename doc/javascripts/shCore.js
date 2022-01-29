@@ -1223,4 +1223,16 @@ sh.HtmlScript = function(scriptBrushName)
 		{ regex: scriptBrush.htmlScript.code, func: process }
 	);
 	
-	function offsetMatc
+	function offsetMatches(matches, offset)
+	{
+		for (var j = 0; j < matches.length; j++) 
+			matches[j].index += offset;
+	}
+	
+	function process(match, info)
+	{
+		var code = match.code,
+			matches = [],
+			regexList = scriptBrush.regexList,
+			offset = match.index + match.left.length,
+			htmlScript = scriptBrus
