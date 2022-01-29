@@ -1194,4 +1194,17 @@ sh.HtmlScript = function(scriptBrushName)
 		xmlBrush = new sh.brushes.Xml(),
 		bracketsRegex = null,
 		ref = this,
-		methodsToExpose = 'getDiv getHtml
+		methodsToExpose = 'getDiv getHtml init'.split(' ')
+		;
+
+	if (brushClass == null)
+		return;
+	
+	scriptBrush = new brushClass();
+	
+	for(var i = 0; i < methodsToExpose.length; i++)
+		// make a closure so we don't lose the name after i changes
+		(function() {
+			var name = methodsToExpose[i];
+			
+			ref[name] =
