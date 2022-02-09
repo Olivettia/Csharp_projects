@@ -1235,4 +1235,17 @@ sh.HtmlScript = function(scriptBrushName)
 			matches = [],
 			regexList = scriptBrush.regexList,
 			offset = match.index + match.left.length,
-			htmlScript = scriptBrus
+			htmlScript = scriptBrush.htmlScript,
+			result
+			;
+
+		// add all matches from the code
+		for (var i = 0; i < regexList.length; i++)
+		{
+			result = getMatches(code, regexList[i]);
+			offsetMatches(result, offset);
+			matches = matches.concat(result);
+		}
+		
+		// add left script bracket
+		if (htmlScript.left != null && match.
