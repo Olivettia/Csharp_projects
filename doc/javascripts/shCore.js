@@ -1248,4 +1248,15 @@ sh.HtmlScript = function(scriptBrushName)
 		}
 		
 		// add left script bracket
-		if (htmlScript.left != null && match.
+		if (htmlScript.left != null && match.left != null)
+		{
+			result = getMatches(match.left, htmlScript.left);
+			offsetMatches(result, match.index);
+			matches = matches.concat(result);
+		}
+		
+		// add right script bracket
+		if (htmlScript.right != null && match.right != null)
+		{
+			result = getMatches(match.right, htmlScript.right);
+			offsetMatch
