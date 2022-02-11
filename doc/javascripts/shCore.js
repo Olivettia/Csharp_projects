@@ -1274,4 +1274,14 @@ sh.HtmlScript = function(scriptBrushName)
  * Main Highlither class.
  * @constructor
  */
-sh.Highlighter 
+sh.Highlighter = function()
+{
+	// not putting any code in here because of the prototype inheritance
+};
+
+sh.Highlighter.prototype = {
+	/**
+	 * Returns value of the parameter passed to the highlighter.
+	 * @param {String} name				Name of the parameter.
+	 * @param {Object} defaultValue		Default value.
+	 *
