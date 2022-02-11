@@ -1259,4 +1259,19 @@ sh.HtmlScript = function(scriptBrushName)
 		if (htmlScript.right != null && match.right != null)
 		{
 			result = getMatches(match.right, htmlScript.right);
-			offsetMatch
+			offsetMatches(result, match.index + match[0].lastIndexOf(match.right));
+			matches = matches.concat(result);
+		}
+		
+		for (var j = 0; j < matches.length; j++)
+			matches[j].brushName = brushClass.brushName;
+			
+		return matches;
+	}
+};
+
+/**
+ * Main Highlither class.
+ * @constructor
+ */
+sh.Highlighter 
