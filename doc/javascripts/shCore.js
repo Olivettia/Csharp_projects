@@ -1284,4 +1284,14 @@ sh.Highlighter.prototype = {
 	 * Returns value of the parameter passed to the highlighter.
 	 * @param {String} name				Name of the parameter.
 	 * @param {Object} defaultValue		Default value.
-	 *
+	 * @return {Object}					Returns found value or default value otherwise.
+	 */
+	getParam: function(name, defaultValue)
+	{
+		var result = this.params[name];
+		return toBoolean(result == null ? defaultValue : result);
+	},
+	
+	/**
+	 * Shortcut to document.createElement().
+	 * @param {String} name		Na
