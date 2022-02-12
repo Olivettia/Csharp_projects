@@ -1294,4 +1294,15 @@ sh.Highlighter.prototype = {
 	
 	/**
 	 * Shortcut to document.createElement().
-	 * @param {String} name		Na
+	 * @param {String} name		Name of the element to create (DIV, A, etc).
+	 * @return {HTMLElement}	Returns new HTML element.
+	 */
+	create: function(name)
+	{
+		return document.createElement(name);
+	},
+	
+	/**
+	 * Applies all regular expression to the code and stores all found
+	 * matches in the `this.matches` array.
+	 
