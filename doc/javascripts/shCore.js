@@ -1305,4 +1305,14 @@ sh.Highlighter.prototype = {
 	/**
 	 * Applies all regular expression to the code and stores all found
 	 * matches in the `this.matches` array.
-	 
+	 * @param {Array} regexList		List of regular expressions.
+	 * @param {String} code			Source code.
+	 * @return {Array}				Returns list of matches.
+	 */
+	findMatches: function(regexList, code)
+	{
+		var result = [];
+		
+		if (regexList != null)
+			for (var i = 0; i < regexList.length; i++) 
+				// BUG: length returns len+
