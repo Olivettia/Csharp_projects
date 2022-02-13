@@ -1331,4 +1331,18 @@ sh.Highlighter.prototype = {
 	removeNestedMatches: function(matches)
 	{
 		// Optimized by Jose Prado (http://joseprado.com)
-		for (
+		for (var i = 0; i < matches.length; i++) 
+		{ 
+			if (matches[i] === null)
+				continue;
+			
+			var itemI = matches[i],
+				itemIEndPos = itemI.index + itemI.length
+				;
+			
+			for (var j = i + 1; j < matches.length && matches[i] !== null; j++) 
+			{
+				var itemJ = matches[j];
+				
+				if (itemJ === null) 
+					contin
