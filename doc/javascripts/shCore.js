@@ -1321,3 +1321,14 @@ sh.Highlighter.prototype = {
 		
 		// sort and remove nested the matches
 		return this.removeNestedMatches(result.sort(matchesSortCallback));
+	},
+	
+	/**
+	 * Checks to see if any of the matches are inside of other matches. 
+	 * This process would get rid of highligted strings inside comments, 
+	 * keywords inside strings and so on.
+	 */
+	removeNestedMatches: function(matches)
+	{
+		// Optimized by Jose Prado (http://joseprado.com)
+		for (
