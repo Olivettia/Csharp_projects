@@ -1315,4 +1315,9 @@ sh.Highlighter.prototype = {
 		
 		if (regexList != null)
 			for (var i = 0; i < regexList.length; i++) 
-				// BUG: length returns len+
+				// BUG: length returns len+1 for array if methods added to prototype chain (oising@gmail.com)
+				if (typeof (regexList[i]) == "object")
+					result = result.concat(getMatches(code, regexList[i]));
+		
+		// sort and remove nested the matches
+		return this.removeNestedMatches(result.sort(matchesSortCallback));
