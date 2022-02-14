@@ -1345,4 +1345,18 @@ sh.Highlighter.prototype = {
 				var itemJ = matches[j];
 				
 				if (itemJ === null) 
-					contin
+					continue;
+				else if (itemJ.index > itemIEndPos) 
+					break;
+				else if (itemJ.index == itemI.index && itemJ.length > itemI.length)
+					matches[i] = null;
+				else if (itemJ.index >= itemI.index && itemJ.index < itemIEndPos) 
+					matches[j] = null;
+			}
+		}
+		
+		return matches;
+	},
+	
+	/**
+	 * Creates an array containing integer line numbe
