@@ -1373,4 +1373,21 @@ sh.Highlighter.prototype = {
 			lines.push(index + firstLine);
 		});
 		
-		retu
+		return lines;
+	},
+	
+	/**
+	 * Determines if specified line number is in the highlighted list.
+	 */
+	isLineHighlighted: function(lineNumber)
+	{
+		var list = this.getParam('highlight', []);
+		
+		if (typeof(list) != 'object' && list.push == null) 
+			list = [ list ];
+		
+		return indexOf(list, lineNumber.toString()) != -1;
+	},
+	
+	/**
+	 * G
