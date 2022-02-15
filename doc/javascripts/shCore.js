@@ -1390,4 +1390,13 @@ sh.Highlighter.prototype = {
 	},
 	
 	/**
-	 * G
+	 * Generates HTML markup for a single line of code while determining alternating line style.
+	 * @param {Integer} lineNumber	Line number.
+	 * @param {String} code Line	HTML markup.
+	 * @return {String}				Returns HTML markup.
+	 */
+	getLineHtml: function(lineIndex, lineNumber, code)
+	{
+		var classes = [
+			'line',
+			'number' 
