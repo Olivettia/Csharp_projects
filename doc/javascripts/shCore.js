@@ -1359,4 +1359,18 @@ sh.Highlighter.prototype = {
 	},
 	
 	/**
-	 * Creates an array containing integer line numbe
+	 * Creates an array containing integer line numbers starting from the 'first-line' param.
+	 * @return {Array} Returns array of integers.
+	 */
+	figureOutLineNumbers: function(code)
+	{
+		var lines = [],
+			firstLine = parseInt(this.getParam('first-line'))
+			;
+		
+		eachLine(code, function(line, index)
+		{
+			lines.push(index + firstLine);
+		});
+		
+		retu
