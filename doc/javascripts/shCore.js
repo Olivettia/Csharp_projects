@@ -1422,4 +1422,16 @@ sh.Highlighter.prototype = {
 	getLineNumbersHtml: function(code, lineNumbers)
 	{
 		var html = '',
-			count = splitLines(cod
+			count = splitLines(code).length,
+			firstLine = parseInt(this.getParam('first-line')),
+			pad = this.getParam('pad-line-numbers')
+			;
+		
+		if (pad == true)
+			pad = (firstLine + count - 1).toString().length;
+		else if (isNaN(pad) == true)
+			pad = 0;
+			
+		for (var i = 0; i < count; i++)
+		{
+			var lineNumber = lineNumb
