@@ -1399,4 +1399,16 @@ sh.Highlighter.prototype = {
 	{
 		var classes = [
 			'line',
-			'number' 
+			'number' + lineNumber,
+			'index' + lineIndex,
+			'alt' + (lineNumber % 2 == 0 ? 1 : 2).toString()
+		];
+		
+		if (this.isLineHighlighted(lineNumber))
+		 	classes.push('highlighted');
+		
+		if (lineNumber == 0)
+			classes.push('break');
+			
+		return '<div class="' + classes.join(' ') + '">' + code + '</div>';
+	},
