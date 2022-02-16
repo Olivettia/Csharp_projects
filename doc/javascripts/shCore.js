@@ -1412,3 +1412,14 @@ sh.Highlighter.prototype = {
 			
 		return '<div class="' + classes.join(' ') + '">' + code + '</div>';
 	},
+	
+	/**
+	 * Generates HTML markup for line number column.
+	 * @param {String} code			Complete code HTML markup.
+	 * @param {Array} lineNumbers	Calculated line numbers.
+	 * @return {String}				Returns HTML markup.
+	 */
+	getLineNumbersHtml: function(code, lineNumbers)
+	{
+		var html = '',
+			count = splitLines(cod
