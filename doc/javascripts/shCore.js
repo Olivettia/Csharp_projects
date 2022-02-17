@@ -1434,4 +1434,17 @@ sh.Highlighter.prototype = {
 			
 		for (var i = 0; i < count; i++)
 		{
-			var lineNumber = lineNumb
+			var lineNumber = lineNumbers ? lineNumbers[i] : firstLine + i,
+				code = lineNumber == 0 ? sh.config.space : padNumber(lineNumber, pad)
+				;
+				
+			html += this.getLineHtml(i, lineNumber, code);
+		}
+		
+		return html;
+	},
+	
+	/**
+	 * Splits block of text into individual DIV lines.
+	 * @param {String} code			Code to highlight.
+	 * @param {
