@@ -1456,4 +1456,18 @@ sh.Highlighter.prototype = {
 		
 		var lines = splitLines(html),
 			padLength = this.getParam('pad-line-numbers'),
-			firstLine = parseInt(this
+			firstLine = parseInt(this.getParam('first-line')),
+			html = '',
+			brushName = this.getParam('brush')
+			;
+
+		for (var i = 0; i < lines.length; i++)
+		{
+			var line = lines[i],
+				indent = /^(&nbsp;|\s)+/.exec(line),
+				spaces = null,
+				lineNumber = lineNumbers ? lineNumbers[i] : firstLine + i;
+				;
+
+			if (indent != null)
+			{
