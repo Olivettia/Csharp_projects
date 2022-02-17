@@ -1447,4 +1447,13 @@ sh.Highlighter.prototype = {
 	/**
 	 * Splits block of text into individual DIV lines.
 	 * @param {String} code			Code to highlight.
-	 * @param {
+	 * @param {Array} lineNumbers	Calculated line numbers.
+	 * @return {String}				Returns highlighted code in HTML form.
+	 */
+	getCodeLinesHtml: function(html, lineNumbers)
+	{
+		html = trim(html);
+		
+		var lines = splitLines(html),
+			padLength = this.getParam('pad-line-numbers'),
+			firstLine = parseInt(this
