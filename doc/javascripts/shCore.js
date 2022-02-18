@@ -1471,3 +1471,17 @@ sh.Highlighter.prototype = {
 
 			if (indent != null)
 			{
+				spaces = indent[0].toString();
+				line = line.substr(spaces.length);
+				spaces = spaces.replace(' ', sh.config.space);
+			}
+
+			line = trim(line);
+			
+			if (line.length == 0)
+				line = sh.config.space;
+			
+			html += this.getLineHtml(
+				i,
+				lineNumber, 
+				(spaces != null ? '<co
