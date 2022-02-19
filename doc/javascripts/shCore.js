@@ -1484,4 +1484,20 @@ sh.Highlighter.prototype = {
 			html += this.getLineHtml(
 				i,
 				lineNumber, 
-				(spaces != null ? '<co
+				(spaces != null ? '<code class="' + brushName + ' spaces">' + spaces + '</code>' : '') + line
+			);
+		}
+		
+		return html;
+	},
+	
+	/**
+	 * Returns HTML for the table title or empty string if title is null.
+	 */
+	getTitleHtml: function(title)
+	{
+		return title ? '<caption>' + title + '</caption>' : '';
+	},
+	
+	/**
+	 * Finds all ma
