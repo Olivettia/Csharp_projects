@@ -1507,4 +1507,15 @@ sh.Highlighter.prototype = {
 	 */
 	getMatchesHtml: function(code, matches)
 	{
-		var pos
+		var pos = 0, 
+			result = '',
+			brushName = this.getParam('brush', '')
+			;
+		
+		function getBrushNameCss(match)
+		{
+			var result = match ? (match.brushName || brushName) : brushName;
+			return result ? result + ' ' : '';
+		};
+		
+		// Finally, go through the final list of matches and pu
