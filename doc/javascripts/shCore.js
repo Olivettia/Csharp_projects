@@ -1500,4 +1500,11 @@ sh.Highlighter.prototype = {
 	},
 	
 	/**
-	 * Finds all ma
+	 * Finds all matches in the source code.
+	 * @param {String} code		Source code to process matches in.
+	 * @param {Array} matches	Discovered regex matches.
+	 * @return {String} Returns formatted HTML with processed mathes.
+	 */
+	getMatchesHtml: function(code, matches)
+	{
+		var pos
