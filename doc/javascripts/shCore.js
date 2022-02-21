@@ -1518,4 +1518,15 @@ sh.Highlighter.prototype = {
 			return result ? result + ' ' : '';
 		};
 		
-		// Finally, go through the final list of matches and pu
+		// Finally, go through the final list of matches and pull the all
+		// together adding everything in between that isn't a match.
+		for (var i = 0; i < matches.length; i++) 
+		{
+			var match = matches[i],
+				matchBrushName
+				;
+			
+			if (match === null || match.length === 0) 
+				continue;
+			
+			matchBrushName = getBrushNam
