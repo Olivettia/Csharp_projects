@@ -1538,4 +1538,15 @@ sh.Highlighter.prototype = {
 			pos = match.index + match.length + (match.offset || 0);
 		}
 
-		//
+		// don't forget to add whatever's remaining in the string
+		result += wrapLinesWithCode(code.substr(pos), getBrushNameCss() + 'plain');
+
+		return result;
+	},
+	
+	/**
+	 * Generates HTML markup for the whole syntax highlighter.
+	 * @param {String} code Source code.
+	 * @return {String} Returns HTML markup.
+	 */
+	getH
