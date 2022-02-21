@@ -1529,4 +1529,13 @@ sh.Highlighter.prototype = {
 			if (match === null || match.length === 0) 
 				continue;
 			
-			matchBrushName = getBrushNam
+			matchBrushName = getBrushNameCss(match);
+			
+			result += wrapLinesWithCode(code.substr(pos, match.index - pos), matchBrushName + 'plain')
+					+ wrapLinesWithCode(match.value, matchBrushName + match.css)
+					;
+
+			pos = match.index + match.length + (match.offset || 0);
+		}
+
+		//
