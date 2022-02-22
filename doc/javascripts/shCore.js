@@ -1549,4 +1549,19 @@ sh.Highlighter.prototype = {
 	 * @param {String} code Source code.
 	 * @return {String} Returns HTML markup.
 	 */
-	getH
+	getHtml: function(code)
+	{
+		var html = '',
+			classes = [ 'syntaxhighlighter' ],
+			tabSize,
+			matches,
+			lineNumbers
+			;
+		
+		// process light mode
+		if (this.getParam('light') == true)
+			this.params.toolbar = this.params.gutter = false;
+
+		className = 'syntaxhighlighter';
+
+		if (this.getPa
