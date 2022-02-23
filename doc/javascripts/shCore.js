@@ -1564,4 +1564,14 @@ sh.Highlighter.prototype = {
 
 		className = 'syntaxhighlighter';
 
-		if (this.getPa
+		if (this.getParam('collapse') == true)
+			classes.push('collapsed');
+		
+		if ((gutter = this.getParam('gutter')) == false)
+			classes.push('nogutter');
+
+		// add custom user style name
+		classes.push(this.getParam('class-name'));
+
+		// add brush alias to the class name for custom CSS
+		classes.push(this.getParam('brus
