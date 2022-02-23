@@ -1596,4 +1596,13 @@ sh.Highlighter.prototype = {
 		
 		// find matches in the code using brushes regex list
 		matches = this.findMatches(this.regexList, code);
-		// processes found matches into the htm
+		// processes found matches into the html
+		html = this.getMatchesHtml(code, matches);
+		// finally, split all lines so that they wrap well
+		html = this.getCodeLinesHtml(html, lineNumbers);
+
+		// finally, process the links
+		if (this.getParam('auto-links'))
+			html = processUrls(html);
+		
+		if (typeof(navigator) != 'undefined' && naviga
