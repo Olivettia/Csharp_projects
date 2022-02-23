@@ -1588,4 +1588,12 @@ sh.Highlighter.prototype = {
 			: processTabs(code, tabSize)
 			;
 
-		// unindent
+		// unindent code by the common indentation
+		code = unindent(code);
+
+		if (gutter)
+			lineNumbers = this.figureOutLineNumbers(code);
+		
+		// find matches in the code using brushes regex list
+		matches = this.findMatches(this.regexList, code);
+		// processes found matches into the htm
