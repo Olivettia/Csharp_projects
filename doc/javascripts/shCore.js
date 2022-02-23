@@ -1574,4 +1574,18 @@ sh.Highlighter.prototype = {
 		classes.push(this.getParam('class-name'));
 
 		// add brush alias to the class name for custom CSS
-		classes.push(this.getParam('brus
+		classes.push(this.getParam('brush'));
+
+		code = trimFirstAndLastLines(code)
+			.replace(/\r/g, ' ') // IE lets these buggers through
+			;
+
+		tabSize = this.getParam('tab-size');
+
+		// replace tabs with spaces
+		code = this.getParam('smart-tabs') == true
+			? processSmartTabs(code, tabSize)
+			: processTabs(code, tabSize)
+			;
+
+		// unindent
