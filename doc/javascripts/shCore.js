@@ -1637,4 +1637,17 @@ sh.Highlighter.prototype = {
 	 */
 	getDiv: function(code)
 	{
-		if (
+		if (code === null) 
+			code = '';
+		
+		this.code = code;
+
+		var div = this.create('div');
+
+		// create main HTML
+		div.innerHTML = this.getHtml(code);
+		
+		// set up click handlers
+		if (this.getParam('toolbar'))
+			attachEvent(findElement(div, '.toolbar'), 'click', sh.toolbar.handler);
+		
