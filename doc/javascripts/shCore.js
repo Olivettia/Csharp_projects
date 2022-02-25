@@ -1622,4 +1622,19 @@ sh.Highlighter.prototype = {
 								+ '</div>'
 							+ '</td>'
 						+ '</tr>'
-					+ '<
+					+ '</tbody>'
+				+ '</table>'
+			+ '</div>'
+			;
+			
+		return html;
+	},
+	
+	/**
+	 * Highlights the code and returns complete HTML.
+	 * @param {String} code     Code to highlight.
+	 * @return {Element}        Returns container DIV element with all markup.
+	 */
+	getDiv: function(code)
+	{
+		if (
