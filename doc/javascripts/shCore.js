@@ -1651,3 +1651,14 @@ sh.Highlighter.prototype = {
 		if (this.getParam('toolbar'))
 			attachEvent(findElement(div, '.toolbar'), 'click', sh.toolbar.handler);
 		
+		if (this.getParam('quick-code'))
+			attachEvent(findElement(div, '.code'), 'dblclick', quickCodeHandler);
+		
+		return div;
+	},
+	
+	/**
+	 * Initializes the highlighter/brush.
+	 *
+	 * Constructor isn't used for initialization so that nothing executes during necessary
+	 * `new SyntaxHighlighte
