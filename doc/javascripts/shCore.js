@@ -1661,4 +1661,15 @@ sh.Highlighter.prototype = {
 	 * Initializes the highlighter/brush.
 	 *
 	 * Constructor isn't used for initialization so that nothing executes during necessary
-	 * `new SyntaxHighlighte
+	 * `new SyntaxHighlighter.Highlighter()` call when setting up brush inheritence.
+	 *
+	 * @param {Hash} params Highlighter parameters.
+	 */
+	init: function(params)
+	{
+		this.id = guid();
+		
+		// register this instance in the highlighters list
+		storeHighlighter(this);
+		
+		// local params take precedence over 
