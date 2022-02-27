@@ -1683,4 +1683,18 @@ sh.Highlighter.prototype = {
 	/**
 	 * Converts space separated list of keywords into a regular expression string.
 	 * @param {String} str    Space separated keywords.
-	 
+	 * @return {String}       Returns regular expression string.
+	 */
+	getKeywords: function(str)
+	{
+		str = str
+			.replace(/^\s+|\s+$/g, '')
+			.replace(/\s+/g, '|')
+			;
+		
+		return '\\b(?:' + str + ')\\b';
+	},
+	
+	/**
+	 * Makes a brush compatible with the `html-script` functionality.
+	 * @par
