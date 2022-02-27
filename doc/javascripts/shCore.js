@@ -1672,4 +1672,15 @@ sh.Highlighter.prototype = {
 		// register this instance in the highlighters list
 		storeHighlighter(this);
 		
-		// local params take precedence over 
+		// local params take precedence over defaults
+		this.params = merge(sh.defaults, params || {})
+		
+		// process light mode
+		if (this.getParam('light') == true)
+			this.params.toolbar = this.params.gutter = false;
+	},
+	
+	/**
+	 * Converts space separated list of keywords into a regular expression string.
+	 * @param {String} str    Space separated keywords.
+	 
