@@ -1705,4 +1705,17 @@ sh.Highlighter.prototype = {
 			left : { regex: regexGroup.left, css: 'script' },
 			right : { regex: regexGroup.right, css: 'script' },
 			code : new XRegExp(
-				
+				"(?<left>" + regexGroup.left.source + ")" +
+				"(?<code>.*?)" +
+				"(?<right>" + regexGroup.right.source + ")",
+				"sgi"
+				)
+		};
+	}
+}; // end of Highlighter
+
+return sh;
+}(); // end of anonymous function
+
+// CommonJS
+typeof(exports) != 'undefined' ? exports['SyntaxHighlighter'] = SyntaxHighlighter : null;
