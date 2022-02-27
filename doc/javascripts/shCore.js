@@ -1697,4 +1697,12 @@ sh.Highlighter.prototype = {
 	
 	/**
 	 * Makes a brush compatible with the `html-script` functionality.
-	 * @par
+	 * @param {Object} regexGroup Object containing `left` and `right` regular expressions.
+	 */
+	forHtmlScript: function(regexGroup)
+	{
+		this.htmlScript = {
+			left : { regex: regexGroup.left, css: 'script' },
+			right : { regex: regexGroup.right, css: 'script' },
+			code : new XRegExp(
+				
