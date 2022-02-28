@@ -13,4 +13,18 @@ body {
     opacity: 0.9;
 }
 #index #toggle {
-    display: b
+    display: block;
+    text-align: right;
+}
+#index.collapsed ul {
+    display: none;
+}
+#index.expanded ul {
+    display: block;
+}
+#content {
+    position: relative;
+    width: 800px;
+    margin: auto;
+    _text-align: left;
+}
