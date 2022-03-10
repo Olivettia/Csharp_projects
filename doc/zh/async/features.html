@@ -61,4 +61,16 @@ getOperation.addCallback(function(result) { alert("ping returns: " + result); })
 
 <p>异步操作是否已完成。在 yield 执行之前，已完成标志位一直为 false 。在 yield 执行之后，已完成标志位一直为 true 。</p>
 
-<h3><a name="Async.Operation.yie
+<h3><a name="Async.Operation.yield()">Async.Operation.yield()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>value (optional)</li></ul></li>
+<li>output: this : Operation</li>
+</ul>
+
+<p>为特定的异步操作返回结果。</p>
+
+<pre><code class="brush: js">var waitAsync = function(delay) {
+    var operation = new Async.Operation();
