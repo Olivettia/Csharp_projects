@@ -74,3 +74,16 @@ getOperation.addCallback(function(result) { alert("ping returns: " + result); })
 
 <pre><code class="brush: js">var waitAsync = function(delay) {
     var operation = new Async.Operation();
+    setTimeout(function() {
+        var result = "You have waited " + delay + " millisecond(s)."
+        operation.yield(result);
+    }, delay);
+    return operation;
+}
+</code></pre>
+
+<h3><a name="Async.Operation.addCallback()">Async.Operation.addCallback()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<
