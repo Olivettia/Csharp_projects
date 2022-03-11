@@ -86,4 +86,15 @@ getOperation.addCallback(function(result) { alert("ping returns: " + result); })
 
 <ul>
 <li>type: instance</li>
-<
+<li>input:
+<ul><li>callback : Function</li></ul></li>
+<li>output: this : Operation</li>
+</ul>
+
+<p>为特定的异步操作添加回调函数。回调函数会在异步操作返回后逐一被调用，回调函数都会接收到一个参数，也就是异步操作的返回结果。</p>
+
+<pre><code class="brush: js">var waitOperation = wait(999);
+waitOperation.addCallback(function(result) { alert(result); });
+</code></pre>
+
+<h
