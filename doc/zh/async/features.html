@@ -97,4 +97,18 @@ getOperation.addCallback(function(result) { alert("ping returns: " + result); })
 waitOperation.addCallback(function(result) { alert(result); });
 </code></pre>
 
-<h
+<h2><a name="Async.chain()">Async.chain()</a></h2>
+
+<ul>
+<li>type: static</li>
+<li>input: none</li>
+<li>output: chain : Operation</li>
+</ul>
+
+<p>创建一个异步调用队列。</p>
+
+<pre><code class="brush: js">Async
+    .chain()
+    .next(firstFunction)
+    .next(secondFunction)
+    .next(t
