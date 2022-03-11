@@ -111,4 +111,19 @@ waitOperation.addCallback(function(result) { alert(result); });
     .chain()
     .next(firstFunction)
     .next(secondFunction)
-    .next(t
+    .next(thirdFunction)
+    .go();
+</code></pre>
+
+<h3><a name="Async.chain().result">Async.chain().result</a></h3>
+
+<ul>
+<li>type: instance</li>
+</ul>
+
+<p>异步操作的结果。在 go 执行之前，值一直为 undefined 。在 go 执行之后，值为 go 传入的值。随后队列中每一个函数执行完，这个值都会更新为最后执行完的函数的返回值。</p>
+
+<h3><a name="Async.chain().state">Async.chain().state</a></h3>
+
+<ul>
+<li>ty
