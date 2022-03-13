@@ -148,4 +148,13 @@ waitOperation.addCallback(function(result) { alert(result); });
 <li>output: this : Operation</li>
 </ul>
 
-<p>向异步调用队列添加函数。如果该函数返回值类型为 Async.Operation ，队列会等待该异步操作结束后再执行下一个函数；否则队列在执行完该函数后立即执行下一个函数。无论是哪种情况，该函数都会
+<p>向异步调用队列添加函数。如果该函数返回值类型为 Async.Operation ，队列会等待该异步操作结束后再执行下一个函数；否则队列在执行完该函数后立即执行下一个函数。无论是哪种情况，该函数都会接收到一个参数，该参数为 go 传入的初始值，或者是上一个的函数返回值。该函数的返回值会作为唯一一个参数传给下一个的函数。</p>
+
+<pre><code class="brush: js">var plusOne = function(i) {
+    return i + 1;
+};
+
+var plusOneAsync = function(i) {
+    var operation = new Async.Operation();
+    setTimeout(function() { operation.yield(i + 1); }, 1000);
+    return operati
