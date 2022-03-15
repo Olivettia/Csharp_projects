@@ -215,4 +215,16 @@ Async
 <ul>
 <li>type: static</li>
 <li>input:
-<ul><li>value (optional)</li><
+<ul><li>value (optional)</li></ul></li>
+<li>output: operation : Operation</li>
+</ul>
+
+<p>创建一个异步调用队列，并立即启动该队列。如果传入一个参数，则该参数作为队列第一个函数的唯一参数。</p>
+
+<pre><code class="brush: js">var plusOne = function(i) {
+    return i + 1;
+};
+
+var plusOneAsync = function(i) {
+    var operation = new Async.Operation();
+    setTimeout(function() { operatio
