@@ -227,4 +227,21 @@ Async
 
 var plusOneAsync = function(i) {
     var operation = new Async.Operation();
-    setTimeout(function() { operatio
+    setTimeout(function() { operation.yield(i + 1); }, 1000);
+    return operation;
+};
+
+Async
+    .go(0)
+    .next(plusOne)
+    .next(plusOneAsync)
+    .next(function(i) { alert(i); });
+</code></pre>
+
+<h3><a name="Async.collect()">Async.collect()</a></h3>
+
+<ul>
+<li>type: static</li>
+<li>input:
+<ul><li>functions : Array</li>
+<li>functionArguments : Array (opt
