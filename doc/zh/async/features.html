@@ -256,4 +256,19 @@ Async
 
 var plusOneAsync = function(i) {
     var operation = new Async.Operation();
-    setTimeout(function() { oper
+    setTimeout(function() { operation.yield(i + 1); }, 1000);
+    return operation;
+};
+
+var parallelOperation = Async
+    .collect([
+        plusOne,
+        plusOneAsync
+    ], [99, 100]);
+parallelOperation.addCallback(function(results) { alert(results); });
+</code></pre>
+
+<h3><a name="Async.wait()">Async.wait()</a></h3>
+
+<ul>
+<li>
