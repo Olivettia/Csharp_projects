@@ -271,4 +271,13 @@ parallelOperation.addCallback(function(results) { alert(results); });
 <h3><a name="Async.wait()">Async.wait()</a></h3>
 
 <ul>
-<li>
+<li>type: static</li>
+<li>input:
+<ul><li>delay : Number</li>
+<li>value (optional)</li></ul></li>
+<li>output: operation : Operation</li>
+</ul>
+
+<p>等待指定的毫秒数，然后开始执行回调函数。回调函数将要接收到的异步操作结果，可以在第二个参数指定。</p>
+
+<pre><code class="brush: js">var waitOperation = Async.wait(999, "predefined
