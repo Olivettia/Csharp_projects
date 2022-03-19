@@ -324,4 +324,13 @@ sayHello
 <li>input:
 <ul><li>context</li>
 <li>values : Array (optional)</li></ul></li>
-<li>o
+<li>output: operatoin : Operation</li>
+</ul>
+
+<p>以异步方式调用同步函数，使用方式与 Function.prototype.apply() 一致，返回类型为 Async.Operation 。</p>
+
+<pre><code class="brush: js">var sayHello = function(name) { return "Hello, " + name; };
+sayHello
+    .asyncApple(this, ["Cat"])
+    .addCallback(function(result) { alert(result); });
+</code></pre
