@@ -14,4 +14,14 @@
 <body>
     <div id="index" class="collapsed">
         <a id="toggle" href="###" onclick="window.toggleTreeVisibility()">Show Index</a>
-        <ul><li><a href="#Async 快速入门"
+        <ul><li><a href="#Async 快速入门">Async 快速入门</a></li></ul>
+    </div>
+    <div id="content">
+        <h1><a name="Async 快速入门">Async 快速入门</a></h1>
+
+<p>在大多数应用程序当中， Async 用于解决 Ajax 带来的复杂异步回调关系，因此先将基本的 Ajax 操作封装起来，让它返回 Operation 实例。</p>
+
+<pre><code class="brush: js">/* jQuery required for this sample */
+
+var getAsync = function(url, data) {
+    var operation = new A
