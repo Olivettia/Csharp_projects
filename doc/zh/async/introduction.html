@@ -24,4 +24,15 @@
 <pre><code class="brush: js">/* jQuery required for this sample */
 
 var getAsync = function(url, data) {
-    var operation = new A
+    var operation = new Async.Operation();
+    $.get(url, data, function(result) { operation.yield(result); }, "json");
+    return operation;
+};
+</code></pre>
+
+<p>接下来，我们编写调用 Ajax 操作的函数，让它同样返回 Operation 实例。</p>
+
+<pre><code class="brush: js">var plusAsync = function(x, y) {
+    return getAsync("/plus", "x=" + x + "&amp;y=" + y);
+}
+</code></pr
