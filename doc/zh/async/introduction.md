@@ -5,4 +5,15 @@
 	/* jQuery required for this sample */
 	
 	var getAsync = function(url, data) {
-		var operation = new Async.O
+		var operation = new Async.Operation();
+		$.get(url, data, function(result) { operation.yield(result); }, "json");
+		return operation;
+	};
+
+接下来，我们编写调用 Ajax 操作的函数，让它同样返回 Operation 实例。
+
+	var plusAsync = function(x, y) {
+		return getAsync("/plus", "x=" + x + "&y=" + y);
+	}
+	
+按照这个风格，所有直接调用异步操作的函数都明明为以 Async 结尾，
