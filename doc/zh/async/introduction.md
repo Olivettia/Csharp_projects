@@ -16,4 +16,10 @@
 		return getAsync("/plus", "x=" + x + "&y=" + y);
 	}
 	
-按照这个风格，所有直接调用异步操作的函数都明明为以 Async 结尾，
+按照这个风格，所有直接调用异步操作的函数都明明为以 Async 结尾，并且返回 Operation 实例。这样，整个应用程序中哪些函数是异步的，哪些函数是同步的，一看就知道了。对于异步函数，也有统一的获取结果方式。
+
+	var x = 1;
+	var y = 2;
+	
+	plusAsync(x, y)
+		.addCallback(function(result) { alert(result); });
