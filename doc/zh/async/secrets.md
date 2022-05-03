@@ -4,4 +4,23 @@
 
 ## Async.Operation
 
-在实例化一个异步操作时，可以传入一组选项。如果其中的 chain 属性为 true ，
+在实例化一个异步操作时，可以传入一组选项。如果其中的 chain 属性为 true ，则该异步操作与 Async.chain() 创建的异步调用队列无异。
+
+	var operation = new Async.Operation({ chain: true });
+
+### Async.Operation.error
+
+* type: instance
+
+异步操作的错误信息。
+
+### Async.Operation.go()
+
+* type: instance
+* input:
+	* value (optional)
+* output: this : Operation
+
+Async.Operation.yield 的别名，在异步队列中使用。
+
+### Async.Operat
