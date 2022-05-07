@@ -23,4 +23,23 @@
 
 Async.Operation.yield 的别名，在异步队列中使用。
 
-### Async.Operat
+### Async.Operation.next()
+
+* type: instance
+* input:
+	* function : Function
+* output: this : Operation
+
+Async.Operation.addCallback 的别名，在异步队列中使用。
+
+### Async.Operation.onerror()
+
+* type: instance
+* input:
+	* handler : Function
+* output: this : Operation
+
+为异步操作添加错误处理函数。当异步操作的回调发生错误时，错误处理函数将被调用。
+
+	var operation = new Async.Operation();
+	operation.addCallbac
