@@ -42,4 +42,20 @@ Async.Operation.addCallback 的别名，在异步队列中使用。
 为异步操作添加错误处理函数。当异步操作的回调发生错误时，错误处理函数将被调用。
 
 	var operation = new Async.Operation();
-	operation.addCallbac
+	operation.addCallback(function() { throw "predefined error"; });
+	operation.onerror(function(operation) { alert(operation.error); });
+	operation.yield();
+
+## Async.chain()
+
+### Async.chain().error
+
+* type: instance
+
+异步队列的错误信息。
+
+### Async.chain().onerror()
+
+* type: instance
+* input:
+	*
