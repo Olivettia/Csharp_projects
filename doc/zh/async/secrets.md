@@ -58,4 +58,18 @@ Async.Operation.addCallback 的别名，在异步队列中使用。
 
 * type: instance
 * input:
-	*
+	* handler : Function
+* output: this : Operation
+
+为异步队列添加错误处理函数。当异步队列的回调发生错误时，错误处理函数将被调用。
+
+## Helpers
+
+### Async.onerror()
+
+* type: static
+* input:
+	* handler : Function
+* output: Async
+
+为 Async 添加错误处理函数。任何异步操作或异步队列发生错误时，错误处理函数都会被调用。
