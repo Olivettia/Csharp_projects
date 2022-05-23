@@ -28,4 +28,28 @@ Central 是一个用于在 JavaScript 环境中快速创建事件派发者的组
 
 	Central.listen("move", function(e) {
 		element.style.left = parseInt(element.style.left) + e.x + "px";
-		element.style
+		element.style.top = parseInt(element.style.top) + e.y + "px";
+	});
+
+### Central.call()
+
+* type: static
+* input:
+	* command : String
+	* argument : Object
+* output: Central
+
+派发指定名称的事件。
+
+	Central.call("move", {
+		x: 10,
+		y: -20
+	});
+
+## Central.extend()
+
+* type: static
+* input: target : Object
+* output: target : Object
+
+扩展指定对象，
