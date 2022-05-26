@@ -69,4 +69,20 @@ Central 是一个用于在 JavaScript 环境中快速创建事件派发者的组
 	Central.extend(controller);
 	
 	controller.listen("move", function(e) {
-		element.style.left = p
+		element.style.left = parseInt(element.style.left) + e.x + "px";
+		element.style.top = parseInt(element.style.top) + e.y + "px";
+	});
+
+### Central.extend().call()
+
+* type: instance
+* input:
+	* command : String
+	* argument : Object
+* output: this
+
+派发指定名称的事件。
+
+	var controller = new Controller();
+	
+	Central.extend
