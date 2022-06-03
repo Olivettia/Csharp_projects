@@ -120,3 +120,308 @@ GrandCentral.call({
         value5_2: "world",
         value5_3: "other"
     },
+    value6: "other"
+});
+</code></pre>
+
+<h4><a name="ne Operator">ne Operator</a></h4>
+
+<p>ne Operator 用于比较两个值是否不等。其比较结果相当于对 eq Operator 比较结果取反。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$ne: "hello world",
+    value2$ne: 42
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "",
+    value2: 24,
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="lt Operator">lt Operator</a></h4>
+
+<p>lt Operator 用于比较数值是否小于某个给定值。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$lt: 0
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: -1,
+    value2: "other"
+});
+</code></pre>
+
+<h4><a name="lte Operator">lte Operator</a></h4>
+
+<p>lte Operator 用于比较数值是否小于或等于某个给定值。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$lte: 0,
+    value2$lte: 0
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: -1,
+    value2: 0,
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="gt Operator">gt Operator</a></h4>
+
+<p>gt Operator 用于比较数值是否小于某个给定值。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$gt: 0
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: 1,
+    value2: "other"
+});
+</code></pre>
+
+<h4><a name="gte Operator">gte Operator</a></h4>
+
+<p>gte Operator 用于比较数值是否小于或等于某个给定值。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$gte: 0,
+    value2$gte: 0
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: 1,
+    value2: 0,
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="in Operator">in Operator</a></h4>
+
+<p>in Operator 用于检测值是否等于 Array 中的任一值。其中等于指的是 eq Operator 。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$in: ["hello", "world"],
+    value2$in: [{
+        value2_1: 0
+    }, {
+        value2_1: 1
+    }]
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "world",
+    value2: {
+        value2_1: 0,
+        value2_1: "other"
+    },
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="nin Operator">nin Operator</a></h4>
+
+<p>nin Operator 用于检测是否不等于 Array 中的任一值。相对于对 in Operator 结果取反。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$nin: ["hello", "world"],
+    value2$nin: [{
+        value2_1: 0
+    }, {
+        value2_1: 1
+    }]
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "",
+    value2: {
+        value2_1: -1,
+        value2_1: "other"
+    },
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="all Operator">all Operator</a></h4>
+
+<p>all Operator 用于检查 Array 中的值是否都属于某个给定的 Array 。其中属于指的是 in Operator 。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$all: ["hello", "world"]
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: ["hello", "and", "world"],
+    value2: "other"
+});
+</code></pre>
+
+<h4><a name="ex Operator">ex Operator</a></h4>
+
+<p>ex Operator 用于检测某个值是否存在，或者是某个值是否不存在。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$ex: true,
+    value2$ex: false
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "hello world",
+    value3: "other"
+});
+</code></pre>
+
+<h4><a name="re Operator">re Operator</a></h4>
+
+<p>re Operator 用于检测 String 是否匹配给定的 RegExp 。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$re: /^A.*/
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: "A13579",
+    value2: "other"
+});
+</code></pre>
+
+<h4><a name="f Operator">f Operator</a></h4>
+
+<p>f Operator 用于检测值是否能够通过给定的函数表达式。</p>
+
+<pre><code class="brush: js">GrandCentral.listen({
+    value1$f: function(json) { return json.x &gt; json.y; },
+    value2$f: function(json) { return !json; }
+}, function(json) {
+    /* will capture call below */
+});
+
+GrandCentral.call({
+    value1: {
+        x: 1,
+        y: 0
+    },
+    value2: false,
+    value3: "other"
+});
+</code></pre>
+
+<h3><a name="GrandCentral.call()">GrandCentral.call()</a></h3>
+
+<ul>
+<li>type: static</li>
+<li>input:
+<ul><li>json : Object</li></ul></li>
+<li>output: Central</li>
+</ul>
+
+<p>派发 JSON 。</p>
+
+<pre><code class="brush: js">GrandCentral.call({
+    status: 200,
+    command: "friendstatus",
+    content: [
+        {
+            username: "user0",
+            status: "online"
+        },
+        {
+            username: "user42",
+            status: "away"
+        }
+    ]
+});
+</code></pre>
+
+<h2><a name="GrandCentral.extend()">GrandCentral.extend()</a></h2>
+
+<ul>
+<li>type: static</li>
+<li>input: target : Object</li>
+<li>output: target : Object</li>
+</ul>
+
+<p>扩展指定对象，使其拥有 Central 功能。</p>
+
+<h3><a name="GrandCentral.extend().listen()">GrandCentral.extend().listen()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>filter : Function || Object</li>
+<li>handler : Function</li></ul></li>
+<li>output: this</li>
+</ul>
+
+<p>使用函数过滤 JSON 或使用模式匹配 JSON ，并使用处理函数处理符合条件的 JSON 。</p>
+
+<pre><code class="brush: js">var controller = new Controller();
+
+GrandCentral.extend(controller);
+
+controller.listen(function(json) {
+    return (json.status == 200 &amp;&amp; json.command == "friendstatus")
+}, function(json) {
+    /* update friend status */
+});
+</code></pre>
+
+<h3><a name="GrandCentral.extend().call()">GrandCentral.extend().call()</a></h3>
+
+<ul>
+<li>type: instance</li>
+<li>input:
+<ul><li>json : Object</li></ul></li>
+<li>output: this</li>
+</ul>
+
+<p>派发指定名称的 JSON 。</p>
+
+<pre><code class="brush: js">var controller = new Controller();
+
+Central.extend(controller);
+
+controller.call({
+    status: 200,
+    command: "friendstatus",
+    content: [
+        {
+            username: "user0",
+            status: "online"
+        },
+        {
+            username: "user42",
+            status: "away"
+        }
+    ]
+});
+</code></pre>
+    </div>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.tagName = 'code';
+        SyntaxHighlighter.all()
+    </script>
