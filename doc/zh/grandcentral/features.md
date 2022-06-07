@@ -267,3 +267,109 @@ re Operator 用于检测 String 是否匹配给定的 RegExp 。
 		value1$re: /^A.*/
 	}, function(json) {
 		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: "A13579",
+		value2: "other"
+	});
+
+#### f Operator
+
+f Operator 用于检测值是否能够通过给定的函数表达式。
+
+	GrandCentral.listen({
+		value1$f: function(json) { return json.x > json.y; },
+		value2$f: function(json) { return !json; }
+	}, function(json) {
+		/* will capture call below */
+	});
+	
+	GrandCentral.call({
+		value1: {
+			x: 1,
+			y: 0
+		},
+		value2: false,
+		value3: "other"
+	});
+
+### GrandCentral.call()
+
+* type: static
+* input:
+	* json : Object
+* output: Central
+
+派发 JSON 。
+
+	GrandCentral.call({
+		status: 200,
+		command: "friendstatus",
+		content: [
+			{
+				username: "user0",
+				status: "online"
+			},
+			{
+				username: "user42",
+				status: "away"
+			}
+		]
+	});
+
+## GrandCentral.extend()
+
+* type: static
+* input: target : Object
+* output: target : Object
+
+扩展指定对象，使其拥有 Central 功能。
+
+### GrandCentral.extend().listen()
+
+* type: instance
+* input:
+	* filter : Function || Object
+	* handler : Function
+* output: this
+
+使用函数过滤 JSON 或使用模式匹配 JSON ，并使用处理函数处理符合条件的 JSON 。
+
+	var controller = new Controller();
+	
+	GrandCentral.extend(controller);
+	
+	controller.listen(function(json) {
+		return (json.status == 200 && json.command == "friendstatus")
+	}, function(json) {
+		/* update friend status */
+	});
+
+### GrandCentral.extend().call()
+
+* type: instance
+* input:
+	* json : Object
+* output: this
+
+派发指定名称的 JSON 。
+
+	var controller = new Controller();
+	
+	Central.extend(controller);
+	
+	controller.call({
+		status: 200,
+		command: "friendstatus",
+		content: [
+			{
+				username: "user0",
+				status: "online"
+			},
+			{
+				username: "user42",
+				status: "away"
+			}
+		]
+	});
