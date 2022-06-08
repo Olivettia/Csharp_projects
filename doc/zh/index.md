@@ -5,4 +5,9 @@ JavaScript 辅助模块是一组专门用于构建复杂 Ajax 应用的基础模
 ## Async
 
 * <a href="async/introduction.html">快速入门</a>
-* <a href="asyn
+* <a href="async/features.html">接口文档</a>
+* <a href="async/secrets.html">实现文档</a>
+
+如果你的应用程序涉及大量的 Ajax 操作，并且采用了分层的设计思想， Async 能够简化异步操作的接口，使得你可以如同控制同步流程一样控制异步流程。如果你的应用程序还涉及 Ajax 操作队列， Async 能够简化这些队列的实现，让你以声明式语言描述异步队列。
+
+你可以使用 Async 封装最基础的 Ajax 操作，从而使得整个应用程序都通过 Async.Operation 来管理 Ajax 操作，而无需为异步函数加入回调参数。在下面这个
