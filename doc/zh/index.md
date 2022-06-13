@@ -28,4 +28,19 @@ JavaScript 辅助模块是一组专门用于构建复杂 Ajax 应用的基础模
 	
 	var multiplyAsync = function(x, y) { /* implementation */ };
 	
-	var divideAsy
+	var divideAsync = function(x, y) { /* implementation */ };
+	
+	var calculateAsync = function(operand, x, y) {
+		switch operand {
+			case "+":
+				return plusAsync(x, y);
+			case "-":
+				return minusAsync(x, y);
+			case "*":
+				return multiplyAsync(x, y);
+			case "/":
+				return divideAsync(x, y);
+		}
+	}
+	
+	calculateAsync
