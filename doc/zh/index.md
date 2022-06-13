@@ -10,4 +10,10 @@ JavaScript 辅助模块是一组专门用于构建复杂 Ajax 应用的基础模
 
 如果你的应用程序涉及大量的 Ajax 操作，并且采用了分层的设计思想， Async 能够简化异步操作的接口，使得你可以如同控制同步流程一样控制异步流程。如果你的应用程序还涉及 Ajax 操作队列， Async 能够简化这些队列的实现，让你以声明式语言描述异步队列。
 
-你可以使用 Async 封装最基础的 Ajax 操作，从而使得整个应用程序都通过 Async.Operation 来管理 Ajax 操作，而无需为异步函数加入回调参数。在下面这个
+你可以使用 Async 封装最基础的 Ajax 操作，从而使得整个应用程序都通过 Async.Operation 来管理 Ajax 操作，而无需为异步函数加入回调参数。在下面这个例子中，所有名称以 Async 结尾的函数都返回 Async.Operation 实例，这使得异步函数无需接收回调函数，也无需主动调用回调函数，如同同步函数一般把调用结果返回既可。只有在真正关心回调结果的地方，才去获取回调结果。
+
+	/* jQuery required for this sample */
+	
+	var getAsync = function(url, data) {
+		var operation = new Async.Operation();
+		$.get(url, data, function(result) { operation.yield(result); },
