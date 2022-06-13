@@ -43,4 +43,15 @@ JavaScript 辅助模块是一组专门用于构建复杂 Ajax 应用的基础模
 		}
 	}
 	
-	calculateAsync
+	calculateAsync("+", 99, 1)
+		.addCallback(function(result) { alert(result); });
+
+## Overload
+
+* <a href="overload/introduction.html">快速入门</a>
+* <a href="overload/features.html">接口文档</a>
+* <a href="overload/secrets.html">实现文档</a>
+
+如果你的应用程序包含若干带有多个重载的函数，你可以使用 Overload 简化对重载入口的描述。
+
+在一般情况下，如果一个函数有多个重载，往往意味着你要在这个函数的内部自行编写代码以识别用户调用的
