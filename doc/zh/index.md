@@ -16,4 +16,16 @@ JavaScript 辅助模块是一组专门用于构建复杂 Ajax 应用的基础模
 	
 	var getAsync = function(url, data) {
 		var operation = new Async.Operation();
-		$.get(url, data, function(result) { operation.yield(result); },
+		$.get(url, data, function(result) { operation.yield(result); }, "json");
+		return operation;
+	};
+	
+	var plusAsync = function(x, y) {
+		return getAsync("/plus", "x=" + x + "&y=" + y);
+	};
+	
+	var minusAsync = function(x, y) { /* implementation */ };
+	
+	var multiplyAsync = function(x, y) { /* implementation */ };
+	
+	var divideAsy
