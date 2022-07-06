@@ -61,4 +61,15 @@ JavaScript 辅助模块是一组专门用于构建复杂 Ajax 应用的基础模
 	var User = function(name) { this.name = name; };
 	
 	var sayHello = Overload
-		.
+		.add("String",
+			function(string) { alert("Hello, " + string); }) 
+		.add([User],
+			function(user) { sayHello(user.name) })
+
+## Central
+
+* <a href="central/introduction.html">快速入门</a>
+* <a href="central/features.html">接口文档</a>
+* <a href="central/secrets.html">实现文档</a>
+
+如果你的应用程序由多个不同的模块组成，并且你希望减少这些模块之
