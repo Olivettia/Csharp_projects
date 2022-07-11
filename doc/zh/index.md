@@ -76,4 +76,12 @@ JavaScript 辅助模块是一组专门用于构建复杂 Ajax 应用的基础模
 
 例如说，原本 A 模块需要调用 B 模块，那么就存在 A 对 B 的单向依赖；如果改写为 A 派发事件， B 监听事件，则可以去掉 A 对 B 的单向依赖，但会增加 B 对 A 的单向依赖。为了解决这个问题，我们可以使用中央事件派发器 Central ， A 通过 Central 派发事件， B 通过 Central 监听 A 可能派发的事件，这时候 A 和 B 之间就不存在任何的依赖关系了，它们都单向依赖于 Central 。
 
-Central 通过字
+Central 通过字符串形式的事件名称区分不同的事件。无论由哪个模块调用 Central 进行派发，使用同一个名称的事件应该总是代表同一个语义。
+
+    /* jQuery required for this sample */
+    
+    var mapController = new (function() {
+        var mapOffset = { x: 0, y: 0 };
+        var redrawMap = function() { /* implementation */ };
+        
+        Central.listen("mapmove", function(ev
