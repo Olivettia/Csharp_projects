@@ -84,4 +84,16 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
         var mapOffset = { x: 0, y: 0 };
         var redrawMap = function() { /* implementation */ };
         
-        Central.listen("mapmove", function(ev
+        Central.listen("mapmove", function(event) {
+            mapOffset.x += event.x;
+            mapOffset.y += event.y;
+            redrawMap();
+        });
+    })();
+    
+    var keyboardListener = new (function() {
+        var LEFT_ARROW = 37,
+            RIGHT_ARROW = 39,
+            UP_ARROW = 38,
+            DOWN_ARROW = 40;
+     
