@@ -96,4 +96,12 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
             RIGHT_ARROW = 39,
             UP_ARROW = 38,
             DOWN_ARROW = 40;
-     
+        
+        $(document).keypress(function(event) {
+            switch (event.which) {
+                case LEFT_ARROW:
+                    Central.call("mapmove", { x: -10, y: 0 });
+                    break;
+                case RIGHT_ARROW:
+                    Central.call("mapmove", { x: 10, y: 0 });
+      
