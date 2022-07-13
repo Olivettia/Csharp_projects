@@ -104,4 +104,15 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
                     break;
                 case RIGHT_ARROW:
                     Central.call("mapmove", { x: 10, y: 0 });
-      
+                    break;
+                case UP_ARROW:
+                    Central.call("mapmove", { x: 0, y: 10 });
+                    break;
+                case DOWN_ARROW:
+                    Central.call("mapmove", { x: 0, y: -10 });
+                    break;
+            }
+        });
+    })();
+    
+    var mouseListene
