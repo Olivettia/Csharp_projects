@@ -115,4 +115,11 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
         });
     })();
     
-    var mouseListene
+    var mouseListener = new (function() {
+        /* monitor mouse events and dispatch move event in Central */
+        /* this module won't be loaded on touch screen devices */
+    })();
+    
+    var touchListener = new (function() {
+        /* monitor touch events and dispatch move event in Central */
+        /* this module will 
