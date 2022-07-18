@@ -122,4 +122,13 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
     
     var touchListener = new (function() {
         /* monitor touch events and dispatch move event in Central */
-        /* this module will 
+        /* this module will be loaded on touch screen devices */
+    })();
+
+## GrandCentral
+
+* <a href="grandcentral/introduction.html">快速入门</a>
+* <a href="grandcentral/features.html">接口文档</a>
+* <a href="grandcentral/secrets.html">实现文档</a>
+
+如果你的应用程序需要监听一个事件源，并从中根据事件数据进行分拣， GrandCentral 能够帮你完成分拣工作，而你需要做的只是使用简单的 JSON 描述分拣
