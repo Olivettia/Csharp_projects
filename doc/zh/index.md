@@ -139,4 +139,14 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
     
     $(document).ajaxComplete(function(event, xhr, settings) {
         var response = {
- 
+            status: xhr.status,
+            json: $.parseJSON(xhr.responseText)
+        };
+        GrandCentral.call(response);
+    };
+    
+    var chatMessageController = new (function() {
+        var renderChatMessage = function(message) { /* implementation */ };
+        
+        GrandCentral.listen({
+      
