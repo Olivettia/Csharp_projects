@@ -149,4 +149,14 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
         var renderChatMessage = function(message) { /* implementation */ };
         
         GrandCentral.listen({
-      
+            status: 200,
+            json: {
+                command: "message"
+            }
+        }, function(response) {
+            renderChatMessage(response.json.message);
+        });
+    })();
+    
+    var systemNotificationController = new (function() {
+        var renderSystemNotifica
