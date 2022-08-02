@@ -167,4 +167,14 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
                 command: "notification"
             }
         }, function(response) {
-            renderSystemNotification(respon
+            renderSystemNotification(response.json.notification);
+        });
+    })();
+    
+    var errorController = new (function() {
+        var displayErrorMessage = function() { /* implementation */ };
+        
+        GrandCentral.listen({
+            status$ne: 200
+        }, function(response) {
+            displayErrorMessage(
