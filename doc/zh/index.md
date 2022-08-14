@@ -196,4 +196,12 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
     
     var list3 = list2.map(function(i) { return i * i; });
     assert(list3.toArray() == [9, 16, 25, 16, 9]);
-   
+    
+    var list4 = List.iterate(function(i) { return i * 2; }, 1);
+    
+    var list5 = list4.take(10);
+    assert(list5.toArray() == [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]);
+    
+    var list6 = list4
+        .map(function(i) { return i - 1; })
+        .dropWhile(function
