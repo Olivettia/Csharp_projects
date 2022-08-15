@@ -204,4 +204,6 @@ Central 通过字符串形式的事件名称区分不同的事件。无论由哪
     
     var list6 = list4
         .map(function(i) { return i - 1; })
-        .dropWhile(function
+        .dropWhile(function(i) { return i < 100; })
+        .takeWhile(function(i) { return i < 1000; });
+    assert(list6.toArray() == [127, 255, 511]);
