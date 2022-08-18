@@ -8,4 +8,14 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
 * type: constructor
 * input:
-	* none | initialArray : argume
+	* none | initialArray : arguments (length > 1) | intialArray : Array
+* output: this : List
+
+表示一维数据集合的类。类似于 Array ，每一个实例代表一组一维数据集合。
+
+    var originalArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    var originalList = new List(originalArray);
+    
+    var calculatedList = originalList
+        .map(function(i) { return i * (i + 1) / 2; })
+        .fi
