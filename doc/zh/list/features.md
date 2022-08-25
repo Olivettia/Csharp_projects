@@ -18,4 +18,19 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
     
     var calculatedList = originalList
         .map(function(i) { return i * (i + 1) / 2; })
-        .fi
+        .filter(function(i) { return i > 10 && i < 50; })
+    
+    var calculatedArray = calculatedList.toArray();
+    assert(calculatedArray == [15, 21, 28, 36, 45]);
+
+### List.at()
+
+* type: instance
+* input:
+    * index : Number
+* output: item
+
+根据给定的索引，获取对应的项。
+
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.at(0)
