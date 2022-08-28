@@ -33,4 +33,26 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 根据给定的索引，获取对应的项。
 
     var list = new List(1, 2, 3, 4, 5);
-    alert(list.at(0)
+    alert(list.at(0));
+    alert(list.at(4));
+
+### List.length()
+
+* type: instance
+* input: none
+* output: length : Number
+
+返回列表长度。
+
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.length());
+
+### List.each()
+
+* type: instance
+* input:
+    * iterator : Function
+* output: this : List
+
+迭代遍历列表，将每一项作为参数传递给迭代器函数。
+
