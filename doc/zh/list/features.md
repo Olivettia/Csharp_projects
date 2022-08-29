@@ -69,4 +69,22 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
     var list = new List(1, 2, 3, 4, 5);
     var reversedList = list.reversed();
-    alert(reversedList.toArray().join(', 
+    alert(reversedList.toArray().join(', '));
+
+### List.map()
+
+* type: instance
+* input:
+    * predicate : Function
+* output: list : List
+
+对列表进行投影运算，返回运算结果组成的列表。
+
+    var list = new List(1, 2, 3, 4, 5);
+    var mappedList = list.map(function(i) { return i * i; });
+    alert(mappedList.toArray().join(', '));
+
+### List.filter()
+
+* type: instance
+* input:
