@@ -56,3 +56,17 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
 迭代遍历列表，将每一项作为参数传递给迭代器函数。
 
+    var list = new List(1, 2, 3, 4, 5);
+    list.each(function(object) { alert(object); });
+
+### List.reverse()
+
+* type: instance
+* input: none
+* output: list : List
+
+返回逆序列表。
+
+    var list = new List(1, 2, 3, 4, 5);
+    var reversedList = list.reversed();
+    alert(reversedList.toArray().join(', 
