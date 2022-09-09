@@ -101,4 +101,22 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
 * type: instance
 * input:
-    * predicate : Fun
+    * predicate : Function
+    * start
+* output: result
+
+对列表进行归并运算，返回运算结果。
+
+    var list = new List(1, 2, 3, 4, 5);
+    var sum = List.fold(function(acc, i) { return acc + i; }, 0);
+    alert(sum);
+
+### List.scan()
+
+* type: instance
+* input:
+    * predicate : Function
+    * start
+* output: list : List
+
+对列表进行聚合操作，
