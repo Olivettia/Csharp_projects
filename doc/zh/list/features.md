@@ -88,3 +88,17 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
 * type: instance
 * input:
+    * predicate : Function
+* output: list : List
+
+对列表进行筛选运算，返回运算结果组成的列表。
+
+    var list = new List(1, 2, 3, 4, 5);
+    var filteredList = list.filter(function(i) { return i > 1 && i < 5; });
+    alert(filteredList.toArray().join(', '));
+
+### List.fold()
+
+* type: instance
+* input:
+    * predicate : Fun
