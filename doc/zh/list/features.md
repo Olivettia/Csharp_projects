@@ -119,4 +119,17 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
     * start
 * output: list : List
 
-对列表进行聚合操作，
+对列表进行聚合操作，返回聚合操作每一步结果组成的列表。
+
+    var list = new List(1, 2, 3, 4, 5);
+    var sums = List.scan(function(acc, i) { return acc + i; }, 0);
+    alert(sums.toArray().join(', '));
+
+### List.takeWhile()
+
+* type: instance
+* input:
+    * predicate : Function
+* output: list : List
+
+从列表左侧开始获取项，直到检测函数返回 false 
