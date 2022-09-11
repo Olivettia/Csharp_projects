@@ -173,4 +173,17 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
 从列表左侧开始删除项，直到删除了指定数量的项或到达列表末端为止，然后返回原列表减去删除项后的子列表。
 
-  
+    var list = new List(1, 2, 3, 4, 5);
+    var exceptForFirstThree = List.drop(3);
+    alert(exceptForFirstThree.toArray().join(', '));
+
+### List.cycle()
+
+* type: instance
+* input: none
+* output: list : List
+
+返回一个列表，该列表是原列表的无穷次循环结果。
+
+    var list = new List(1, 2, 3, 4, 5);
+    va
