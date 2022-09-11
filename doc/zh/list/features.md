@@ -132,4 +132,17 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
     * predicate : Function
 * output: list : List
 
-从列表左侧开始获取项，直到检测函数返回 false 
+从列表左侧开始获取项，直到检测函数返回 false 或到达列表末端为止，然后返回获取项组成的子列表。
+
+    var list = new List(1, 2, 3, 4, 5);
+    var lessThanThree = List.takeWhile(function(i) { return i < 3; });
+    alert(lessThanThree.toArray().join(', '));
+
+### List.take()
+
+* type: instance
+* input:
+    * number : Number
+* output: list : List
+
+从列表左侧开始获取项，直到获取到指定数量的项或到达列表末端，然后返回
