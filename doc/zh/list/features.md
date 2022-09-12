@@ -186,4 +186,14 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 返回一个列表，该列表是原列表的无穷次循环结果。
 
     var list = new List(1, 2, 3, 4, 5);
-    va
+    var cycledList = list.cycle();
+    alert(cycledList.take(20).toArray().join(', '));
+
+### List.generate()
+
+* type: static
+* input:
+    * generator : Function
+* output: list : List
+
+使用类似 Python Generator 的方式生成一个列表。 generator 函数可以获取到一个 proxy 对象，通过调用该对象的 yield 方法生成下一个项，或通过 end 方法表示列表结束。 generator 函数会被不断调用，直到获取到足够的项或 end 方法
