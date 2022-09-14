@@ -209,4 +209,22 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
         });
     alert(fibonacci.take(20).toArray().join(', '));
 
-###
+### List.iterate()
+
+* type: static
+* input:
+    * generator : Function
+    * start
+* output: list : List
+
+将 start 作为列表的第一项，并且使用 generator 及列表的第 n 项生成第 n + 1 项，返回所生成无穷列表。
+
+    var list = List
+        .iterate(function() { return this * 2; }, 1);
+    alert(list.take(20).toArray().join(', '));
+
+### List.count()
+
+* type: static
+* input:
+    * st
