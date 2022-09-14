@@ -227,4 +227,20 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
 * type: static
 * input:
-    * st
+    * start = 0 (optional)
+    * step = 1 (optional)
+* output: list : List
+
+生成无穷列表，其第一项为 start （默认值为 0 ），然后每一项都比前一项增加 step （默认值为 1 ），返回所生成的无穷列表。
+
+    var list = List.count();
+    alert(list.take(20).toArray().join(', '));
+
+### List.repeat()
+
+* type: static
+* input:
+    * object
+* output: list : List
+
+生成
