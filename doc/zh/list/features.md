@@ -243,4 +243,19 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
     * object
 * output: list : List
 
-生成
+生成无穷列表，其中的每一项都是参数 object 指定的值，返回所生成的无穷列表。
+
+    var list = List.repeat(42);
+    alert(list.take(20).toArray().join(', '));
+
+### List.concatenate()
+
+* type: static
+* input:
+    * lists : arguments
+* output: list : List
+
+串联多个列表，返回串联的结果。
+
+    var list1 = new List(1, 2, 3, 4, 5);
+    var list2 = new List(6, 7, 8, 9, 10);
