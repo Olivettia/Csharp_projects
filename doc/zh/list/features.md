@@ -287,4 +287,21 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 检测列表是否每一项都满足特定条件。
 
     var list = new List(1, 2, 3, 4, 5);
-    alert(list.all(function
+    alert(list.all(function(i) { return i > 0; });
+
+### List.any()
+
+* type: instance
+* input:
+    * predicate : Function
+* output: result : Boolean
+
+检测列表是否至少有一项都满足特定条件。
+
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.any(function(i) { return i > 0; });
+
+### List.sum()
+
+* type: instance
+* inpu
