@@ -304,4 +304,25 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 ### List.sum()
 
 * type: instance
-* inpu
+* input: none
+* output: result : Number
+
+计算列表项的总和。
+
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.sum());
+
+### List.average()
+
+* type: instance
+* input: none
+* output: result : Number
+
+计算列表项的平均值。
+
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.sum());
+
+### List.maximum()
+
+* 
