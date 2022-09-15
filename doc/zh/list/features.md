@@ -274,4 +274,17 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
     var list1 = new List(1, 2, 3, 4, 5);
     var list2 = new List(6, 7, 8, 9, 10);
-    var zippe
+    var zippedList = List.zip(function(x, y) { return { x: x, y: y }; }, list1, list2);
+    alert(zippedList.toArray().join(', '));
+
+### List.all()
+
+* type: instance
+* input:
+    * predicate : Function
+* output: result : Boolean
+
+检测列表是否每一项都满足特定条件。
+
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.all(function
