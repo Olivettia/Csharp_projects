@@ -342,4 +342,26 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 
 搜索列表项的最小值。
 
-    var list = new List(1, 2, 3
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.minimum());
+
+### List.head()
+
+* type: instance
+* input: none
+* output: item
+
+返回列表的首项。
+
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.head());
+
+### List.tail()
+
+* type: instance
+* input: none
+* output: list : List
+
+返回列表除去首项以外的子列表。
+
+    var list = new List(1, 2, 3, 4, 5);
