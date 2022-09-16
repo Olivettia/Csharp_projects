@@ -365,3 +365,22 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 返回列表除去首项以外的子列表。
 
     var list = new List(1, 2, 3, 4, 5);
+    var tailList = list.tail();
+    alert(tailList.toArray().join(', '));
+
+### List.init()
+
+* type: instance
+* input: none
+* output: list : List
+
+返回列表除去末项以外的子列表。
+
+    var list = new List(1, 2, 3, 4, 5);
+    var initList = list.init();
+    alert(initList.toArray().join(', '));
+
+### List.last()
+
+* type: instance
+* in
