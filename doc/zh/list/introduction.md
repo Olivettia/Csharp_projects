@@ -9,4 +9,12 @@
         .map(function(i) { return i * (i + 1) / 2; })
         .filter(function(i) { return i > 10 && i < 50; })
     
-    var calculatedArra
+    var calculatedArray = calculatedList.toArray();
+    assert(calculatedArray == [15, 21, 28, 36, 45]);
+    
+    calculatedList.each(function(i) { alert(i); });
+    
+    assert(calculatedList.at(0) == 15);
+    assert(calculatedList.at(4) == 45);
+
+在某些情况下，无穷 List 会特别有用。例如说，你需要按照一个规则填充一个数组，这个填充可以无限进行下去，但是你在演算之前无法预知需要填充多大的数组
