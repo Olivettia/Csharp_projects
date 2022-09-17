@@ -383,4 +383,10 @@ List 与 Array 的主要区别在于， List 只计算和存储你访问的元�
 ### List.last()
 
 * type: instance
-* in
+* input: none
+* output: item
+
+返回列表的末项。
+
+    var list = new List(1, 2, 3, 4, 5);
+    alert(list.last());
