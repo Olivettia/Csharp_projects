@@ -17,4 +17,12 @@
     assert(calculatedList.at(0) == 15);
     assert(calculatedList.at(4) == 45);
 
-在某些情况下，无穷 List 会特别有用。例如说，你需要按照一个规则填充一个数组，这个填充可以无限进行下去，但是你在演算之前无法预知需要填充多大的数组
+在某些情况下，无穷 List 会特别有用。例如说，你需要按照一个规则填充一个数组，这个填充可以无限进行下去，但是你在演算之前无法预知需要填充多大的数组。一个具体的例子是，你需要知道对 Fibonacci 数列排除掉第一位的 0 后进行连乘的话，多少项后乘积会超过 10000 ，这时候你无法预知需要生成 Fibonacci 数列的前多少位，所以可以使用无穷 List 来解决这个问题。
+
+    var a = 0, b = 1;
+    var list = List
+        .generate(function(proxy) {
+            proxy.yield(a);
+            var aNext = b;
+            var bNext = a + b;
+            a
