@@ -25,4 +25,10 @@
             proxy.yield(a);
             var aNext = b;
             var bNext = a + b;
-            a
+            a = aNext;
+            b = bNext;
+        })
+        .drop(1)
+        .scan(function(acc, i) { return acc * i; }, 1)
+        .takeWhile(function(i) { return i < 10000; });
+    assert(list.length() == 8);
