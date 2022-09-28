@@ -38,3 +38,20 @@
 ### List.ES5Array.indexOf()
 
 * type: instance
+* input:
+	* searchElement
+	* fromIndex : Number (optional)
+* output: index : Number
+
+搜索特定元素首次出现的位置，并返回索引。可以从指定的索引开始从左向右搜索。
+
+    var array = new List.ES5Array(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+    alert(array.indexOf(2));
+    alert(array.indexOf(2, 5));
+    
+
+### List.ES5Array.lastIndexOf()
+
+* type: instance
+* input:
+	* sear
