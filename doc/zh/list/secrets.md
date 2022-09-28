@@ -8,4 +8,22 @@
 * input: none
 * output: Array
 
-导出列表级别的缓存，以数组形式表示，仅用于调试时监视。修改导出缓存不影响 Li
+导出列表级别的缓存，以数组形式表示，仅用于调试时监视。修改导出缓存不影响 List 内部的实际缓存。
+
+## List.enumerator()
+
+* type: instance
+* input: none
+* output: AbstractEnumerator
+
+获取列表的枚举器。枚举器应该是 AbstractEnumerator 的派生类。
+
+## List.enumerator().cache()
+
+* type: instance
+* input: none
+* output: Array
+
+只有 CachedEnumerator 实例拥有该方法。导出枚举器级别的缓存，以数组形式表示，仅用于调试时监视。修改导出缓存不影响 List 内部的实际缓存。
+
+##
