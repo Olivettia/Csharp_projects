@@ -66,4 +66,17 @@
 
 ### List.ES5Array.every()
 
-* typ
+* type: instance
+* input:
+	* callbackfn : Function
+	* thisArg (optional)
+* output: result : Boolean
+
+检测数组是否每一项都满足特定条件。
+
+    var array = new List.ES5Array(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+    alert(array.every(function(i) { return i > 0; });
+
+### List.ES5Array.some()
+
+* type: i
