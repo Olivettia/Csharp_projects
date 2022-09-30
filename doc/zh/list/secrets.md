@@ -79,4 +79,19 @@
 
 ### List.ES5Array.some()
 
-* type: i
+* type: instance
+* input:
+	* callbackfn : Function
+	* thisArg (optional)
+* output: result : Boolean
+
+检测数组是否至少有一项都满足特定条件。
+
+    var array = new List.ES5Array(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+    alert(array.some(function(i) { return i > 0; });
+
+### List.ES5Array.forEach()
+
+* type: instance
+* input:
+	* callbackfn
