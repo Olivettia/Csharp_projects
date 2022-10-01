@@ -109,4 +109,17 @@
 * input:
 	* callbackfn : Function
 	* thisArg (optional)
-* out
+* output: array : List.ES5Array
+
+遍历数组，分别将每一项作为参数在调用回调函数时传入，用回调函数的返回值组成新的数组。
+
+    var array = new List.ES5Array(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+    array.map(function(i) { return i * 2; }
+
+### List.ES5Array.filter()
+
+* type: instance
+* input:
+	* callbackfn : Function
+	* thisArg (optional)
+* output: array : List.ES5Arr
