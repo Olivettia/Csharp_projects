@@ -135,4 +135,15 @@
 * input:
 	* callbackfn : Function
 	* initialValue (optional)
-* output: re
+* output: result
+
+从左到右遍历数组，对数组的每一项进行归并运算，并返回归并运算的结果。如果给定初值，则使用初值和第一项进行归并；否则，使用第一项和第二项进行归并。
+
+    var array = new List.ES5Array(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+    sum = array.reduce(function(acc, i) { return acc + i; }
+
+### List.ES5Array.reduceRight()
+
+* type: instance
+* input:
+	* callbackfn : Fun
