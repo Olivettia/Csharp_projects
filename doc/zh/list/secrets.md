@@ -122,4 +122,17 @@
 * input:
 	* callbackfn : Function
 	* thisArg (optional)
-* output: array : List.ES5Arr
+* output: array : List.ES5Array
+
+遍历数组，分别将每一项作为参数在调用回调函数时传入，过滤出回调函数返回 true 的项，并返回这些项组成的新数组。
+
+    var array = new List.ES5Array(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+    array.filter(function(i) { return i > 2; }
+
+### List.ES5Array.reduce()
+
+* type: instance
+* input:
+	* callbackfn : Function
+	* initialValue (optional)
+* output: re
