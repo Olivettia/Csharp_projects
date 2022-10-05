@@ -57,4 +57,16 @@ concatenate
     .add("Array",
     function(array) { return array.join(""); })
     .add("Array, String",
-        function(array, separato
+        function(array, separator) { return array.join(separator); });
+
+alert(concatenate("hello", " ", "world"));
+alert(concatenate([1, 2, 3], " + "));
+</code></pre>
+
+<h4><a name="Any Argument">Any Argument</a></h4>
+
+<p>如果重载包括可以匹配任意类型的形参，这个类型使用 "*" 代替。</p>
+
+<pre><code class="brush: js">var add = Overload
+    .add("*, *",
+        function(x, y)
