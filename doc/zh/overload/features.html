@@ -47,4 +47,14 @@ alert(sum(3, 4, 5));
 
 <p>创建重载入口函数，并添加函数重载，或在已有入口函数上添加重载。</p>
 
-<pre><code class="brush: js">
+<pre><code class="brush: js">var concatenate = Overload
+    .add("String, String"),
+        function(s1, s2) { return s1 + s2; })
+    .add("String, String, String"),
+        function(s1, s2, s3) { return s1 + s2 + s3; });
+
+concatenate
+    .add("Array",
+    function(array) { return array.join(""); })
+    .add("Array, String",
+        function(array, separato
