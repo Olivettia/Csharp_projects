@@ -115,4 +115,14 @@ var sayHello = Overload
         function(user1, user2) { sayHello(user1.name, user2.name); })
     .add([Overload.Any],
         function(object) { sayHello(object.toString()); })
-    .add([Overload.Mor
+    .add([Overload.More],
+        function(objects) { sayHello(objects.join(" &amp; ")); });
+
+sayHello("World");
+sayHello(new User("Cat"), new User("Erik"));
+sayHello(1, 2, 3, 4, 5);
+</code></pre>
+
+<h4><a name="Class Inheritance Resolution">Class Inheritance Resolution</a></h4>
+
+<p>如果多个重载的形参之间存在继承关系， Overload 会选择最匹配的唯一一个重载。如果不存
