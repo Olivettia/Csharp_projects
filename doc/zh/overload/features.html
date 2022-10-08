@@ -136,4 +136,12 @@ var selectClass = Overload
         function(parent) { return "[Parent]"; })
     .add([Child],
         function(child) { return "[Child]"; })
-    .
+    .add([Parent, Child],
+        function(parent, child) { return "[Parent, Child]"; })
+    .add([Child, Parent],
+        function(child, parent) { return "[Child Parent]"; });
+
+alert(selectClass(new Parent()));
+alert(selectClass(new Child()));
+try {
+    alert(selectClass(new Parent(), new Parent
