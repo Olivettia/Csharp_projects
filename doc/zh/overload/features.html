@@ -125,4 +125,15 @@ sayHello(1, 2, 3, 4, 5);
 
 <h4><a name="Class Inheritance Resolution">Class Inheritance Resolution</a></h4>
 
-<p>如果多个重载的形参之间存在继承关系， Overload 会选择最匹配的唯一一个重载。如果不存
+<p>如果多个重载的形参之间存在继承关系， Overload 会选择最匹配的唯一一个重载。如果不存在唯一一个最匹配的重载，则抛出错误。</p>
+
+<pre><code class="brush: js">var Parent = function() {};
+var Child = function() {};
+Child.prototype = new Parent();
+
+var selectClass = Overload
+    .add([Parent],
+        function(parent) { return "[Parent]"; })
+    .add([Child],
+        function(child) { return "[Child]"; })
+    .
