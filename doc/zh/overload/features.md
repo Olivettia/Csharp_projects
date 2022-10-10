@@ -4,4 +4,19 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 
 ## Overload
 
-用于创建重载入
+用于创建重载入口函数的静态类。
+
+	var sum = Overload
+		.add("Number, Number",
+			function(x, y) { return x + y; })
+		.add("Number, Number, Number",
+			function(x, y, z) { return x + y + z; });
+	
+	alert(sum(1, 2));
+	alert(sum(3, 4, 5));
+
+### Overload.add()
+
+* type: static and instance
+* input:
+	* 
