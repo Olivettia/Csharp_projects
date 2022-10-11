@@ -29,4 +29,17 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 		.add("String, String"),
 			function(s1, s2) { return s1 + s2; })
 		.add("String, String, String"),
-			function(s1, s2, s3) { return s1 + s2 + s
+			function(s1, s2, s3) { return s1 + s2 + s3; });
+	
+	concatenate
+		.add("Array",
+			function(array) { return array.join(""); })
+		.add("Array, String",
+			function(array, separator) { return array.join(separator); });
+	
+	alert(concatenate("hello", " ", "world"));
+	alert(concatenate([1, 2, 3], " + "));
+
+#### Any Argument
+
+如果重载包括可以匹配任意类型的形参，这个类型使用 
