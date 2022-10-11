@@ -19,4 +19,14 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 
 * type: static and instance
 * input:
-	* 
+	* types : String or Array
+	* handler : Function
+* output: overloaded : Function
+
+创建重载入口函数，并添加函数重载，或在已有入口函数上添加重载。
+
+	var concatenate = Overload
+		.add("String, String"),
+			function(s1, s2) { return s1 + s2; })
+		.add("String, String, String"),
+			function(s1, s2, s3) { return s1 + s2 + s
