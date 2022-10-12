@@ -59,4 +59,15 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 
 	var sum = Overload
 	    .add("Number",
-	   
+	        function(x) { return x; })
+		.add("Number, Number",
+			function(x, y) { return x + y; })
+		.add("Number, Number, Number",
+			function(x, y, z) { return x + y + z; })
+		.add("Number, Number, Number, ...",
+			function(x, y, z, more) {
+				return x + y + z + sum.apply(this, more);
+			});
+	
+	alert(sum(1, 2));
+	alert(sum(1, 2, 3))
