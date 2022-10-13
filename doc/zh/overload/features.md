@@ -70,4 +70,16 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 			});
 	
 	alert(sum(1, 2));
-	alert(sum(1, 2, 3))
+	alert(sum(1, 2, 3));
+	alert(sum(1, 2, 3, 4, 5, 6));
+
+#### Internal Class
+
+如果重载的形参包括全局 eval 无法解释的类，形参列表可以以数组的形式传入 add 。匹配任意类型的 "*" 类型，可使用 Overload.Any 代替。匹配形参列表末端任意多个参数的 "..." ，可使用 Overload.More 代替。
+
+	var User = function(name) { this.name = name; };
+	
+	var sayHello = Overload
+		.add("String",
+			function(string) { alert("Hello, " + string); }) 
+	
