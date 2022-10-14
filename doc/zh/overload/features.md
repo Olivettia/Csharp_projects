@@ -82,4 +82,11 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 	var sayHello = Overload
 		.add("String",
 			function(string) { alert("Hello, " + string); }) 
-	
+		.add("String, String",
+			function(string1, string2) { sayHello(string1 + " and " + string2); }) 
+		.add([User],
+			function(user) { sayHello(user.name); })
+		.add([User, User],
+			function(user1, user2) { sayHello(user1.name, user2.name); })
+		.add([Overload.Any],
+			function(object) { sayHello(ob
