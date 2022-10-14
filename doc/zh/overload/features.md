@@ -112,4 +112,15 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 			function(child) { return "[Child]"; })
 		.add([Parent, Child],
 			function(parent, child) { return "[Parent, Child]"; })
-		.
+		.add([Child, Parent],
+			function(child, parent) { return "[Child Parent]"; });
+	
+	alert(selectClass(new Parent()));
+	alert(selectClass(new Child()));
+	try {
+		alert(selectClass(new Parent(), new Parent()));
+	} catch (e) {
+		alert (e);
+	}
+	try {
+		alert(selectClass(new Child()
