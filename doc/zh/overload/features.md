@@ -89,4 +89,14 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 		.add([User, User],
 			function(user1, user2) { sayHello(user1.name, user2.name); })
 		.add([Overload.Any],
-			function(object) { sayHello(ob
+			function(object) { sayHello(object.toString()); })
+		.add([Overload.More],
+			function(objects) { sayHello(objects.join(" & ")); });
+	
+	sayHello("World");
+	sayHello(new User("Cat"), new User("Erik"));
+	sayHello(1, 2, 3, 4, 5);
+
+#### Class Inheritance Resolution
+
+如果多个重载的形参之间存在继承关系， Overload 会选择最匹配的唯一一个重载。如果不存在唯一一个最匹配的重载，则抛出错误。
