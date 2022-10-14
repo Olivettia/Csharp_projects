@@ -100,3 +100,16 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 #### Class Inheritance Resolution
 
 如果多个重载的形参之间存在继承关系， Overload 会选择最匹配的唯一一个重载。如果不存在唯一一个最匹配的重载，则抛出错误。
+
+	var Parent = function() {};
+	var Child = function() {};
+	Child.prototype = new Parent();
+	
+	var selectClass = Overload
+		.add([Parent],
+			function(parent) { return "[Parent]"; })
+		.add([Child],
+			function(child) { return "[Child]"; })
+		.add([Parent, Child],
+			function(parent, child) { return "[Parent, Child]"; })
+		.
