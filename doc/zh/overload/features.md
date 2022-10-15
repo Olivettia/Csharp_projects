@@ -123,4 +123,7 @@ Overload 是一个用于在 JavaScript 环境中快速创建函数重载的组�
 		alert (e);
 	}
 	try {
-		alert(selectClass(new Child()
+		alert(selectClass(new Child(), new Child()));
+	} catch (e) {
+		alert (e);
+	}
