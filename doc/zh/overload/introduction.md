@@ -25,4 +25,4 @@
 		.add([User]
 			function(user) { alert("Hello, " + user.name); });
 
-对于函数的调用者
+对于函数的调用者而言，这一切都是透明的。同时， Overload 也为组织函数逻辑带来了极大的方便。
