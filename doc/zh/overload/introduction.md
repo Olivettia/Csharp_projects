@@ -10,4 +10,19 @@
 
 	sum
 		.add("Number, Number, Number",
-			funct
+			function(x, y, z) { return x + y + z; });
+
+之后只要你调用这个函数，对应的重载就会被调用。
+
+	alert(sum(1, 2));
+	alert(sum(3, 4, 5));
+
+如果形参列表包含自定义类型，你可以使用数组来表示某一个重载的形参列表。
+
+	var User = function(name) { this.name = name; };
+	
+	var sayHello = Overload
+		.add([User]
+			function(user) { alert("Hello, " + user.name); });
+
+对于函数的调用者
