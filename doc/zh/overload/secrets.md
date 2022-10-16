@@ -4,4 +4,19 @@
 
 ## Overload
 
-###
+### Overload.create()
+
+* type: static
+* input: none
+* output: overloaded : Function
+
+创建重载方法入口，但不添加任何函数重载。静态的 add 方法实际上是调用了静态的 create 方法后，获得了实例再调用实例的 add 方法。
+
+	var sum = Overload.create();
+	
+	sum
+		.add("Number, Number",
+			function(x, y) { return x + y; })
+	
+	sum
+		.add("Number, Number, Number"
