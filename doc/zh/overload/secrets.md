@@ -19,4 +19,20 @@
 			function(x, y) { return x + y; })
 	
 	sum
-		.add("Number, Number, Number"
+		.add("Number, Number, Number",
+			function(x, y, z) { return x + y + z; });
+
+### Overload.match()
+
+* type: instance
+* input:
+	* arguments : Array
+* output: overloads : Array
+
+根据给定的实参列表，筛选出所有类型匹配的函数重载。
+
+	var User = function(name) { this.name = name; };
+	
+	var sayHello = Overload
+		.add("String",
+			function(string) { alert("Hello, " + 
