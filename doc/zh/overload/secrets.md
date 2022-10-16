@@ -50,4 +50,14 @@
 	* arguments : Array
 * output: overload : Function
 
-根据给定的实参列表，筛选出唯一
+根据给定的实参列表，筛选出唯一一个最匹配的函数重载。如果不存在惟一一个最匹配的函数重载，则返回 null 。
+
+	var User = function(name) { this.name = name; };
+	
+	var sayHello = Overload
+		.add("String",
+			function(string) { alert("Hello, " + string); }) 
+		.add([User],
+			function(user) { sayHello(user.name); })
+		.add("*",
+			function(object) { sayHello(object.toString()); })
