@@ -35,4 +35,19 @@
 	
 	var sayHello = Overload
 		.add("String",
-			function(string) { alert("Hello, " + 
+			function(string) { alert("Hello, " + string); }) 
+		.add([User],
+			function(user) { sayHello(user.name); })
+		.add("*",
+			function(object) { sayHello(object.toString()); })
+	
+	alert(sayHello.match(["Cat"]).length);
+
+### Overload.select()
+
+* type: instance
+* input:
+	* arguments : Array
+* output: overload : Function
+
+根据给定的实参列表，筛选出唯一
