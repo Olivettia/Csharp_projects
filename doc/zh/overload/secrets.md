@@ -61,3 +61,5 @@
 			function(user) { sayHello(user.name); })
 		.add("*",
 			function(object) { sayHello(object.toString()); })
+	
+	alert(sayHello.select(["Cat"]));
