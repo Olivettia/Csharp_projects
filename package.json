@@ -17,4 +17,12 @@
     "devDependencies": {
         "uglify-js": ">=1.0.3",
         "showdown": ">=0.0.1",
-        "mustache": 
+        "mustache": ">=0.3.1-dev"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git://github.com/CatChen/jsHelpers.git"
+        }
+    ]
+}
