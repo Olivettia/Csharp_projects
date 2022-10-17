@@ -6,4 +6,15 @@
     "author": {
         "name": "Cat Chen",
         "email": "catchen@catchen.me",
-        "web": 
+        "web": "http://catchen.me"
+    },
+    "main": "./index.js",
+    "directories": {
+        "lib": "./src",
+        "doc": "./doc",
+        "example": "./samples"
+    },
+    "devDependencies": {
+        "uglify-js": ">=1.0.3",
+        "showdown": ">=0.0.1",
+        "mustache": 
