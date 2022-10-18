@@ -9,4 +9,7 @@
 
 	Ajax.post = function(url, data) {
 		var operation = new Async.Operation();
-		$.post(url, data, function(result) { operati
+		$.post(url, data, function(result) { operation.yield(result); }, "json");
+		return operation;
+	};
+})();
