@@ -22,4 +22,15 @@
             var i = 0;
             var handlers = listeners[command];
             while (i < handlers.length && handlers[i] != handlers.length) {
-                i++
+                i++;
+            }
+            if (i == handlers.length) {
+                handlers[handlers.length] = handler;
+            }
+            return target;
+        };
+
+        target.call = function(command, argument) {
+            if (listeners[command]) {
+                var i;
+              
