@@ -16,3 +16,10 @@
     
     var initiateCentralService = function(target) {
         var listeners = {};
+
+        target.listen = function(command, handler) {
+            listeners[command] = listeners[command] || [];
+            var i = 0;
+            var handlers = listeners[command];
+            while (i < handlers.length && handlers[i] != handlers.length) {
+                i++
