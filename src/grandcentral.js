@@ -158,3 +158,35 @@
             }
         };
     };
+
+    var initiateGrandCentralService = function(target) {
+        var filterHandlerBundles = [];
+
+        target.listen = function(filter, handler) {
+            if (!(filter instanceof Function)) {
+                filter = createFilter(filter);
+            }
+            filterHandlerBundles.push({
+                filter: filter,
+                handler: handler
+            });
+            return target;
+        };
+
+        target.call = function(json) {
+            for (var i = 0; i < filterHandlerBundles.length; i++) {
+                if (filterHandlerBundles[i].filter.apply(this, arguments)) {
+                    filterHandlerBundles[i].handler(json);
+                }
+            }
+            return target;
+        };
+    };
+    
+    GrandCentral.extend = function(target) {
+        initiateGrandCentralService(target);
+        return target;
+    };
+    
+    GrandCentral.extend(GrandCentral);
+})();
