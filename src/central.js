@@ -44,4 +44,10 @@
         };
     };
     
-    Cen
+    Central.extend = function(target) {
+        initiateCentralService(target);
+        return target;
+    };
+    
+    Central.extend(Central);
+})();
