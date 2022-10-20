@@ -233,3 +233,295 @@
             
             return [].slice.call(arrayCache, 0);
         };
+        
+        this.enumerator = function() {
+            return enumerator;
+        };
+        
+        this.cache = function() {
+            /* this method is for debug only */
+            return [].slice.call(arrayCache, 0);
+        };
+    };
+    
+    List.prototype.reverse = function() {
+        return new List(this.toArray().reverse());
+    };
+    
+    List.prototype.map = function(predicate) {
+        var self = this;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            item: function(innerEnumerator) {
+                return predicate.call(innerEnumerator.item(), innerEnumerator.item());
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.filter = function(predicate) {
+        var self = this;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                var active = true;
+                while ((active = active && innerEnumerator.next()) && !predicate.call(innerEnumerator.item(), innerEnumerator.item()));
+                return active;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.fold = function(predicate, start) {
+        var accumulation = start;
+        
+        this.each(function(object) {
+            accumulation = predicate.call(object, accumulation, object);
+        });
+        
+        return accumulation;
+    };
+    
+    List.prototype.scan = function(predicate, start) {
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var self = this;
+        var state = BEFORE;
+        var current;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            item: function(innerEnumerator) {
+                switch (state) {
+                    case BEFORE:
+                        throw "incorrect index";
+                    case RUNNING:
+                        return current;
+                    case AFTER:
+                        throw "incorrect index";
+                }
+            },
+
+            next: function(innerEnumerator) {
+                var object;
+                var active;
+
+                switch (state) {
+                    case BEFORE:
+                        state = RUNNING;
+                        current = start;
+                        break;
+                    case RUNNING:
+                        active = innerEnumerator.next();
+                        if (active) {
+                            object = innerEnumerator.item();
+                            current = predicate.call(object, current, object);
+                        } else {
+                            state = AFTER;
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function(innerEnumerator) {
+                state = BEFORE;
+                innerEnumerator.reset();
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.takeWhile = function(predicate) {
+        var RUNNING = 0, AFTER = 1;
+        var self = this;
+        var state = RUNNING;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                var active = true;
+                switch (state) {
+                    case RUNNING:
+                        active = innerEnumerator.next() && predicate.call(innerEnumerator.item(), innerEnumerator.item());
+                        if (!active) {
+                            state = AFTER;
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function(innerEnumerator) {
+                state = RUNNING;
+                innerEnumerator.reset();
+            }
+        });
+                
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.take = function(number) {
+        var self = this;
+        var count = 0;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            item: function(innerEnumerator) {
+                if (count <= number) {
+                    return innerEnumerator.item();
+                } else {
+                    throw "incorrect index";
+                }
+            },
+
+            next: function(innerEnumerator) {
+                if (count < number) {
+                    count++;
+                    return innerEnumerator.next();
+                } else {
+                    return false;
+                }
+            },
+
+            reset: function(innerEnumerator) {
+                count = 0;
+                innerEnumerator.reset();
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.dropWhile = function(predicate) {
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var self = this;
+        var state = BEFORE;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                var active = true;
+                switch (state) {
+                    case BEFORE:
+                        while ((active = innerEnumerator.next()) && predicate.call(innerEnumerator.item(), innerEnumerator.item()));
+                        if (active) {
+                            state = RUNNING;
+                        } else {
+                            state = AFTER;
+                        }
+                        break;
+                    case RUNNING:
+                        active = innerEnumerator.next();
+                        if (!active) {
+                            state = AFTER;
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function(innerEnumerator) {
+                state = BEFORE;
+                innerEnumerator.reset();
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.drop = function(number) {
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var self = this;
+        var state = BEFORE;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                var count = 0;
+                var active = true;
+                switch (state) {
+                    case BEFORE:
+                        while ((active = innerEnumerator.next()) && count < number) {
+                            count++;
+                        }
+                        if (active) {
+                            state = RUNNING;
+                        } else {
+                            state = AFTER;
+                        }
+                        break;
+                    case RUNNING:
+                        active = innerEnumerator.next();
+                        if (!active) {
+                            state = AFTER;
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function(innerEnumerator) {
+                state = BEFORE;
+                innerEnumerator.reset();
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.cycle = function() {
+        var self = this;
+        
+        var enumerator = new StackedEnumerator(self.enumerator(), {
+            next: function(innerEnumerator) {
+                if (innerEnumerator.next()) {
+                    return true;
+                } else {
+                    innerEnumerator.reset();
+                    if (innerEnumerator.next()) {
+                        return true;
+                    } else {
+                        /* empty list produces empty list after cycling */
+                        return false;
+                    }
+                }
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.generate = function(generator) {
+        var BEFORE = 0, RUNNING = 1, AFTER = 2;
+        var current;
+        var state = BEFORE;
+        var yieldState = RUNNING;
+        var arrayCache = [];
+        var index = NaN;
+        
+        var proxy = new GeneratorProxy({
+            "yield": function(object) {
+                if (yieldState != AFTER) {
+                    arrayCache[arrayCache.length] = object;
+                }
+            },
+            end: function() {
+                yieldState = AFTER;
+            }
+        });
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                switch (state) {
+                    case BEFORE:
+                        throw "incorrect index";
+                    case RUNNING:
+                        return arrayCache[index];
+                    case AFTER:
+                        throw "incorrect index";
