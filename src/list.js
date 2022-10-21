@@ -525,3 +525,309 @@
                         return arrayCache[index];
                     case AFTER:
                         throw "incorrect index";
+                }
+            },
+
+            next: function() {
+                switch (state) {
+                    case BEFORE:
+                    case RUNNING:
+                        index++;
+                        if (yieldState != AFTER) {
+                            while (index >= arrayCache.length && yieldState != AFTER) {
+                                generator.call(proxy, proxy);
+                            }
+                        }
+                        state = yieldState;
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function() {
+                index = -1;
+                state = BEFORE;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.iterate = function(generator, start) {
+        var BEFORE = 0, RUNNING = 1;
+        var current;
+        var state = BEFORE;
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                switch (state) {
+                    case BEFORE:
+                        throw "incorrect index";
+                    case RUNNING:
+                        return current;
+                }
+            },
+
+            next: function() {
+                switch (state) {
+                    case BEFORE:
+                        current = start;
+                        state = RUNNING;
+                        break;
+                    case RUNNING:
+                        current = generator.call(current, current);
+                        break;
+                }
+                return true;
+            },
+
+            reset: function() {
+                state = BEFORE;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.count = function(start, step) {
+        start = start || 0;
+        step = step || 1;
+        return List.iterate(function(object) { return object + step; }, start);
+    };
+    
+    List.repeat = function(object) {
+        return List.iterate(function(object) { return object; }, object);
+    };
+    
+    List.concatenate = function() {
+        var RESET = 0, RUNNING = 1, AFTER = 2;
+        var lists = [].slice.call(arguments, 0);
+        var listsIndex = 0;
+        var state = RESET;
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                return lists[listsIndex].enumerator().item();
+            },
+
+            next: function() {
+                switch (state) {
+                    case RESET:
+                        lists[listsIndex].enumerator().reset();
+                        state = RUNNING;
+                        return enumerator.next();
+                    case RUNNING:
+                        if (!lists[listsIndex].enumerator().next()) {
+                            listsIndex++;
+                            if (listsIndex < lists.length) {
+                                state = RESET;
+                                return enumerator.next();
+                            } else {
+                                state = AFTER;
+                            }
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+                return (state != AFTER);
+            },
+
+            reset: function() {
+                listsIndex = 0;
+                state = RESET;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.zip = function(predicate) {
+        var RUNNING = 0, AFTER = 1;
+        var lists = [].slice.call(arguments, 1);
+        var state = RUNNING;
+        
+        if (lists.length === 0) {
+            return new List([]);
+        }
+        
+        lists = new List(lists);
+        
+        var enumerator = new BaseEnumerator({
+            item: function() {
+                var items;
+                switch (state) {
+                    case RUNNING:
+                        items = lists
+                            .map(function() { return this.enumerator().item(); })
+                            .toArray();
+                        return predicate.apply(items, items);
+                    case AFTER:
+                        throw "incorrect index";
+                }
+            },
+
+            next: function() {
+                var active = true;
+                switch (state) {
+                    case RUNNING:
+                        lists.each(function() {
+                            active = active && this.enumerator().next();
+                        });
+                        if (!active) {
+                            state = AFTER;
+                        }
+                        break;
+                    case AFTER:
+                        break;
+                }
+
+                return (state != AFTER);
+            },
+
+            reset: function() {
+                lists.each(function() { this.enumerator().reset(); });
+                state = RUNNING;
+            }
+        });
+        
+        return new List(new CachedEnumerator(enumerator));
+    };
+    
+    List.prototype.all = function(predicate) {
+        return this.fold(function(accumulation, object) {
+            return accumulation && predicate.call(object, object);
+        }, true);
+    };
+
+    List.prototype.any = function(predicate) {
+        return this.fold(function(accumulation, object) {
+            return accumulation || predicate.call(object, object);
+        }, false);
+    };
+
+    List.prototype.sum = function() {
+        return this.fold(function(accumulation, object) {
+            return accumulation + object;
+        }, 0);
+    };
+
+    List.prototype.average = function() {
+        var accumulation = this.fold(function(accumulation, object) {
+            return [accumulation[0] + object, accumulation[1] + 1];
+        }, [0, 0]);
+        return accumulation[0] / accumulation[1];
+    };
+
+    List.prototype.maximum = function() {
+        var first = this.at(0);
+        if (first) {
+            return this.drop(1).fold(function(accumulation, object) {
+                return accumulation > object ? accumulation : object;
+            }, first);
+        } else {
+            throw "cannot process empty list";
+        }
+    };
+
+    List.prototype.minimum = function() {
+        var first = this.at(0);
+        if (first) {
+            return this.drop(1).fold(function(accumulation, object) {
+                return accumulation < object ? accumulation : object;
+            }, first);
+        } else {
+            throw "cannot process empty list";
+        }
+    };
+
+    List.prototype.head = function() {
+        if (this.take(1).length() < 1) {
+            throw "cannot process empty list";
+        } else {
+            return this.at(0);
+        }
+    };
+
+    List.prototype.tail = function() {
+        if (this.take(1).length() < 1) {
+            throw "cannot process empty list";
+        } else {
+            return this.drop(1);
+        }
+    };
+
+    List.prototype.init = function() {
+        if (this.take(1).length() < 1) {
+            throw "cannot process empty list";
+        } else {
+            var BEFORE = 0, RUNNING = 1, AFTER = 2;
+            var self = this;
+            var state = BEFORE;
+            var last;
+
+            var enumerator = new StackedEnumerator(self.enumerator(), {
+                item: function(innerEnumerator) {
+                    switch (state) {
+                        case BEFORE:
+                            throw "incorrect index";
+                        case RUNNING:
+                            return last;
+                        case AFTER:
+                            throw "incorrect index";
+                    }
+                },
+
+                next: function(innerEnumerator) {
+                    var count = 0;
+                    var active = true;
+                    switch (state) {
+                        case BEFORE:
+                            innerEnumerator.next();
+                            last = innerEnumerator.item();
+                            active = innerEnumerator.next();
+                            if (active) {
+                                state = RUNNING;
+                            } else {
+                                state = AFTER;
+                            }
+                            break;
+                        case RUNNING:
+                            last = innerEnumerator.item();
+                            active = innerEnumerator.next();
+                            if (!active) {
+                                state = AFTER;
+                            }
+                            break;
+                        case AFTER:
+                            break;
+                    }
+                    return (state != AFTER);
+                },
+
+                reset: function(innerEnumerator) {
+                    state = BEFORE;
+                    innerEnumerator.reset();
+                }
+            });
+            return new List(new CachedEnumerator(enumerator));
+        }
+    };
+
+    List.prototype.last = function() {
+        if (this.take(1).length() < 1) {
+            throw "cannot process empty list";
+        } else {
+            return this.at(this.length() - 1);
+        }
+    };
+
+    if (typeof module != 'undefined' && module.exports) {
+        module.exports = List;
+    } else if (typeof YUI != 'undefined' && YUI.add) {
+        YUI.add('list', function(Y) {
+            Y.List = List;
+        }, '1.0.6', {
+            requires: []
