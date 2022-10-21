@@ -14,4 +14,17 @@
         return;
     }
 
-    var copySignature = function(signature) 
+    var copySignature = function(signature) {
+        var copy = signature.slice(0);
+        if (signature.more) {
+            copy.more = true;
+        }
+        return copy;
+    };
+
+	var parseSignature = function(signature) {
+		if (signature.replace(/(^\s+|\s+$)/ig, "") === "") {
+			signature = [];
+		} else {
+			signature = signature.split(",");
+			for (va
