@@ -27,4 +27,14 @@
 			signature = [];
 		} else {
 			signature = signature.split(",");
-			for (va
+			for (var i = 0; i < signature.length; i++) {
+				var typeExpression = signature[i].replace(/(^\s+|\s+$)/ig, "");
+				var type = null;
+				if (typeExpression == "*") {
+					type = Overload.Any;
+				} else if (typeExpression == "...") {
+					type = Overload.More;
+				} else {
+					try {
+						type = eval("(" + typeExpression + ")");
+					} ca
