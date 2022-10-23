@@ -60,3 +60,12 @@
             return -1;
         } else {
             return 0;
+        }
+    };
+    
+    var overloadComparator = function(overload1, overload2) {
+        var signature1Better = false;
+        var signature2Better = false;
+        var signature1 = overload1.signature;
+        var signature2 = overload2.signature;
+        if (!signature1.more && signature2.mor
