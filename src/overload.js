@@ -51,3 +51,12 @@
         if (type1 == type2) {
             return 0;
         } else if (type2 == Overload.Any) {
+            return 1;
+        } else if (type1 == Overload.Any) {
+            return -1;
+        } else if (type1.prototype instanceof type2) {
+            return 1;
+        } else if (type2.prototype instanceof type1) {
+            return -1;
+        } else {
+            return 0;
