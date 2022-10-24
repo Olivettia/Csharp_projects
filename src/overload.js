@@ -68,4 +68,10 @@
         var signature2Better = false;
         var signature1 = overload1.signature;
         var signature2 = overload2.signature;
-        if (!signature1.more && signature2.mor
+        if (!signature1.more && signature2.more) {
+            /* Function.more only exists in the second signature */
+            signature1Better = true;
+            signature1 = copySignature(signature1);
+            signature1.length = signature2.length;
+        } else if (signature1.more && !signature2.more) {
+            /* Func
