@@ -85,4 +85,11 @@
                 signature1 = copySignature(signature1);
                 signature1.length = signature2.length;
             } else if (signature1.length < signature2.length) {
-                signature2Better = 
+                signature2Better = true;
+                signature2 = copySignature(signature2);
+                signature2.length = signature1.length;
+            }
+        }
+        for (var i = 0; i < signature1.length; i++) {
+            var comparison = inheritanceComparator(signature1[i], signature2[i]);
+            if 
