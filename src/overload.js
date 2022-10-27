@@ -117,4 +117,13 @@
         for (var i = 0; i < signature.length; i++) {
             if (!(argumentsArray[i] === null
                 || argumentsArray[i] === undefined
-                || signatur
+                || signature[i] == Overload.Any
+                || argumentsArray[i] instanceof signature[i]
+                || argumentsArray[i].constructor == signature[i])) {
+                    return false;
+            }
+        }
+        return true;
+    };
+    
+    Overload.create = function(overloadsA
