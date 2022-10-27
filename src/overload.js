@@ -111,4 +111,10 @@
     var matchSignature = function(argumentsArray, signature) {
         if (argumentsArray.length < signature.length) {
             return false;
-  
+        } else if (argumentsArray.length > signature.length && !signature.more) {
+            return false;
+        }
+        for (var i = 0; i < signature.length; i++) {
+            if (!(argumentsArray[i] === null
+                || argumentsArray[i] === undefined
+                || signatur
