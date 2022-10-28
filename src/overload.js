@@ -133,4 +133,16 @@
             var matches = [];
             for (var i = 0; i < overloads.length; i++) {
                 if (matchSignature(argumentsArray, overloads[i].signature)) {
-                    
+                    matches.push(overloads[i]);
+                }
+            }
+            return matches;
+        };
+        
+        var select = function(argumentsArray) {
+            var matches = match(argumentsArray);
+            switch (matches.length) {
+                case 0:
+                    return null;
+                case 1:
+          
