@@ -145,4 +145,8 @@
                 case 0:
                     return null;
                 case 1:
-          
+                    return matches[0];
+                default:
+                    matches = matches.sort(overloadComparator);
+                    if (overloadComparator(matches[matches.length - 1], matches[matches.length - 2]) > 0) {
+                        return matches[matches.le
