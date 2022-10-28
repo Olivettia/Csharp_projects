@@ -126,4 +126,11 @@
         return true;
     };
     
-    Overload.create = function(overloadsA
+    Overload.create = function(overloadsArray) {
+        var overloads = [];
+        
+        var match = function(argumentsArray) {
+            var matches = [];
+            for (var i = 0; i < overloads.length; i++) {
+                if (matchSignature(argumentsArray, overloads[i].signature)) {
+                    
