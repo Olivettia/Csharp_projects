@@ -149,4 +149,14 @@
                 default:
                     matches = matches.sort(overloadComparator);
                     if (overloadComparator(matches[matches.length - 1], matches[matches.length - 2]) > 0) {
-                        return matches[matches.le
+                        return matches[matches.length - 1];
+                    } else {
+                        return null;
+                    }
+            }
+        };
+        
+        var overloaded = function() {
+            var overload = select(arguments);
+            if (overload) {
+                var transformedArguments = Array.prototype.slice.call(arguments
