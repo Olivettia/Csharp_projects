@@ -159,4 +159,9 @@
         var overloaded = function() {
             var overload = select(arguments);
             if (overload) {
-                var transformedArguments = Array.prototype.slice.call(arguments
+                var transformedArguments = Array.prototype.slice.call(arguments, 0);
+                if (overload.signature.more) {
+                    var moreArguments = transformedArguments.splice(overload.signature.length);
+                    transformedArguments.push(moreArguments);
+                }
+                return overload['function'].apply(this, transformedArgume
