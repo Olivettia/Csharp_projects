@@ -164,4 +164,15 @@
                     var moreArguments = transformedArguments.splice(overload.signature.length);
                     transformedArguments.push(moreArguments);
                 }
-                return overload['function'].apply(this, transformedArgume
+                return overload['function'].apply(this, transformedArguments);
+            } else {
+                throw "cannot select a proper overload";
+            }
+        };
+        
+        overloaded.match = match;
+        
+        overloaded.select = select;
+        
+        overloaded.add = function(signature, overload) {
+            if (signature instanceof Ar
