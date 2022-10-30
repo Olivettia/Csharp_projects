@@ -175,4 +175,11 @@
         overloaded.select = select;
         
         overloaded.add = function(signature, overload) {
-            if (signature instanceof Ar
+            if (signature instanceof Array) {
+                signature = copySignature(signature);
+            } else if (signature.constructor == String) {
+				signature = parseSignature(signature);
+            } else {
+                throw "signature is neither a string nor an array";
+            }
+            for (var i = 0; i < signature.length; i++
