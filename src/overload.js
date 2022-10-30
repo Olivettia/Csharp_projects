@@ -182,4 +182,9 @@
             } else {
                 throw "signature is neither a string nor an array";
             }
-            for (var i = 0; i < signature.length; i++
+            for (var i = 0; i < signature.length; i++) {
+                if (!(signature[i] instanceof Function)) {
+                    throw "argument type should be a function";
+                }
+                if (i < signature.length - 1 && signature[i] == Overload.More) {
+                    throw "arguments type cannot be
