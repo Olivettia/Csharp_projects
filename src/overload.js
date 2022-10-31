@@ -208,4 +208,11 @@
         return Overload.create().add(signature, overload);
     };
     
-    Overload.Any =
+    Overload.Any = function any() {
+        throw "this type is only an identifier and should not be instantiated";
+    };
+
+    Overload.More = function more() {
+        throw "this type is only an identifier and should not be instantiated";
+    };
+})();
