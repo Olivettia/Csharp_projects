@@ -195,4 +195,17 @@
                 signature.more = true;
             }
             overloads.push({
-                "signature
+                "signature": signature,
+                "function": overload
+            });
+            return this;
+        };
+        
+        return overloaded;
+    };
+    
+    Overload.add = function(signature, overload) {
+        return Overload.create().add(signature, overload);
+    };
+    
+    Overload.Any =
