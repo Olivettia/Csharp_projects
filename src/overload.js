@@ -187,4 +187,12 @@
                     throw "argument type should be a function";
                 }
                 if (i < signature.length - 1 && signature[i] == Overload.More) {
-                    throw "arguments type cannot be
+                    throw "arguments type cannot be used in any argument except the last one";
+                }
+            }
+            if (signature[signature.length - 1] == Overload.More) {
+                signature.length = signature.length - 1;
+                signature.more = true;
+            }
+            overloads.push({
+                "signature
