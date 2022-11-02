@@ -372,3 +372,310 @@ function testAsync() {
 		expect(3);
 
 		var syncFunctionDelay = 100;
+
+		stop();
+
+		var chain = Async
+			.go(0);
+			
+		setTimeout(function() {
+			equals(chain.result, 0, "chain.result after go")
+            equals(chain.state, "completed", "chain.state after go");
+            equals(chain.completed, true, "chain.completed after go");
+			start();
+		}, syncFunctionDelay);
+	});
+	
+	test("async chain go first operation", function() {
+		expect(4);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.go(0)
+			.next(function(i) {
+				ok(true, "async chain first next called");
+				equals(i, 0, "async chain first next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "async chain second next called");
+				equals(i, 1, "async chain second next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			});
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 2 + syncFunctionDelay);
+	});
+
+	test("async chain go between operation", function() {
+		expect(6);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.chain(function(i) {
+				ok(true, "async chain started");
+				equals(i, 0, "async chain initial argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "async chain first next called");
+				equals(i, 1, "async chain first next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.go(0)
+			.next(function(i) {
+				ok(true, "async chain second next called");
+				equals(i, 2, "async chain second next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			});
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 3 + syncFunctionDelay);
+	});
+
+	test("async chain go last operation", function() {
+		expect(6);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.chain(function(i) {
+				ok(true, "async chain started");
+				equals(i, 0, "async chain initial argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "async chain first next called");
+				equals(i, 1, "async chain first next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "async chain second next called");
+				equals(i, 2, "async chain second next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.go(0);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 3 + syncFunctionDelay);
+	});
+
+	test("async chain late go operation", function() {
+		expect(6);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		var chain = Async
+			.chain(function(i) {
+				ok(true, "async chain started");
+				equals(i, 0, "async chain initial argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "async chain first next called");
+				equals(i, 1, "async chain first next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "async chain second next called");
+				equals(i, 2, "async chain second next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			});
+
+		setTimeout(function() {
+			chain.go(0);
+		}, asyncFunctionDelay);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 4 + syncFunctionDelay);
+	});
+
+	test("hybrid chain go first operation", function() {
+		expect(8);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.go(0)
+			.next(function(i) {
+				ok(true, "hybrid chain first next called");
+				equals(i, 0, "hybrid chain first next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain second next called");
+				equals(i, 1, "hybrid chain second next argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain third next called");
+				equals(i, 2, "hybrid chain third next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain fourth next called");
+				equals(i, 3, "hybrid chain fourth next argument");
+				return i + 1;
+			});
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 2 + syncFunctionDelay);
+	});
+
+	test("hybrid chain go between operation", function() {
+		expect(10);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.chain(function(i) {
+				ok(true, "hybrid chain started");
+				equals(i, 0, "hybrid chain initial argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain first next called");
+				equals(i, 1, "hybrid chain first next argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain second next called");
+				equals(i, 2, "hybrid chain second next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.go(0)
+			.next(function(i) {
+				ok(true, "hybrid chain third next called");
+				equals(i, 3, "hybrid chain third next argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain fourth next called");
+				equals(i, 4, "hybrid chain fourth next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			});
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 3 + syncFunctionDelay);
+	});
+
+	test("hybrid chain go last operation", function() {
+		expect(6);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.chain(function(i) {
+				ok(true, "hybrid chain started");
+				equals(i, 0, "hybrid chain initial argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain first next called");
+				equals(i, 1, "hybrid chain first next argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain second next called");
+				equals(i, 2, "hybrid chain second next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.go(0);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 2 + syncFunctionDelay);
+	});
+
+	test("hybrid chain late go operation", function() {
+		expect(6);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		var chain = Async
