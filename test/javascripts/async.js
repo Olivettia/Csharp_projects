@@ -679,3 +679,303 @@ function testAsync() {
 		stop();
 
 		var chain = Async
+			.chain(function(i) {
+				ok(true, "hybrid chain started");
+				equals(i, 0, "hybrid chain initial argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain first next called");
+				equals(i, 1, "hybrid chain first next argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "hybrid chain second next called");
+				equals(i, 2, "hybrid chain second next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			});
+
+		setTimeout(function() {
+			chain.go(0);
+		}, asyncFunctionDelay);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 3 + syncFunctionDelay);
+	});
+
+	test("hybrid chain object", function() {
+		expect(18);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		var chain = Async
+			.chain(function(i) {
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				return i + 1;
+			})
+			.next(function(i) {
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			});
+
+		setTimeout(function() {
+			chain.go(0);
+		}, asyncFunctionDelay);
+
+		equals(chain.result, undefined, "chain.result at the beginning")
+        equals(chain.state, "waiting", "chain.state at the beginning");
+        equals(chain.completed, false, "chain.completed at the beginning");
+        
+		setTimeout(function() {
+			equals(chain.result, undefined, "chain.result before go");
+			equals(chain.state, "waiting", "chain.state before go");
+			equals(chain.completed, false, "chain.completed before go");
+		}, asyncFunctionDelay - 1);
+		
+		setTimeout(function() {
+			equals(chain.result, 0, "chain.result after go");
+			equals(chain.state, "chain running", "chain.state after go");
+			equals(chain.completed, false, "chain.completed after go");
+		}, asyncFunctionDelay + 1);
+		
+		setTimeout(function() {
+			equals(chain.result, 0, "chain.result before first next");
+			equals(chain.state, "chain running", "chain.state before first next");
+			equals(chain.completed, false, "chain.completed before first next");
+		}, asyncFunctionDelay * 2 - 1);
+		
+		setTimeout(function() {
+			equals(chain.result, 2, "chain.result after second next");
+			equals(chain.state, "chain running", "chain.state after second next");
+			equals(chain.completed, false, "chain.completed after second next");
+		}, asyncFunctionDelay * 2 + syncFunctionDelay);
+		
+		setTimeout(function() {
+			equals(chain.result, 3, "chain.result after third next");
+			equals(chain.state, "completed", "chain.state after third next");
+			equals(chain.completed, true, "chain.completed after third next");
+		}, asyncFunctionDelay * 3 + syncFunctionDelay);
+		
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 4);
+	});
+
+	test("async chain wait operation", function() {
+		expect(5);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		var chain = Async
+			.chain(function(i) {
+				ok(true, "async chain started");
+				equals(i, 0, "async chain initial argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.wait(asyncFunctionDelay)
+			.next(function(i) {
+				ok(true, "async chain first next called");
+				equals(i, 1, "async chain first next argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.go(0);
+			
+		setTimeout(function() {
+			equals(chain.result, 1, "async chain waited after initial call")
+		}, asyncFunctionDelay * 1 + syncFunctionDelay);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 3 + syncFunctionDelay);
+	});
+	
+	test("error during async chain", function() {
+		expect(15);
+		
+		var testValue = "-- this is the callback result --";
+		var errorValue = "-- this is the error --";
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+		var asyncFunction = function(value) {
+			var operation = new Async.Operation();
+			setTimeout(function() { operation.yield(testValue) }, asyncFunctionDelay);
+			return operation;
+		};
+
+		stop();
+
+		/* global error was registered before */
+		/* it will be triggered by chain and each inner chain */
+		/*
+		Async.onerror(function(operation) {
+				ok(true, "Async.onerror called")
+				equals(operation.error, errorValue, "operation.error after error occured");
+				equals(operation.state, "error", "operation.state after error occured")
+			});
+		*/
+			
+		var chain = Async
+			.chain(function(i) {
+				ok(true, "async chain started");
+				equals(i, 0, "async chain initial argument");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.next(function(i) {
+				ok(true, "async chain first next called");
+				equals(i, 1, "async chain first next argument");
+				
+				throw errorValue;
+			})
+			.next(function(i) {
+				ok(false, "async chain second next shouldn't be called");
+
+				var operation = new Async.Operation();
+				setTimeout(function() { operation.yield(i + 1); }, asyncFunctionDelay);
+				return operation;
+			})
+			.onerror(function(chain) {
+				ok(true, "chain.onerror called")
+				equals(chain.error, errorValue, "chain.error after error occured");
+				equals(chain.state, "error", "chain.state after error occured")
+			})
+			.go(0);
+
+		setTimeout(function() {
+			chain.next(function(i) {
+				ok(false, "late callback shouldn't be called");
+				return i + 1;
+			});
+		}, asyncFunctionDelay * 2)
+
+		setTimeout(function() {
+			equals(chain.error, errorValue, "chain.error after late callback added");
+			equals(chain.state, "error", "chain.state after late callback added")
+		}, asyncFunctionDelay * 2 + syncFunctionDelay);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 2 + syncFunctionDelay)
+	});
+	
+	module("async helpers")
+	
+	test("sync to async conversion", function() {
+		expect(8);
+
+		var self = this;
+
+		var testValue1 = "hello world";
+		var testValue2 = 41.9999;
+		var syncFunction = function(argument1, argument2) {
+			equals(self, this, "this pointer");
+			equals(argument1, testValue1, "argument1");
+			equals(argument2, testValue2, "argument2");
+			return [testValue1, testValue2];
+		};
+
+		stop();
+
+		syncFunction.asyncCall(this, testValue1, testValue2)
+			.addCallback(function(result) {
+				same(result, [testValue1, testValue2], "asyncCall result");
+			});
+		syncFunction.asyncApply(this, [testValue1, testValue2])
+			.addCallback(function(result) {
+				same(result, [testValue1, testValue2], "asyncApply result");
+			});
+
+		start.asyncCall(this);
+	});
+	
+	test("async wait short-cut", function() {
+		expect(4);
+		
+		var testValue = "-- this is the callback result --";
+		var asyncFunctionDelay = 200;
+		var waitMark = false;
+		
+		stop();
+		
+		Async.wait(asyncFunctionDelay).addCallback(function() {
+			ok(true, "wait callback called");
+			waitMark = true;
+		});
+		
+		Async.wait(asyncFunctionDelay, testValue).addCallback(function(context) {
+			ok(true, "wait callback with context called");
+			equals(context, testValue, "callback context");
+			waitMark = true;
+		});
+		
+		setTimeout(function() {
+			equals(waitMark, false, "wait callback not called yet");
+		}, asyncFunctionDelay * 0.9)
+		
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 2)
+	});
+	
+	test("async instant short-cut", function() {
+		expect(3);
+		
+		var testValue = "-- this is the callback result --";
+		var syncFunctionDelay = 100;
+		
+		stop();
+		
+		Async.instant().addCallback(function() {
+			ok(true, "instant callback called");
+		});
+		
+		Async.instant(testValue).addCallback(function(context) {
+			ok(true, "instant callback with context called");
+			equals(context, testValue, "callback context");
+		});
+		
+		setTimeout(function() {
+			start();
+		}, syncFunctionDelay)
+	});
+	
+	test("async collect composition", function() {
+	    expect(4);
+	    
+		var syncFunctionDelay = 100;
+		
+	    var functions = [
+	        function() { return 0; },
+	        function(i) { return i; },
+	        function() { return Async.instant(2); },
+	        function(i) { return Async.instant(i); }
+	    ];
+	    
+	    var functionArguments = [
+	        undefined,
