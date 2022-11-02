@@ -75,3 +75,300 @@ function testAsync() {
 		var asyncFunction = function(value) {
 			var operation = new Async.Operation();
 			setTimeout(function() { operation.yield(); }, asyncFunctionDelay);
+			return operation;
+		};
+
+		stop();
+
+		var operation = asyncFunction(testValue)
+			.addCallback(function(result) {
+				ok(true, "callback called");
+				equals(result, undefined, "callback result");
+			})
+
+		setTimeout(function() {
+    		equals(operation.result, undefined, "operation.result after yield");
+    		equals(operation.state, "completed", "operation.state after yield");
+    		equals(operation.completed, true, "operation.completed after yield");
+			start();
+		}, asyncFunctionDelay)
+	});
+
+	test("async operation callback without yield", function() {
+		expect(3);
+
+		var asyncFunctionWithoutYield = function() {
+			var operation = new Async.Operation();
+			return operation;
+		};
+
+		stop();
+
+		var operation = asyncFunctionWithoutYield()
+			.addCallback(function(result) {
+				ok(false, "no yield operation should not callback")
+			})
+
+		equals(operation.result, undefined, "operation.result at the beginning");
+		equals(operation.state, "running", "operation.state at the beginning");
+		equals(operation.completed, false, "operation.completed at the beginning");
+
+		start();
+	});
+
+	test("async operation without callback", function() {
+		expect(3);
+
+		var testValue = "-- this is the callback result --";
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+		var asyncFunction = function(value) {
+			var operation = new Async.Operation();
+			setTimeout(function() { operation.yield(value); }, asyncFunctionDelay);
+			return operation;
+		};
+
+		stop();
+
+		var operation = asyncFunction(testValue);
+		
+		setTimeout(function() {
+    		equals(operation.result, testValue, "operation.result after yield");
+    		equals(operation.state, "completed", "operation.state after yield");
+    		equals(operation.completed, true, "operation.completed after yield");
+			start();
+		}, asyncFunctionDelay)
+	});
+	
+	test("async operation object", function() {
+		expect(15);
+
+		var testValue = "-- this is the callback result --";
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+		var asyncFunction = function(value) {
+			var operation = new Async.Operation();
+			setTimeout(function() { operation.yield(value); }, asyncFunctionDelay);
+			return operation;
+		};
+
+		stop();
+
+		var operation = asyncFunction(testValue)
+			.addCallback(function(result) {
+			})
+
+		equals(operation.result, undefined, "operation.result at the beginning");
+		equals(operation.state, "running", "operation.state at the beginning");
+		equals(operation.completed, false, "operation.completed at the beginning");
+
+		setTimeout(function() {
+			equals(operation.result, undefined, "operation.result before yield");
+			equals(operation.state, "running", "operation.state before yield");
+			equals(operation.completed, false, "operation.completed before yield");
+		}, asyncFunctionDelay - 1);
+
+		setTimeout(function() {
+			equals(operation.result, testValue, "operation.result after yield");
+			equals(operation.state, "completed", "operation.state after yield");
+			equals(operation.completed, true, "operation.completed after yield");
+		}, asyncFunctionDelay + 1);
+
+		setTimeout(function() {
+			equals(operation.result, testValue, "operation.result after callback");
+			equals(operation.state, "completed", "operation.state after callback");
+			equals(operation.completed, true, "operation.completed after callback");
+		}, asyncFunctionDelay + syncFunctionDelay);
+
+		setTimeout(function() {
+			operation.addCallback(function(result) {
+			});
+		}, asyncFunctionDelay * 2)
+
+		setTimeout(function() {
+			equals(operation.result, testValue, "operation.result after late callback");
+			equals(operation.state, "completed", "operation.state after late callback");
+			equals(operation.completed, true, "operation.completed after late callback");
+		}, asyncFunctionDelay * 2 + syncFunctionDelay);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 3)
+	});
+
+	test("error during async operation", function() {
+		expect(9);
+		
+		var testValue = "-- this is the callback result --";
+		var errorValue = "-- this is the error --";
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+		var asyncFunction = function(value) {
+			var operation = new Async.Operation();
+			setTimeout(function() { operation.yield(testValue) }, asyncFunctionDelay);
+			return operation;
+		};
+
+		stop();
+
+		Async.onerror(function(operation) {
+				ok(true, "Async.onerror called")
+				equals(operation.error, errorValue, "operation.error after error occured");
+				equals(operation.state, "error", "operation.state after error occured")
+			});
+			
+		var operation = asyncFunction(testValue)
+			.addCallback(function(result) {
+				ok(true, "first callback called");
+				throw errorValue;
+			})
+			.addCallback(function(result) {
+				ok(false, "second callback shouldn't be called");
+			})
+			.onerror(function(operation) {
+				ok(true, "operation.onerror called")
+				equals(operation.error, errorValue, "operation.error after error occured");
+				equals(operation.state, "error", "operation.state after error occured")
+			});
+
+		setTimeout(function() {
+			operation.addCallback(function(result) {
+				ok(false, "late callback shouldn't be called");
+			});
+		}, asyncFunctionDelay * 2)
+
+		setTimeout(function() {
+			equals(operation.error, errorValue, "operation.error after late callback added");
+			equals(operation.state, "error", "operation.state after late callback added")
+		}, asyncFunctionDelay * 2 + syncFunctionDelay);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay * 3)
+	});
+	
+	module("async chain");
+	
+	test("sync chain go first operation", function() {
+		expect(4);
+
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.go(0)
+			.next(function(i) {
+				ok(true, "sync chain first next called");
+				equals(i, 0, "sync chain first next argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "sync chain second next called");
+				equals(i, 1, "sync chain second next argument");
+				return i + 1;
+			});
+
+		setTimeout(function() {
+			start();
+		}, syncFunctionDelay);
+	});
+
+	test("sync chain go between operation", function() {
+		expect(6);
+
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.chain(function(i) {
+				ok(true, "sync chain started");
+				equals(i, 0, "sync chain initial argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "sync chain first next called");
+				equals(i, 1, "sync chain first next argument");
+				return i + 1;
+			})
+			.go(0)
+			.next(function(i) {
+				ok(true, "sync chain second next called");
+				equals(i, 2, "sync chain second next argument");
+				return i + 1;
+			});
+
+		setTimeout(function() {
+			start();
+		}, syncFunctionDelay);
+	});
+
+	test("sync chain go last operation", function() {
+		expect(6);
+
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		Async
+			.chain(function(i) {
+				ok(true, "sync chain started");
+				equals(i, 0, "sync chain initial argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "sync chain first next called");
+				equals(i, 1, "sync chain first next argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "sync chain second next called");
+				equals(i, 2, "sync chain second next argument");
+				return i + 1;
+			})
+			.go(0);
+
+		setTimeout(function() {
+			start();
+		}, syncFunctionDelay);
+	});
+
+	test("sync chain late go operation", function() {
+		expect(6);
+
+		var asyncFunctionDelay = 200;
+		var syncFunctionDelay = 100;
+
+		stop();
+
+		var chain = Async
+			.chain(function(i) {
+				ok(true, "sync chain started");
+				equals(i, 0, "sync chain initial argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "sync chain first next called");
+				equals(i, 1, "sync chain first next argument");
+				return i + 1;
+			})
+			.next(function(i) {
+				ok(true, "sync chain second next called");
+				equals(i, 2, "sync chain second next argument");
+				return i + 1;
+			});
+
+		setTimeout(function() {
+			chain.go(0);
+		}, asyncFunctionDelay);
+
+		setTimeout(function() {
+			start();
+		}, asyncFunctionDelay + syncFunctionDelay);
+	});
+
+	test("sync chain go only operation", function() {
+		expect(3);
+
+		var syncFunctionDelay = 100;
