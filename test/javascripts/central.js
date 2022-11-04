@@ -49,4 +49,13 @@ function testCentral() {
 		Central.call("multiple-call-single-listen", argument);
 	});
 	
-	
+	test("single call multiple listen", function() {
+		expect(4);
+		
+		Central
+			.listen("single-call-multiple-listen", function(e) {
+				ok(true, "first listener called");
+				equals(e, argument, "argument");
+			})
+			.listen("single-call-multiple-listen", function(e) {
+				ok(true, "second listener
