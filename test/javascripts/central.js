@@ -23,4 +23,18 @@ function testCentral() {
 	test("call only", function() {
 		expect(0);
 		
-		Central.call("call-only", argu
+		Central.call("call-only", argument);
+	});
+	
+	test("single call single listen", function() {
+		expect(2);
+		
+		Central.listen("single-call-single-listen", function(e) {
+			ok(true, "listener called");
+			equals(e, argument, "argument");
+		});
+		
+		Central.call("single-call-single-listen", argument);
+	});
+	
+	test("multiple call single li
