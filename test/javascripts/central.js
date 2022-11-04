@@ -37,4 +37,16 @@ function testCentral() {
 		Central.call("single-call-single-listen", argument);
 	});
 	
-	test("multiple call single li
+	test("multiple call single listen", function() {
+		expect(4);
+		
+		Central.listen("multiple-call-single-listen", function(e) {
+			ok(true, "listener called");
+			equals(e, argument, "argument");
+		});
+		
+		Central.call("multiple-call-single-listen", argument);
+		Central.call("multiple-call-single-listen", argument);
+	});
+	
+	
