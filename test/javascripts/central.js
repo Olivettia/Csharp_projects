@@ -71,4 +71,16 @@ function testCentral() {
 		Central
 			.listen("multiple-call-multiple-listen", function(e) {
 				ok(true, "first listener called");
-				equals(e, argume
+				equals(e, argument, "argument");
+			})
+			.listen("multiple-call-multiple-listen", function(e) {
+				ok(true, "second listener called");
+				equals(e, argument, "argument");
+			});
+		
+		Central.call("multiple-call-multiple-listen", argument);
+		Central.call("multiple-call-multiple-listen", argument);
+	});
+	
+	test("multiple command", function() {
+	
