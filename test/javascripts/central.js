@@ -83,4 +83,16 @@ function testCentral() {
 	});
 	
 	test("multiple command", function() {
-	
+		expect(8);
+		
+		Central
+			.listen("command-one", function(e) {
+				ok(true, "command-one listener called");
+				equals(e, argument, "argument");
+			})
+			.listen("command-two", function(e) {
+				ok(true, "command-two listener called");
+				equals(e, argument, "argument");
+			});
+		
+		Cen
