@@ -95,4 +95,14 @@ function testCentral() {
 				equals(e, argument, "argument");
 			});
 		
-		Cen
+		Central
+			.listen("command-one", function(e) {
+				ok(true, "command-one listener called");
+				equals(e, argument, "argument");
+			})
+			.listen("command-two", function(e) {
+				ok(true, "command-two listener called");
+				equals(e, argument, "argument");
+			});
+		
+		Centra
