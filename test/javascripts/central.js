@@ -120,4 +120,16 @@ function testCentral() {
 		Central.call("", argument);
 	});
 	
-	module("centr
+	module("central extension");
+	
+	test("central extension", function() {
+		expect(2);
+		
+		var extended = Central.extend({});
+		
+		ok(extended.listen, "extended.listen exists");
+		ok(extended.call, "extended.call exists");
+	});
+	
+	test("extension multiple call multiple listen", function() {
+		expect(8
