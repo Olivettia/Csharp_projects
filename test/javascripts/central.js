@@ -132,4 +132,15 @@ function testCentral() {
 	});
 	
 	test("extension multiple call multiple listen", function() {
-		expect(8
+		expect(8);
+		
+		var extended = Central.extend({});
+		
+		extended
+			.listen("command-one", function(e) {
+				ok(true, "command-one listener called");
+				equals(e, argument, "argument");
+			})
+			.listen("command-two", function(e) {
+				ok(true, "command-two listener called");
+				equals(e, argument, "a
