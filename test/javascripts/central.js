@@ -156,3 +156,7 @@ function testCentral() {
 				equals(e, argument, "argument");
 			});
 		
+		extended.call("command-one", argument);
+		extended.call("command-two", argument);
+	});
+}
