@@ -16,4 +16,18 @@ function testGrandCentral() {
 		expect(0);
 		
 		GrandCentral.listen({ command: "listen-only" }, function(e) {
-			ok(false, "nobody
+			ok(false, "nobody calls this");
+		});
+	});
+	
+	test("call only", function() {
+		expect(0);
+		
+		GrandCentral.call({ command: "call-only", value: argument });
+	});
+	
+	test("single call single listen function", function() {
+		expect(2);
+		
+		GrandCentral.listen(function(e) {
+		    return e.command =
