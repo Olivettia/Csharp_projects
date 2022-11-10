@@ -57,4 +57,11 @@ function testGrandCentral() {
 		expect(4);
 		
 		GrandCentral
-			.listen(functio
+			.listen(function(e) {
+			    return e.command == "single-call-multiple-listen-function";
+			}, function(e) {
+				ok(true, "first listener called");
+				same(e, { command: "single-call-multiple-listen-function", value: argument }, "json");
+			})
+			.listen(function(e) {
+			    return e.command == "single-call-multipl
