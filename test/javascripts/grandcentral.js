@@ -89,3 +89,13 @@ function testGrandCentral() {
 				ok(true, "second listener called");
 				same(e, { command: "multiple-call-multiple-listen-function", value: argument}, "json");
 			});
+		
+		GrandCentral.call({ command: "multiple-call-multiple-listen-function", value: argument});
+		GrandCentral.call({ command: "multiple-call-multiple-listen-function", value: argument});
+	});
+	
+	test("multiple command function", function() {
+		expect(8);
+		
+		GrandCentral
+	        .li
