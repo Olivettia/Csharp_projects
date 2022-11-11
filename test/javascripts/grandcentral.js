@@ -81,4 +81,11 @@ function testGrandCentral() {
 		        return e.command == "multiple-call-multiple-listen-function";
 		    }, function(e) {
 				ok(true, "first listener called");
-				same(e, { command: "multiple-call-multiple-listen
+				same(e, { command: "multiple-call-multiple-listen-function", value: argument}, "json");
+			})
+		    .listen(function(e) {
+		        return e.command == "multiple-call-multiple-listen-function";
+		    }, function(e) {
+				ok(true, "second listener called");
+				same(e, { command: "multiple-call-multiple-listen-function", value: argument}, "json");
+			});
