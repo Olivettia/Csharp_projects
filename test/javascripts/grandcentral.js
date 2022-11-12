@@ -122,4 +122,14 @@ function testGrandCentral() {
 	            return e.command == "command-two-function";
 	        }, function(e) {
 				ok(true, "command-two listener called");
-				same(e, {
+				same(e, { command: "command-two-function", value: argument }, "json");
+			});
+		
+		GrandCentral.call({ command: "command-one-function", value: argument });
+		GrandCentral.call({ command: "command-two-function", value: argument });
+	});
+	
+	test("empty listen function", function() {
+		expect(0);
+		
+		GrandCentra
