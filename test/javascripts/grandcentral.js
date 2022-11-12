@@ -132,4 +132,14 @@ function testGrandCentral() {
 	test("empty listen function", function() {
 		expect(0);
 		
-		GrandCentra
+		GrandCentral
+			.listen(function(e) { }, function(e) {
+				ok(false, "listener called");
+			})
+    		GrandCentral.call({ command: "empty-listen-function", value: argument });
+	});
+	
+	test("single call single listen object", function() {
+		expect(2);
+		
+		GrandCentral.listen({ command: "single-call-single-listen-object" }, functio
