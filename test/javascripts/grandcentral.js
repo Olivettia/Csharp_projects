@@ -142,4 +142,15 @@ function testGrandCentral() {
 	test("single call single listen object", function() {
 		expect(2);
 		
-		GrandCentral.listen({ command: "single-call-single-listen-object" }, functio
+		GrandCentral.listen({ command: "single-call-single-listen-object" }, function(e) {
+			ok(true, "listener called");
+			same(e, { command: "single-call-single-listen-object", value: argument }, "json");
+		});
+		
+		GrandCentral.call({ command: "single-call-single-listen-object", value: argument });
+	});
+	
+	test("multiple call single listen object", function() {
+		expect(4);
+		
+		GrandCentral.listen({ command:
