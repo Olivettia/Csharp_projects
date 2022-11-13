@@ -159,4 +159,12 @@ function testGrandCentral() {
 		});
 		
 		GrandCentral.call({ command: "multiple-call-single-listen-object", value: argument });
-		GrandCentral.ca
+		GrandCentral.call({ command: "multiple-call-single-listen-object", value: argument });
+	});
+	
+	test("single call multiple listen object", function() {
+		expect(4);
+		
+		GrandCentral
+			.listen({ command: "single-call-multiple-listen-object" }, function(e) {
+				ok(true, "first listener called
