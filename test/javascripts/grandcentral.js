@@ -172,4 +172,15 @@ function testGrandCentral() {
 			})
 			.listen({ command: "single-call-multiple-listen-object" }, function(e) {
 				ok(true, "second listener called");
-				same(e, { command: "single-call-multiple-listen-object", value: 
+				same(e, { command: "single-call-multiple-listen-object", value: argument }, "json");
+			});
+		
+		GrandCentral.call({ command: "single-call-multiple-listen-object", value: argument });
+	});
+	
+	test("multiple call multiple listen object", function() {
+		expect(8);
+		
+		GrandCentral
+			.listen({ command: "multiple-call-multiple-listen-object" }, function(e) {
+				ok(t
