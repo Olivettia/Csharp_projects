@@ -196,4 +196,12 @@ function testGrandCentral() {
 	});
 	
 	test("multiple command object", function() {
-		exp
+		expect(8);
+		
+		GrandCentral
+			.listen({ command: "command-one-object" }, function(e) {
+				ok(true, "command-one listener called");
+				same(e, { command: "command-one-object", value: argument }, "json");
+			})
+			.listen({ command: "command-two-object" }, function(e) {
+			
