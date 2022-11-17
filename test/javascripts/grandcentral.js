@@ -230,4 +230,15 @@ function testGrandCentral() {
 				ok(true, "listener called");
 				same(e, { command: "empty-listen-object", value: argument }, "json");
 			})
-    		GrandCentral.call
+    		GrandCentral.call({ command: "empty-listen-object", value: argument });
+	});
+	
+    module("grand central extension");
+    
+	test("grand central extension", function() {
+		expect(2);
+		
+		var extended = GrandCentral.extend({});
+		
+		ok(extended.listen, "extended.listen exists");
+		ok(extended.call, "extended.c
