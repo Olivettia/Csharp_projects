@@ -219,4 +219,15 @@ function testGrandCentral() {
 			});
 		
 		GrandCentral.call({ command: "command-one-object", value: argument });
-		GrandCentral.
+		GrandCentral.call({ command: "command-two-object", value: argument });
+	});
+	
+	test("empty listen object", function() {
+		expect(2);
+		
+		GrandCentral
+			.listen({}, function(e) {
+				ok(true, "listener called");
+				same(e, { command: "empty-listen-object", value: argument }, "json");
+			})
+    		GrandCentral.call
