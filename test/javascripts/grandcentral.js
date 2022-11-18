@@ -241,4 +241,16 @@ function testGrandCentral() {
 		var extended = GrandCentral.extend({});
 		
 		ok(extended.listen, "extended.listen exists");
-		ok(extended.call, "extended.c
+		ok(extended.call, "extended.call exists");
+	});
+	
+	test("extension multiple command function", function() {
+		expect(8);
+		
+		var extended = GrandCentral.extend({});
+		
+		extended
+	        .listen(function(e) {
+	            return e.command == "command-one-function";
+	        }, function(e) {
+				ok(
