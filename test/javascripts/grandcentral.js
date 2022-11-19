@@ -260,4 +260,12 @@ function testGrandCentral() {
 	            return e.command == "command-two-function";
 	        }, function(e) {
 				ok(true, "command-two listener called");
+				same(e, { command: "command-two-function", value: argument }, "json");
+			});
+		
+		extended
+            .listen(function(e) {
+                return e.command == "command-one-function";
+            }, function(e) {
+				ok(true, "command-one listener called");
 				same(e, { command: "comman
