@@ -274,4 +274,17 @@ function testGrandCentral() {
 	            return e.command == "command-two-function";
 	        }, function(e) {
 				ok(true, "command-two listener called");
-				same(e, { command: "command-two-function", value: a
+				same(e, { command: "command-two-function", value: argument }, "json");
+			});
+		
+		extended.call({ command: "command-one-function", value: argument });
+		extended.call({ command: "command-two-function", value: argument });
+	});
+	
+	test("extension multiple command object", function() {
+		expect(8);
+		
+		var extended = GrandCentral.extend({});
+		
+		extended
+			.listen({ command: "comma
