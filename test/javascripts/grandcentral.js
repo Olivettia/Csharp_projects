@@ -302,4 +302,12 @@ function testGrandCentral() {
 				same(e, { command: "command-one-object", value: argument }, "json");
 			})
 			.listen({ command: "command-two-object" }, function(e) {
-				ok(true, "c
+				ok(true, "command-two listener called");
+				same(e, { command: "command-two-object", value: argument }, "json");
+			});
+		
+		extended.call({ command: "command-one-object", value: argument });
+		extended.call({ command: "command-two-object", value: argument });
+	});
+	
+    module("grand central oper
