@@ -293,4 +293,13 @@ function testGrandCentral() {
 			})
 			.listen({ command: "command-two-object" }, function(e) {
 				ok(true, "command-two listener called");
-				sam
+				same(e, { command: "command-two-object", value: argument }, "json");
+			});
+		
+		extended
+			.listen({ command: "command-one-object" }, function(e) {
+				ok(true, "command-one listener called");
+				same(e, { command: "command-one-object", value: argument }, "json");
+			})
+			.listen({ command: "command-two-object" }, function(e) {
+				ok(true, "c
