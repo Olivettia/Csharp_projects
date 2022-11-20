@@ -287,4 +287,10 @@ function testGrandCentral() {
 		var extended = GrandCentral.extend({});
 		
 		extended
-			.listen({ command: "comma
+			.listen({ command: "command-one-object" }, function(e) {
+				ok(true, "command-one listener called");
+				same(e, { command: "command-one-object", value: argument }, "json");
+			})
+			.listen({ command: "command-two-object" }, function(e) {
+				ok(true, "command-two listener called");
+				sam
