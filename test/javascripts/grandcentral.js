@@ -310,4 +310,15 @@ function testGrandCentral() {
 		extended.call({ command: "command-two-object", value: argument });
 	});
 	
-    module("grand central oper
+    module("grand central operators");
+    
+	test("default operator", function() {
+		expect(2);
+		
+		ok(GrandCentral.Operators[""](
+			{ test: "test string" },
+			{ test: "test string", value: argument }), "eq selected for non-Array");
+		
+		ok(GrandCentral.Operators[""](
+			{ test: [0, 1, 2] },
+			{ test: 1, value: argument }), "in selected fo
