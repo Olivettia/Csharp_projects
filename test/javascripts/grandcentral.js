@@ -321,4 +321,16 @@ function testGrandCentral() {
 		
 		ok(GrandCentral.Operators[""](
 			{ test: [0, 1, 2] },
-			{ test: 1, value: argument }), "in selected fo
+			{ test: 1, value: argument }), "in selected for Array");
+		
+	});
+	
+	test("eq operator", function() {
+		expect(10);
+		
+		ok(GrandCentral.Operators[""](
+			{ test$eq: "test string" },
+			{ test: "test string", value: argument }), "passed string test");
+		ok(!GrandCentral.Operators[""](
+			{ test$eq: "test string" },
+			{ test: "not test string", value
