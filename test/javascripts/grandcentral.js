@@ -333,4 +333,13 @@ function testGrandCentral() {
 			{ test: "test string", value: argument }), "passed string test");
 		ok(!GrandCentral.Operators[""](
 			{ test$eq: "test string" },
-			{ test: "not test string", value
+			{ test: "not test string", value: argument }), "passed string test");
+		ok(GrandCentral.Operators[""](
+			{ test$eq: 42 },
+			{ test: 42, value: argument }), "passed number test");
+		ok(!GrandCentral.Operators[""](
+			{ test$eq: 42 },
+			{ test: 24, value: argument }), "passed number test");
+		ok(GrandCentral.Operators[""](
+			{ test$eq: true },
+			{ 
