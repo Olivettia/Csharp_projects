@@ -360,4 +360,13 @@ function testGrandCentral() {
 			{ test: { test: ["test string", 42, true] }, value: argument }), "passed object test");
 	});
 	
-	test("ne operator"
+	test("ne operator", function() {
+		expect(10);
+		
+		ok(!GrandCentral.Operators[""](
+			{ test$ne: "test string" },
+			{ test: "test string", value: argument }), "passed string test");
+		ok(GrandCentral.Operators[""](
+			{ test$ne: "test string" },
+			{ test: "not test string", value: argument }), "passed string test");
+		ok(!GrandCe
