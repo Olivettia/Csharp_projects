@@ -377,4 +377,10 @@ function testGrandCentral() {
 			{ test: 24, value: argument }), "passed number test");
 		ok(!GrandCentral.Operators[""](
 			{ test$ne: true },
-			{ test: true, 
+			{ test: true, value: argument }), "passed boolean test");
+		ok(GrandCentral.Operators[""](
+			{ test$ne: true },
+			{ test: false, value: argument }), "passed boolean test");
+		ok(!GrandCentral.Operators[""](
+			{ test$ne: ["test string", 42, true] },
+			{ test: ["test string", 42, true], value: argument }), "pa
