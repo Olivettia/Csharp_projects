@@ -369,4 +369,12 @@ function testGrandCentral() {
 		ok(GrandCentral.Operators[""](
 			{ test$ne: "test string" },
 			{ test: "not test string", value: argument }), "passed string test");
-		ok(!GrandCe
+		ok(!GrandCentral.Operators[""](
+			{ test$ne: 42 },
+			{ test: 42, value: argument }), "passed number test");
+		ok(GrandCentral.Operators[""](
+			{ test$ne: 42 },
+			{ test: 24, value: argument }), "passed number test");
+		ok(!GrandCentral.Operators[""](
+			{ test$ne: true },
+			{ test: true, 
