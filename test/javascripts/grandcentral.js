@@ -398,4 +398,12 @@ function testGrandCentral() {
 	test("lt operator", function() {
 		expect(3);
 		
-		ok(GrandCentral
+		ok(GrandCentral.Operators[""](
+			{ test$lt: 42 },
+			{ test: 9.999, value: argument }), "passed number test");
+		ok(!GrandCentral.Operators[""](
+			{ test$lt: 42 },
+			{ test: 42, value: argument }), "passed number test");
+		ok(!GrandCentral.Operators[""](
+			{ test$lt: 42 },
+			{ test: 99.99, value: argument }), "passe
