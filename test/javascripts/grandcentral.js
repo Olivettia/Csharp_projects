@@ -383,4 +383,10 @@ function testGrandCentral() {
 			{ test: false, value: argument }), "passed boolean test");
 		ok(!GrandCentral.Operators[""](
 			{ test$ne: ["test string", 42, true] },
-			{ test: ["test string", 42, true], value: argument }), "pa
+			{ test: ["test string", 42, true], value: argument }), "passed array test");
+		ok(GrandCentral.Operators[""](
+			{ test$ne: ["test string", 42, false] },
+			{ test: ["test string", 42, true], value: argument }), "passed array test");
+		ok(!GrandCentral.Operators[""](
+			{ test$eq: { test$ne: ["test string", 42, true] } },
+			{ test: { test: ["test string", 42, true] 
