@@ -389,4 +389,13 @@ function testGrandCentral() {
 			{ test: ["test string", 42, true], value: argument }), "passed array test");
 		ok(!GrandCentral.Operators[""](
 			{ test$eq: { test$ne: ["test string", 42, true] } },
-			{ test: { test: ["test string", 42, true] 
+			{ test: { test: ["test string", 42, true] }, value: argument }), "passed object test");
+		ok(GrandCentral.Operators[""](
+			{ test$eq: { test$ne: ["test string", 42, false] } },
+			{ test: { test: ["test string", 42, true] }, value: argument }), "passed object test");
+	});
+	
+	test("lt operator", function() {
+		expect(3);
+		
+		ok(GrandCentral
