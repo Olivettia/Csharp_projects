@@ -437,4 +437,14 @@ function testGrandCentral() {
 			{ test: 99.99, value: argument }), "passed number test");
 	});
 	
-	test("gte 
+	test("gte operator", function() {
+		expect(3);
+		
+		ok(!GrandCentral.Operators[""](
+			{ test$gte: 42 },
+			{ test: 9.999, value: argument }), "passed number test");
+		ok(GrandCentral.Operators[""](
+			{ test$gte: 42 },
+			{ test: 42, value: argument }), "passed number test");
+		ok(GrandCentral.Operators[""](
+			
