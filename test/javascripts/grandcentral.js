@@ -447,4 +447,14 @@ function testGrandCentral() {
 			{ test$gte: 42 },
 			{ test: 42, value: argument }), "passed number test");
 		ok(GrandCentral.Operators[""](
-			
+			{ test$gte: 42 },
+			{ test: 99.99, value: argument }), "passed number test");
+	});
+	
+	test("in operator", function() {
+		expect(4);
+		
+		ok(GrandCentral.Operators[""](
+			{ test$in: ["test string", 42, true] },
+			{ test: "test string", value: argument }), "passed array test");
+		ok(GrandCentral.Operators[""]
