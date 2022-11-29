@@ -464,4 +464,15 @@ function testGrandCentral() {
 			{ test$in: ["test string", 42, true] },
 			{ test: true, value: argument }), "passed array test");
 		ok(!GrandCentral.Operators[""](
-			{ test$in: ["test string", 42, tr
+			{ test$in: ["test string", 42, true] },
+			{ test: false, value: argument }), "passed array test");
+	});
+	
+	test("nin operator", function() {
+		expect(4);
+		
+		ok(!GrandCentral.Operators[""](
+			{ test$nin: ["test string", 42, true] },
+			{ test: "test string", value: argument }), "passed array test");
+		ok(!GrandCentral.Operators[""](
+			{ test$nin:
