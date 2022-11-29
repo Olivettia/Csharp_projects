@@ -475,4 +475,10 @@ function testGrandCentral() {
 			{ test$nin: ["test string", 42, true] },
 			{ test: "test string", value: argument }), "passed array test");
 		ok(!GrandCentral.Operators[""](
-			{ test$nin:
+			{ test$nin: ["test string", 42, true] },
+			{ test: 42, value: argument }), "passed array test");
+		ok(!GrandCentral.Operators[""](
+			{ test$nin: ["test string", 42, true] },
+			{ test: true, value: argument }), "passed array test");
+		ok(GrandCentral.Operators[""](
+			{ test$nin: ["test string", 42, true] },
