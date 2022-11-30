@@ -497,4 +497,9 @@ function testGrandCentral() {
 		ok(GrandCentral.Operators[""](
 			{ test$all: ["test string", 42, true] },
 			{ test: [42, true, "test string"], value: argument }), "passed array test");
-		
+		ok(GrandCentral.Operators[""](
+			{ test$all: ["test string", 42, true] },
+			{ test: [false, true, "test string", 42], value: argument }), "passed array test");
+		ok(!GrandCentral.Operators[""](
+			{ test$all: ["test string", 42, true] },
+			{ test: ["test string", 42, false], value: argument }), "passed a
