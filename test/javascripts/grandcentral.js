@@ -502,4 +502,14 @@ function testGrandCentral() {
 			{ test: [false, true, "test string", 42], value: argument }), "passed array test");
 		ok(!GrandCentral.Operators[""](
 			{ test$all: ["test string", 42, true] },
-			{ test: ["test string", 42, false], value: argument }), "passed a
+			{ test: ["test string", 42, false], value: argument }), "passed array test");
+		ok(!GrandCentral.Operators[""](
+			{ test$all: ["test string", 42, true] },
+			{ test: [42, "not test string", true], value: argument }), "passed array test");
+	});
+	
+	test("ex operator", function() {
+		expect(8);
+		
+		ok(GrandCentral.Operators[""](
+			{ test$ex: true
