@@ -519,4 +519,13 @@ function testGrandCentral() {
 			{ test: null, value: argument }), "passed test");
 		ok(GrandCentral.Operators[""](
 			{ test$ex: true },
-			{ test: undefined, value: argument }), "passed te
+			{ test: undefined, value: argument }), "passed test");
+        ok(!GrandCentral.Operators[""](
+            { test$ex: true },
+            { value: argument }),
+            "passed test");
+		ok(!GrandCentral.Operators[""](
+			{ test$ex: false },
+			{ test: "test string", value: argument }), "passed test");
+		ok(!GrandCentral.Operators[""](
+			
