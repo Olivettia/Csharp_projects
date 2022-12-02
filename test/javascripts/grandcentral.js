@@ -559,4 +559,10 @@ function testGrandCentral() {
 	test("f operator", function() {
         expect(2);
         
-      
+        ok(GrandCentral.Operators[""](
+            { test$f: function(json) { return Boolean(json); } },
+            { test: true, value: argument }),
+            "passed test");
+        ok(!GrandCentral.Operators[""](
+            { test$f: function(json) { return Boolean(json); } },
+            { test: false, value: a
