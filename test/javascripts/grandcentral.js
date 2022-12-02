@@ -537,3 +537,15 @@ function testGrandCentral() {
             { test$ex: false },
             { value: argument }),
             "passed test");
+	});
+	
+	test("re operator", function() {
+        expect(3);
+        
+        ok(GrandCentral.Operators[""](
+            { test$re: /^A.*/ },
+            { test: "A135", value: argument }),
+            "passed test");
+        ok(!GrandCentral.Operators[""](
+            { test$re: /^A.*/ },
+            { test: "B24
