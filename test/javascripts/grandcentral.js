@@ -548,4 +548,15 @@ function testGrandCentral() {
             "passed test");
         ok(!GrandCentral.Operators[""](
             { test$re: /^A.*/ },
-            { test: "B24
+            { test: "B246", value: argument }),
+            "passed test");
+        ok(!GrandCentral.Operators[""](
+            { test$re: /^A.*/ },
+            { test: undefined, value: argument }),
+            "passed test");
+	});
+	
+	test("f operator", function() {
+        expect(2);
+        
+      
