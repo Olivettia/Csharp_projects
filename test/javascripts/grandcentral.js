@@ -565,4 +565,7 @@ function testGrandCentral() {
             "passed test");
         ok(!GrandCentral.Operators[""](
             { test$f: function(json) { return Boolean(json); } },
-            { test: false, value: a
+            { test: false, value: argument }),
+            "passed test");
+	});
+}
