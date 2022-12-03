@@ -19,4 +19,9 @@ function testList() {
         var count = 0;
         
         var list1 = new List();
-        var list2 = new List(1, 2
+        var list2 = new List(1, 2, 3, 4, 5, 6);
+        var list3 = new List([1, 2, 3, 4, 5, 6]);
+        
+        same(list1.toArray(), [], "empty constructor worksly");
+        same(list2.toArray(), [1, 2, 3, 4, 5, 6], "arguments constructor worksly");
+        same(list3.toArray(), [1, 
