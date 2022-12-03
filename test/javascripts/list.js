@@ -33,4 +33,15 @@ function testList() {
         var list1 = new List(1, 2, 3, 4, 5, 6);
         var list2 = list1.drop(2).takeWhile(function() { return this < 5; }).reverse();
         
-     
+        equals(list1.at(0), 1);
+        equals(list1.at(1), 2);
+        equals(list1.at(2), 3);
+        equals(list1.at(3), 4);
+        equals(list1.at(4), 5);
+        equals(list1.at(5), 6);
+        
+        equals(list2.at(0), 4);
+        equals(list2.at(1), 3);
+    });
+    
+    
