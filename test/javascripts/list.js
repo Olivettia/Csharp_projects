@@ -24,4 +24,13 @@ function testList() {
         
         same(list1.toArray(), [], "empty constructor worksly");
         same(list2.toArray(), [1, 2, 3, 4, 5, 6], "arguments constructor worksly");
-        same(list3.toArray(), [1, 
+        same(list3.toArray(), [1, 2, 3, 4, 5, 6], "array constructor worksly");
+    });
+    
+    test("list at method", function() {
+        expect(8);
+        
+        var list1 = new List(1, 2, 3, 4, 5, 6);
+        var list2 = list1.drop(2).takeWhile(function() { return this < 5; }).reverse();
+        
+     
