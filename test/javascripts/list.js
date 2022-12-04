@@ -44,4 +44,15 @@ function testList() {
         equals(list2.at(1), 3);
     });
     
+    test("list length method", function() {
+        expect(1);
+        
+        var list = new List(1, 2, 3, 4, 5, 6);
+        var result = list.length();
+        
+        equals(result, 6, "length result");
+    });
     
+    test("list each method", function() {
+        expect(12);
+      
