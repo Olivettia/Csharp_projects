@@ -67,4 +67,17 @@ function testList() {
     });
     
     test("list toArray method", function() {
-        e
+        expect(1);
+        
+        var list = new List(1, 2, 3, 4, 5, 6);
+        
+        same(list.toArray(), [1, 2, 3, 4, 5, 6], "toArray result");
+    });
+    
+    module("list methods");
+    
+    test("list methods existence", function() {
+        expect(26);
+        
+        var list = new List(1, 2, 3, 4, 5, 6);
+      
