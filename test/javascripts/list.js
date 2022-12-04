@@ -55,4 +55,16 @@ function testList() {
     
     test("list each method", function() {
         expect(12);
-      
+        
+        var list = new List(1, 2, 3, 4, 5, 6);
+        var i = 0;
+        
+        list.each(function(object) {
+            equals(this, i + 1, "this value");
+            equals(object, i + 1, "object value");
+            i++;
+        });
+    });
+    
+    test("list toArray method", function() {
+        e
