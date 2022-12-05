@@ -80,4 +80,11 @@ function testList() {
         expect(26);
         
         var list = new List(1, 2, 3, 4, 5, 6);
-      
+        
+        ok(list.reverse, "list.reverse exists");
+        ok(list.map, "list.map exists");
+        ok(list.filter, "list.filter exists");
+        ok(list.fold, "list.fold exists");
+        ok(list.scan, "list.scan exists");
+        ok(list.takeWhile, "list.takeWhile exists");
+        ok(list.take, 
