@@ -87,4 +87,11 @@ function testList() {
         ok(list.fold, "list.fold exists");
         ok(list.scan, "list.scan exists");
         ok(list.takeWhile, "list.takeWhile exists");
-        ok(list.take, 
+        ok(list.take, "list.take exists");
+        ok(list.dropWhile, "list.dropWhile exists");
+        ok(list.drop, "list.drop exists");
+        ok(list.cycle, "list.cycle exists");
+        
+        ok(List.generate, "List.generate exists");
+        ok(List.iterate, "List.iterate exists");
+        ok(List.count, "List.count exists"
