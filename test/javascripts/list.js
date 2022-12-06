@@ -94,4 +94,12 @@ function testList() {
         
         ok(List.generate, "List.generate exists");
         ok(List.iterate, "List.iterate exists");
-        ok(List.count, "List.count exists"
+        ok(List.count, "List.count exists");
+        ok(List.repeat, "List.repeat exists");
+        ok(List.concatenate, "List.concatenate exists");
+        ok(List.zip, "List.zip exists");
+        
+        ok(list.all, "list.all exists");
+        ok(list.any, "list.any exists");
+        ok(list.sum, "list.sum exists");
+        ok(lis
