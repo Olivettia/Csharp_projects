@@ -108,4 +108,16 @@ function testList() {
         ok(list.head, "list.head exists");
         ok(list.tail, "list.tail exists");
         ok(list.init, "list.init exists");
-        ok(list.last, "list.last exist
+        ok(list.last, "list.last exists");
+    });
+    
+    test("list reverse method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .reverse();
+        
+        same(list.toArray(), [6, 5, 4, 3, 2, 1], "reverse result");
+        same(list.toArray(), [6, 5, 4, 3, 2, 1], "reverse result");
+    });
+   
