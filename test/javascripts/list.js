@@ -102,4 +102,10 @@ function testList() {
         ok(list.all, "list.all exists");
         ok(list.any, "list.any exists");
         ok(list.sum, "list.sum exists");
-        ok(lis
+        ok(list.average, "list.average exists");
+        ok(list.maximum, "list.maximum exists");
+        ok(list.minimum, "list.minimum exists");
+        ok(list.head, "list.head exists");
+        ok(list.tail, "list.tail exists");
+        ok(list.init, "list.init exists");
+        ok(list.last, "list.last exist
