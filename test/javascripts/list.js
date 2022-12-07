@@ -120,4 +120,12 @@ function testList() {
         same(list.toArray(), [6, 5, 4, 3, 2, 1], "reverse result");
         same(list.toArray(), [6, 5, 4, 3, 2, 1], "reverse result");
     });
-   
+    
+    test("list map method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .map(function() { return this * 2; });
+        
+            same(list.toArray(), [2, 4, 6, 8, 10, 12], "map result");
+            same(list.toArray(), [2, 
