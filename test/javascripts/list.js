@@ -145,4 +145,14 @@ function testList() {
         expect(2);
         
         var product = new List(1, 2, 3, 4, 5, 6)
-            .fold(function(accumulation, i) { return accumulation * i; }
+            .fold(function(accumulation, i) { return accumulation * i; }, 1);
+        
+        equals(product, 720, "fold result");
+        equals(product, 720, "fold result");
+    });
+    
+    test("list scan method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .scan(function(accumulation, i) { return accumulation * i; 
