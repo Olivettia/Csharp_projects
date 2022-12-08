@@ -137,4 +137,12 @@ function testList() {
         var list = new List(1, 2, 3, 4, 5, 6)
             .filter(function() { return this > 2 && this % 2; });
         
-        same(list.toArray(), [3, 5], 
+        same(list.toArray(), [3, 5], "filter result");
+        same(list.toArray(), [3, 5], "filter result");
+    });
+    
+    test("list fold method", function() {
+        expect(2);
+        
+        var product = new List(1, 2, 3, 4, 5, 6)
+            .fold(function(accumulation, i) { return accumulation * i; }
