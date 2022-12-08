@@ -128,4 +128,13 @@ function testList() {
             .map(function() { return this * 2; });
         
             same(list.toArray(), [2, 4, 6, 8, 10, 12], "map result");
-            same(list.toArray(), [2, 
+            same(list.toArray(), [2, 4, 6, 8, 10, 12], "map result");
+    });
+    
+    test("list filter method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .filter(function() { return this > 2 && this % 2; });
+        
+        same(list.toArray(), [3, 5], 
