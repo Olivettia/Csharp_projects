@@ -174,4 +174,15 @@ function testList() {
     test("list take method", function() {
         expect(2);
         
-        var list = new List(1, 2, 3, 
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .take(2);
+        
+        same(list.toArray(), [1, 2], "take result");
+        same(list.toArray(), [1, 2], "take result");
+    });
+    
+    test("list dropWhile method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .dropWhile
