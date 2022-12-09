@@ -165,4 +165,13 @@ function testList() {
         expect(2);
         
         var list = new List(1, 2, 3, 4, 5, 6)
+            .takeWhile(function() { return this < 4; });
+        
+        same(list.toArray(), [1, 2, 3], "takeWhile result");
+        same(list.toArray(), [1, 2, 3], "takeWhile result");
+    });
     
+    test("list take method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 
