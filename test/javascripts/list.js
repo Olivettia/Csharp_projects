@@ -155,4 +155,14 @@ function testList() {
         expect(2);
         
         var list = new List(1, 2, 3, 4, 5, 6)
-            .scan(function(accumulation, i) { return accumulation * i; 
+            .scan(function(accumulation, i) { return accumulation * i; }, 1);
+        
+        same(list.toArray(), [1, 1, 2, 6, 24, 120, 720], "scan result");
+        same(list.toArray(), [1, 1, 2, 6, 24, 120, 720], "scan result");
+    });
+    
+    test("list takeWhile method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6)
+    
