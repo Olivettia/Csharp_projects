@@ -185,4 +185,14 @@ function testList() {
         expect(2);
         
         var list = new List(1, 2, 3, 4, 5, 6)
-            .dropWhile
+            .dropWhile(function() { return this < 4; });
+        
+        same(list.toArray(), [4, 5, 6], "dropWhile result");
+        same(list.toArray(), [4, 5, 6], "dropWhile result");
+    });
+    
+    test("list drop method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .drop(2);
