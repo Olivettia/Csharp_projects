@@ -207,4 +207,9 @@ function testList() {
         var list1 = new List(1, 2, 3, 4, 5, 6)
             .cycle()
             .take(20);
- 
+        var list2 = new List()
+            .cycle();
+        
+        same(list1.toArray(), [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2], "cycle result");
+        same(list1.toArray(), [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2], "cycle result");
+        equals(lis
