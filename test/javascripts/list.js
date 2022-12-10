@@ -222,4 +222,15 @@ function testList() {
         var a = 0, b = 1;
         var list1 = List
             .generate(function(proxy) {
-                
+                proxy.yield(a);
+                var aNext = b;
+                var bNext = a + b;
+                a = aNext;
+                b = bNext;
+            })
+            .take(10)
+        
+        var i = 5;
+        var list2 = List
+            .generate(function(proxy) {
+                if (i 
