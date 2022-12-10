@@ -196,3 +196,15 @@ function testList() {
         
         var list = new List(1, 2, 3, 4, 5, 6)
             .drop(2);
+        
+        same(list.toArray(), [3, 4, 5, 6], "drop result");
+        same(list.toArray(), [3, 4, 5, 6], "drop result");
+    });
+    
+    test("list cycle method", function() {
+        expect(4);
+        
+        var list1 = new List(1, 2, 3, 4, 5, 6)
+            .cycle()
+            .take(20);
+ 
