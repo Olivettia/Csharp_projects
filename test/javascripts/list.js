@@ -212,4 +212,14 @@ function testList() {
         
         same(list1.toArray(), [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2], "cycle result");
         same(list1.toArray(), [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2], "cycle result");
-        equals(lis
+        equals(list2.length(), 0, "cycle empty list length");
+        equals(list2.length(), 0, "cycle empty list length");
+    });
+    
+    test("list generate method", function() {
+        expect(4);
+        
+        var a = 0, b = 1;
+        var list1 = List
+            .generate(function(proxy) {
+                
