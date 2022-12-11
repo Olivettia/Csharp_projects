@@ -258,4 +258,16 @@ function testList() {
         same(list.toArray(), [1, 2, 4, 8, 16, 32, 64, 128, 256, 512], "iterate result");
     });
     
-    test("list 
+    test("list count static method", function() {
+        expect(4);
+        
+        var list1 = List
+            .count()
+            .drop(10)
+            .take(10);
+        
+        var list2 = List
+            .count(100, 3)
+            .drop(10)
+            .take(10);
+        
