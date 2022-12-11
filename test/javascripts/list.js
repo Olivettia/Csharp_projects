@@ -233,4 +233,13 @@ function testList() {
         var i = 5;
         var list2 = List
             .generate(function(proxy) {
-                if (i 
+                if (i <= 0) {
+                    proxy.end();
+                }
+                proxy.yield(i);
+                i--;
+            })
+            .take(10)
+
+        same(list1.toArray(), [0, 1, 1, 2, 3, 5, 8, 13, 21, 34], "generate result");
+        same(list1.toArray(), [0, 1, 1, 2, 3, 5, 8, 13, 
