@@ -251,4 +251,11 @@ function testList() {
         expect(2);
         
         var list = List
+            .iterate(function() { return this * 2; }, 1)
+            .take(10);
         
+        same(list.toArray(), [1, 2, 4, 8, 16, 32, 64, 128, 256, 512], "iterate result");
+        same(list.toArray(), [1, 2, 4, 8, 16, 32, 64, 128, 256, 512], "iterate result");
+    });
+    
+    test("list 
