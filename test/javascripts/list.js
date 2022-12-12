@@ -274,4 +274,15 @@ function testList() {
         same(list1.toArray(), [10, 11, 12, 13, 14, 15, 16, 17, 18, 19], "count result");
         same(list1.toArray(), [10, 11, 12, 13, 14, 15, 16, 17, 18, 19], "count result");
         same(list2.toArray(), [130, 133, 136, 139, 142, 145, 148, 151, 154, 157], "count result");
-        same(list2.toA
+        same(list2.toArray(), [130, 133, 136, 139, 142, 145, 148, 151, 154, 157], "count result");
+    });
+    
+    test("list repeat static method", function() {
+        expect(2);
+        
+        var list = List
+            .repeat(42)
+            .drop(10)
+            .take(10);
+        
+        same(list.toArray(), [42, 42, 42, 42, 4
