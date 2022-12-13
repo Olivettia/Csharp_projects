@@ -285,4 +285,12 @@ function testList() {
             .drop(10)
             .take(10);
         
-        same(list.toArray(), [42, 42, 42, 42, 4
+        same(list.toArray(), [42, 42, 42, 42, 42, 42, 42, 42, 42, 42], "repeat result");
+        same(list.toArray(), [42, 42, 42, 42, 42, 42, 42, 42, 42, 42], "repeat result");
+    });
+    
+    test("list concatenate static method", function() {
+        expect(2);
+        
+        var list = List.concatenate(
+            new List(1, 2,
