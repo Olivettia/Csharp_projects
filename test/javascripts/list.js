@@ -293,4 +293,11 @@ function testList() {
         expect(2);
         
         var list = List.concatenate(
-            new List(1, 2,
+            new List(1, 2, 3, 4, 5, 6),
+            new List([]),
+            new List([]),
+            new List(7, 8, 9, 10, 11, 12),
+            new List(13, 14, 15, 16, 17, 18));
+        
+        same(list.toArray(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], "concatenate result");
+        same(list.t
