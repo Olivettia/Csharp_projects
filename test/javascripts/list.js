@@ -300,4 +300,14 @@ function testList() {
             new List(13, 14, 15, 16, 17, 18));
         
         same(list.toArray(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], "concatenate result");
-        same(list.t
+        same(list.toArray(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], "concatenate result");
+    });
+    
+    test("list zip static method", function() {
+        expect(2);
+        
+        var list = List.zip(
+            function(x, y, z) {
+                return {
+                    "x": x,
+               
