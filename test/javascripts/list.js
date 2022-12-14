@@ -310,4 +310,14 @@ function testList() {
             function(x, y, z) {
                 return {
                     "x": x,
-               
+                    "y": y,
+                    "z": z
+                };
+            },
+            new List(1, 2, 3, 4, 5, 6),
+            new List(7, 8, 9, 10),
+            new List(11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
+        
+        same(list.toArray(), [
+            { "x": 1, "y": 7, "z": 11 },
+            { "x": 2, "y":
