@@ -338,3 +338,14 @@ function testList() {
         var list = new List(1, 2, 3, 4, 5, 6);
         var result1 = list.all(function() { return this > 0; });
         var result2 = list.all(function() { return this > 1; });
+        
+        equals(result1, true, "all result");
+        equals(result1, true, "all result");
+        equals(result2, false, "all result");
+        equals(result2, false, "all result");
+    });
+    
+    test("list any method", function() {
+        expect(4);
+        
+        var list = new List(1, 2,
