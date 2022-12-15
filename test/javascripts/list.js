@@ -328,4 +328,13 @@ function testList() {
             { "x": 1, "y": 7, "z": 11 },
             { "x": 2, "y": 8, "z": 12 },
             { "x": 3, "y": 9, "z": 13 },
-            { "x": 4, "y": 10, "z
+            { "x": 4, "y": 10, "z": 14 }
+        ], "zip result");
+    });
+    
+    test("list all method", function() {
+        expect(4);
+        
+        var list = new List(1, 2, 3, 4, 5, 6);
+        var result1 = list.all(function() { return this > 0; });
+        var result2 = list.all(function() { return this > 1; });
