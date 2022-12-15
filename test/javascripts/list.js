@@ -348,4 +348,10 @@ function testList() {
     test("list any method", function() {
         expect(4);
         
-        var list = new List(1, 2,
+        var list = new List(1, 2, 3, 4, 5, 6);
+        var result1 = list.any(function() { return this < 1; });
+        var result2 = list.any(function() { return this < 2; });
+        
+        equals(result1, false, "any result");
+        equals(result1, false, "any result");
+        equals(result2, true, 
