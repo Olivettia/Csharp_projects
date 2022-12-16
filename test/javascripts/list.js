@@ -354,4 +354,15 @@ function testList() {
         
         equals(result1, false, "any result");
         equals(result1, false, "any result");
-        equals(result2, true, 
+        equals(result2, true, "any result");
+        equals(result2, true, "any result");
+    });
+    
+    test("list sum method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6);
+        var result = list.sum();
+        
+        equals(result, 21, "sum result");
+        equals(result, 21, "sum result")
