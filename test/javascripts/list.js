@@ -365,4 +365,16 @@ function testList() {
         var result = list.sum();
         
         equals(result, 21, "sum result");
-        equals(result, 21, "sum result")
+        equals(result, 21, "sum result");
+    });
+    
+    test("list average method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6);
+        var result = list.average();
+        
+        equals(result, 3.5, "average result");
+        equals(result, 3.5, "average result");
+    });
+    
