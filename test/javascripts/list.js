@@ -378,3 +378,14 @@ function testList() {
         equals(result, 3.5, "average result");
     });
     
+    test("list maximum method", function() {
+        expect(2);
+        
+        var list = new List(1, 3, 5, 2, 4);
+        var result = list.maximum();
+        
+        equals(result, 5, "maximum result");
+        equals(result, 5, "maximum result");
+    });
+    
+    test("lis
