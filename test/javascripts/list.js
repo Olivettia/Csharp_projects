@@ -388,4 +388,14 @@ function testList() {
         equals(result, 5, "maximum result");
     });
     
-    test("lis
+    test("list minimum method", function() {
+        expect(2);
+        
+        var list = new List(1, 3, 5, 2, 4);
+        var result = list.minimum();
+        
+        equals(result, 1, "minimum result");
+        equals(result, 1, "minimum result");
+    });
+    
+    test("list head method", function() {
