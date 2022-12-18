@@ -399,3 +399,14 @@ function testList() {
     });
     
     test("list head method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6);
+        var result = list.head();
+        
+        equals(result, 1, "head result");
+        equals(result, 1, "head result");
+    });
+    
+    test("list tail method", function() {
+        expect(2);
