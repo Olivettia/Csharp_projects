@@ -410,3 +410,15 @@ function testList() {
     
     test("list tail method", function() {
         expect(2);
+        
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .tail();
+        
+        same(list.toArray(), [2, 3, 4, 5, 6], "tail result");
+        same(list.toArray(), [2, 3, 4, 5, 6], "tail result");
+    });
+    
+    test("list init method", function() {
+        expect(2);
+        
+        var list = new List(1, 2
