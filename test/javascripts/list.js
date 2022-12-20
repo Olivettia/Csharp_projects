@@ -431,4 +431,15 @@ function testList() {
     test("list last method", function() {
         expect(2);
         
-        var list = new List(1, 2, 3
+        var list = new List(1, 2, 3, 4, 5, 6);
+        var result = list.last();
+        
+        equals(result, 6, "last result");
+        equals(result, 6, "last result");
+    });
+    
+    module("list ecmascript 5 array extension");
+    
+    test("ecmascript 5 array existence", function() {
+        expect(10);
+      
