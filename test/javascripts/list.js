@@ -442,4 +442,10 @@ function testList() {
     
     test("ecmascript 5 array existence", function() {
         expect(10);
-      
+        
+        ok(List.ES5Array, "List.ES5Array exists");
+        
+        var array = new List.ES5Array(1, 2, 3, 4, 5, 6);
+        ok(array.indexOf, "array.indexOf exists");
+        ok(array.lastIndexOf, "array.lastIndexOf exists");
+        ok(array.every, "array.every exi
