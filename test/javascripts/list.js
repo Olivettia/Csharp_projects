@@ -421,4 +421,14 @@ function testList() {
     test("list init method", function() {
         expect(2);
         
-        var list = new List(1, 2
+        var list = new List(1, 2, 3, 4, 5, 6)
+            .init();
+        
+        same(list.toArray(), [1, 2, 3, 4, 5], "init result");
+        same(list.toArray(), [1, 2, 3, 4, 5], "init result");
+    });
+    
+    test("list last method", function() {
+        expect(2);
+        
+        var list = new List(1, 2, 3
