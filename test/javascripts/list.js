@@ -448,4 +448,13 @@ function testList() {
         var array = new List.ES5Array(1, 2, 3, 4, 5, 6);
         ok(array.indexOf, "array.indexOf exists");
         ok(array.lastIndexOf, "array.lastIndexOf exists");
-        ok(array.every, "array.every exi
+        ok(array.every, "array.every exists");
+        ok(array.some, "array.some exists");
+        ok(array.forEach, "array.forEach exists");
+        ok(array.map, "array.map exists");
+        ok(array.filter, "array.filter exists");
+        ok(array.reduce, "array.reduce exists");
+        ok(array.reduceRight, "array.reduceRight exists");
+    });
+    
+    
