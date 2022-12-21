@@ -457,4 +457,11 @@ function testList() {
         ok(array.reduceRight, "array.reduceRight exists");
     });
     
-    
+    test("ecmascript 5 array indexOf method", function() {
+        expect(6);
+        
+        var array = new List.ES5Array(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+        
+        equals(array.indexOf(1), 0, "indexOf result");
+        equals(array.indexOf(2), 1, "indexOf result");
+        equals(array.
