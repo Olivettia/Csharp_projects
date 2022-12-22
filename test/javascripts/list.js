@@ -464,4 +464,12 @@ function testList() {
         
         equals(array.indexOf(1), 0, "indexOf result");
         equals(array.indexOf(2), 1, "indexOf result");
-        equals(array.
+        equals(array.indexOf(6), -1, "indexOf result");
+        equals(array.indexOf(1, 1), 8, "indexOf result");
+        equals(array.indexOf(2, 1), 1, "indexOf result");
+        equals(array.indexOf(5, 5), -1, "indexOf result");
+    });
+        
+    test("ecmascript 5 array lastIndexOf method", function() {
+        expect(6);
+        
