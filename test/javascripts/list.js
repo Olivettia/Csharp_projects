@@ -473,3 +473,9 @@ function testList() {
     test("ecmascript 5 array lastIndexOf method", function() {
         expect(6);
         
+        var array = new List.ES5Array(1, 2, 3, 4, 5, 4, 3, 2, 1, 0);
+        
+        equals(array.lastIndexOf(1), 8, "lastIndexOf result");
+        equals(array.lastIndexOf(2), 7, "lastIndexOf result");
+        equals(array.lastIndexOf(6), -1, "lastIndexOf result");
+        equals(array.lastIndexOf(1, 8), 0, "lastIndexOf
