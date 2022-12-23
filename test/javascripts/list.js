@@ -499,4 +499,8 @@ function testList() {
         expect(6 + 1 + 1 + 1);
         
         var testObject = {};
-        var array = new List.ES5Array(
+        var array = new List.ES5Array(1, 2, 3, 4, 5, 6);
+        var result1 = array.some(function(object) { equals(this, testObject, "thisArg"); return object < 1; }, testObject);
+        var result2 = array.some(function(object) { equals(this, testObject, "thisArg"); return object < 2; }, testObject);
+        
+        equal
