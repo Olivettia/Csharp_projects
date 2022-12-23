@@ -489,4 +489,14 @@ function testList() {
         var testObject = {};
         var array = new List.ES5Array(1, 2, 3, 4, 5, 6);
         var result1 = array.every(function(object) { equals(this, testObject, "thisArg"); return object > 0; }, testObject);
-        var result2 = array.every(function(object) { equals(this, testObject, "thisArg"); return o
+        var result2 = array.every(function(object) { equals(this, testObject, "thisArg"); return object > 1; }, testObject);
+        
+        equals(result1, true, "every result");
+        equals(result2, false, "every result");
+    });
+    
+    test("ecmascript 5 array some method", function() {
+        expect(6 + 1 + 1 + 1);
+        
+        var testObject = {};
+        var array = new List.ES5Array(
