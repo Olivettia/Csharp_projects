@@ -478,4 +478,12 @@ function testList() {
         equals(array.lastIndexOf(1), 8, "lastIndexOf result");
         equals(array.lastIndexOf(2), 7, "lastIndexOf result");
         equals(array.lastIndexOf(6), -1, "lastIndexOf result");
-        equals(array.lastIndexOf(1, 8), 0, "lastIndexOf
+        equals(array.lastIndexOf(1, 8), 0, "lastIndexOf result");
+        equals(array.lastIndexOf(2, 8), 7, "lastIndexOf result");
+        equals(array.lastIndexOf(5, 4), -1, "lastIndexOf result");
+    });
+    
+    test("ecmascript 5 array every method", function() {
+        expect(6 + 1 + 1 + 1);
+        
+        var testObject = {
