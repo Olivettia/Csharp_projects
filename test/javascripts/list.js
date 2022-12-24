@@ -503,4 +503,15 @@ function testList() {
         var result1 = array.some(function(object) { equals(this, testObject, "thisArg"); return object < 1; }, testObject);
         var result2 = array.some(function(object) { equals(this, testObject, "thisArg"); return object < 2; }, testObject);
         
-        equal
+        equals(result1, false, "some result");
+        equals(result2, true, "some result");
+    });
+    
+    test("ecmascript 5 array forEach method", function() {
+        expect(12);
+        
+        var testObject = {};
+        var array = new List.ES5Array(1, 2, 3, 4, 5, 6);
+        var i = 0;
+        
+        array.for
