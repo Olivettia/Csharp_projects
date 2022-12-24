@@ -514,4 +514,15 @@ function testList() {
         var array = new List.ES5Array(1, 2, 3, 4, 5, 6);
         var i = 0;
         
-        array.for
+        array.forEach(function(object) {
+            equals(this, testObject, "thisArg");
+            equals(object, i + 1, "object value");
+            i++;
+        }, testObject);
+    });
+    
+    test("ecmascript 5 array map method", function() {
+        expect(7);
+        
+        var testObject = {};
+     
