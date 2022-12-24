@@ -532,4 +532,10 @@ function testList() {
     });
     
     test("ecmascript 5 array filter method", function() {
-        exp
+        expect(7);
+        
+        var testObject = {};
+        var array = new List.ES5Array(1, 2, 3, 4, 5, 6)
+            .filter(function(object) { equals(this, testObject, "thisArg"); return object > 2 && object % 2; }, testObject);
+        
+        same(array
