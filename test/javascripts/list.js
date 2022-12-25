@@ -538,4 +538,12 @@ function testList() {
         var array = new List.ES5Array(1, 2, 3, 4, 5, 6)
             .filter(function(object) { equals(this, testObject, "thisArg"); return object > 2 && object % 2; }, testObject);
         
-        same(array
+        same(array.toArray(), [3, 5], "filter result");
+    });
+    
+    test("ecmascript 5 array reduce method", function() {
+        expect(2);
+        
+        var product1 = new List.ES5Array(1, 2, 3, 4, 5, 6)
+            .reduce(function(accumulation, i) { return accumulation * i; }, 1);
+        var product2 = new
