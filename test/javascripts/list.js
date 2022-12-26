@@ -559,4 +559,9 @@ function testList() {
         var product1 = new List.ES5Array(1, 2, 3, 4, 5, 6)
             .reduceRight(function(accumulation, i) { return accumulation * i; }, 1);
         var product2 = new List.ES5Array(1, 2, 3, 4, 5, 6)
-            .reduceRight(function(accumulation, i) { 
+            .reduceRight(function(accumulation, i) { return accumulation * i; });
+        
+        equals(product1, 720, "reduceRight result");
+        equals(product2, 720, "reduceRight result");
+    });        
+}
