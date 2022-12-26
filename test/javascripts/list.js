@@ -553,4 +553,10 @@ function testList() {
             equals(product2, 720, "reduce result");
     });
     
-    test("ecmascript 5 array reduceRight method", funct
+    test("ecmascript 5 array reduceRight method", function() {
+        expect(2);
+        
+        var product1 = new List.ES5Array(1, 2, 3, 4, 5, 6)
+            .reduceRight(function(accumulation, i) { return accumulation * i; }, 1);
+        var product2 = new List.ES5Array(1, 2, 3, 4, 5, 6)
+            .reduceRight(function(accumulation, i) { 
