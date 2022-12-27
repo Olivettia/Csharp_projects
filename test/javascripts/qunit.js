@@ -14,4 +14,13 @@ var QUnit = {
 
 	// call on start of module test to prepend name to all tests
 	module: function(name, testEnvironment) {
-		con
+		config.currentModule = name;
+
+		synchronize(function() {
+			if ( config.previousModule ) {
+				QUnit.moduleDone( config.currentModule, config.moduleStats.bad, config.moduleStats.all );
+			}
+
+			config.previousModule = config.currentModule;
+			config.currentModule = name;
+			config.moduleTestEnv
