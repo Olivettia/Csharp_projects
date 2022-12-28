@@ -23,4 +23,17 @@ var QUnit = {
 
 			config.previousModule = config.currentModule;
 			config.currentModule = name;
-			config.moduleTestEnv
+			config.moduleTestEnvironment = testEnvironment;
+			config.moduleStats = { all: 0, bad: 0 };
+
+			QUnit.moduleStart( name, testEnvironment );
+		});
+	},
+
+	asyncTest: function(testName, expected, callback) {
+		if ( arguments.length === 2 ) {
+			callback = expected;
+			expected = 0;
+		}
+
+		QUnit.test(testName, expecte
