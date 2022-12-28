@@ -36,4 +36,14 @@ var QUnit = {
 			expected = 0;
 		}
 
-		QUnit.test(testName, expecte
+		QUnit.test(testName, expected, callback, true);
+	},
+	
+	test: function(testName, expected, callback, async) {
+		var name = '<span class="test-name">' + testName + '</span>', testEnvironment, testEnvironmentArg;
+
+		if ( arguments.length === 2 ) {
+			callback = expected;
+			expected = null;
+		}
+		// is 2nd argument a test
