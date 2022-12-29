@@ -46,4 +46,14 @@ var QUnit = {
 			callback = expected;
 			expected = null;
 		}
-		// is 2nd argument a test
+		// is 2nd argument a testEnvironment?
+		if ( expected && typeof expected === 'object') {
+			testEnvironmentArg =  expected;
+			expected = null;
+		}
+
+		if ( config.currentModule ) {
+			name = '<span class="module-name">' + config.currentModule + "</span>: " + name;
+		}
+
+		if ( !validTest(config.currentModule + ": 
