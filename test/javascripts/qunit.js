@@ -56,4 +56,18 @@ var QUnit = {
 			name = '<span class="module-name">' + config.currentModule + "</span>: " + name;
 		}
 
-		if ( !validTest(config.currentModule + ": 
+		if ( !validTest(config.currentModule + ": " + testName) ) {
+			return;
+		}
+
+		synchronize(function() {
+
+			testEnvironment = extend({
+				setup: function() {},
+				teardown: function() {}
+			}, config.moduleTestEnvironment);
+			if (testEnvironmentArg) {
+				extend(testEnvironment,testEnvironmentArg);
+			}
+
+			QUnit.testStart( testName, testEnvironm
