@@ -70,4 +70,15 @@ var QUnit = {
 				extend(testEnvironment,testEnvironmentArg);
 			}
 
-			QUnit.testStart( testName, testEnvironm
+			QUnit.testStart( testName, testEnvironment );
+
+			// allow utility functions to access the current test environment
+			QUnit.current_testEnvironment = testEnvironment;
+			
+			config.assertions = [];
+			config.expected = expected;
+			
+			var tests = id("qunit-tests");
+			if (tests) {
+				var b = document.createElement("strong");
+	
