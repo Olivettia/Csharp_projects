@@ -81,4 +81,18 @@ var QUnit = {
 			var tests = id("qunit-tests");
 			if (tests) {
 				var b = document.createElement("strong");
-	
+					b.innerHTML = "Running " + name;
+				var li = document.createElement("li");
+					li.appendChild( b );
+					li.id = "current-test-output";
+				tests.appendChild( li );
+			}
+
+			try {
+				if ( !config.pollution ) {
+					saveGlobal();
+				}
+
+				testEnvironment.setup.call(testEnvironment);
+			} catch(e) {
+				QUnit.ok(
