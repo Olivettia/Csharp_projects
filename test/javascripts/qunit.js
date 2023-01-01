@@ -95,4 +95,17 @@ var QUnit = {
 
 				testEnvironment.setup.call(testEnvironment);
 			} catch(e) {
-				QUnit.ok(
+				QUnit.ok( false, "Setup failed on " + name + ": " + e.message );
+			}
+	    });
+	
+	    synchronize(function() {
+			if ( async ) {
+				QUnit.stop();
+			}
+
+			try {
+				callback.call(testEnvironment);
+			} catch(e) {
+				fail("Test " + name + " died, exception and test follows", e, callback);
+				QUnit.ok( false, "Died 
