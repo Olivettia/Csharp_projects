@@ -119,4 +119,14 @@ var QUnit = {
 			}
 		});
 
-		synchronize(functio
+		synchronize(function() {
+			try {
+				checkPollution();
+				testEnvironment.teardown.call(testEnvironment);
+			} catch(e) {
+				QUnit.ok( false, "Teardown failed on " + name + ": " + e.message );
+			}
+	    });
+	
+	    synchronize(function() {
+			if ( config.expected && config.expected != config.assertions
