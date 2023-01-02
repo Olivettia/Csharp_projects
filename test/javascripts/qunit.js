@@ -129,4 +129,12 @@ var QUnit = {
 	    });
 	
 	    synchronize(function() {
-			if ( config.expected && config.expected != config.assertions
+			if ( config.expected && config.expected != config.assertions.length ) {
+				QUnit.ok( false, "Expected " + config.expected + " assertions, but " + config.assertions.length + " were run" );
+			}
+			
+			var good = 0, bad = 0,
+				tests = id("qunit-tests");
+
+			config.stats.all += config.assertions.length;
+			config.moduleStats.all += config.assertions.leng
