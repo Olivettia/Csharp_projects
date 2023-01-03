@@ -137,4 +137,14 @@ var QUnit = {
 				tests = id("qunit-tests");
 
 			config.stats.all += config.assertions.length;
-			config.moduleStats.all += config.assertions.leng
+			config.moduleStats.all += config.assertions.length;
+
+			if ( tests ) {
+				var ol  = document.createElement("ol");
+
+				for ( var i = 0; i < config.assertions.length; i++ ) {
+					var assertion = config.assertions[i];
+
+					var li = document.createElement("li");
+					li.className = assertion.result ? "pass" : "fail";
+					li.innerHTML = assertion.m
