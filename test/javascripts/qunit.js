@@ -147,4 +147,19 @@ var QUnit = {
 
 					var li = document.createElement("li");
 					li.className = assertion.result ? "pass" : "fail";
-					li.innerHTML = assertion.m
+					li.innerHTML = assertion.message || (assertion.result ? "okay" : "failed");
+					ol.appendChild( li );
+
+					if ( assertion.result ) {
+						good++;
+					} else {
+						bad++;
+						config.stats.bad++;
+						config.moduleStats.bad++;
+					}
+				}
+				if (bad == 0) {
+					ol.style.display = "none";
+				}
+
+				var b = documen
