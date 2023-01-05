@@ -173,4 +173,13 @@ var QUnit = {
 				addEvent(b, "dblclick", function(e) {
 					var target = e && e.target ? e.target : window.event.srcElement;
 					if ( target.nodeName.toLowerCase() == "span" || target.nodeName.toLowerCase() == "b" ) {
-						target = target
+						target = target.parentNode;
+					}
+					if ( window.location && target.nodeName.toLowerCase() === "strong" ) {
+						window.location.search = "?" + encodeURIComponent(getText([target]).replace(/\(.+\)$/, "").replace(/(^\s*|\s*$)/g, ""));
+					}
+				});
+
+				var li = id("current-test-output");
+				li.id = "";
+				l
