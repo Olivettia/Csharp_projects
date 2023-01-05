@@ -167,4 +167,10 @@ var QUnit = {
 				
 				addEvent(b, "click", function() {
 					var next = b.nextSibling, display = next.style.display;
-					next.style
+					next.style.display = display === "none" ? "block" : "none";
+				});
+				
+				addEvent(b, "dblclick", function(e) {
+					var target = e && e.target ? e.target : window.event.srcElement;
+					if ( target.nodeName.toLowerCase() == "span" || target.nodeName.toLowerCase() == "b" ) {
+						target = target
