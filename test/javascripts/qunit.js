@@ -182,4 +182,14 @@ var QUnit = {
 
 				var li = id("current-test-output");
 				li.id = "";
-				l
+				li.className = bad ? "fail" : "pass";
+				li.style.display = resultDisplayStyle(!bad);
+				li.removeChild( li.firstChild );
+				li.appendChild( b );
+				li.appendChild( ol );
+
+				if ( bad ) {
+					var toolbar = id("qunit-testrunner-toolbar");
+					if ( toolbar ) {
+						toolbar.style.display = "block";
+						id(
