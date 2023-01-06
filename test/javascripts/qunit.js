@@ -192,4 +192,15 @@ var QUnit = {
 					var toolbar = id("qunit-testrunner-toolbar");
 					if ( toolbar ) {
 						toolbar.style.display = "block";
-						id(
+						id("qunit-filter-pass").disabled = null;
+						id("qunit-filter-missing").disabled = null;
+					}
+				}
+
+			} else {
+				for ( var i = 0; i < config.assertions.length; i++ ) {
+					if ( !config.assertions[i].result ) {
+						bad++;
+						config.stats.bad++;
+						config.moduleStats.bad++;
+		
