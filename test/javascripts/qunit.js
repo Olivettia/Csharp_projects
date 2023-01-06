@@ -203,4 +203,16 @@ var QUnit = {
 						bad++;
 						config.stats.bad++;
 						config.moduleStats.bad++;
-		
+					}
+				}
+			}
+
+			try {
+				QUnit.reset();
+			} catch(e) {
+				fail("reset() failed, following Test " + name + ", exception and reset fn follows", e, QUnit.reset);
+			}
+
+			QUnit.testDone( testName, bad, config.assertions.length );
+
+			if ( !window.setTi
