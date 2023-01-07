@@ -215,4 +215,20 @@ var QUnit = {
 
 			QUnit.testDone( testName, bad, config.assertions.length );
 
-			if ( !window.setTi
+			if ( !window.setTimeout && !config.queue.length ) {
+				done();
+			}
+		});
+
+		synchronize( done );
+	},
+	
+	/**
+	 * Specify the number of expected assertions to gurantee that failed test (no assertions are run at all) don't slip through.
+	 */
+	expect: function(asserts) {
+		config.expected = asserts;
+	},
+
+	/**
+	 * Asserts tru
