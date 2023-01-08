@@ -231,4 +231,18 @@ var QUnit = {
 	},
 
 	/**
-	 * Asserts tru
+	 * Asserts true.
+	 * @example ok( "asdfasdf".length > 5, "There must be at least 5 chars" );
+	 */
+	ok: function(a, msg) {
+		a = !!a;
+		var details = {
+			result: a,
+			message: msg
+		};
+		msg = escapeHtml(msg);
+		QUnit.log(a, msg, details);
+		config.assertions.push({
+			result: a,
+			message: msg
+		})
