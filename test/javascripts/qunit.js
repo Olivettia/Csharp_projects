@@ -302,4 +302,19 @@ var QUnit = {
 					clearTimeout(config.timeout);
 				}
 
-				co
+				config.blocking = false;
+				process();
+			}, 13);
+		} else {
+			config.blocking = false;
+			process();
+		}
+	},
+	
+	stop: function(timeout) {
+		config.blocking = true;
+
+		if ( timeout && window.setTimeout ) {
+			config.timeout = window.setTimeout(function() {
+				QUnit.ok( false, "Test timed out" );
+				QUnit.sta
