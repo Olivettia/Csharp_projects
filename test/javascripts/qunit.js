@@ -273,4 +273,15 @@ var QUnit = {
 	},
 
 	notDeepEqual: function(actual, expected, message) {
-		QUnit.push(!QUnit.equiv(actual, expected), actual, exp
+		QUnit.push(!QUnit.equiv(actual, expected), actual, expected, message);
+	},
+
+	strictEqual: function(actual, expected, message) {
+		QUnit.push(expected === actual, actual, expected, message);
+	},
+
+	notStrictEqual: function(actual, expected, message) {
+		QUnit.push(expected !== actual, actual, expected, message);
+	},
+
+	raises: function(fn,  messa
