@@ -317,4 +317,26 @@ var QUnit = {
 		if ( timeout && window.setTimeout ) {
 			config.timeout = window.setTimeout(function() {
 				QUnit.ok( false, "Test timed out" );
-				QUnit.sta
+				QUnit.start();
+			}, timeout);
+		}
+	}
+
+};
+
+// Backwards compatibility, deprecated
+QUnit.equals = QUnit.equal;
+QUnit.same = QUnit.deepEqual;
+
+// Maintain internal state
+var config = {
+	// The queue of tests to run
+	queue: [],
+
+	// block until document ready
+	blocking: true
+};
+
+// Load paramaters
+(function() {
+	var location 
