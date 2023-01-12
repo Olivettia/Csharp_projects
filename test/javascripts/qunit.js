@@ -347,3 +347,15 @@ var config = {
 		if ( GETParams[i] === "noglobals" ) {
 			GETParams.splice( i, 1 );
 			i--;
+			config.noglobals = true;
+		} else if ( GETParams[i].search('=') > -1 ) {
+			GETParams.splice( i, 1 );
+			i--;
+		}
+	}
+	
+	// restrict modules/tests by get parameters
+	config.filters = GETParams;
+	
+	// Figure out if we're running the tests from a server or not
+	QUnit.isLocal = !!(
