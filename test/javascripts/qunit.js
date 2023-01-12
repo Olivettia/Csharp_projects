@@ -358,4 +358,14 @@ var config = {
 	config.filters = GETParams;
 	
 	// Figure out if we're running the tests from a server or not
-	QUnit.isLocal = !!(
+	QUnit.isLocal = !!(location.protocol === 'file:');
+})();
+
+// Expose the API as global variables, unless an 'exports'
+// object exists, in that case we assume we're in CommonJS
+if ( typeof exports === "undefined" || typeof require === "undefined" ) {
+	extend(window, QUnit);
+	window.QUnit = QUnit;
+} else {
+	extend(exports, QUnit);
+	expor
