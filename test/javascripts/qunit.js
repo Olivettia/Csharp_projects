@@ -382,4 +382,21 @@ extend(QUnit, {
 			moduleStats: { all: 0, bad: 0 },
 			started: +new Date,
 			updateRate: 1000,
-			bloc
+			blocking: false,
+			autostart: true,
+			autorun: false,
+			assertions: [],
+			filters: [],
+			queue: []
+		});
+
+		var tests = id("qunit-tests"),
+			banner = id("qunit-banner"),
+			result = id("qunit-testresult");
+
+		if ( tests ) {
+			tests.innerHTML = "";
+		}
+
+		if ( banner ) {
+			banner.
