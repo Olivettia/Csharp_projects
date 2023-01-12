@@ -368,4 +368,18 @@ if ( typeof exports === "undefined" || typeof require === "undefined" ) {
 	window.QUnit = QUnit;
 } else {
 	extend(exports, QUnit);
-	expor
+	exports.QUnit = QUnit;
+}
+
+// define these after exposing globals to keep them in these QUnit namespace only
+extend(QUnit, {
+	config: config,
+
+	// Initialize the configuration options
+	init: function() {
+		extend(config, {
+			stats: { all: 0, bad: 0 },
+			moduleStats: { all: 0, bad: 0 },
+			started: +new Date,
+			updateRate: 1000,
+			bloc
