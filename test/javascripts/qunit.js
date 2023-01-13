@@ -413,4 +413,17 @@ extend(QUnit, {
 	 * If jQuery is available, uses jQuery's html(), otherwise just innerHTML.
 	 */
 	reset: function() {
-		if ( window.jQuery
+		if ( window.jQuery ) {
+			jQuery( "#main, #qunit-fixture" ).html( config.fixture );
+		} else {
+			var main = id( 'main' ) || id( 'qunit-fixture' );
+			if ( main ) {
+				main.innerHTML = config.fixture;
+			}
+		}
+	},
+	
+	/**
+	 * Trigger an event on an element.
+	 *
+	 * @example triggerEvent( document.body, "click"
