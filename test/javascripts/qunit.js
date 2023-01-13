@@ -399,4 +399,18 @@ extend(QUnit, {
 		}
 
 		if ( banner ) {
-			banner.
+			banner.className = "";
+		}
+
+		if ( result ) {
+			result.parentNode.removeChild( result );
+		}
+	},
+	
+	/**
+	 * Resets the test setup. Useful for tests that modify the DOM.
+	 * 
+	 * If jQuery is available, uses jQuery's html(), otherwise just innerHTML.
+	 */
+	reset: function() {
+		if ( window.jQuery
