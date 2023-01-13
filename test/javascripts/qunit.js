@@ -426,4 +426,13 @@ extend(QUnit, {
 	/**
 	 * Trigger an event on an element.
 	 *
-	 * @example triggerEvent( document.body, "click"
+	 * @example triggerEvent( document.body, "click" );
+	 *
+	 * @param DOMElement elem
+	 * @param String type
+	 */
+	triggerEvent: function( elem, type, event ) {
+		if ( document.createEvent ) {
+			event = document.createEvent("MouseEvents");
+			event.initMouseEvent(type, true, true, elem.ownerDocument.defaultView,
+				0, 0, 0, 0
