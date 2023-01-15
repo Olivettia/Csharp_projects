@@ -463,4 +463,20 @@ extend(QUnit, {
 
 		switch (type) {
 				case 'Number':
-						if (isNaN(obj
+						if (isNaN(obj)) {
+								return "nan";
+						} else {
+								return "number";
+						}
+				case 'String':
+				case 'Boolean':
+				case 'Array':
+				case 'Date':
+				case 'RegExp':
+				case 'Function':
+						return type.toLowerCase();
+		}
+		if (typeof obj === "object") {
+				return "object";
+		}
+		
