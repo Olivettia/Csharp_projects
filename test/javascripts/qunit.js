@@ -449,4 +449,18 @@ extend(QUnit, {
 	},
 	
 	objectType: function( obj ) {
-		
+		if (typeof obj === "undefined") {
+				return "undefined";
+
+		// consider: typeof null === object
+		}
+		if (obj === null) {
+				return "null";
+		}
+
+		var type = Object.prototype.toString.call( obj )
+			.match(/^\[object\s(.*)\]$/)[1] || '';
+
+		switch (type) {
+				case 'Number':
+						if (isNaN(obj
