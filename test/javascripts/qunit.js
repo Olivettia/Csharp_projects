@@ -492,3 +492,8 @@ extend(QUnit, {
 		
 		message = escapeHtml(message) || (result ? "okay" : "failed");
 		message = '<span class="test-message">' + message + "</span>";
+		expected = escapeHtml(QUnit.jsDump.parse(expected));
+		actual = escapeHtml(QUnit.jsDump.parse(actual));
+		var output = message + ', expected: <span class="test-expected">' + expected + '</span>';
+		if (actual != expected) {
+			output += ' result: <span class="tes
