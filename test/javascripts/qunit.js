@@ -479,4 +479,16 @@ extend(QUnit, {
 		if (typeof obj === "object") {
 				return "object";
 		}
+		return undefined;
+	},
+	
+	push: function(result, actual, expected, message) {
+		var details = {
+			result: result,
+			message: message,
+			actual: actual,
+			expected: expected
+		};
 		
+		message = escapeHtml(message) || (result ? "okay" : "failed");
+		message = '<span class="test-message">' + message + "</span>";
