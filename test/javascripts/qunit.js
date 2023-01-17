@@ -496,4 +496,18 @@ extend(QUnit, {
 		actual = escapeHtml(QUnit.jsDump.parse(actual));
 		var output = message + ', expected: <span class="test-expected">' + expected + '</span>';
 		if (actual != expected) {
-			output += ' result: <span class="tes
+			output += ' result: <span class="test-actual">' + actual + '</span>, diff: ' + QUnit.diff(expected, actual);
+		}
+		
+		QUnit.log(result, message, details);
+		
+		config.assertions.push({
+			result: !!result,
+			message: output
+		});
+	},
+	
+	// Logging callbacks
+	begin: function() {},
+	done: function(failures, total) {},
+	log: func
