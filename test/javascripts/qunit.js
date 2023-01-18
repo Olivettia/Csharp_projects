@@ -517,4 +517,19 @@ extend(QUnit, {
 	moduleDone: function(name, failures, total) {}
 });
 
-if ( typeof document === "undefined" || document.readyState === "complete"
+if ( typeof document === "undefined" || document.readyState === "complete" ) {
+	config.autorun = true;
+}
+
+addEvent(window, "load", function() {
+	QUnit.begin();
+	
+	// Initialize the config, saving the execution queue
+	var oldconfig = extend({}, config);
+	QUnit.init();
+	extend(config, oldconfig);
+
+	config.blocking = false;
+
+	var userAgent = id("qunit-userAgent");
+	if 
