@@ -510,4 +510,11 @@ extend(QUnit, {
 	// Logging callbacks
 	begin: function() {},
 	done: function(failures, total) {},
-	log: func
+	log: function(result, message) {},
+	testStart: function(name, testEnvironment) {},
+	testDone: function(name, failures, total) {},
+	moduleStart: function(name, testEnvironment) {},
+	moduleDone: function(name, failures, total) {}
+});
+
+if ( typeof document === "undefined" || document.readyState === "complete"
