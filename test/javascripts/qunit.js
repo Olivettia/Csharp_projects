@@ -549,4 +549,13 @@ addEvent(window, "load", function() {
 		}
 	}
 	
-	var toolbar = id("qunit-testrunne
+	var toolbar = id("qunit-testrunner-toolbar");
+	if ( toolbar ) {
+		toolbar.style.display = "none";
+		
+		var filter = document.createElement("input");
+		filter.type = "checkbox";
+		filter.id = "qunit-filter-pass";
+		filter.disabled = true;
+		addEvent( filter, "click", function() {
+			var li = document.getElementsByTa
