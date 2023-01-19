@@ -541,4 +541,12 @@ addEvent(window, "load", function() {
 		if ( paramsIndex > -1 ) {
 			var mainPageLocation = location.href.slice(0, paramsIndex);
 			if ( mainPageLocation == location.href ) {
-				banner.inne
+				banner.innerHTML = '<a href=""> ' + banner.innerHTML + '</a> ';
+			} else {
+				var testName = decodeURIComponent(location.search.slice(1));
+				banner.innerHTML = '<a href="' + mainPageLocation + '">' + banner.innerHTML + '</a> &#8250; <a href="">' + testName + '</a>';
+			}
+		}
+	}
+	
+	var toolbar = id("qunit-testrunne
