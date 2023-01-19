@@ -532,4 +532,13 @@ addEvent(window, "load", function() {
 	config.blocking = false;
 
 	var userAgent = id("qunit-userAgent");
-	if 
+	if ( userAgent ) {
+		userAgent.innerHTML = navigator.userAgent;
+	}
+	var banner = id("qunit-header");
+	if ( banner ) {
+		var paramsIndex = location.href.lastIndexOf(location.search);
+		if ( paramsIndex > -1 ) {
+			var mainPageLocation = location.href.slice(0, paramsIndex);
+			if ( mainPageLocation == location.href ) {
+				banner.inne
