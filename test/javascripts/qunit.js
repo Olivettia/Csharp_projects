@@ -577,4 +577,7 @@ addEvent(window, "load", function() {
 		missing.id = "qunit-filter-missing";
 		missing.disabled = true;
 		addEvent( missing, "click", function() {
-			var li
+			var li = document.getElementsByTagName("li");
+			for ( var i = 0; i < li.length; i++ ) {
+				if ( li[i].className.indexOf("fail") > -1 && li[i].innerHTML.indexOf('missing test - untested code is broken code') > - 1 ) {
+					li[i].parentNode.parentNode.style.display = mis
