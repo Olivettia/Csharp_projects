@@ -558,4 +558,14 @@ addEvent(window, "load", function() {
 		filter.id = "qunit-filter-pass";
 		filter.disabled = true;
 		addEvent( filter, "click", function() {
-			var li = document.getElementsByTa
+			var li = document.getElementsByTagName("li");
+			for ( var i = 0; i < li.length; i++ ) {
+				if ( li[i].className.indexOf("pass") > -1 ) {
+					li[i].style.display = filter.checked ? "none" : "";
+				}
+			}
+		});
+		toolbar.appendChild( filter );
+
+		var label = document.createElement("label");
+		label.setAttribute("for", "qunit-filter
