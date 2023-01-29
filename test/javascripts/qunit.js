@@ -568,4 +568,13 @@ addEvent(window, "load", function() {
 		toolbar.appendChild( filter );
 
 		var label = document.createElement("label");
-		label.setAttribute("for", "qunit-filter
+		label.setAttribute("for", "qunit-filter-pass");
+		label.innerHTML = "Hide passed tests";
+		toolbar.appendChild( label );
+
+		var missing = document.createElement("input");
+		missing.type = "checkbox";
+		missing.id = "qunit-filter-missing";
+		missing.disabled = true;
+		addEvent( missing, "click", function() {
+			var li
