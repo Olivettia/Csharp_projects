@@ -580,4 +580,16 @@ addEvent(window, "load", function() {
 			var li = document.getElementsByTagName("li");
 			for ( var i = 0; i < li.length; i++ ) {
 				if ( li[i].className.indexOf("fail") > -1 && li[i].innerHTML.indexOf('missing test - untested code is broken code') > - 1 ) {
-					li[i].parentNode.parentNode.style.display = mis
+					li[i].parentNode.parentNode.style.display = missing.checked ? "none" : "block";
+				}
+			}
+		});
+		toolbar.appendChild( missing );
+
+		label = document.createElement("label");
+		label.setAttribute("for", "qunit-filter-missing");
+		label.innerHTML = "Hide missing tests (untested code is broken code)";
+		toolbar.appendChild( label );
+	}
+
+	var main =
