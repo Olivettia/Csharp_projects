@@ -624,4 +624,11 @@ function done() {
 
 	// Log the last module results
 	if ( config.currentModule ) {
-		QUnit.moduleDone
+		QUnit.moduleDone( config.currentModule, config.moduleStats.bad, config.moduleStats.all );
+	}
+
+	var banner = id("qunit-banner"),
+		tests = id("qunit-tests"),
+		html = ['Tests completed in ',
+		+new Date - config.started, ' milliseconds.<br/>',
+		'<span class="passed">', config.stats.all - config.stats.bad, '</span> tests 
