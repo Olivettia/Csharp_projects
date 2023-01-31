@@ -592,4 +592,17 @@ addEvent(window, "load", function() {
 		toolbar.appendChild( label );
 	}
 
-	var main =
+	var main = id('main') || id('qunit-fixture');
+	if ( main ) {
+		config.fixture = main.innerHTML;
+	}
+
+	if (config.autostart) {
+		QUnit.start();
+	}
+});
+
+function done() {
+	if ( config.doneTimer && window.clearTimeout ) {
+		window.clearTimeout( config.doneTimer );
+		config.doneTimer = null;
