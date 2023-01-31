@@ -631,4 +631,14 @@ function done() {
 		tests = id("qunit-tests"),
 		html = ['Tests completed in ',
 		+new Date - config.started, ' milliseconds.<br/>',
-		'<span class="passed">', config.stats.all - config.stats.bad, '</span> tests 
+		'<span class="passed">', config.stats.all - config.stats.bad, '</span> tests of <span class="total">', config.stats.all, '</span> passed, <span class="failed">', config.stats.bad,'</span> failed.'].join('');
+
+	if ( banner ) {
+		banner.className = (config.stats.bad ? "qunit-fail" : "qunit-pass");
+	}
+
+	if ( tests ) {	
+		var result = id("qunit-testresult");
+
+		if ( !result ) {
+			result = doc
