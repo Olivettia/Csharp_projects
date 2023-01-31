@@ -606,3 +606,22 @@ function done() {
 	if ( config.doneTimer && window.clearTimeout ) {
 		window.clearTimeout( config.doneTimer );
 		config.doneTimer = null;
+	}
+
+	if ( config.queue.length ) {
+		config.doneTimer = window.setTimeout(function(){
+			if ( !config.queue.length ) {
+				done();
+			} else {
+				synchronize( done );
+			}
+		}, 13);
+
+		return;
+	}
+
+	config.autorun = true;
+
+	// Log the last module results
+	if ( config.currentModule ) {
+		QUnit.moduleDone
