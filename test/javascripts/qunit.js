@@ -641,4 +641,20 @@ function done() {
 		var result = id("qunit-testresult");
 
 		if ( !result ) {
-			result = doc
+			result = document.createElement("p");
+			result.id = "qunit-testresult";
+			result.className = "result";
+			tests.parentNode.insertBefore( result, tests.nextSibling );
+		}
+
+		result.innerHTML = html;
+	}
+
+	QUnit.done( config.stats.bad, config.stats.all );
+}
+
+function validTest( name ) {
+	var i = config.filters.length,
+		run = false;
+
+	if
