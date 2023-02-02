@@ -657,4 +657,28 @@ function validTest( name ) {
 	var i = config.filters.length,
 		run = false;
 
-	if
+	if ( !i ) {
+		return true;
+	}
+	
+	while ( i-- ) {
+		var filter = config.filters[i],
+			not = filter.charAt(0) == '!';
+
+		if ( not ) {
+			filter = filter.slice(1);
+		}
+
+		if ( name.indexOf(filter) !== -1 ) {
+			return !not;
+		}
+
+		if ( not ) {
+			run = true;
+		}
+	}
+
+	return run;
+}
+
+function result
