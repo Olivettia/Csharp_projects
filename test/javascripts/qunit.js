@@ -681,4 +681,16 @@ function validTest( name ) {
 	return run;
 }
 
-function result
+function resultDisplayStyle(passed) {
+	return passed && id("qunit-filter-pass") && id("qunit-filter-pass").checked ? 'none' : '';
+}
+
+function escapeHtml(s) {
+	if (!s) {
+		return "";
+	}
+	s = s + "";
+	return s.replace(/[\&"<>\\]/g, function(s) {
+		switch(s) {
+			case "&": return "&amp;";
+			case "\\": return "
