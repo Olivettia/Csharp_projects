@@ -711,4 +711,18 @@ function synchronize( callback ) {
 }
 
 function process() {
-	var start = (new Date()).getT
+	var start = (new Date()).getTime();
+
+	while ( config.queue.length && !config.blocking ) {
+		if ( config.updateRate <= 0 || (((new Date()).getTime() - start) < config.updateRate) ) {
+			config.queue.shift()();
+
+		} else {
+			setTimeout( process, 13 );
+			break;
+		}
+	}
+}
+
+function saveGlobal() {
+	config.pollution = 
