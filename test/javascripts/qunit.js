@@ -693,4 +693,22 @@ function escapeHtml(s) {
 	return s.replace(/[\&"<>\\]/g, function(s) {
 		switch(s) {
 			case "&": return "&amp;";
-			case "\\": return "
+			case "\\": return "\\\\";
+			case '"': return '\"';
+			case "<": return "&lt;";
+			case ">": return "&gt;";
+			default: return s;
+		}
+	});
+}
+
+function synchronize( callback ) {
+	config.queue.push( callback );
+
+	if ( config.autorun && !config.blocking ) {
+		process();
+	}
+}
+
+function process() {
+	var start = (new Date()).getT
