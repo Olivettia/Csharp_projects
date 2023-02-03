@@ -725,4 +725,19 @@ function process() {
 }
 
 function saveGlobal() {
-	config.pollution = 
+	config.pollution = [];
+	
+	if ( config.noglobals ) {
+		for ( var key in window ) {
+			config.pollution.push( key );
+		}
+	}
+}
+
+function checkPollution( name ) {
+	var old = config.pollution;
+	saveGlobal();
+	
+	var newGlobals = diff( old, config.pollution );
+	if ( newGlobals.length > 0 ) {
+		ok( false, "Introduced global
