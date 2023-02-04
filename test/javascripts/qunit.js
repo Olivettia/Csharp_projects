@@ -740,4 +740,15 @@ function checkPollution( name ) {
 	
 	var newGlobals = diff( old, config.pollution );
 	if ( newGlobals.length > 0 ) {
-		ok( false, "Introduced global
+		ok( false, "Introduced global variable(s): " + newGlobals.join(", ") );
+		config.expected++;
+	}
+
+	var deletedGlobals = diff( config.pollution, old );
+	if ( deletedGlobals.length > 0 ) {
+		ok( false, "Deleted global variable(s): " + deletedGlobals.join(", ") );
+		config.expected++;
+	}
+}
+
+// returns a new Ar
