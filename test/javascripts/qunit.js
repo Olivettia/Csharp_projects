@@ -773,4 +773,22 @@ function fail(message, exception, callback) {
 		console.warn(callback.toString());
 
 	} else if ( window.opera && opera.postError ) {
-		opera.postError(message, exception, callb
+		opera.postError(message, exception, callback.toString);
+	}
+}
+
+function extend(a, b) {
+	for ( var prop in b ) {
+		a[prop] = b[prop];
+	}
+
+	return a;
+}
+
+function addEvent(elem, type, fn) {
+	if ( elem.addEventListener ) {
+		elem.addEventListener( type, fn, false );
+	} else if ( elem.attachEvent ) {
+		elem.attachEvent( "on" + type, fn );
+	} else {
+		fn
