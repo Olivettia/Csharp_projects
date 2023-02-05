@@ -791,4 +791,15 @@ function addEvent(elem, type, fn) {
 	} else if ( elem.attachEvent ) {
 		elem.attachEvent( "on" + type, fn );
 	} else {
-		fn
+		fn();
+	}
+}
+
+function id(name) {
+	return !!(typeof document !== "undefined" && document && document.getElementById) &&
+		document.getElementById( name );
+}
+
+// Test for equality any JavaScript type.
+// Discussions and reference: http://philrathe.com/articles/equiv
+// Test suites: http://philrathe.com/tests/
