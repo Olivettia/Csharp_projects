@@ -817,4 +817,14 @@ QUnit.equiv = function () {
             if (QUnit.objectType(callbacks[prop]) === "function") {
                 return callbacks[prop].apply(callbacks, args);
             } else {
-                ret
+                return callbacks[prop]; // or undefined
+            }
+        }
+    }
+    
+    var callbacks = function () {
+
+        // for string, boolean, number and null
+        function useStrictEquality(b, a) {
+            if (b instanceof a.constructor || a instanceof b.constructor) {
+                // to
