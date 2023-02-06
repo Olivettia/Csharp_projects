@@ -810,4 +810,11 @@ QUnit.equiv = function () {
     var callers = []; // stack to decide between skip/abort functions
     var parents = []; // stack to avoiding loops from circular referencing
 
-    // Call the o related callback with the given argumen
+    // Call the o related callback with the given arguments.
+    function bindCallbacks(o, callbacks, args) {
+        var prop = QUnit.objectType(o);
+        if (prop) {
+            if (QUnit.objectType(callbacks[prop]) === "function") {
+                return callbacks[prop].apply(callbacks, args);
+            } else {
+                ret
