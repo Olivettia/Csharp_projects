@@ -802,4 +802,12 @@ function id(name) {
 
 // Test for equality any JavaScript type.
 // Discussions and reference: http://philrathe.com/articles/equiv
-// Test suites: http://philrathe.com/tests/
+// Test suites: http://philrathe.com/tests/equiv
+// Author: Philippe Rathé <prathe@gmail.com>
+QUnit.equiv = function () {
+
+    var innerEquiv; // the real equiv function
+    var callers = []; // stack to decide between skip/abort functions
+    var parents = []; // stack to avoiding loops from circular referencing
+
+    // Call the o related callback with the given argumen
