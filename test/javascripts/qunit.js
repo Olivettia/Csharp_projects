@@ -837,4 +837,15 @@ QUnit.equiv = function () {
         }
 
         return {
-            "string": useStr
+            "string": useStrictEquality,
+            "boolean": useStrictEquality,
+            "number": useStrictEquality,
+            "null": useStrictEquality,
+            "undefined": useStrictEquality,
+
+            "nan": function (b) {
+                return isNaN(b);
+            },
+
+            "date": function (b, a) {
+   
