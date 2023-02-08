@@ -848,4 +848,10 @@ QUnit.equiv = function () {
             },
 
             "date": function (b, a) {
-   
+                return QUnit.objectType(b) === "date" && a.valueOf() === b.valueOf();
+            },
+
+            "regexp": function (b, a) {
+                return QUnit.objectType(b) === "regexp" &&
+                    a.source === b.source && // the regex itself
+                    a.global === b.global
