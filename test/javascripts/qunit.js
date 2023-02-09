@@ -868,4 +868,14 @@ QUnit.equiv = function () {
                         typeof caller !== "undefined";
             },
 
-            "arra
+            "array": function (b, a) {
+                var i, j, loop;
+                var len;
+
+                // b could be an object literal here
+                if ( ! (QUnit.objectType(b) === "array")) {
+                    return false;
+                }   
+                
+                len = a.length;
+                if (l
