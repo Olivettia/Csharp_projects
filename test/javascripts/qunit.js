@@ -854,4 +854,11 @@ QUnit.equiv = function () {
             "regexp": function (b, a) {
                 return QUnit.objectType(b) === "regexp" &&
                     a.source === b.source && // the regex itself
-                    a.global === b.global
+                    a.global === b.global && // and its modifers (gmi) ...
+                    a.ignoreCase === b.ignoreCase &&
+                    a.multiline === b.multiline;
+            },
+
+            // - skip when the property is a method of an instance (OOP)
+            // - abort otherwise,
+            //   initial === wou
