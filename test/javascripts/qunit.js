@@ -878,4 +878,12 @@ QUnit.equiv = function () {
                 }   
                 
                 len = a.length;
-                if (l
+                if (len !== b.length) { // safe and faster
+                    return false;
+                }
+                
+                //track reference to avoid circular references
+                parents.push(a);
+                for (i = 0; i < len; i++) {
+                    loop = false;
+                    for(j=0;j<
