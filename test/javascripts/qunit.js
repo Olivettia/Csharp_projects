@@ -886,4 +886,11 @@ QUnit.equiv = function () {
                 parents.push(a);
                 for (i = 0; i < len; i++) {
                     loop = false;
-                    for(j=0;j<
+                    for(j=0;j<parents.length;j++){
+                        if(parents[j] === a[i]){
+                            loop = true;//dont rewalk array
+                        }
+                    }
+                    if (!loop && ! innerEquiv(a[i], b[i])) {
+                        parents.pop();
+        
