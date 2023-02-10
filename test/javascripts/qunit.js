@@ -903,4 +903,12 @@ QUnit.equiv = function () {
             "object": function (b, a) {
                 var i, j, loop;
                 var eq = true; // unless we can proove it
-                var aProperties = [], bProperties = 
+                var aProperties = [], bProperties = []; // collection of strings
+
+                // comparing constructors is more strict than using instanceof
+                if ( a.constructor !== b.constructor) {
+                    return false;
+                }
+
+                // stack constructor before traversing properties
+         
