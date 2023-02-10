@@ -893,4 +893,14 @@ QUnit.equiv = function () {
                     }
                     if (!loop && ! innerEquiv(a[i], b[i])) {
                         parents.pop();
-        
+                        return false;
+                    }
+                }
+                parents.pop();
+                return true;
+            },
+
+            "object": function (b, a) {
+                var i, j, loop;
+                var eq = true; // unless we can proove it
+                var aProperties = [], bProperties = 
