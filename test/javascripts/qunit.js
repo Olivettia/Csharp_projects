@@ -911,4 +911,10 @@ QUnit.equiv = function () {
                 }
 
                 // stack constructor before traversing properties
-         
+                callers.push(a.constructor);
+                //track reference to avoid circular references
+                parents.push(a);
+                
+                for (i in a) { // be strict: don't ensures hasOwnProperty and go deep
+                    loop = false;
+                    for(j=0;j<parents.length
