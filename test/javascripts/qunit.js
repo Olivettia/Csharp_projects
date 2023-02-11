@@ -917,4 +917,12 @@ QUnit.equiv = function () {
                 
                 for (i in a) { // be strict: don't ensures hasOwnProperty and go deep
                     loop = false;
-                    for(j=0;j<parents.length
+                    for(j=0;j<parents.length;j++){
+                        if(parents[j] === a[i])
+                            loop = true; //don't go down the same path twice
+                    }
+                    aProperties.push(i); // collect a's properties
+
+                    if (!loop && ! innerEquiv(a[i], b[i])) {
+                        eq = false;
+                  
