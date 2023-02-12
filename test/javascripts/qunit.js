@@ -936,4 +936,13 @@ QUnit.equiv = function () {
                     bProperties.push(i); // collect b's properties
                 }
 
-                // Ensures identical properties 
+                // Ensures identical properties name
+                return eq && innerEquiv(aProperties.sort(), bProperties.sort());
+            }
+        };
+    }();
+
+    innerEquiv = function () { // can take multiple arguments
+        var args = Array.prototype.slice.apply(arguments);
+        if (args.length < 2) {
+            return
