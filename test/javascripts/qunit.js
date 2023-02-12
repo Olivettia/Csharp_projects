@@ -925,4 +925,15 @@ QUnit.equiv = function () {
 
                     if (!loop && ! innerEquiv(a[i], b[i])) {
                         eq = false;
-                  
+                        break;
+                    }
+                }
+
+                callers.pop(); // unstack, we are done
+                parents.pop();
+
+                for (i in b) {
+                    bProperties.push(i); // collect b's properties
+                }
+
+                // Ensures identical properties 
