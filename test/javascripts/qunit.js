@@ -945,4 +945,10 @@ QUnit.equiv = function () {
     innerEquiv = function () { // can take multiple arguments
         var args = Array.prototype.slice.apply(arguments);
         if (args.length < 2) {
-            return
+            return true; // end transition
+        }
+
+        return (function (a, b) {
+            if (a === b) {
+                return true; // catch the most you can
+            } else if (a === null || b === null || typeof a === "undefined" || typeof b === "undefined" || QUnit.objectType(a) !== QUnit.objectType(
