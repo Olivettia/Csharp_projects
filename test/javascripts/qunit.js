@@ -951,4 +951,11 @@ QUnit.equiv = function () {
         return (function (a, b) {
             if (a === b) {
                 return true; // catch the most you can
-            } else if (a === null || b === null || typeof a === "undefined" || typeof b === "undefined" || QUnit.objectType(a) !== QUnit.objectType(
+            } else if (a === null || b === null || typeof a === "undefined" || typeof b === "undefined" || QUnit.objectType(a) !== QUnit.objectType(b)) {
+                return false; // don't lose time with error prone cases
+            } else {
+                return bindCallbacks(a, callbacks, [b, a]);
+            }
+
+        // apply transition with (1..n) arguments
+        })(args[0], args[1]) && arguments.callee.apply(this, args.spli
