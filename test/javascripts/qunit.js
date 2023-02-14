@@ -958,4 +958,16 @@ QUnit.equiv = function () {
             }
 
         // apply transition with (1..n) arguments
-        })(args[0], args[1]) && arguments.callee.apply(this, args.spli
+        })(args[0], args[1]) && arguments.callee.apply(this, args.splice(1, args.length -1));
+    };
+
+    return innerEquiv;
+
+}();
+
+/**
+ * jsDump
+ * Copyright (c) 2008 Ariel Flesler - aflesler(at)gmail(dot)com | http://flesler.blogspot.com
+ * Licensed under BSD (http://www.opensource.org/licenses/bsd-license.php)
+ * Date: 5/15/2008
+ * @projectDescription Advanced and exte
