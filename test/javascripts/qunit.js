@@ -1004,4 +1004,14 @@ QUnit.jsDump = (function() {
 	var reName = /^function (\w+)/;
 	
 	var jsDump = {
-		parse:function( obj, type ) { //type is used mostly internally, you can fix a (custom)type i
+		parse:function( obj, type ) { //type is used mostly internally, you can fix a (custom)type in advance
+			var	parser = this.parsers[ type || this.typeOf(obj) ];
+			type = typeof parser;			
+			
+			return type == 'function' ? parser.call( this, obj ) :
+				   type == 'string' ? parser :
+				   this.parsers.error;
+		},
+		typeOf:function( obj ) {
+			var type;
+			if ( obj === nul
