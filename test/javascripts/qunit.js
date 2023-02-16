@@ -993,4 +993,15 @@ QUnit.jsDump = (function() {
 		return [ pre, inner + arr, base + post ].join(s);
 	};
 	function array( arr ) {
-		var
+		var i = arr.length,	ret = Array(i);					
+		this.up();
+		while ( i-- )
+			ret[i] = this.parse( arr[i] );				
+		this.down();
+		return join( '[', ret, ']' );
+	};
+	
+	var reName = /^function (\w+)/;
+	
+	var jsDump = {
+		parse:function( obj, type ) { //type is used mostly internally, you can fix a (custom)type i
