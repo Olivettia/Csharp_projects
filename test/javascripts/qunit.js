@@ -1014,4 +1014,14 @@ QUnit.jsDump = (function() {
 		},
 		typeOf:function( obj ) {
 			var type;
-			if ( obj === nul
+			if ( obj === null ) {
+				type = "null";
+			} else if (typeof obj === "undefined") {
+				type = "undefined";
+			} else if (QUnit.is("RegExp", obj)) {
+				type = "regexp";
+			} else if (QUnit.is("Date", obj)) {
+				type = "date";
+			} else if (QUnit.is("Function", obj)) {
+				type = "function";
+			} else if (obj.setInt
