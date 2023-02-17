@@ -1032,4 +1032,15 @@ QUnit.jsDump = (function() {
 				type = "node";
 			} else if (typeof obj === "object" && typeof obj.length === "number" && obj.length >= 0) {
 				type = "array";
-			} e
+			} else {
+				type = typeof obj;
+			}
+			return type;
+		},
+		separator:function() {
+			return this.multiline ?	this.HTML ? '<br />' : '\n' : this.HTML ? '&nbsp;' : ' ';
+		},
+		indent:function( extra ) {// extra can be a number, shortcut for increasing-calling-decreasing
+			if ( !this.multiline )
+				return '';
+			var ch
