@@ -1043,4 +1043,15 @@ QUnit.jsDump = (function() {
 		indent:function( extra ) {// extra can be a number, shortcut for increasing-calling-decreasing
 			if ( !this.multiline )
 				return '';
-			var ch
+			var chr = this.indentChar;
+			if ( this.HTML )
+				chr = chr.replace(/\t/g,'   ').replace(/ /g,'&nbsp;');
+			return Array( this._depth_ + (extra||0) ).join(chr);
+		},
+		up:function( a ) {
+			this._depth_ += a || 1;
+		},
+		down:function( a ) {
+			this._depth_ -= a || 1;
+		},
+		setParser:function( name, parser ) 
