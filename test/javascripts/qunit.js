@@ -1087,4 +1087,13 @@ QUnit.jsDump = (function() {
 			object:function( map ) {
 				var ret = [ ];
 				this.up();
-				for ( va
+				for ( var key in map )
+					ret.push( this.parse(key,'key') + ': ' + this.parse(map[key]) );
+				this.down();
+				return join( '{', ret, '}' );
+			},
+			node:function( node ) {
+				var open = this.HTML ? '&lt;' : '<',
+					close = this.HTML ? '&gt;' : '>';
+					
+				var tag = node.nodeName.toLowerCase(),
