@@ -1077,3 +1077,14 @@ QUnit.jsDump = (function() {
 				if ( name )
 					ret += ' ' + name;
 				ret += '(';
+				
+				ret = [ ret, this.parse( fn, 'functionArgs' ), '){'].join('');
+				return join( ret, this.parse(fn,'functionCode'), '}' );
+			},
+			array: array,
+			nodelist: array,
+			arguments: array,
+			object:function( map ) {
+				var ret = [ ];
+				this.up();
+				for ( va
