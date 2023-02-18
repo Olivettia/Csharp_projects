@@ -1054,4 +1054,17 @@ QUnit.jsDump = (function() {
 		down:function( a ) {
 			this._depth_ -= a || 1;
 		},
-		setParser:function( name, parser ) 
+		setParser:function( name, parser ) {
+			this.parsers[name] = parser;
+		},
+		// The next 3 are exposed so you can use them
+		quote:quote, 
+		literal:literal,
+		join:join,
+		//
+		_depth_: 1,
+		// This is the list of parsers, to modify them, use jsDump.setParser
+		parsers:{
+			window: '[Window]',
+			document: '[Document]',
+			error:'[ERROR]', //when no parser is 
