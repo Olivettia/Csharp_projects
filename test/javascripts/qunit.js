@@ -1067,4 +1067,13 @@ QUnit.jsDump = (function() {
 		parsers:{
 			window: '[Window]',
 			document: '[Document]',
-			error:'[ERROR]', //when no parser is 
+			error:'[ERROR]', //when no parser is found, shouldn't happen
+			unknown: '[Unknown]',
+			'null':'null',
+			undefined:'undefined',
+			'function':function( fn ) {
+				var ret = 'function',
+					name = 'name' in fn ? fn.name : (reName.exec(fn)||[])[1];//functions never have name in IE
+				if ( name )
+					ret += ' ' + name;
+				ret += '(';
