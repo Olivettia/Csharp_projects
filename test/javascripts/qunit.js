@@ -1097,3 +1097,13 @@ QUnit.jsDump = (function() {
 					close = this.HTML ? '&gt;' : '>';
 					
 				var tag = node.nodeName.toLowerCase(),
+					ret = open + tag;
+					
+				for ( var a in this.DOMAttrs ) {
+					var val = node[this.DOMAttrs[a]];
+					if ( val )
+						ret += ' ' + a + '=' + this.parse( val, 'attribute' );
+				}
+				return ret + close + open + '/' + tag + close;
+			},
+			functionArgs:function( fn ) {//function calls it internally
