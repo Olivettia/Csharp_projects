@@ -1124,4 +1124,11 @@ QUnit.jsDump = (function() {
 			number:literal,
 			'boolean':literal
 		},
-		DOMAt
+		DOMAttrs:{//attributes to dump from nodes, name=>realName
+			id:'id',
+			name:'name',
+			'class':'className'
+		},
+		HTML:false,//if true, entities are escaped ( <, >, \t, space and \n )
+		indentChar:'   ',//indentation unit
+		multiline:false //if true, items in a collection, are separated by a \n, els
