@@ -1115,4 +1115,13 @@ QUnit.jsDump = (function() {
 					args[l] = String.fromCharCode(97+l);//97 is 'a'
 				return ' ' + args.join(', ') + ' ';
 			},
-			key:quote, //object calls it internally, the key part
+			key:quote, //object calls it internally, the key part of an item in a map
+			functionCode:'[code]', //function calls it internally, it's the content of the function
+			attribute:quote, //node calls it internally, it's an html attribute value
+			string:quote,
+			date:quote,
+			regexp:literal, //regex
+			number:literal,
+			'boolean':literal
+		},
+		DOMAt
