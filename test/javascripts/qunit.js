@@ -1131,4 +1131,21 @@ QUnit.jsDump = (function() {
 		},
 		HTML:false,//if true, entities are escaped ( <, >, \t, space and \n )
 		indentChar:'   ',//indentation unit
-		multiline:false //if true, items in a collection, are separated by a \n, els
+		multiline:false //if true, items in a collection, are separated by a \n, else just a space.
+	};
+
+	return jsDump;
+})();
+
+// from Sizzle.js
+function getText( elems ) {
+	var ret = "", elem;
+
+	for ( var i = 0; elems[i]; i++ ) {
+		elem = elems[i];
+
+		// Get the text from text nodes and CDATA nodes
+		if ( elem.nodeType === 3 || elem.nodeType === 4 ) {
+			ret += elem.nodeValue;
+
+		// Traverse everyt
