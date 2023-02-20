@@ -1148,4 +1148,21 @@ function getText( elems ) {
 		if ( elem.nodeType === 3 || elem.nodeType === 4 ) {
 			ret += elem.nodeValue;
 
-		// Traverse everyt
+		// Traverse everything else, except comment nodes
+		} else if ( elem.nodeType !== 8 ) {
+			ret += getText( elem.childNodes );
+		}
+	}
+
+	return ret;
+};
+
+/*
+ * Javascript Diff Algorithm
+ *  By John Resig (http://ejohn.org/)
+ *  Modified by Chu Alan "sprite"
+ *
+ * Released under the MIT license.
+ *
+ * More Info:
+ *  http://ejohn.org/pro
