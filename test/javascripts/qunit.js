@@ -1165,4 +1165,12 @@ function getText( elems ) {
  * Released under the MIT license.
  *
  * More Info:
- *  http://ejohn.org/pro
+ *  http://ejohn.org/projects/javascript-diff-algorithm/
+ *  
+ * Usage: QUnit.diff(expected, actual)
+ * 
+ * QUnit.diff("the quick brown fox jumped over", "the quick fox jumps over") == "the  quick <del>brown </del> fox <del>jumped </del><ins>jumps </ins> over"
+ */
+QUnit.diff = (function() {
+	function diff(o, n){
+		var ns = new Object();
