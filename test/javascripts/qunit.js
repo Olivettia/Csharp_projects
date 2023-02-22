@@ -1200,4 +1200,16 @@ QUnit.diff = (function() {
 					text: n[ns[i].rows[0]],
 					row: os[i].rows[0]
 				};
-				o[os[i].rows[0]
+				o[os[i].rows[0]] = {
+					text: o[os[i].rows[0]],
+					row: ns[i].rows[0]
+				};
+			}
+		}
+		
+		for (var i = 0; i < n.length - 1; i++) {
+			if (n[i].text != null && n[i + 1].text == null && n[i].row + 1 < o.length && o[n[i].row + 1].text == null &&
+			n[i + 1] == o[n[i].row + 1]) {
+				n[i + 1] = {
+					text: n[i + 1],
+					row: n[i].row
