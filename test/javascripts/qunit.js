@@ -1244,4 +1244,23 @@ QUnit.diff = (function() {
 	return function(o, n){
 		o = o.replace(/\s+$/, '');
 		n = n.replace(/\s+$/, '');
-		var out = diff(o == "" ? [] : o.split(/
+		var out = diff(o == "" ? [] : o.split(/\s+/), n == "" ? [] : n.split(/\s+/));
+
+		var str = "";
+		
+		var oSpace = o.match(/\s+/g);
+		if (oSpace == null) {
+			oSpace = [" "];
+		}
+		else {
+			oSpace.push(" ");
+		}
+		var nSpace = n.match(/\s+/g);
+		if (nSpace == null) {
+			nSpace = [" "];
+		}
+		else {
+			nSpace.push(" ");
+		}
+		
+		i
