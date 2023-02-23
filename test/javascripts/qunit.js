@@ -1224,4 +1224,24 @@ QUnit.diff = (function() {
 		for (var i = n.length - 1; i > 0; i--) {
 			if (n[i].text != null && n[i - 1].text == null && n[i].row > 0 && o[n[i].row - 1].text == null &&
 			n[i - 1] == o[n[i].row - 1]) {
-				n[i - 1] 
+				n[i - 1] = {
+					text: n[i - 1],
+					row: n[i].row - 1
+				};
+				o[n[i].row - 1] = {
+					text: o[n[i].row - 1],
+					row: i - 1
+				};
+			}
+		}
+		
+		return {
+			o: o,
+			n: n
+		};
+	}
+	
+	return function(o, n){
+		o = o.replace(/\s+$/, '');
+		n = n.replace(/\s+$/, '');
+		var out = diff(o == "" ? [] : o.split(/
