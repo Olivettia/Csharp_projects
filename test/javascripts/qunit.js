@@ -1283,4 +1283,15 @@ QUnit.diff = (function() {
 					var pre = "";
 					
 					for (n = out.n[i].row + 1; n < out.o.length && out.o[n].text == null; n++) {
-						pre += '<del>' + out.o[n] + oSpac
+						pre += '<del>' + out.o[n] + oSpace[n] + "</del>";
+					}
+					str += " " + out.n[i].text + nSpace[i] + pre;
+				}
+			}
+		}
+		
+		return str;
+	};
+})();
+
+})(this);
