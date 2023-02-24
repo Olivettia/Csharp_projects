@@ -1274,3 +1274,13 @@ QUnit.diff = (function() {
 					str += '<del>' + out.o[n] + oSpace[n] + "</del>";
 				}
 			}
+			
+			for (var i = 0; i < out.n.length; i++) {
+				if (out.n[i].text == null) {
+					str += '<ins>' + out.n[i] + nSpace[i] + "</ins>";
+				}
+				else {
+					var pre = "";
+					
+					for (n = out.n[i].row + 1; n < out.o.length && out.o[n].text == null; n++) {
+						pre += '<del>' + out.o[n] + oSpac
